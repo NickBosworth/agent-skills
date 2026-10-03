@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "standard_version": "1.0.0",
+  "profile": "standard",
+  "paths": {
+    "brief": "docs/project/brief.md",
+    "architecture": "docs/architecture/overview.md",
+    "technology": "docs/architecture/technology.md",
+    "workflow": "docs/development/workflow.md",
+    "decisions": "docs/architecture/decisions",
+    "tasks": "docs/tasks",
+    "skills": ".agents/skills"
+  },
+  "instruction_files": ["AGENTS.md"],
+  "task_authority": {"kind": "repository", "location": "docs/tasks"},
+  "commands": [],
+  "adapters": [],
+  "reviews": {},
+  "exceptions": []
+}

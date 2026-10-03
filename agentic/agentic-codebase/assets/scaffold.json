@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "profiles": {
+    "standard": {
+      "files": [
+        {"template": "templates/AGENTS.standard.md", "path": "AGENTS.md"},
+        {"template": "templates/project.standard.json", "path": ".agents/project.json"},
+        {"template": "templates/skills-index.md", "path": ".agents/skills/README.md"},
+        {"template": "templates/brief.md", "path": "docs/project/brief.md"},
+        {"template": "templates/architecture.md", "path": "docs/architecture/overview.md"},
+        {"template": "templates/technology.md", "path": "docs/architecture/technology.md"},
+        {"template": "templates/decisions-index.md", "path": "docs/architecture/decisions/README.md"},
+        {"template": "templates/workflow.md", "path": "docs/development/workflow.md"},
+        {"template": "templates/tasks-index.md", "path": "docs/tasks/README.md"}
+      ]
+    },
+    "minimal": {
+      "files": [
+        {"template": "templates/AGENTS.minimal.md", "path": "AGENTS.md"},
+        {"template": "templates/project.minimal.json", "path": ".agents/project.json"},
+        {"template": "templates/skills-index.md", "path": ".agents/skills/README.md"},
+        {"template": "templates/engineering.md", "path": "docs/engineering.md"},
+        {"template": "templates/decisions-index.md", "path": "docs/architecture/decisions/README.md"},
+        {"template": "templates/tasks-index.md", "path": "docs/tasks/README.md"}
+      ]
+    }
+  }
+}

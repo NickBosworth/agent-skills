@@ -1,0 +1,15 @@
+interface:
+  display_name: Agentic Codebase
+  short_description: Set up, maintain, and repair agent-ready codebases
+  default_prompt: Use $agentic-codebase to inspect this repository and set up, maintain,
+    or repair its agentic development environment, asking one contextual question
+    at a time when needed.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true

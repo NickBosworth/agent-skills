@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "standard_version": "1.0.0",
+  "profile": "minimal",
+  "paths": {
+    "brief": "docs/engineering.md",
+    "architecture": "docs/engineering.md",
+    "technology": "docs/engineering.md",
+    "workflow": "docs/engineering.md",
+    "decisions": "docs/architecture/decisions",
+    "tasks": "docs/tasks",
+    "skills": ".agents/skills"
+  },
+  "instruction_files": ["AGENTS.md"],
+  "task_authority": {"kind": "repository", "location": "docs/tasks"},
+  "commands": [],
+  "adapters": [],
+  "reviews": {},
+  "exceptions": []
+}
