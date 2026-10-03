@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="status-title status-desc">
+  <title id="status-title">Completed</title>
+  <desc id="status-desc">A brief ring and checkmark reveal that settles into a completed state.</desc>
+  <style>
+    /* Scoped classes and keyframes; namespace per inline instance in a real app. */
+    .status-ring { transform-box: fill-box; transform-origin: center; animation: status-settle 0.6s cubic-bezier(.2,.7,.2,1) both; }
+    .status-check { stroke-dasharray: 1; stroke-dashoffset: 0; animation: status-draw 0.55s 0.15s ease-out both; }
+    @keyframes status-settle { from { opacity: 0; transform: scale(.85); } to { opacity: 1; transform: scale(1); } }
+    @keyframes status-draw { from { stroke-dashoffset: 1; opacity: 0; } 8% { opacity: 1; } to { stroke-dashoffset: 0; opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) { .status-ring, .status-check { animation: none; } }
+  </style>
+  <g id="status-ring" class="status-ring">
+    <circle cx="64" cy="64" r="44" fill="#e7f2f3" stroke="#0d9488" stroke-width="5"/>
+  </g>
+  <path id="status-check" class="status-check" d="M42 64 L57 79 L88 48" pathLength="1" fill="none" stroke="#183547" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

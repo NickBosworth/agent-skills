@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="morph-title morph-desc">
+  <title id="morph-title">Soft shape morph</title>
+  <desc id="morph-desc">A rounded shape changes into a diamond-like shape and back twice. Reduced motion shows a static rounded shape.</desc>
+  <style>
+    .morph-static { display: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .morph-animated { display: none; }
+      .morph-static { display: inline; }
+    }
+  </style>
+  <!-- Same M + four C segments + Z in every state. Point correspondence matters. -->
+  <g id="morph-animated" class="morph-animated">
+    <path id="morph-shape" fill="#0d9488" stroke="#183547" stroke-width="3"
+      d="M64 22 C90 22 106 38 106 64 C106 90 90 106 64 106 C38 106 22 90 22 64 C22 38 38 22 64 22 Z">
+      <animate id="morph-cycle" attributeName="d" dur="2.4s" repeatCount="2" fill="freeze" calcMode="spline" keyTimes="0;0.5;1" keySplines=".4 0 .6 1;.4 0 .6 1"
+        values="M64 22 C90 22 106 38 106 64 C106 90 90 106 64 106 C38 106 22 90 22 64 C22 38 38 22 64 22 Z;
+                M64 16 C73 33 95 55 112 64 C95 73 73 95 64 112 C55 95 33 73 16 64 C33 55 55 33 64 16 Z;
+                M64 22 C90 22 106 38 106 64 C106 90 90 106 64 106 C38 106 22 90 22 64 C22 38 38 22 64 22 Z"/>
+    </path>
+  </g>
+  <!-- A static replacement stops visible motion; it does not cancel the hidden SMIL clock. -->
+  <g id="morph-static" class="morph-static">
+    <path fill="#0d9488" stroke="#183547" stroke-width="3"
+      d="M64 22 C90 22 106 38 106 64 C106 90 90 106 64 106 C38 106 22 90 22 64 C22 38 38 22 64 22 Z"/>
+  </g>
+</svg>

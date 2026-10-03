@@ -1,0 +1,50 @@
+test_aria_references (test_audit.AuditTests.test_aria_references) ... ok
+test_bad_viewbox (test_audit.AuditTests.test_bad_viewbox) ... ok
+test_baseline_detects_id_and_viewbox_changes (test_audit.AuditTests.test_baseline_detects_id_and_viewbox_changes) ... ok
+test_baseline_numeric_viewbox_equivalence (test_audit.AuditTests.test_baseline_numeric_viewbox_equivalence) ... ok
+test_cli_empty_directory_is_not_success (test_audit.AuditTests.test_cli_empty_directory_is_not_success) ... ok
+test_cli_json_and_no_source_mutation (test_audit.AuditTests.test_cli_json_and_no_source_mutation) ... ok
+test_cli_warning_exit (test_audit.AuditTests.test_cli_warning_exit) ... ok
+test_css_escapes_need_manual_review (test_audit.AuditTests.test_css_escapes_need_manual_review) ... ok
+test_css_url_reference (test_audit.AuditTests.test_css_url_reference) ... ok
+test_data_image_rejected (test_audit.AuditTests.test_data_image_rejected) ... ok
+test_discrete_morph_skips_interpolation_warning (test_audit.AuditTests.test_discrete_morph_skips_interpolation_warning) ... ok
+test_dtd_rejected_before_parse (test_audit.AuditTests.test_dtd_rejected_before_parse) ... ok
+test_duplicate_ids (test_audit.AuditTests.test_duplicate_ids) ... ok
+test_empty_id (test_audit.AuditTests.test_empty_id) ... ok
+test_event_attribute_rejected (test_audit.AuditTests.test_event_attribute_rejected) ... ok
+test_examples_pass_expected_profiles (test_audit.AuditTests.test_examples_pass_expected_profiles) ... ok
+test_external_resources_rejected (test_audit.AuditTests.test_external_resources_rejected) ... ok
+test_file_input_limit_and_encoding (test_audit.AuditTests.test_file_input_limit_and_encoding) ... ok
+test_foreign_object_rejected (test_audit.AuditTests.test_foreign_object_rejected) ... ok
+test_hex_colours_not_treated_as_references (test_audit.AuditTests.test_hex_colours_not_treated_as_references) ... ok
+test_keytimes_count_and_range (test_audit.AuditTests.test_keytimes_count_and_range) ... ok
+test_local_href_resolves (test_audit.AuditTests.test_local_href_resolves) ... ok
+test_malformed_xml (test_audit.AuditTests.test_malformed_xml) ... ok
+test_missing_file (test_audit.AuditTests.test_missing_file) ... ok
+test_missing_href (test_audit.AuditTests.test_missing_href) ... ok
+test_morph_signature_match_not_flagged (test_audit.AuditTests.test_morph_signature_match_not_flagged) ... ok
+test_morph_signature_mismatch (test_audit.AuditTests.test_morph_signature_mismatch) ... ok
+test_portable_currentcolour (test_audit.AuditTests.test_portable_currentcolour) ... ok
+test_script_rejected (test_audit.AuditTests.test_script_rejected) ... ok
+test_smil_syncbase_reference (test_audit.AuditTests.test_smil_syncbase_reference) ... ok
+test_spline_validation (test_audit.AuditTests.test_spline_validation) ... ok
+test_static_policy (test_audit.AuditTests.test_static_policy) ... ok
+test_stylesheet_processing_instruction (test_audit.AuditTests.test_stylesheet_processing_instruction) ... ok
+test_svg_namespace_required (test_audit.AuditTests.test_svg_namespace_required) ... ok
+test_valid_minimal (test_audit.AuditTests.test_valid_minimal) ... ok
+test_xlink_href (test_audit.AuditTests.test_xlink_href) ... ok
+test_xml_base_rejected (test_audit.AuditTests.test_xml_base_rejected) ... ok
+test_zero_dimension (test_audit.AuditTests.test_zero_dimension) ... ok
+test_bad_time_inputs (test_capture_support.CaptureSupportTests.test_bad_time_inputs) ... ok
+test_explicit_times_preserve_order (test_capture_support.CaptureSupportTests.test_explicit_times_preserve_order) ... ok
+test_loop_frame_sampling_omits_endpoint (test_capture_support.CaptureSupportTests.test_loop_frame_sampling_omits_endpoint) ... ok
+test_preflight_accepts_reviewable_sample (test_capture_support.CaptureSupportTests.test_preflight_accepts_reviewable_sample) ... ok
+test_preflight_rejects_external_navigation (test_capture_support.CaptureSupportTests.test_preflight_rejects_external_navigation) ... ok
+test_preflight_rejects_script (test_capture_support.CaptureSupportTests.test_preflight_rejects_script) ... ok
+test_size (test_capture_support.CaptureSupportTests.test_size) ... ok
+
+----------------------------------------------------------------------
+Ran 45 tests in 0.010s
+
+OK

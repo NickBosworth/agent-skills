@@ -1,0 +1,13 @@
+test_css_seeks_and_settles (__main__.BrowserChecks.test_css_seeks_and_settles) ... ok
+test_reduced_css_is_static_without_forced_disable (__main__.BrowserChecks.test_reduced_css_is_static_without_forced_disable) ... ok
+test_reduced_preference_does_not_mask_missing_author_fallback (__main__.BrowserChecks.test_reduced_preference_does_not_mask_missing_author_fallback) ... ok
+test_reduced_smil_uses_static_branch (__main__.BrowserChecks.test_reduced_smil_uses_static_branch) ... ok
+test_repeatable_capture (__main__.BrowserChecks.test_repeatable_capture) ... ok
+test_smil_varies_and_repeats (__main__.BrowserChecks.test_smil_varies_and_repeats) ... ok
+test_static_component_does_not_move (__main__.BrowserChecks.test_static_component_does_not_move) ... ok
+test_waapi_instances_preference_and_cleanup (__main__.BrowserChecks.test_waapi_instances_preference_and_cleanup) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 6.684s
+
+OK

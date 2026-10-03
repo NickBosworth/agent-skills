@@ -1,0 +1,4 @@
+# Optional only. The audit tool and skill instructions do not require packages.
+# Tested with Playwright 1.57.0; a newer 1.x may be installed by this range.
+# Use the project's approved lock/version policy and rerun browser tests on updates.
+playwright>=1.57,<2

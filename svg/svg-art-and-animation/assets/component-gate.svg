@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="gate-title gate-desc">
+  <title id="gate-title">Gate component example</title>
+  <desc id="gate-desc">A static support and a separately grouped boom with an explicit hinge at 32,84.</desc>
+  <g id="gate-base" data-part="support" fill="#183547">
+    <rect x="24" y="84" width="16" height="28" rx="3"/>
+    <rect x="16" y="108" width="32" height="4" rx="2"/>
+  </g>
+  <!-- Static placement is separated from the animated local group. -->
+  <g id="gate-hinge" transform="translate(32 84)">
+    <g id="gate-boom" data-part="boom">
+      <rect x="0" y="-5" width="76" height="10" rx="3" fill="#e7f2f3" stroke="#183547" stroke-width="2"/>
+      <path d="M18 -4 L26 -4 L20 4 L12 4 Z M42 -4 L50 -4 L44 4 L36 4 Z M66 -4 L74 -4 L68 4 L60 4 Z" fill="#0d9488"/>
+    </g>
+    <circle r="7" fill="#0d9488" stroke="#183547" stroke-width="3"/>
+  </g>
+</svg>

@@ -1,0 +1,76 @@
+{
+  "contractVersion": 1,
+  "note": "Illustrative planning data. Not consumed or validated by the bundled tools. Adapt to the project.",
+  "assetFamily": "gate-demo",
+  "targetProfile": "godot-components",
+  "source": {
+    "viewBox": [
+      0,
+      0,
+      128,
+      128
+    ],
+    "coordinateUnit": "svg-user-unit",
+    "groundAnchor": [
+      32,
+      112
+    ],
+    "nominalPixelsPerUnit": 1
+  },
+  "appearance": {
+    "palette": {
+      "ink": "#183547",
+      "accent": "#0d9488",
+      "light": "#e7f2f3"
+    },
+    "strokeWidth": 3,
+    "linecap": "round"
+  },
+  "parts": [
+    {
+      "id": "gate-base",
+      "role": "fixed-support",
+      "pivot": [
+        32,
+        112
+      ],
+      "order": 0
+    },
+    {
+      "id": "gate-boom",
+      "role": "rotating-arm",
+      "pivot": [
+        32,
+        84
+      ],
+      "order": 1,
+      "rotationDegrees": {
+        "closed": 0,
+        "open": -70
+      }
+    }
+  ],
+  "motion": {
+    "runtime": "engine-native",
+    "simulationOwnership": "read-only visual adapter",
+    "reducedMotion": "snap to semantic state"
+  },
+  "verification": {
+    "sizesPixels": [
+      [
+        128,
+        128
+      ],
+      [
+        256,
+        256
+      ]
+    ],
+    "states": [
+      "closed",
+      "midpoint",
+      "open"
+    ],
+    "engineImportRequired": true
+  }
+}
