@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "purpose": "Template only. Replace nulls with measured configuration; never report this as benchmark results.",
+  "scenario_name": null,
+  "project_revision": null,
+  "engine_version": null,
+  "plugin_versions": {},
+  "build_type": null,
+  "hardware": {"cpu": null, "gpu": null, "ram_gib": null, "os": null, "resolution": null},
+  "world": {"representation": null, "seed": null, "generator_version": null, "content_version": null, "chunk_dimensions": null, "resident_chunk_count": null},
+  "workload": {"description": null, "camera_route": null, "edits_per_second": null, "warmup_seconds": null, "capture_seconds": null, "repetitions": null},
+  "measurements": {"frame_ms_p50": null, "frame_ms_p95": null, "frame_ms_p99": null, "peak_cpu_mib": null, "peak_gpu_mib": null, "edit_to_visual_ms_p95": null, "edit_to_collision_ms_p95": null, "mesh_build_ms_p95": null, "main_thread_publish_ms_p95": null, "queue_depth_max": null, "stale_jobs_discarded": null},
+  "gates": {"frame_ms_p99_max": null, "peak_cpu_mib_max": null, "edit_to_collision_ms_p95_max": null},
+  "raw_capture_paths": [],
+  "result": "not_run"
+}
