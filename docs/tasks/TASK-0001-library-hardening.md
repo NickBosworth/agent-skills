@@ -51,5 +51,6 @@ private vulnerability reporting was enabled and confirmed. The temporary private
 rollback bundle was removed after verifying public history.
 
 All implementation acceptance is met. Final documentation commits receive their own
-CI checks. Main branch checks are configured only after successful observed checks;
+CI checks. Main branch protection is configured and read back: all three observed successful
+checks are required, including for administrators; force pushes/deletion are disabled.
 GitHub caches/forks and unexecuted host/model behaviour retain the documented limits.

@@ -56,7 +56,9 @@ source's freshness remain unverified. Previous 1.0.0 evidence is explicitly hist
 
 CI targets Linux/Python 3.11 and 3.14; defined jobs are not passing runs until GitHub
 executes them. GitHub secret scanning and push protection were observed enabled. Private
-vulnerability reporting was enabled and read back successfully. Branch protection
-and remote CI results are recorded only after their actual configuration/execution. Heuristic
+vulnerability reporting was enabled and read back successfully. Main branch protection was configured and read back: credentials and package jobs
+for Python 3.11/3.14 are required from GitHub Actions, checks must be up to date,
+administrators are included, and force pushes/deletion are disabled. Finalized
+main run 38040114564 passed all three jobs. Heuristic
 privacy checks and Gitleaks cannot detect all PII; manual review remains mandatory.
 Existing public forks, downloaded copies and GitHub caches cannot be revoked by a push.

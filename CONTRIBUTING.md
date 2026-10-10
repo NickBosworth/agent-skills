@@ -40,8 +40,8 @@ the actual index and inspect `git diff --cached --stat` and the diff. Use the
 anonymous project contributor name with its reserved email or a GitHub noreply email; keep private names/contact
 details out of commit messages. Run `--history` and redacted Gitleaks before pushing.
 GitHub web edits and merges can introduce personal author/committer metadata.
-Publish reviewed, anonymously attributed commits through Git instead. When main
-requires checks, push the same commit to a branch, wait for checks, then fast-forward
+Publish reviewed, anonymously attributed commits through Git instead. Main requires the credential scan and Python 3.11/3.14 package jobs, including for
+administrators. Push the same commit to a branch, wait for checks, then fast-forward
 main through Git; do not replace it with a newly authored web merge commit.
 
 The commit guard was enabled locally during the authorized public-repository
