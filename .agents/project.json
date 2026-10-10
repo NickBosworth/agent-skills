@@ -39,11 +39,12 @@
     "docs/engineering.md": {
       "document_sha256": "dd039529236a3c27f98fbbed9c8f8fe1dfb43fe8a15ba6f9679ce017e688531f",
       "evidence": {
-        ".github/workflows/quality.yml": "d80132d46655edd22029e9fb2dc8abc3a38166c40fb6400ee5fd9713211d02e8",
+        ".github/workflows/quality.yml": "719257485d86c2c074edc49e80a59c2ab1aebc6b826da667bfcfe347fa8bfadf",
         "catalog.json": "da43a55091ab74f116409ca6b189e6cbf47221b0ddcb36c21f69e627ee782bcd",
+        "requirements-dev.txt": "b41fbbae6f44bf7394ae818e49b76005e54507b3b7fd8f2f48ebb3b4f3e39d6c",
         "tools/run_checks.py": "1696a52504825caf0d9358e93ca871cd341842414d7201926f794edc50d90f13"
       },
-      "note": "Compared library layout, catalogue and verification commands with implemented files and executed checks. CI and external host behaviour remain distinct unverified surfaces.",
+      "note": "Compared structure, commands and pinned dependency definitions with source and passing local checks. Verified the scanner module path against the tagged upstream go.mod. Remote CI and native host behaviour remain separate unverified surfaces.",
       "reviewed_on": "2026-10-10"
     }
   },
