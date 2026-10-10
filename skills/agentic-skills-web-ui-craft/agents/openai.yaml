@@ -1,0 +1,5 @@
+interface:
+  display_name: agentic-skills · Web UI Craft
+  short_description: Build and repair usable, contextual web interfaces
+  default_prompt: Use $agentic-skills-web-ui-craft to repair this interface while
+    preserving product rules and verifying relevant user flows.

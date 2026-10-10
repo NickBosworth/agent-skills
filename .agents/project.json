@@ -1,0 +1,54 @@
+{
+  "adapters": [],
+  "commands": [
+    {
+      "cwd": ".",
+      "evidence": "Executed structural checks, official skills-ref validation and isolated helper suites on 2026-10-10; exact scope is recorded in docs/verification.md.",
+      "id": "library-checks",
+      "run": "python tools/run_checks.py",
+      "source": "tools/run_checks.py",
+      "status": "verified"
+    }
+  ],
+  "exceptions": [],
+  "instruction_files": [
+    "AGENTS.md"
+  ],
+  "paths": {
+    "architecture": "docs/engineering.md",
+    "brief": "docs/engineering.md",
+    "decisions": "docs/architecture/decisions",
+    "skills": "skills",
+    "tasks": "docs/tasks",
+    "technology": "docs/engineering.md",
+    "workflow": "docs/engineering.md"
+  },
+  "profile": "minimal",
+  "reviews": {
+    "AGENTS.md": {
+      "document_sha256": "58ce16b4d0d9a300ec01d1d31f5e45a12c15ff6e15b5eca8a7a75f2a937c08b3",
+      "evidence": {
+        "docs/public-repository-policy.md": "dfbf44a7c4ab42637d43077b4d525afaec2f4bb09e41ad71a2c781ac8551535e",
+        "tools/check_library.py": "88fe4086c5b109053d676ccc0651beda6067000cfe355a571ae4b124e7a5d45a"
+      },
+      "note": "Reviewed mandatory publication rules against staged/history privacy checks and manual-review limits; administrative GitHub settings are not claimed configured.",
+      "reviewed_on": "2026-10-10"
+    },
+    "docs/engineering.md": {
+      "document_sha256": "dd039529236a3c27f98fbbed9c8f8fe1dfb43fe8a15ba6f9679ce017e688531f",
+      "evidence": {
+        ".github/workflows/quality.yml": "d80132d46655edd22029e9fb2dc8abc3a38166c40fb6400ee5fd9713211d02e8",
+        "catalog.json": "da43a55091ab74f116409ca6b189e6cbf47221b0ddcb36c21f69e627ee782bcd",
+        "tools/run_checks.py": "1696a52504825caf0d9358e93ca871cd341842414d7201926f794edc50d90f13"
+      },
+      "note": "Compared library layout, catalogue and verification commands with implemented files and executed checks. CI and external host behaviour remain distinct unverified surfaces.",
+      "reviewed_on": "2026-10-10"
+    }
+  },
+  "schema_version": 1,
+  "standard_version": "1.0.0",
+  "task_authority": {
+    "kind": "repository",
+    "location": "docs/tasks"
+  }
+}

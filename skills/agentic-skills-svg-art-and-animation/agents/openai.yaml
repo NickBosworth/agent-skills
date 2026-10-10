@@ -1,0 +1,5 @@
+interface:
+  display_name: agentic-skills · SVG Art and Animation
+  short_description: Create and verify editable vector art and motion
+  default_prompt: Use $agentic-skills-svg-art-and-animation to inspect this SVG and
+    repair its geometry or motion with appropriate visual evidence.

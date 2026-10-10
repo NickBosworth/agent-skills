@@ -1,0 +1,14 @@
+interface:
+  display_name: agentic-skills · Voxel Game Development
+  short_description: Build voxel worlds with tested data invariants
+  default_prompt: Use $agentic-skills-voxel-game-dev to inspect this project and implement
+    its next tested voxel-game milestone.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true

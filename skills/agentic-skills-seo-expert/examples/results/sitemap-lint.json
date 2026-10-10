@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "tool": "agentic-skills-seo-expert local sitemap lint",
+  "files": [
+    {
+      "file": "tests/fixtures/sitemap.xml",
+      "kind": "urlset",
+      "uncompressed_bytes": 353,
+      "entry_count": 3,
+      "valid_url_shape_count": 3,
+      "distinct_locs": 3,
+      "hosts": [
+        "shop.example"
+      ],
+      "as_of": "2026-10-10",
+      "issues": [],
+      "live_urls_fetched": 0,
+      "referenced_sitemaps_followed": 0,
+      "not_tested": [
+        "HTTP delivery, redirects and permissions",
+        "actual lastmod truth",
+        "canonical/indexing state",
+        "image/video/news extension semantics",
+        "cross-site ownership and sitemap URL-location scope"
+      ]
+    }
+  ],
+  "network_requests_performed": 0
+}

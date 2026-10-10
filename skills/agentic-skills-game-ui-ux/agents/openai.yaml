@@ -1,0 +1,5 @@
+interface:
+  display_name: agentic-skills · Game UI and UX
+  short_description: Design player menus, HUDs and interaction flows
+  default_prompt: Use $agentic-skills-game-ui-ux to inspect this game and improve
+    its menus or HUD around the actual player task.

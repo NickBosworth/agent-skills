@@ -1,0 +1,5 @@
+interface:
+  display_name: agentic-skills · Professional Code Comments
+  short_description: Review accurate comments and public API contracts
+  default_prompt: Use $agentic-skills-professional-code-comments to review comments
+    and API documentation against the actual implementation.

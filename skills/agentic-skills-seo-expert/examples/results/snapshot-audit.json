@@ -1,0 +1,383 @@
+{
+  "schema_version": "1.0",
+  "tool": "agentic-skills-seo-expert offline snapshot audit",
+  "captured_at_as_supplied": "2026-10-10T08:00:00+01:00",
+  "scope_as_supplied": {
+    "site": "https://shop.example",
+    "inventory_kind": "sample",
+    "known_inventory_as_declared": 24,
+    "note": "Entirely synthetic. Only four snapshots supplied; no live capture performed."
+  },
+  "coverage": {
+    "supplied_pages_parsed": 4,
+    "rendered_snapshots_parsed": 1,
+    "live_requests_performed": 0,
+    "browser_renders_performed": 0,
+    "actual_indexing_checks_performed": 0,
+    "input_bytes_processed": 1733
+  },
+  "findings_by_status": {
+    "fail": 2,
+    "not-tested": 1,
+    "warning": 4
+  },
+  "pages": [
+    {
+      "url": "https://shop.example/products/blue-widget",
+      "template": "product",
+      "intended_indexable": true,
+      "response_status_as_supplied": 200,
+      "rendered_snapshot_supplied": true,
+      "engine_observations": {
+        "googlebot": {
+          "noindex_declared": true,
+          "nofollow_declared": false,
+          "parsed_subset": [
+            "noindex"
+          ],
+          "notes": [],
+          "actual_indexing_status": "not-tested",
+          "crawl_permission_as_stated_in_manifest": "allowed",
+          "crawl_permission_independently_verified": false
+        },
+        "bingbot": {
+          "noindex_declared": true,
+          "nofollow_declared": true,
+          "parsed_subset": [
+            "nofollow",
+            "noindex"
+          ],
+          "notes": [],
+          "actual_indexing_status": "not-tested",
+          "crawl_permission_as_stated_in_manifest": "allowed",
+          "crawl_permission_independently_verified": false
+        }
+      },
+      "canonical_initial": {
+        "head_targets": [
+          "https://staging.shop.example/products/blue-widget"
+        ],
+        "header_targets": [],
+        "distinct_targets": [
+          "https://staging.shop.example/products/blue-widget"
+        ],
+        "invalid_targets": [],
+        "notes": [],
+        "engine_selected_canonical": "not-tested"
+      },
+      "canonical_final": {
+        "head_targets": [
+          "https://shop.example/products/blue-widget"
+        ],
+        "header_targets": [],
+        "distinct_targets": [
+          "https://shop.example/products/blue-widget"
+        ],
+        "invalid_targets": [],
+        "notes": [],
+        "engine_selected_canonical": "not-tested"
+      },
+      "titles": [
+        "Blue widget"
+      ],
+      "descriptions": [
+        "A fictional widget for a synthetic test."
+      ],
+      "h1_count_observation_only": 1,
+      "anchors_observed": 1,
+      "anchors_without_href_observation_only": 0,
+      "images_missing_alt": 1,
+      "images_empty_alt_observation_only": 0,
+      "structured_data": {
+        "block_count": 0,
+        "types": [],
+        "syntax_issues": [],
+        "feature_eligibility": "not-tested",
+        "visible_content_agreement": "not-tested"
+      },
+      "findings": [
+        {
+          "code": "unexpected_noindex_googlebot",
+          "status": "fail",
+          "detail": "A parsed noindex conflicts with the supplied intended-indexable state; confirm source and approval before changing it.",
+          "rule_id": "SEO-011"
+        },
+        {
+          "code": "unexpected_noindex_bingbot",
+          "status": "fail",
+          "detail": "A parsed noindex conflicts with the supplied intended-indexable state; confirm source and approval before changing it.",
+          "rule_id": "SEO-011"
+        },
+        {
+          "code": "initial_noindex_removed_in_render",
+          "status": "warning",
+          "detail": "Do not rely on rendering to remove an initial exclusion.",
+          "rule_id": "SEO-024"
+        },
+        {
+          "code": "canonical_changes_during_render",
+          "status": "warning",
+          "detail": "Initial and supplied rendered snapshots declare different targets; inspect capture consistency and route metadata.",
+          "rule_id": "SEO-025"
+        },
+        {
+          "code": "image_alt_missing",
+          "status": "warning",
+          "detail": "Images without an alt attribute need human purpose/accessibility review; empty decorative alt is not included.",
+          "rule_id": "SEO-071"
+        }
+      ],
+      "snapshot_sha256": {
+        "initial": "a2995b6d95d9f91f8fb5bdb2fb3e75720222d2d6282b54f1d79690768b637ee8",
+        "rendered": "1518e579ae33c24ae7dde31330d5bf19d8b0b722de24cb6cd3bc6aaec0a5b395"
+      }
+    },
+    {
+      "url": "https://shop.example/account",
+      "template": "account",
+      "intended_indexable": false,
+      "response_status_as_supplied": 200,
+      "rendered_snapshot_supplied": false,
+      "engine_observations": {
+        "googlebot": {
+          "noindex_declared": true,
+          "nofollow_declared": true,
+          "parsed_subset": [
+            "nofollow",
+            "noindex"
+          ],
+          "notes": [],
+          "actual_indexing_status": "not-tested",
+          "crawl_permission_as_stated_in_manifest": "allowed",
+          "crawl_permission_independently_verified": false
+        },
+        "bingbot": {
+          "noindex_declared": true,
+          "nofollow_declared": true,
+          "parsed_subset": [
+            "nofollow",
+            "noindex"
+          ],
+          "notes": [],
+          "actual_indexing_status": "not-tested",
+          "crawl_permission_as_stated_in_manifest": "allowed",
+          "crawl_permission_independently_verified": false
+        }
+      },
+      "canonical_initial": {
+        "head_targets": [
+          "https://shop.example/account"
+        ],
+        "header_targets": [],
+        "distinct_targets": [
+          "https://shop.example/account"
+        ],
+        "invalid_targets": [],
+        "notes": [],
+        "engine_selected_canonical": "not-tested"
+      },
+      "canonical_final": {
+        "head_targets": [
+          "https://shop.example/account"
+        ],
+        "header_targets": [],
+        "distinct_targets": [
+          "https://shop.example/account"
+        ],
+        "invalid_targets": [],
+        "notes": [],
+        "engine_selected_canonical": "not-tested"
+      },
+      "titles": [
+        "Account"
+      ],
+      "descriptions": [],
+      "h1_count_observation_only": 1,
+      "anchors_observed": 0,
+      "anchors_without_href_observation_only": 0,
+      "images_missing_alt": 0,
+      "images_empty_alt_observation_only": 0,
+      "structured_data": {
+        "block_count": 0,
+        "types": [],
+        "syntax_issues": [],
+        "feature_eligibility": "not-tested",
+        "visible_content_agreement": "not-tested"
+      },
+      "findings": [],
+      "snapshot_sha256": {
+        "initial": "2b36de33da073fd0113ccc105073d4709e91296d44ae971245b742aec353d3bf"
+      }
+    },
+    {
+      "url": "https://shop.example/contact",
+      "template": "contact",
+      "intended_indexable": true,
+      "response_status_as_supplied": 200,
+      "rendered_snapshot_supplied": false,
+      "engine_observations": {
+        "googlebot": {
+          "noindex_declared": false,
+          "nofollow_declared": false,
+          "parsed_subset": [],
+          "notes": [],
+          "actual_indexing_status": "not-tested",
+          "crawl_permission_as_stated_in_manifest": "unknown",
+          "crawl_permission_independently_verified": false
+        },
+        "bingbot": {
+          "noindex_declared": false,
+          "nofollow_declared": false,
+          "parsed_subset": [],
+          "notes": [],
+          "actual_indexing_status": "not-tested",
+          "crawl_permission_as_stated_in_manifest": "unknown",
+          "crawl_permission_independently_verified": false
+        }
+      },
+      "canonical_initial": {
+        "head_targets": [
+          "https://shop.example/contact"
+        ],
+        "header_targets": [],
+        "distinct_targets": [
+          "https://shop.example/contact"
+        ],
+        "invalid_targets": [],
+        "notes": [],
+        "engine_selected_canonical": "not-tested"
+      },
+      "canonical_final": {
+        "head_targets": [
+          "https://shop.example/contact"
+        ],
+        "header_targets": [],
+        "distinct_targets": [
+          "https://shop.example/contact"
+        ],
+        "invalid_targets": [],
+        "notes": [],
+        "engine_selected_canonical": "not-tested"
+      },
+      "titles": [
+        "Contact"
+      ],
+      "descriptions": [
+        "Fictional contact page."
+      ],
+      "h1_count_observation_only": 2,
+      "anchors_observed": 1,
+      "anchors_without_href_observation_only": 0,
+      "images_missing_alt": 0,
+      "images_empty_alt_observation_only": 1,
+      "structured_data": {
+        "block_count": 0,
+        "types": [],
+        "syntax_issues": [],
+        "feature_eligibility": "not-tested",
+        "visible_content_agreement": "not-tested"
+      },
+      "findings": [],
+      "snapshot_sha256": {
+        "initial": "09890942eeb1fa3ccf7148a7ccfb97bc6cb4a9a58e3b134e02c50879a5c2dc7c"
+      }
+    },
+    {
+      "url": "https://shop.example/guide",
+      "template": "guide",
+      "intended_indexable": true,
+      "response_status_as_supplied": null,
+      "rendered_snapshot_supplied": false,
+      "engine_observations": {
+        "googlebot": {
+          "noindex_declared": false,
+          "nofollow_declared": false,
+          "parsed_subset": [],
+          "notes": [],
+          "actual_indexing_status": "not-tested",
+          "crawl_permission_as_stated_in_manifest": "unknown",
+          "crawl_permission_independently_verified": false
+        },
+        "bingbot": {
+          "noindex_declared": false,
+          "nofollow_declared": false,
+          "parsed_subset": [],
+          "notes": [],
+          "actual_indexing_status": "not-tested",
+          "crawl_permission_as_stated_in_manifest": "unknown",
+          "crawl_permission_independently_verified": false
+        }
+      },
+      "canonical_initial": {
+        "head_targets": [
+          "https://shop.example/guide"
+        ],
+        "header_targets": [],
+        "distinct_targets": [
+          "https://shop.example/guide"
+        ],
+        "invalid_targets": [],
+        "notes": [],
+        "engine_selected_canonical": "not-tested"
+      },
+      "canonical_final": {
+        "head_targets": [
+          "https://shop.example/guide"
+        ],
+        "header_targets": [],
+        "distinct_targets": [
+          "https://shop.example/guide"
+        ],
+        "invalid_targets": [],
+        "notes": [],
+        "engine_selected_canonical": "not-tested"
+      },
+      "titles": [
+        "Widget guide"
+      ],
+      "descriptions": [
+        "A fictional guide."
+      ],
+      "h1_count_observation_only": 1,
+      "anchors_observed": 0,
+      "anchors_without_href_observation_only": 0,
+      "images_missing_alt": 0,
+      "images_empty_alt_observation_only": 0,
+      "structured_data": {
+        "block_count": 1,
+        "types": [
+          "FAQPage"
+        ],
+        "syntax_issues": [],
+        "feature_eligibility": "not-tested",
+        "visible_content_agreement": "not-tested"
+      },
+      "findings": [
+        {
+          "code": "response_status_unknown",
+          "status": "not-tested",
+          "detail": "No response status was supplied; no live request occurred.",
+          "rule_id": "SEO-005"
+        },
+        {
+          "code": "faq_feature_review",
+          "status": "warning",
+          "detail": "Research snapshot 2026-10-10: do not promise Google FAQ rich results. Existing markup may have other consumers; no automatic deletion.",
+          "rule_id": "SEO-057"
+        }
+      ],
+      "snapshot_sha256": {
+        "initial": "e7e8f8aca5bb4f3da8fa3ae4754cccfb3d9a764ea50163153e3d98cdc6c43f2a"
+      }
+    }
+  ],
+  "duplicate_title_review_groups": [],
+  "limitations": [
+    "No overall SEO score or site-wide pass is calculated.",
+    "Coverage is limited to supplied snapshots; scope metadata is not independently verified.",
+    "HTMLParser is not a browser DOM repair algorithm. HTTP Link handling is a bounded common-syntax subset.",
+    "Only noindex/nofollow aliases and ordinary crawler scope are interpreted; other directive semantics need manual review.",
+    "Initial and rendered snapshots may be from different moments; confirm capture consistency.",
+    "No network, robots.txt evaluation, canonical-target fetch, rich-result validation or indexing verification occurs."
+  ]
+}

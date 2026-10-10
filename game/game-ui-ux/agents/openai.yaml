@@ -1,4 +1,0 @@
-interface:
-  display_name: "Game UI and UX"
-  short_description: "Design game menus and HUDs around how players play"
-  default_prompt: "Use $game-ui-ux to design and implement menus and a HUD that fit this game, its players, and its visual identity."

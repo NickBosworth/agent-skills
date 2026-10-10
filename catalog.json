@@ -1,0 +1,94 @@
+{
+  "brand": "agentic-skills",
+  "schema_version": 1,
+  "skills": [
+    {
+      "name": "agentic-skills-agentic-codebase",
+      "path": "skills/agentic-skills-agentic-codebase",
+      "title": "Agentic Codebase",
+      "description": "Audit and maintain repository guidance, decisions, task routes and agent adapters.",
+      "version": "2.0.0",
+      "license": "CC0-1.0",
+      "status": "packaged",
+      "previous_name": "agentic-codebase",
+      "previous_path": "agentic/agentic-codebase"
+    },
+    {
+      "name": "agentic-skills-development-planning",
+      "path": "skills/agentic-skills-development-planning",
+      "title": "Development Planning",
+      "description": "Turn rough requirements into a concrete plan with explicit compatibility and delivery decisions.",
+      "version": "2.0.0",
+      "license": "CC0-1.0",
+      "status": "packaged",
+      "previous_name": "development-planning",
+      "previous_path": "code/development-planning"
+    },
+    {
+      "name": "agentic-skills-game-ui-ux",
+      "path": "skills/agentic-skills-game-ui-ux",
+      "title": "Game UI and UX",
+      "description": "Design and verify menus, HUDs and player interface flows across game platforms.",
+      "version": "2.0.0",
+      "license": "CC0-1.0",
+      "status": "packaged",
+      "previous_name": "game-ui-ux",
+      "previous_path": "game/game-ui-ux"
+    },
+    {
+      "name": "agentic-skills-professional-code-comments",
+      "path": "skills/agentic-skills-professional-code-comments",
+      "title": "Professional Code Comments",
+      "description": "Generate or repair meaningful comments and API documentation without inventing rationale.",
+      "version": "2.0.0",
+      "license": "CC0-1.0",
+      "status": "packaged",
+      "previous_name": "professional-code-comments",
+      "previous_path": "code/professional-code-comments"
+    },
+    {
+      "name": "agentic-skills-seo-expert",
+      "path": "skills/agentic-skills-seo-expert",
+      "title": "SEO Expert",
+      "description": "Audit technical search discovery, content intent and measurement for Google and Bing.",
+      "version": "2.0.0",
+      "license": "CC0-1.0",
+      "status": "packaged",
+      "previous_name": "seo-expert",
+      "previous_path": "code/seo-expert"
+    },
+    {
+      "name": "agentic-skills-svg-art-and-animation",
+      "path": "skills/agentic-skills-svg-art-and-animation",
+      "title": "SVG Art and Animation",
+      "description": "Create and repair editable SVG geometry and motion for the actual delivery target.",
+      "version": "2.0.0",
+      "license": "MIT",
+      "status": "packaged",
+      "previous_name": "svg-art-and-animation",
+      "previous_path": "svg/svg-art-and-animation"
+    },
+    {
+      "name": "agentic-skills-voxel-game-dev",
+      "path": "skills/agentic-skills-voxel-game-dev",
+      "title": "Voxel Game Development",
+      "description": "Build voxel game systems with explicit coordinates, lifecycle, persistence and performance contracts.",
+      "version": "2.0.0",
+      "license": "CC0-1.0",
+      "status": "packaged",
+      "previous_name": "voxel-game-dev",
+      "previous_path": "game/voxel-game-dev"
+    },
+    {
+      "name": "agentic-skills-web-ui-craft",
+      "path": "skills/agentic-skills-web-ui-craft",
+      "title": "Web UI Craft",
+      "description": "Design and repair web interfaces with contextual visual and interaction evidence.",
+      "version": "2.0.0",
+      "license": "CC0-1.0",
+      "status": "packaged",
+      "previous_name": "web-ui-craft",
+      "previous_path": "code/slop-proof-web-ui"
+    }
+  ]
+}

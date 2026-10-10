@@ -1,4 +1,0 @@
-interface:
-  display_name: "Professional Code Comments"
-  short_description: "Explain code, contracts, and intent in plain language"
-  default_prompt: "Use $professional-code-comments to generate, audit, or improve accurate API documentation and section-by-section explanations of what the code does and why."

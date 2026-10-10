@@ -1,0 +1,5 @@
+interface:
+  display_name: agentic-skills · Development Planning
+  short_description: Resolve requirements and plan repository changes
+  default_prompt: Use $agentic-skills-development-planning to inspect this change
+    and produce an evidence-backed plan before implementation.

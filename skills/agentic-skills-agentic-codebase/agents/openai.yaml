@@ -1,0 +1,14 @@
+interface:
+  display_name: agentic-skills · Agentic Codebase
+  short_description: Set up and maintain repository agent guidance
+  default_prompt: Use $agentic-skills-agentic-codebase to inspect this repository
+    and maintain its agent guidance without changing unrelated application behavior.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true

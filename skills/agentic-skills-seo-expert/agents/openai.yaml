@@ -1,0 +1,5 @@
+interface:
+  display_name: agentic-skills · SEO Expert
+  short_description: Audit search discovery with scoped evidence
+  default_prompt: Use $agentic-skills-seo-expert to audit this site with explicit
+    coverage, current sources and no invented metrics.
