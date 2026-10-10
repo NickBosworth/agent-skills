@@ -55,7 +55,7 @@ class PublicBytesTests(unittest.TestCase):
         self.assertNotIn(value, location(value))
 
     def test_local_artifacts_are_rejected(self):
-        for name in [".DS_Store", ".env.production", "a/__pycache__/x.pyc", "dist/report.txt", "session.log", "backup.zip", ".codex/session.json"]:
+        for name in [".DS_Store", ".env.production", ".ENV.production", "private.PEM", "a/__pycache__/x.pyc", "dist/report.txt", "session.log", "backup.zip", ".codex/session.json"]:
             self.assertTrue(privacy_errors(name, b"safe"), name)
 
     def test_symlinks_and_unknown_binary_fail_closed(self):

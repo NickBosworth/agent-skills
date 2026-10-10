@@ -54,6 +54,7 @@ def build(root: Path, output: Path) -> None:
                         raise ValueError("extracted package validation failed")
         except BaseException:
             # This path was created by this invocation; never remove someone else's output.
+            stream.close()
             output.unlink()
             raise
 

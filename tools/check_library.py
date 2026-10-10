@@ -23,7 +23,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 MAX_BYTES = 2_000_000
-FORBIDDEN_PARTS = {".DS_Store", "__pycache__", ".venv", "venv", "node_modules",
+FORBIDDEN_PARTS = {".ds_store", "__pycache__", ".venv", "venv", "node_modules",
                    ".idea", ".vscode", ".claude", ".codex", ".cursor",
                    ".pytest_cache", "artifacts", "dist", "build"}
 FORBIDDEN_SUFFIXES = {".pyc", ".pyo", ".log", ".zip", ".gz", ".bundle", ".pem",
@@ -84,9 +84,9 @@ def privacy_errors(relative: str, data: bytes, mode: str = "100644") -> list[str
     errors = []
     if path.is_absolute() or ".." in path.parts:
         errors.append("unsafe path")
-    if any(part in FORBIDDEN_PARTS for part in path.parts) or path.suffix in FORBIDDEN_SUFFIXES:
+    if any(part.casefold() in FORBIDDEN_PARTS for part in path.parts) or path.suffix.lower() in FORBIDDEN_SUFFIXES:
         errors.append("prohibited local/generated file")
-    if path.name.startswith(".env") and path.name != ".env.example":
+    if path.name.lower().startswith(".env") and path.name != ".env.example":
         errors.append("environment file")
     if mode == "120000":
         errors.append("symlink is not allowed in public packages")
