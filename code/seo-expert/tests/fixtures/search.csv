@@ -1,0 +1,5 @@
+dataset_id,period_start,period_end,timezone,engine,search_type,country,device,query,page,clicks,impressions,average_position
+synthetic-g,2026-09-01,2026-09-30,America/Los_Angeles,google,web,GB,mobile,blue widget,https://shop.example/products/blue-widget,10,100,4
+synthetic-g,2026-09-01,2026-09-30,America/Los_Angeles,google,web,GB,mobile,widget guide,https://shop.example/guide,0,0,
+synthetic-g,2026-09-01,2026-09-30,America/Los_Angeles,google,web,GB,mobile,blue widget,https://shop.example/guide,1,50,8
+synthetic-b,2026-09-01,2026-09-30,UTC,bing,web,GB,mobile,blue widget,https://shop.example/products/blue-widget,2,20,5

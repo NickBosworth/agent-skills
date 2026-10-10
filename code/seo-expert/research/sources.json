@@ -1,0 +1,892 @@
+{
+  "schema_version": "1.0",
+  "research_snapshot": "2026-10-10",
+  "scope": "Curated official requirements and primary-publisher methods; not an exhaustive mirror of every engine document.",
+  "sources": [
+    {
+      "id": "G01",
+      "title": "Google SEO Starter Guide",
+      "url": "https://developers.google.com/search/docs/fundamentals/seo-starter-guide",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "foundations"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G02",
+      "title": "Google spam policies",
+      "url": "https://developers.google.com/search/docs/essentials/spam-policies",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "spam",
+        "content",
+        "links"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G03",
+      "title": "Creating helpful, reliable, people-first content",
+      "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "content",
+        "trust"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G04",
+      "title": "AI features and your website",
+      "url": "https://developers.google.com/search/docs/appearance/ai-features",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "AI",
+        "eligibility"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G05",
+      "title": "Search documentation updates",
+      "url": "https://developers.google.com/search/updates",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "freshness",
+        "feature-retirements"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G06",
+      "title": "Optimizing for generative AI features",
+      "url": "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "AI",
+        "content"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G07",
+      "title": "Using generative AI content",
+      "url": "https://developers.google.com/search/docs/fundamentals/using-gen-ai-content",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "content",
+        "AI"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G08",
+      "title": "Third-party SEO tools, services and advice",
+      "url": "https://developers.google.com/search/docs/fundamentals/third-party-seo",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "evidence",
+        "tools"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G09",
+      "title": "Robots meta tag and X-Robots-Tag specifications",
+      "url": "https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "indexing",
+        "snippet-controls"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G10",
+      "title": "Consolidate duplicate URLs",
+      "url": "https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "canonicalization"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G11",
+      "title": "JavaScript SEO basics",
+      "url": "https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "rendering"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G12",
+      "title": "Build and submit a sitemap",
+      "url": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "sitemaps"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G13",
+      "title": "General structured data guidelines",
+      "url": "https://developers.google.com/search/docs/appearance/structured-data/sd-policies",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "structured-data"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G14",
+      "title": "Influencing title links",
+      "url": "https://developers.google.com/search/docs/appearance/title-link",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "titles"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G15",
+      "title": "Control your snippets",
+      "url": "https://developers.google.com/search/docs/appearance/snippet",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "snippets"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G16",
+      "title": "Make links crawlable",
+      "url": "https://developers.google.com/search/docs/crawling-indexing/links-crawlable",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "links"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G17",
+      "title": "Tell Google about localized versions",
+      "url": "https://developers.google.com/search/docs/specialty/international/localized-versions",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "international"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G18",
+      "title": "Site moves with URL changes",
+      "url": "https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "migrations"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G19",
+      "title": "Pagination and incremental page loading",
+      "url": "https://developers.google.com/search/docs/specialty/ecommerce/pagination-and-incremental-page-loading",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "pagination"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G20",
+      "title": "Google Search technical requirements",
+      "url": "https://developers.google.com/search/docs/essentials/technical",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "eligibility"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G21",
+      "title": "Introduction to robots.txt",
+      "url": "https://developers.google.com/search/docs/crawling-indexing/robots/intro",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "crawl-controls"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G22",
+      "title": "How Google interprets robots.txt",
+      "url": "https://developers.google.com/crawling/docs/robots-txt/robots-txt-spec",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "crawl-controls"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G23",
+      "title": "HTTP status codes, network and DNS errors",
+      "url": "https://developers.google.com/crawling/docs/troubleshooting/http-status-codes",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "http"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G24",
+      "title": "Crawl budget management",
+      "url": "https://developers.google.com/crawling/docs/crawl-budget",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "large-sites"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G25",
+      "title": "Managing crawling of faceted navigation URLs",
+      "url": "https://developers.google.com/crawling/docs/faceted-navigation",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "facets"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G26",
+      "title": "Mobile-first indexing best practices",
+      "url": "https://developers.google.com/search/docs/crawling-indexing/mobile/mobile-sites-mobile-first-indexing",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "mobile"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G27",
+      "title": "Page experience in Google Search",
+      "url": "https://developers.google.com/search/docs/appearance/page-experience",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "performance",
+        "UX"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G28",
+      "title": "Google Images SEO best practices",
+      "url": "https://developers.google.com/search/docs/appearance/google-images",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "images"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G29",
+      "title": "Video SEO best practices",
+      "url": "https://developers.google.com/search/docs/appearance/video",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "video"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G30",
+      "title": "Structured data feature gallery",
+      "url": "https://developers.google.com/search/docs/appearance/structured-data/search-gallery",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "structured-data",
+        "eligibility"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G31",
+      "title": "Product structured data",
+      "url": "https://developers.google.com/search/docs/appearance/structured-data/product",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "commerce"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G32",
+      "title": "Review snippet structured data",
+      "url": "https://developers.google.com/search/docs/appearance/structured-data/review-snippet",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "reviews"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G33",
+      "title": "Subscription and paywalled content",
+      "url": "https://developers.google.com/search/docs/appearance/structured-data/paywalled-content",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "publishers"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G34",
+      "title": "Local business structured data",
+      "url": "https://developers.google.com/search/docs/appearance/structured-data/local-business",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "local"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G35",
+      "title": "Product variant structured data",
+      "url": "https://developers.google.com/search/docs/appearance/structured-data/product-variants",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "commerce"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G36",
+      "title": "Ecommerce site structure",
+      "url": "https://developers.google.com/search/docs/specialty/ecommerce/help-google-understand-your-ecommerce-site-structure",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "commerce",
+        "architecture"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G37",
+      "title": "Discover and your website",
+      "url": "https://developers.google.com/search/docs/appearance/google-discover",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "publishers"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G38",
+      "title": "Debugging drops in Google Search traffic",
+      "url": "https://developers.google.com/search/docs/monitor-debug/debugging-search-traffic-drops",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "measurement"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G39",
+      "title": "Using the Indexing API",
+      "url": "https://developers.google.com/search/apis/indexing-api/v3/using-api",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "submission"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G40",
+      "title": "Search Console performance report",
+      "url": "https://support.google.com/webmasters/answer/7576553",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "measurement"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G41",
+      "title": "URL Inspection tool",
+      "url": "https://support.google.com/webmasters/answer/9012289",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "verification"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G42",
+      "title": "Google Trends data FAQ",
+      "url": "https://support.google.com/trends/answer/4365533",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "keyword-research"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G43",
+      "title": "Google Ads Keyword Planner",
+      "url": "https://support.google.com/google-ads/answer/7337243",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "keyword-research"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G44",
+      "title": "Improve local ranking on Google",
+      "url": "https://support.google.com/business/answer/7091?hl=en",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "local"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G45",
+      "title": "Generative AI performance report (Search)",
+      "url": "https://support.google.com/webmasters/answer/16984139",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "measurement",
+        "AI"
+      ],
+      "note": ""
+    },
+    {
+      "id": "G46",
+      "title": "Core Web Vitals",
+      "url": "https://web.dev/articles/vitals",
+      "publisher_type": "engine-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "performance"
+      ],
+      "note": ""
+    },
+    {
+      "id": "B01",
+      "title": "AI Performance in Bing Webmaster Tools: public preview",
+      "url": "https://blogs.bing.com/webmaster/2026/2/Introducing-AI-Performance-in-Bing-Webmaster-Tools-Public-Preview/",
+      "publisher_type": "engine-editorial",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "AI",
+        "measurement"
+      ],
+      "note": "Publisher guidance; distinguish editorial advice from a binding technical specification."
+    },
+    {
+      "id": "B02",
+      "title": "AI visibility insights: Intents, Topics, Citation Share, Compare",
+      "url": "https://blogs.bing.com/search/2026/6/New-AI-Visibility-Insights-in-Bing-Webmaster-Tools-Intents-Topics-Citation-Share-Compare/",
+      "publisher_type": "engine-editorial",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "AI",
+        "measurement"
+      ],
+      "note": "Publisher guidance; distinguish editorial advice from a binding technical specification."
+    },
+    {
+      "id": "B03",
+      "title": "Keeping trusted content visible in AI-powered search",
+      "url": "https://blogs.bing.com/search/2026/5/Keeping-Trusted-Content-Visible-in-an-AI-Powered-Search-World/",
+      "publisher_type": "engine-editorial",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "AI",
+        "trust"
+      ],
+      "note": "Publisher guidance; distinguish editorial advice from a binding technical specification."
+    },
+    {
+      "id": "B04",
+      "title": "Bing support for data-nosnippet",
+      "url": "https://blogs.bing.com/webmaster/2025/10/Bing-Introduces-Support-for-the-data-nosnippet-HTML-Attribute/",
+      "publisher_type": "engine-editorial",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "snippet-controls"
+      ],
+      "note": "Publisher guidance; distinguish editorial advice from a binding technical specification."
+    },
+    {
+      "id": "B05",
+      "title": "Keeping content discoverable with sitemaps",
+      "url": "https://blogs.bing.com/webmaster/2025/7/Keeping-Content-Discoverable-with-Sitemaps-in-AI-Powered-Search/",
+      "publisher_type": "engine-editorial",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "sitemaps"
+      ],
+      "note": "Publisher guidance; distinguish editorial advice from a binding technical specification."
+    },
+    {
+      "id": "B06",
+      "title": "Start using Bing Webmaster Tools",
+      "url": "https://blogs.bing.com/webmaster/2025/6/Start-Using-Bing-Webmaster-Tools-to-Improve-Your-Site-Visibility/",
+      "publisher_type": "engine-editorial",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "measurement",
+        "verification"
+      ],
+      "note": "Publisher guidance; distinguish editorial advice from a binding technical specification."
+    },
+    {
+      "id": "B07",
+      "title": "Duplicate content and SEO/AI search visibility",
+      "url": "https://blogs.bing.com/webmaster/2025/12/Does-Duplicate-Content-Hurt-SEO-and-AI-Search-Visibility/",
+      "publisher_type": "engine-editorial",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "canonicalization"
+      ],
+      "note": "Publisher guidance; distinguish editorial advice from a binding technical specification."
+    },
+    {
+      "id": "B08",
+      "title": "Optimizing content for inclusion in AI search answers",
+      "url": "https://about.ads.microsoft.com/en/blog/post/october-2025/optimizing-your-content-for-inclusion-in-ai-search-answers",
+      "publisher_type": "engine-editorial",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "AI",
+        "content"
+      ],
+      "note": "Publisher guidance; distinguish editorial advice from a binding technical specification."
+    },
+    {
+      "id": "B09",
+      "title": "Bing Webmaster Guidelines",
+      "url": "https://www.bing.com/webmasters/help/webmaster-guidelines-30fba23a",
+      "publisher_type": "engine-documentation",
+      "review_status": "access-limited",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "policy"
+      ],
+      "note": "Only the JavaScript shell was retrievable. Not treated as a successfully reviewed substantive source; agents must open the current guidelines in a capable browser before a policy-sensitive Bing recommendation."
+    },
+    {
+      "id": "B10",
+      "title": "Bing Webmaster Blog",
+      "url": "https://blogs.bing.com/webmaster/",
+      "publisher_type": "engine-editorial",
+      "review_status": "discovery",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "freshness"
+      ],
+      "note": "Monitoring/discovery entry point, not an independent technical rule."
+    },
+    {
+      "id": "N01",
+      "title": "IndexNow protocol documentation",
+      "url": "https://www.indexnow.org/documentation",
+      "publisher_type": "protocol-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "submission"
+      ],
+      "note": ""
+    },
+    {
+      "id": "N02",
+      "title": "IndexNow FAQ",
+      "url": "https://www.indexnow.org/faq",
+      "publisher_type": "protocol-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "submission"
+      ],
+      "note": ""
+    },
+    {
+      "id": "I01",
+      "title": "Ahrefs keyword research guide",
+      "url": "https://ahrefs.com/seo/keyword-research",
+      "publisher_type": "industry-primary-methodology",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "keyword-research"
+      ],
+      "note": "Used for the publisher’s methods/workflow, not as an engine rule, ranking guarantee or endorsement of every claim."
+    },
+    {
+      "id": "I02",
+      "title": "Ahrefs search intent",
+      "url": "https://ahrefs.com/blog/search-intent/",
+      "publisher_type": "industry-primary-methodology",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "intent"
+      ],
+      "note": "Used for the publisher’s methods/workflow, not as an engine rule, ranking guarantee or endorsement of every claim."
+    },
+    {
+      "id": "I03",
+      "title": "Semrush keyword research guide",
+      "url": "https://www.semrush.com/blog/keyword-research/",
+      "publisher_type": "industry-primary-methodology",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "keyword-research"
+      ],
+      "note": "Used for the publisher’s methods/workflow, not as an engine rule, ranking guarantee or endorsement of every claim."
+    },
+    {
+      "id": "I04",
+      "title": "Ahrefs long-tail keywords",
+      "url": "https://ahrefs.com/blog/long-tail-keywords/",
+      "publisher_type": "industry-primary-methodology",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "keyword-research"
+      ],
+      "note": "Used for the publisher’s methods/workflow, not as an engine rule, ranking guarantee or endorsement of every claim."
+    },
+    {
+      "id": "I05",
+      "title": "Ahrefs keyword cannibalization",
+      "url": "https://ahrefs.com/blog/keyword-cannibalization/",
+      "publisher_type": "industry-primary-methodology",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "intent",
+        "measurement"
+      ],
+      "note": "Used for the publisher’s methods/workflow, not as an engine rule, ranking guarantee or endorsement of every claim."
+    },
+    {
+      "id": "I06",
+      "title": "Screaming Frog SEO Spider user guide",
+      "url": "https://www.screamingfrog.co.uk/seo-spider/user-guide/",
+      "publisher_type": "industry-primary-methodology",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "audit",
+        "tools"
+      ],
+      "note": "Used for the publisher’s methods/workflow, not as an engine rule, ranking guarantee or endorsement of every claim."
+    },
+    {
+      "id": "I07",
+      "title": "Sitebulb indexability hints",
+      "url": "https://sitebulb.com/hints/indexability/",
+      "publisher_type": "industry-primary-methodology",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "audit",
+        "tools"
+      ],
+      "note": "Used for the publisher’s methods/workflow, not as an engine rule, ranking guarantee or endorsement of every claim."
+    },
+    {
+      "id": "I08",
+      "title": "SearchPilot digital media SEO testing",
+      "url": "https://www.searchpilot.com/use-cases/media",
+      "publisher_type": "industry-primary-methodology",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "experimentation"
+      ],
+      "note": "Used for the publisher’s methods/workflow, not as an engine rule, ranking guarantee or endorsement of every claim."
+    },
+    {
+      "id": "S01",
+      "title": "Sitemaps XML protocol",
+      "url": "https://www.sitemaps.org/protocol.html",
+      "publisher_type": "standard",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "sitemaps"
+      ],
+      "note": ""
+    },
+    {
+      "id": "S02",
+      "title": "W3C WAI decorative images",
+      "url": "https://www.w3.org/WAI/tutorials/images/decorative/",
+      "publisher_type": "standard",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "accessibility"
+      ],
+      "note": ""
+    },
+    {
+      "id": "H01",
+      "title": "Agent Skills specification",
+      "url": "https://agentskills.io/specification",
+      "publisher_type": "host-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "packaging"
+      ],
+      "note": ""
+    },
+    {
+      "id": "H02",
+      "title": "Build skills (Codex documentation redirect)",
+      "url": "https://learn.chatgpt.com/docs/build-skills",
+      "publisher_type": "host-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "installation"
+      ],
+      "note": "Reached from https://developers.openai.com/codex/skills during review; confirm the host’s current discovery paths at installation."
+    },
+    {
+      "id": "H03",
+      "title": "Claude Code skills",
+      "url": "https://code.claude.com/docs/en/skills",
+      "publisher_type": "host-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "installation"
+      ],
+      "note": ""
+    },
+    {
+      "id": "H04",
+      "title": "OpenCode Agent Skills",
+      "url": "https://opencode.ai/docs/skills/",
+      "publisher_type": "host-documentation",
+      "review_status": "reviewed",
+      "retrieved_at": "2026-10-10",
+      "topics": [
+        "installation"
+      ],
+      "note": ""
+    }
+  ]
+}

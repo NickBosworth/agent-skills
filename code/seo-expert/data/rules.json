@@ -1,0 +1,1968 @@
+{
+  "schema_version": "1.0",
+  "version": "1.0.0",
+  "research_snapshot": "2026-10-10",
+  "note": "Triage catalogue, not a ranking score or exhaustive engine specification. Priority hints must be adjusted to observed impact and site intent. Read source register and relevant reference before applying a check.",
+  "rules": [
+    {
+      "id": "SEO-001",
+      "category": "governance",
+      "title": "Confirm desired index state",
+      "basis": "pack_convention",
+      "engine_scope": [
+        "site-governance"
+      ],
+      "applicability": "Every URL family",
+      "priority_hint": "P2",
+      "evidence_test": "Compare business intent with route purpose and owner decisions.",
+      "remediation": "Record intended indexable, excluded, private, moved or removed states.",
+      "false_positive_caveat": "Exclusion is not intrinsically an error.",
+      "verification": "Owner-reviewed inventory agrees with the audit scope.",
+      "source_ids": [
+        "G20",
+        "G21"
+      ],
+      "automation": "manual"
+    },
+    {
+      "id": "SEO-002",
+      "category": "governance",
+      "title": "Reconcile coverage",
+      "basis": "pack_convention",
+      "engine_scope": [
+        "site-governance"
+      ],
+      "applicability": "All whole-site audits",
+      "priority_hint": "P2",
+      "evidence_test": "Compare route/CMS, sitemap, crawl and available search/log inventories.",
+      "remediation": "Create a provenance-preserving union and expose unresolved differences.",
+      "false_positive_caveat": "One export is not necessarily a complete site inventory.",
+      "verification": "Report known, fetched, rendered, engine-inspected and manually assessed counts separately.",
+      "source_ids": [
+        "G41",
+        "I06"
+      ],
+      "automation": "manual"
+    },
+    {
+      "id": "SEO-003",
+      "category": "governance",
+      "title": "Preserve business rules and approvals",
+      "basis": "pack_convention",
+      "engine_scope": [
+        "site-governance"
+      ],
+      "applicability": "All changes",
+      "priority_hint": "P1",
+      "evidence_test": "Read project instructions, acceptance criteria and deployment permissions.",
+      "remediation": "Escalate conflicts; implement only authorised changes.",
+      "false_positive_caveat": "SEO preference does not override privacy or product behaviour.",
+      "verification": "Review diff, approvals and unchanged relevant business tests.",
+      "source_ids": [
+        "G02"
+      ],
+      "automation": "manual"
+    },
+    {
+      "id": "SEO-004",
+      "category": "governance",
+      "title": "Keep evidence and source freshness",
+      "basis": "pack_convention",
+      "engine_scope": [
+        "site-governance"
+      ],
+      "applicability": "Material recommendations",
+      "priority_hint": "P2",
+      "evidence_test": "Check source date, engine, market, observed evidence and confidence.",
+      "remediation": "Reopen primary guidance and label unavailable or uncertain evidence.",
+      "false_positive_caveat": "A vendor warning or stale source is not a verified violation.",
+      "verification": "Each finding has traceable evidence and a current applicable source.",
+      "source_ids": [
+        "G05",
+        "G08"
+      ],
+      "automation": "manual"
+    },
+    {
+      "id": "SEO-005",
+      "category": "technical",
+      "title": "Verify successful intended public responses",
+      "basis": "engine_requirement",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Pages intended for indexing",
+      "priority_hint": "P1",
+      "evidence_test": "Fetch direct and representative variant URLs; capture status and content.",
+      "remediation": "Fix unintended availability failures at the owning route, origin or edge.",
+      "false_positive_caveat": "A successful fetch does not establish indexing; intentional removals differ.",
+      "verification": "Re-fetch deployed pages and verify meaningful content and correct status.",
+      "source_ids": [
+        "G20",
+        "G23"
+      ],
+      "automation": "partial-offline"
+    },
+    {
+      "id": "SEO-006",
+      "category": "technical",
+      "title": "Detect false-success error pages",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Missing or failed content routes",
+      "priority_hint": "P1",
+      "evidence_test": "Compare body/error state with actual response code.",
+      "remediation": "Return an appropriate missing/error response or restore the intended content.",
+      "false_positive_caveat": "A snapshot cannot by itself prove Google classified a soft 404.",
+      "verification": "Test existing, missing and upstream-failure routes.",
+      "source_ids": [
+        "G23"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-007",
+      "category": "technical",
+      "title": "Control redirect loops and irrelevant destinations",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Moved URLs and host/protocol variants",
+      "priority_hint": "P1",
+      "evidence_test": "Capture redirect chains and test destination equivalence.",
+      "remediation": "Use coherent direct redirects to relevant destinations; remove loops.",
+      "false_positive_caveat": "Not every redirect is wrong; temporary and permanent moves differ.",
+      "verification": "Test old routes, query handling and final response/content.",
+      "source_ids": [
+        "G18",
+        "G23"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-008",
+      "category": "technical",
+      "title": "Keep protocol and host signals coherent",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Sites with hostname/protocol variants",
+      "priority_hint": "P2",
+      "evidence_test": "Compare redirects, canonicals, sitemaps and internal URLs.",
+      "remediation": "Align preferred public variants without losing valid alternate services.",
+      "false_positive_caveat": "Distinct subdomains can serve legitimate separate purposes.",
+      "verification": "Check variant matrix and deployed signals.",
+      "source_ids": [
+        "G10",
+        "G18"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-009",
+      "category": "technical",
+      "title": "Evaluate robots rules for each crawler",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Automated crawl/index investigations",
+      "priority_hint": "P1",
+      "evidence_test": "Read exact host robots response and applicable user-agent group.",
+      "remediation": "Correct unintended matching rules using a tested robots evaluator.",
+      "false_positive_caveat": "Disallow is not a security boundary or guaranteed deindexing.",
+      "verification": "Verify matching examples and accessible intended resources.",
+      "source_ids": [
+        "G21",
+        "G22"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-010",
+      "category": "technical",
+      "title": "Noindex must be readable",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Exclusion implemented through noindex",
+      "priority_hint": "P1",
+      "evidence_test": "Compare crawling permission with actual exclusion headers/meta.",
+      "remediation": "Choose a coherent owner-approved crawl and exclusion strategy.",
+      "false_positive_caveat": "Do not remove legitimate access protection to expose private content.",
+      "verification": "Confirm intended crawler can read exclusion where that is the chosen mechanism.",
+      "source_ids": [
+        "G09",
+        "G21"
+      ],
+      "automation": "partial-offline"
+    },
+    {
+      "id": "SEO-011",
+      "category": "technical",
+      "title": "Respect directive scope and aliases",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Robots meta and repeated X-Robots-Tag headers",
+      "priority_hint": "P1",
+      "evidence_test": "Parse crawler scope and noindex/none without last-tag-wins assumptions.",
+      "remediation": "Remove accidental contradictions at their source.",
+      "false_positive_caveat": "Google body-meta recognition must not be assumed for every engine.",
+      "verification": "Test scoped headers, body/head tags and initial/rendered variants.",
+      "source_ids": [
+        "G09"
+      ],
+      "automation": "partial-offline"
+    },
+    {
+      "id": "SEO-012",
+      "category": "technical",
+      "title": "Protect private and staging environments",
+      "basis": "pack_convention",
+      "engine_scope": [
+        "site-governance"
+      ],
+      "applicability": "Non-public environments and authenticated routes",
+      "priority_hint": "P1",
+      "evidence_test": "Inspect authentication, exposure and environment-dependent metadata.",
+      "remediation": "Preserve access controls and stop production/staging configuration leakage.",
+      "false_positive_caveat": "Robots and snippet restrictions do not protect confidential data.",
+      "verification": "Test unauthenticated access and production canonical/exclusion configuration.",
+      "source_ids": [
+        "G21"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-013",
+      "category": "canonical",
+      "title": "Make canonical declarations coherent",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Equivalent or variant public URLs",
+      "priority_hint": "P1",
+      "evidence_test": "Compare head and HTTP Link canonicals, response, links and sitemaps.",
+      "remediation": "Choose consistent genuine equivalents and remove conflicting declarations.",
+      "false_positive_caveat": "A canonical is a signal; the engine may select another URL.",
+      "verification": "Re-fetch declarations and inspect engine-selected canonical where available.",
+      "source_ids": [
+        "G10"
+      ],
+      "automation": "partial-offline"
+    },
+    {
+      "id": "SEO-014",
+      "category": "canonical",
+      "title": "Avoid invalid canonical destinations",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Pages declaring a canonical",
+      "priority_hint": "P1",
+      "evidence_test": "Test resolved destination, status, access and content equivalence.",
+      "remediation": "Point to the intended available equivalent and fix dependent signals.",
+      "false_positive_caveat": "Relative resolution and base elements can change the actual destination.",
+      "verification": "Check final URLs, headers and comparable content.",
+      "source_ids": [
+        "G10"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-015",
+      "category": "canonical",
+      "title": "Do not use noindex as consolidation",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Duplicate-content remediation",
+      "priority_hint": "P2",
+      "evidence_test": "Inspect whether noindex is being used to express a preferred duplicate.",
+      "remediation": "Use appropriate canonical or redirect strategy for the actual lifecycle.",
+      "false_positive_caveat": "Intentionally excluding a page can still be valid for other reasons.",
+      "verification": "Verify owner intent and coherent consolidation signals.",
+      "source_ids": [
+        "G10",
+        "G09"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-016",
+      "category": "canonical",
+      "title": "Review missing canonicals without overclaiming",
+      "basis": "pack_convention",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Pages with no explicit canonical observed",
+      "priority_hint": "P2",
+      "evidence_test": "Inspect both HTML and headers and ask whether explicit guidance is useful.",
+      "remediation": "Add consistent declarations when justified by the URL model.",
+      "false_positive_caveat": "Missing explicit markup does not prove canonicalisation failure.",
+      "verification": "Validate output and compare actual engine canonical when available.",
+      "source_ids": [
+        "G10"
+      ],
+      "automation": "partial-offline"
+    },
+    {
+      "id": "SEO-017",
+      "category": "sitemaps",
+      "title": "Validate sitemap format and limits",
+      "basis": "protocol_requirement",
+      "engine_scope": [
+        "sitemaps-protocol"
+      ],
+      "applicability": "Submitted XML sitemap/index files",
+      "priority_hint": "P2",
+      "evidence_test": "Check namespace, absolute URL format, count and uncompressed size.",
+      "remediation": "Generate compliant bounded files and an index when necessary.",
+      "false_positive_caveat": "Offline XML validity does not verify server delivery or all extensions.",
+      "verification": "Run local lint and inspect actual served response.",
+      "source_ids": [
+        "S01",
+        "G12"
+      ],
+      "automation": "partial-offline"
+    },
+    {
+      "id": "SEO-018",
+      "category": "sitemaps",
+      "title": "Publish intended preferred URLs",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google",
+        "Bing"
+      ],
+      "applicability": "Sitemap generation",
+      "priority_hint": "P2",
+      "evidence_test": "Compare entries with desired state, response, canonical and environment.",
+      "remediation": "Remove accidental obsolete/private/variant entries and add missing desired ones.",
+      "false_positive_caveat": "Sitemap inclusion does not guarantee indexing.",
+      "verification": "Compare generated entries with reconciled canonical inventory.",
+      "source_ids": [
+        "G12",
+        "B05"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-019",
+      "category": "sitemaps",
+      "title": "Use trustworthy last modification dates",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google",
+        "Bing"
+      ],
+      "applicability": "Sitemaps with lastmod",
+      "priority_hint": "P2",
+      "evidence_test": "Compare dates with substantive page changes and publishing records.",
+      "remediation": "Use reliable modification data or omit unsupported values.",
+      "false_positive_caveat": "A syntactically valid date may still be misleading.",
+      "verification": "Spot-check actual changes, future values and generation logic.",
+      "source_ids": [
+        "G12",
+        "B05"
+      ],
+      "automation": "partial-offline"
+    },
+    {
+      "id": "SEO-020",
+      "category": "sitemaps",
+      "title": "Inspect sitemap discovery and processing",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google",
+        "Bing"
+      ],
+      "applicability": "Sites relying on sitemap discovery",
+      "priority_hint": "P2",
+      "evidence_test": "Check served files, authorised submission/reporting and robots references.",
+      "remediation": "Fix inaccessible files or erroneous locations through approved processes.",
+      "false_positive_caveat": "A sitemap acceptance response is not an indexed-page count.",
+      "verification": "Record engine processing state and subsequent URL evidence separately.",
+      "source_ids": [
+        "G12",
+        "B05",
+        "B06"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-021",
+      "category": "crawl-efficiency",
+      "title": "Prevent unbounded URL spaces",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Facets, calendars, sessions and generated search states",
+      "priority_hint": "P1",
+      "evidence_test": "Use crawl/log evidence to find repeated low-value parameter combinations.",
+      "remediation": "Design coherent route/link/index controls with product owners.",
+      "false_positive_caveat": "Do not strip functional parameters or suppress useful landing pages blindly.",
+      "verification": "Test valuable combinations and trap boundaries.",
+      "source_ids": [
+        "G24",
+        "G25"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-022",
+      "category": "crawl-efficiency",
+      "title": "Prioritise crawl budget proportionately",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Large or frequently changing sites with crawl evidence",
+      "priority_hint": "P2",
+      "evidence_test": "Measure scale, waste, error rate and important discovery delay.",
+      "remediation": "Address demonstrated bottlenecks rather than optimising an imaginary quota.",
+      "false_positive_caveat": "A small stable site may have no meaningful crawl-budget problem.",
+      "verification": "Compare equivalent logs and discovery evidence after the fix.",
+      "source_ids": [
+        "G24"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-023",
+      "category": "rendering",
+      "title": "Check direct and client navigated routes",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "JavaScript-driven public sites",
+      "priority_hint": "P1",
+      "evidence_test": "Compare initial HTML, rendered direct loads and route transitions.",
+      "remediation": "Fix route/data delivery using the existing framework architecture.",
+      "false_positive_caveat": "JavaScript itself is not evidence that content is invisible.",
+      "verification": "Browser and response tests show correct content on each path.",
+      "source_ids": [
+        "G11"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-024",
+      "category": "rendering",
+      "title": "Avoid relying on JS to remove initial noindex",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Routes that should be indexable",
+      "priority_hint": "P1",
+      "evidence_test": "Compare initial and rendered directives.",
+      "remediation": "Generate the intended initial directive instead of relying on later removal.",
+      "false_positive_caveat": "A rendered clean DOM does not erase the risk in the initial response.",
+      "verification": "Assert correct initial and rendered policy on representative routes.",
+      "source_ids": [
+        "G11"
+      ],
+      "automation": "partial-offline"
+    },
+    {
+      "id": "SEO-025",
+      "category": "rendering",
+      "title": "Keep canonical stable through hydration",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Metadata modified by JavaScript",
+      "priority_hint": "P1",
+      "evidence_test": "Compare initial and rendered canonical declarations.",
+      "remediation": "Use a coherent route-specific canonical without conflicting mutations.",
+      "false_positive_caveat": "Dynamically supplied canonical is not automatically invalid.",
+      "verification": "Test deep links and client transitions against expected values.",
+      "source_ids": [
+        "G11",
+        "G10"
+      ],
+      "automation": "partial-offline"
+    },
+    {
+      "id": "SEO-026",
+      "category": "rendering",
+      "title": "Serve required render resources reliably",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Pages dependent on scripts/styles/data",
+      "priority_hint": "P1",
+      "evidence_test": "Observe blocked or failing resources and the resulting DOM.",
+      "remediation": "Fix unintended resource access or delivery failures.",
+      "false_positive_caveat": "Do not expose confidential APIs or bypass auth for a crawler.",
+      "verification": "Repeat affected render scenarios with network evidence.",
+      "source_ids": [
+        "G11"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-027",
+      "category": "rendering",
+      "title": "Make route metadata specific and current",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Shared templates and client navigation",
+      "priority_hint": "P2",
+      "evidence_test": "Compare title/canonical/schema after visiting multiple routes.",
+      "remediation": "Repair the owning metadata layer and remove accidental duplicated output.",
+      "false_positive_caveat": "A default fallback can be appropriate for some utility states.",
+      "verification": "Run direct-load and navigation regression tests.",
+      "source_ids": [
+        "G11",
+        "G14"
+      ],
+      "automation": "partial-offline"
+    },
+    {
+      "id": "SEO-028",
+      "category": "mobile",
+      "title": "Preserve meaningful mobile content and signals",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Responsive or separate mobile delivery",
+      "priority_hint": "P1",
+      "evidence_test": "Compare primary text, links, directives and structured data.",
+      "remediation": "Restore unintentionally missing mobile material without forcing identical layout.",
+      "false_positive_caveat": "Responsive presentation changes are not inherently content loss.",
+      "verification": "Verify representative mobile/desktop routes and equivalent tasks.",
+      "source_ids": [
+        "G26"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-029",
+      "category": "mobile",
+      "title": "Check overlays and practical mobile journeys",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Mobile landing and conversion pages",
+      "priority_hint": "P2",
+      "evidence_test": "Observe reading, navigation and conversion through overlays and consent states.",
+      "remediation": "Reduce unnecessary obstruction while retaining required protections.",
+      "false_positive_caveat": "Do not remove legal/security/consent functionality for a metric.",
+      "verification": "Retest narrow viewport, keyboard and essential flows.",
+      "source_ids": [
+        "G27"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-030",
+      "category": "architecture",
+      "title": "Use crawlable relevant links",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Public navigation and contextual links",
+      "priority_hint": "P2",
+      "evidence_test": "Inspect actual anchors/href destinations and route accessibility.",
+      "remediation": "Provide meaningful links and fix broken important destinations.",
+      "false_positive_caveat": "A UI button is not wrong when it performs an action rather than navigation.",
+      "verification": "Check rendered link discovery and user behaviour.",
+      "source_ids": [
+        "G16"
+      ],
+      "automation": "partial-offline"
+    },
+    {
+      "id": "SEO-031",
+      "category": "architecture",
+      "title": "Investigate important orphan candidates",
+      "basis": "industry_heuristic",
+      "engine_scope": [
+        "cross-engine-method"
+      ],
+      "applicability": "Inventory URLs absent from the observed link graph",
+      "priority_hint": "P2",
+      "evidence_test": "Compare crawl scope, rendering coverage, navigation and sitemaps.",
+      "remediation": "Add useful contextual/navigation paths where a real gap is confirmed.",
+      "false_positive_caveat": "Absence in a partial crawl does not establish an orphan.",
+      "verification": "Re-crawl relevant entry points and verify meaningful reachability.",
+      "source_ids": [
+        "I06",
+        "I07",
+        "G16"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-032",
+      "category": "architecture",
+      "title": "Use understandable anchor text",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Internal and external content links",
+      "priority_hint": "P2",
+      "evidence_test": "Review destination meaning in surrounding prose and image-link text.",
+      "remediation": "Replace misleading labels naturally without exact-match quotas.",
+      "false_positive_caveat": "Repeated navigation labels and short conventional labels may be appropriate.",
+      "verification": "Review real reading/navigation context.",
+      "source_ids": [
+        "G16"
+      ],
+      "automation": "manual"
+    },
+    {
+      "id": "SEO-033",
+      "category": "architecture",
+      "title": "Keep paginated pages meaningfully discoverable",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Listings and infinite scroll",
+      "priority_hint": "P1",
+      "evidence_test": "Inspect stable page URLs, links, content differences and canonical policy.",
+      "remediation": "Expose coherent pagination and avoid canonicalising distinct pages to page one.",
+      "false_positive_caveat": "Not every UI state needs independent indexing.",
+      "verification": "Test first, middle, last and empty/error pagination states.",
+      "source_ids": [
+        "G19"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-034",
+      "category": "architecture",
+      "title": "Classify facets by actual user value",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Filtered catalogues and directories",
+      "priority_hint": "P2",
+      "evidence_test": "Compare need, inventory, duplication and unbounded combinations.",
+      "remediation": "Keep justified landing needs and control redundant/trap states coherently.",
+      "false_positive_caveat": "High search volume alone does not justify an empty or weak landing page.",
+      "verification": "Validate selected combinations, links, controls and canonical inventory.",
+      "source_ids": [
+        "G25"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-035",
+      "category": "architecture",
+      "title": "Qualify sponsored and UGC links appropriately",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Paid partnerships or user-added links",
+      "priority_hint": "P2",
+      "evidence_test": "Inspect real relationship and current engine attribute guidance.",
+      "remediation": "Apply appropriate relationship attributes without disguising payment.",
+      "false_positive_caveat": "Not every external editorial link needs nofollow.",
+      "verification": "Inspect rendered links and policy alignment.",
+      "source_ids": [
+        "G02",
+        "G16"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-036",
+      "category": "content",
+      "title": "Define each page’s user task",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Important public content",
+      "priority_hint": "P2",
+      "evidence_test": "Read the page and record audience, purpose and useful next step.",
+      "remediation": "Improve the answer or consolidate only with a defensible user rationale.",
+      "false_positive_caveat": "Low traffic or short length alone does not establish low value.",
+      "verification": "An editorial reviewer can complete the stated task.",
+      "source_ids": [
+        "G03"
+      ],
+      "automation": "manual"
+    },
+    {
+      "id": "SEO-037",
+      "category": "content",
+      "title": "Provide a verifiable original contribution",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Created or substantially rewritten content",
+      "priority_hint": "P2",
+      "evidence_test": "Identify original facts, experience, tool value or useful interpretation.",
+      "remediation": "Obtain real evidence or narrow unsupported claims.",
+      "false_positive_caveat": "Originality does not require inventing a personal experience.",
+      "verification": "Review claim sources and the page’s distinct useful contribution.",
+      "source_ids": [
+        "G03",
+        "G07"
+      ],
+      "automation": "manual"
+    },
+    {
+      "id": "SEO-038",
+      "category": "content",
+      "title": "Avoid scaled low-value content",
+      "basis": "engine_policy",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Bulk pages or automated content programmes",
+      "priority_hint": "P1",
+      "evidence_test": "Inspect purpose, duplication, factual support and actual user value.",
+      "remediation": "Stop manipulative bulk production; improve or propose a limited useful scope.",
+      "false_positive_caveat": "Automation or AI use alone is not the violation.",
+      "verification": "Human-approved briefs and sampled factual/editorial checks show substance.",
+      "source_ids": [
+        "G02",
+        "G07"
+      ],
+      "automation": "manual"
+    },
+    {
+      "id": "SEO-039",
+      "category": "content",
+      "title": "No keyword or entity stuffing",
+      "basis": "engine_policy",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Copy, metadata, links and image text",
+      "priority_hint": "P1",
+      "evidence_test": "Read for unnatural repetition, irrelevant names and hidden terms.",
+      "remediation": "Use precise natural language relevant to the real subject.",
+      "false_positive_caveat": "Legitimate repeated terminology or factual brand comparison is not automatically spam.",
+      "verification": "Editorial review confirms clarity and relevance without quotas.",
+      "source_ids": [
+        "G02"
+      ],
+      "automation": "manual"
+    },
+    {
+      "id": "SEO-040",
+      "category": "content",
+      "title": "Use accurate distinctive page titles",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Indexable content pages",
+      "priority_hint": "P2",
+      "evidence_test": "Compare titles with actual page purpose and other relevant templates.",
+      "remediation": "Replace empty/misleading defaults with useful route-specific titles.",
+      "false_positive_caveat": "No fixed character limit guarantees display or rank.",
+      "verification": "Inspect deployed title and sensible template variants.",
+      "source_ids": [
+        "G14"
+      ],
+      "automation": "partial-offline"
+    },
+    {
+      "id": "SEO-041",
+      "category": "content",
+      "title": "Write useful descriptions where worthwhile",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Important search landing pages",
+      "priority_hint": "P2",
+      "evidence_test": "Review existing summaries and actual page value.",
+      "remediation": "Write truthful concise summaries without keyword lists.",
+      "false_positive_caveat": "Missing description is not proof of exclusion; engines may choose different snippets.",
+      "verification": "Check metadata output and factual agreement with the page.",
+      "source_ids": [
+        "G15"
+      ],
+      "automation": "partial-offline"
+    },
+    {
+      "id": "SEO-042",
+      "category": "content",
+      "title": "Use headings and length for readers",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Content structure reviews",
+      "priority_hint": "P2",
+      "evidence_test": "Assess navigability, hierarchy, completeness and unnecessary repetition.",
+      "remediation": "Use structure and detail proportionate to the task.",
+      "false_positive_caveat": "Multiple H1s and short copy are not automatic ranking violations.",
+      "verification": "Editorial/accessibility review rather than arbitrary count thresholds.",
+      "source_ids": [
+        "G01"
+      ],
+      "automation": "manual"
+    },
+    {
+      "id": "SEO-043",
+      "category": "content",
+      "title": "Keep attribution and expertise truthful",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Authored or high-stakes claims",
+      "priority_hint": "P1",
+      "evidence_test": "Verify real author/reviewer involvement and material sources.",
+      "remediation": "Add only genuine attribution and seek suitable expert review when needed.",
+      "false_positive_caveat": "A synthetic author bio or credentials cannot establish trust.",
+      "verification": "Review owner approval and claim provenance.",
+      "source_ids": [
+        "G03"
+      ],
+      "automation": "manual"
+    },
+    {
+      "id": "SEO-044",
+      "category": "content",
+      "title": "Update facts rather than cosmetic dates",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Evergreen and refreshed content",
+      "priority_hint": "P2",
+      "evidence_test": "Compare changed claims/data with publication and modification records.",
+      "remediation": "Correct stale information and date updates honestly.",
+      "false_positive_caveat": "A new date alone is not a substantive improvement.",
+      "verification": "Diff and source log show actual reviewed changes.",
+      "source_ids": [
+        "G03",
+        "G07"
+      ],
+      "automation": "manual"
+    },
+    {
+      "id": "SEO-045",
+      "category": "content",
+      "title": "Make FAQs earn their place",
+      "basis": "pack_convention",
+      "engine_scope": [
+        "cross-engine-method"
+      ],
+      "applicability": "Proposed question sections",
+      "priority_hint": "P2",
+      "evidence_test": "Identify real unresolved reader questions and evidence provenance.",
+      "remediation": "Answer naturally in context or a useful FAQ; reject filler.",
+      "false_positive_caveat": "A model-generated question is not proof of demand.",
+      "verification": "Each answer is accurate, nonredundant and useful for the task.",
+      "source_ids": [
+        "I01",
+        "I02"
+      ],
+      "automation": "manual"
+    },
+    {
+      "id": "SEO-046",
+      "category": "research",
+      "title": "Label query evidence provenance",
+      "basis": "pack_convention",
+      "engine_scope": [
+        "cross-engine-method"
+      ],
+      "applicability": "All keyword candidates",
+      "priority_hint": "P2",
+      "evidence_test": "Check observation versus provider estimate versus user input versus model idea.",
+      "remediation": "Attach source, date, scope and uncertainty to every material candidate.",
+      "false_positive_caveat": "LLM plausibility is not observed search demand.",
+      "verification": "Keyword ledger contains no fabricated metric or source.",
+      "source_ids": [
+        "G40",
+        "I01",
+        "I03"
+      ],
+      "automation": "manual"
+    },
+    {
+      "id": "SEO-047",
+      "category": "research",
+      "title": "Preserve metric definitions",
+      "basis": "industry_heuristic",
+      "engine_scope": [
+        "cross-engine-method"
+      ],
+      "applicability": "Keyword volumes, Trends, Ads or vendor difficulty",
+      "priority_hint": "P2",
+      "evidence_test": "Record provider, market, date range, units and method limits.",
+      "remediation": "Keep unknowns null and avoid cross-tool conversions without evidence.",
+      "false_positive_caveat": "Relative interest, Ads competition and organic difficulty are different.",
+      "verification": "Review metric provenance and labels in the research deliverable.",
+      "source_ids": [
+        "G42",
+        "G43",
+        "I01",
+        "I03"
+      ],
+      "automation": "manual"
+    },
+    {
+      "id": "SEO-048",
+      "category": "research",
+      "title": "Inspect actual search intent evidence",
+      "basis": "industry_heuristic",
+      "engine_scope": [
+        "cross-engine-method"
+      ],
+      "applicability": "Material content clusters",
+      "priority_hint": "P2",
+      "evidence_test": "Observe representative results and inspect relevant destinations.",
+      "remediation": "Record result formats/tasks and separate observation from interpretation.",
+      "false_positive_caveat": "Generic search-tool output may not reproduce a local Google/Bing SERP.",
+      "verification": "Ledger has engine/tool, query, date, locale and limitations.",
+      "source_ids": [
+        "I02"
+      ],
+      "automation": "manual"
+    },
+    {
+      "id": "SEO-049",
+      "category": "research",
+      "title": "Do not define long-tail by word count",
+      "basis": "industry_heuristic",
+      "engine_scope": [
+        "cross-engine-method"
+      ],
+      "applicability": "Head and long-tail research",
+      "priority_hint": "P2",
+      "evidence_test": "Review available demand evidence and candidate specificity.",
+      "remediation": "Use demand-tail terminology only when supportable; otherwise label specificity.",
+      "false_positive_caveat": "A long phrase can be popular and a short one obscure.",
+      "verification": "Classification includes evidence or an explicit unverified status.",
+      "source_ids": [
+        "I04"
+      ],
+      "automation": "manual"
+    },
+    {
+      "id": "SEO-050",
+      "category": "research",
+      "title": "Map intent before creating URLs",
+      "basis": "industry_heuristic",
+      "engine_scope": [
+        "cross-engine-method"
+      ],
+      "applicability": "Keyword clusters and content backlog",
+      "priority_hint": "P2",
+      "evidence_test": "Compare user task, existing destination and observed result overlap.",
+      "remediation": "Improve an existing page or propose a genuinely distinct useful destination.",
+      "false_positive_caveat": "One keyword does not require one page.",
+      "verification": "Intent map explains page boundaries and rejected duplicates.",
+      "source_ids": [
+        "I01",
+        "I02",
+        "I04"
+      ],
+      "automation": "manual"
+    },
+    {
+      "id": "SEO-051",
+      "category": "research",
+      "title": "Investigate rather than assume cannibalisation",
+      "basis": "industry_heuristic",
+      "engine_scope": [
+        "cross-engine-method"
+      ],
+      "applicability": "Queries with multiple site URLs",
+      "priority_hint": "P2",
+      "evidence_test": "Review intent, URL purpose, conversions and changing visibility.",
+      "remediation": "Consolidate only when evidence supports harmful overlap.",
+      "false_positive_caveat": "Multiple URLs may legitimately serve different tasks.",
+      "verification": "Document the rationale and post-change outcome measures.",
+      "source_ids": [
+        "I05"
+      ],
+      "automation": "partial-offline"
+    },
+    {
+      "id": "SEO-052",
+      "category": "research",
+      "title": "Prioritise business-fit opportunities",
+      "basis": "pack_convention",
+      "engine_scope": [
+        "cross-engine-method"
+      ],
+      "applicability": "Content opportunity selection",
+      "priority_hint": "P2",
+      "evidence_test": "Compare demand evidence, offering fit, unique contribution, effort and dependencies.",
+      "remediation": "Select a limited justified backlog and defer irrelevant topics.",
+      "false_positive_caveat": "Popularity is not business value or attainable ranking.",
+      "verification": "Each recommendation has a written rationale and owner.",
+      "source_ids": [
+        "I01",
+        "I03"
+      ],
+      "automation": "manual"
+    },
+    {
+      "id": "SEO-053",
+      "category": "research",
+      "title": "Build fact-checkable briefs",
+      "basis": "pack_convention",
+      "engine_scope": [
+        "cross-engine-method"
+      ],
+      "applicability": "Content creation handoff",
+      "priority_hint": "P2",
+      "evidence_test": "Review task, evidence, claims needed, existing coverage and success criteria.",
+      "remediation": "Use the brief template with sources and explicit prohibited unsupported claims.",
+      "false_positive_caveat": "A competitor outline is not a unique contribution.",
+      "verification": "Editor can implement without inventing facts or demand.",
+      "source_ids": [
+        "G03",
+        "I02"
+      ],
+      "automation": "manual"
+    },
+    {
+      "id": "SEO-054",
+      "category": "structured-data",
+      "title": "Check actual feature eligibility",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Any rich-result recommendation",
+      "priority_hint": "P1",
+      "evidence_test": "Open current feature documentation and compare the real page model.",
+      "remediation": "Use only truthful applicable types and properties.",
+      "false_positive_caveat": "Schema vocabulary validity does not establish feature support or display.",
+      "verification": "Record syntax, feature and visible-content checks separately.",
+      "source_ids": [
+        "G13",
+        "G30"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-055",
+      "category": "structured-data",
+      "title": "Keep markup consistent with visible truth",
+      "basis": "engine_policy",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Structured data populated from CMS/catalogue",
+      "priority_hint": "P1",
+      "evidence_test": "Compare real facts and visible page with structured values.",
+      "remediation": "Fix the shared source of truth instead of inventing missing fields.",
+      "false_positive_caveat": "A successful JSON parse does not verify truth or completeness.",
+      "verification": "Test sample routes and missing/stale-data states.",
+      "source_ids": [
+        "G13"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-056",
+      "category": "structured-data",
+      "title": "Validate rendered JSON and duplicate entities",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "JSON-LD outputs",
+      "priority_hint": "P2",
+      "evidence_test": "Parse JSON and inspect types/IDs across initial and rendered output.",
+      "remediation": "Repair syntax/serialisation and conflicting template emissions.",
+      "false_positive_caveat": "Repeated entities can be intentional; parser checks are not rich-result certification.",
+      "verification": "Run current appropriate validators and review semantic identity.",
+      "source_ids": [
+        "G13"
+      ],
+      "automation": "partial-offline"
+    },
+    {
+      "id": "SEO-057",
+      "category": "structured-data",
+      "title": "Do not promise retired FAQ rich results",
+      "basis": "engine_feature_status",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Editorial FAQs and FAQPage recommendations",
+      "priority_hint": "P2",
+      "evidence_test": "Recheck current Google feature status before promising enhancement.",
+      "remediation": "Keep useful answers; do not use fake QAPage to replace retired support.",
+      "false_positive_caveat": "Other consumers may still have a use for the vocabulary.",
+      "verification": "Brief and implementation make no unsupported Google display promise.",
+      "source_ids": [
+        "G05"
+      ],
+      "automation": "manual"
+    },
+    {
+      "id": "SEO-058",
+      "category": "structured-data",
+      "title": "Do not fabricate reviews or rating eligibility",
+      "basis": "engine_policy",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Review and rating markup",
+      "priority_hint": "P1",
+      "evidence_test": "Verify provenance, actual reviewed entity and current type-specific policy.",
+      "remediation": "Use real eligible material and remove misleading values with approval.",
+      "false_positive_caveat": "Selected first-party testimonials do not automatically qualify for stars.",
+      "verification": "Record reviewer/source and feature-policy validation.",
+      "source_ids": [
+        "G32"
+      ],
+      "automation": "manual"
+    },
+    {
+      "id": "SEO-059",
+      "category": "commerce",
+      "title": "Keep product facts and offers aligned",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Product pages and feeds",
+      "priority_hint": "P1",
+      "evidence_test": "Compare visible offer, structured data and available feed/catalogue records.",
+      "remediation": "Repair price, currency, availability and product identifiers at source.",
+      "false_positive_caveat": "Valid syntax alone cannot detect commercial inaccuracy.",
+      "verification": "Test relevant markets, missing values and stock changes.",
+      "source_ids": [
+        "G31"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-060",
+      "category": "commerce",
+      "title": "Model meaningful product variants",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Variant catalogues",
+      "priority_hint": "P2",
+      "evidence_test": "Inspect variant semantics, URL policy and current markup requirements.",
+      "remediation": "Represent genuine differences consistently with page and feed data.",
+      "false_positive_caveat": "Not every colour requires a separate indexable landing page.",
+      "verification": "Check representative variants and canonical decisions.",
+      "source_ids": [
+        "G35"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-061",
+      "category": "commerce",
+      "title": "Provide a coherent catalogue hierarchy",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Categories and product discovery",
+      "priority_hint": "P2",
+      "evidence_test": "Trace useful category-to-product paths and pagination.",
+      "remediation": "Make important products reachable through meaningful links.",
+      "false_positive_caveat": "A flat XML inventory does not replace user navigation.",
+      "verification": "Re-crawl relevant catalogue paths and test the shopping journey.",
+      "source_ids": [
+        "G36",
+        "G19"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-062",
+      "category": "commerce",
+      "title": "Handle unavailable products intentionally",
+      "basis": "pack_convention",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Out-of-stock or discontinued products",
+      "priority_hint": "P2",
+      "evidence_test": "Review temporary/permanent state and support/traffic dependencies.",
+      "remediation": "Choose truthful retention, relevant successor or appropriate removal.",
+      "false_positive_caveat": "Not every unavailable item should redirect to a category/homepage.",
+      "verification": "Verify status, content, links and customer next steps.",
+      "source_ids": [
+        "G18",
+        "G23",
+        "G31"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-063",
+      "category": "commerce",
+      "title": "Protect transactional and account routes",
+      "basis": "pack_convention",
+      "engine_scope": [
+        "site-governance"
+      ],
+      "applicability": "Cart, checkout, account and operational routes",
+      "priority_hint": "P1",
+      "evidence_test": "Compare desired privacy/exclusion with actual exposure.",
+      "remediation": "Retain appropriate protections and isolate public-template rules.",
+      "false_positive_caveat": "Maximising indexed URLs is not a goal for private shopping states.",
+      "verification": "Test unauthenticated behaviour and public product indexing controls.",
+      "source_ids": [
+        "G21"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-064",
+      "category": "local",
+      "title": "Represent real locations and services",
+      "basis": "engine_policy",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Location/service landing pages",
+      "priority_hint": "P1",
+      "evidence_test": "Verify the actual operating footprint and unique local usefulness.",
+      "remediation": "Use accurate local details; reject invented offices and doorway variants.",
+      "false_positive_caveat": "Serving an area does not imply a staffed physical branch.",
+      "verification": "Owner validates claims and destination usefulness.",
+      "source_ids": [
+        "G02",
+        "G34"
+      ],
+      "automation": "manual"
+    },
+    {
+      "id": "SEO-065",
+      "category": "local",
+      "title": "Reconcile authorised business-profile facts",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Local businesses with profile access",
+      "priority_hint": "P2",
+      "evidence_test": "Compare site/profile name, services, hours and contact facts.",
+      "remediation": "Prepare accurate policy-compliant corrections for approval.",
+      "false_positive_caveat": "A website audit is not permission to edit accounts.",
+      "verification": "Verify published facts only after authorised changes.",
+      "source_ids": [
+        "G44"
+      ],
+      "automation": "manual"
+    },
+    {
+      "id": "SEO-066",
+      "category": "local",
+      "title": "Keep local expectations realistic",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Local search planning",
+      "priority_hint": "P2",
+      "evidence_test": "Record target market, real reach and business capabilities.",
+      "remediation": "Prioritise useful accurate information and qualified contacts.",
+      "false_positive_caveat": "Repeating cities cannot guarantee overcoming distance/context.",
+      "verification": "Review locality-specific observations and conversion evidence.",
+      "source_ids": [
+        "G44"
+      ],
+      "automation": "manual"
+    },
+    {
+      "id": "SEO-067",
+      "category": "international",
+      "title": "Use real localised destinations",
+      "basis": "pack_convention",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Multilingual or multi-market sites",
+      "priority_hint": "P2",
+      "evidence_test": "Inspect content, offering and stable URLs for each intended market.",
+      "remediation": "Localise substance and permit useful version discovery.",
+      "false_positive_caveat": "Translated keywords do not establish local demand or service availability.",
+      "verification": "Review actual language/market routes and search evidence.",
+      "source_ids": [
+        "G17"
+      ],
+      "automation": "manual"
+    },
+    {
+      "id": "SEO-068",
+      "category": "international",
+      "title": "Validate alternate-language clusters",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Pages using hreflang",
+      "priority_hint": "P2",
+      "evidence_test": "Check reciprocal/self references, codes, resolved targets and canonical consistency.",
+      "remediation": "Generate coherent alternate sets from the locale source of truth.",
+      "false_positive_caveat": "Not every site needs x-default or multiple regions.",
+      "verification": "Test full representative clusters and target status.",
+      "source_ids": [
+        "G17"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-069",
+      "category": "international",
+      "title": "Do not canonicalise distinct translations away",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Translated equivalents",
+      "priority_hint": "P1",
+      "evidence_test": "Compare language content and chosen canonical policy.",
+      "remediation": "Preserve intended language pages and appropriate alternate signals.",
+      "false_positive_caveat": "Same-language regional duplicates need case-specific decisions.",
+      "verification": "Inspect canonical/hreflang combinations and available engine evidence.",
+      "source_ids": [
+        "G10",
+        "G17"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-070",
+      "category": "international",
+      "title": "Test locale routing and caching",
+      "basis": "pack_convention",
+      "engine_scope": [
+        "site-governance"
+      ],
+      "applicability": "Geo/cookie-dependent delivery",
+      "priority_hint": "P2",
+      "evidence_test": "Request direct variants with fresh sessions and relevant cache paths.",
+      "remediation": "Fix locale leakage and inappropriate forced redirection.",
+      "false_positive_caveat": "User preference handling can be legitimate if discovery remains coherent.",
+      "verification": "Validate correct content, pricing and metadata per route.",
+      "source_ids": [
+        "G17"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-071",
+      "category": "media",
+      "title": "Use meaningful image text and empty decorative alt",
+      "basis": "standard_guidance",
+      "engine_scope": [
+        "accessibility",
+        "Google"
+      ],
+      "applicability": "Images and linked images",
+      "priority_hint": "P2",
+      "evidence_test": "Distinguish missing alt, informative purpose and decorative purpose.",
+      "remediation": "Write concise relevant alt or retain empty alt when decorative.",
+      "false_positive_caveat": "Empty alt is not automatically an SEO defect.",
+      "verification": "Human review of purpose plus actual markup verification.",
+      "source_ids": [
+        "S02",
+        "G28"
+      ],
+      "automation": "partial-offline"
+    },
+    {
+      "id": "SEO-072",
+      "category": "media",
+      "title": "Make useful images discoverable and efficient",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Image-rich public pages",
+      "priority_hint": "P2",
+      "evidence_test": "Inspect response, rendered image URLs, lazy loading and relevant metadata.",
+      "remediation": "Fix inaccessible assets and use sensible delivery with rights preserved.",
+      "false_positive_caveat": "A sitemap or preferred image declaration does not guarantee a thumbnail.",
+      "verification": "Check actual image discovery and page experience.",
+      "source_ids": [
+        "G28"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-073",
+      "category": "media",
+      "title": "Distinguish watch pages from incidental embeds",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Video search candidates",
+      "priority_hint": "P2",
+      "evidence_test": "Inspect page purpose, playback, thumbnail and current eligibility.",
+      "remediation": "Provide a useful truthful video destination and appropriate metadata.",
+      "false_positive_caveat": "Any embedded clip does not automatically qualify its page for video features.",
+      "verification": "Verify playback/discovery and current feature tests.",
+      "source_ids": [
+        "G29"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-074",
+      "category": "publishing",
+      "title": "Represent editorial dates and ownership honestly",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "News and editorial sites",
+      "priority_hint": "P2",
+      "evidence_test": "Compare publication/modification claims with editorial records.",
+      "remediation": "Maintain real attribution, corrections and substantive freshness.",
+      "false_positive_caveat": "Changing dates does not create a newsworthy update.",
+      "verification": "Editor approves date/claim provenance.",
+      "source_ids": [
+        "G03",
+        "G37"
+      ],
+      "automation": "manual"
+    },
+    {
+      "id": "SEO-075",
+      "category": "publishing",
+      "title": "Respect paywall delivery and marking",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Subscriptions and protected content",
+      "priority_hint": "P1",
+      "evidence_test": "Compare legitimate visitor/crawler experience with current paywall guidance.",
+      "remediation": "Represent the actual access model without exposing protected material.",
+      "false_positive_caveat": "An access limitation is not automatically an SEO bug.",
+      "verification": "Authorised access tests and current marking validation pass.",
+      "source_ids": [
+        "G33"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-076",
+      "category": "publishing",
+      "title": "Moderate UGC and generated-page abuse",
+      "basis": "engine_policy",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Forums, reviews, profiles and public search",
+      "priority_hint": "P1",
+      "evidence_test": "Inspect spam, exposed data and low-value generated route patterns.",
+      "remediation": "Fix abuse controls and truthful page modelling before index cosmetics.",
+      "false_positive_caveat": "Genuine user discussion is not interchangeable with editorial FAQ.",
+      "verification": "Verify moderation workflow and representative clean/abuse states.",
+      "source_ids": [
+        "G02",
+        "G30"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-077",
+      "category": "performance",
+      "title": "Use actual field Core Web Vitals",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Performance measurement",
+      "priority_hint": "P2",
+      "evidence_test": "Record p75 LCP/INP/CLS with window, device and URL/origin scope.",
+      "remediation": "Address measured bottlenecks and label missing field evidence unknown.",
+      "false_positive_caveat": "A lab score or origin group is not a measurement of every URL.",
+      "verification": "Compare appropriate field cohorts after deployment.",
+      "source_ids": [
+        "G46"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-078",
+      "category": "performance",
+      "title": "Use current good-threshold definitions",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Core Web Vitals assessment",
+      "priority_hint": "P2",
+      "evidence_test": "Check current metric definitions and units before classifying.",
+      "remediation": "Use LCP 2.5s, INP 200ms and CLS 0.1 good boundaries at p75 as documented.",
+      "false_positive_caveat": "Metrics, aggregation and thresholds must be reverified if guidance changes.",
+      "verification": "Record all relevant metrics with scope and no missing-as-pass substitutions.",
+      "source_ids": [
+        "G46"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-079",
+      "category": "performance",
+      "title": "Keep lab diagnostics separate from field outcomes",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Lighthouse and local performance runs",
+      "priority_hint": "P2",
+      "evidence_test": "Record environment and repeated observations; distinguish TBT from INP.",
+      "remediation": "Diagnose reproducible causes without presenting lab scores as ranking scores.",
+      "false_positive_caveat": "A lab page-load run cannot establish actual field INP.",
+      "verification": "Repeat representative tests and later inspect field data.",
+      "source_ids": [
+        "G46",
+        "G27"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-080",
+      "category": "performance",
+      "title": "Protect usability during performance work",
+      "basis": "pack_convention",
+      "engine_scope": [
+        "site-governance"
+      ],
+      "applicability": "Performance implementation",
+      "priority_hint": "P1",
+      "evidence_test": "Review primary content, interactions, layout and required controls.",
+      "remediation": "Fix bottlenecks without breaking consent, security, accessibility or conversions.",
+      "false_positive_caveat": "Removing important functionality can make metrics look better but harm the site.",
+      "verification": "Run functional/visual/accessibility regression checks with timing tests.",
+      "source_ids": [
+        "G27"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-081",
+      "category": "authority",
+      "title": "Reject manipulative link and reputation schemes",
+      "basis": "engine_policy",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Off-site and reputation proposals",
+      "priority_hint": "P1",
+      "evidence_test": "Check payment, deception, impersonation and automated spam.",
+      "remediation": "Use genuine relevant contributions and transparent relationships.",
+      "false_positive_caveat": "Legitimate advertising is different from disguising ranking-credit purchases.",
+      "verification": "Owner-reviewed plan respects current policies and permissions.",
+      "source_ids": [
+        "G02"
+      ],
+      "automation": "manual"
+    },
+    {
+      "id": "SEO-082",
+      "category": "authority",
+      "title": "Do not treat vendor link scores as engine verdicts",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Backlink/toxicity/authority dashboards",
+      "priority_hint": "P2",
+      "evidence_test": "Inspect provider scope and real referring-page evidence.",
+      "remediation": "Investigate rather than automatically disavowing or deleting assets.",
+      "false_positive_caveat": "A proprietary warning is not a manual action or proof of a penalty.",
+      "verification": "Evidence supports any proposed high-risk action and approval is recorded.",
+      "source_ids": [
+        "G08"
+      ],
+      "automation": "manual"
+    },
+    {
+      "id": "SEO-083",
+      "category": "measurement",
+      "title": "Preserve report dimensions and definitions",
+      "basis": "pack_convention",
+      "engine_scope": [
+        "Google",
+        "Bing"
+      ],
+      "applicability": "Search performance data",
+      "priority_hint": "P2",
+      "evidence_test": "Record engine, property, time zone, date, search type and filters.",
+      "remediation": "Keep unlike datasets separate and explain provider differences.",
+      "false_positive_caveat": "Search exposure, sessions and logs are not identical measures.",
+      "verification": "Every table states scope and cannot silently combine incompatible data.",
+      "source_ids": [
+        "G40",
+        "B06"
+      ],
+      "automation": "partial-offline"
+    },
+    {
+      "id": "SEO-084",
+      "category": "measurement",
+      "title": "Calculate CTR from totals",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Compatible click/impression exports",
+      "priority_hint": "P2",
+      "evidence_test": "Check totals and whether percentages were averaged unweighted.",
+      "remediation": "Calculate clicks divided by impressions within compatible groups.",
+      "false_positive_caveat": "Zero impressions means undefined CTR, not proof of poor performance.",
+      "verification": "Recompute with known fixtures and disclose aggregation limits.",
+      "source_ids": [
+        "G40"
+      ],
+      "automation": "partial-offline"
+    },
+    {
+      "id": "SEO-085",
+      "category": "measurement",
+      "title": "Prevent duplicate and overlapping aggregation",
+      "basis": "pack_convention",
+      "engine_scope": [
+        "cross-engine-method"
+      ],
+      "applicability": "Combined exports",
+      "priority_hint": "P2",
+      "evidence_test": "Check unique row keys, overlapping windows and totals mixed with detail.",
+      "remediation": "Partition datasets and reject ambiguous aggregation.",
+      "false_positive_caveat": "A repeated row can inflate a convincing-looking opportunity report.",
+      "verification": "Input validation and explicit grouping preserve scope.",
+      "source_ids": [
+        "G40"
+      ],
+      "automation": "partial-offline"
+    },
+    {
+      "id": "SEO-086",
+      "category": "measurement",
+      "title": "Interpret CTR and multiple-URL signals cautiously",
+      "basis": "industry_heuristic",
+      "engine_scope": [
+        "cross-engine-method"
+      ],
+      "applicability": "Opportunity analysis",
+      "priority_hint": "P2",
+      "evidence_test": "Inspect intent, position, feature mix and URL purpose before diagnosis.",
+      "remediation": "Create review leads with hypotheses rather than automatic rewrite orders.",
+      "false_positive_caveat": "Low CTR does not always mean a weak title.",
+      "verification": "Human review confirms a plausible fix before changing content.",
+      "source_ids": [
+        "G40",
+        "I05"
+      ],
+      "automation": "partial-offline"
+    },
+    {
+      "id": "SEO-087",
+      "category": "measurement",
+      "title": "Use current AI report definitions",
+      "basis": "engine_feature_status",
+      "engine_scope": [
+        "Google",
+        "Bing"
+      ],
+      "applicability": "AI discovery reports",
+      "priority_hint": "P2",
+      "evidence_test": "Open current provider help and inspect actual account fields.",
+      "remediation": "Keep overlapping report scope and impression/citation metrics distinct.",
+      "false_positive_caveat": "Impressions/citations are not clicks or conversions.",
+      "verification": "Output names the provider metric and avoids double-counted totals.",
+      "source_ids": [
+        "G45",
+        "B01",
+        "B02"
+      ],
+      "automation": "manual"
+    },
+    {
+      "id": "SEO-088",
+      "category": "measurement",
+      "title": "Separate observations from causal claims",
+      "basis": "industry_heuristic",
+      "engine_scope": [
+        "cross-engine-method"
+      ],
+      "applicability": "Before/after and SEO experiments",
+      "priority_hint": "P2",
+      "evidence_test": "Record hypothesis, cohorts, releases, demand and confounders.",
+      "remediation": "Use proportionate controlled tests or qualified observational evidence.",
+      "false_positive_caveat": "A vendor case-study uplift is not a forecast for this site.",
+      "verification": "Report uncertainty, denominators and actual measurement design.",
+      "source_ids": [
+        "I08",
+        "G38"
+      ],
+      "automation": "manual"
+    },
+    {
+      "id": "SEO-089",
+      "category": "migration",
+      "title": "Prepare a relevant URL map",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Site moves or major consolidation",
+      "priority_hint": "P1",
+      "evidence_test": "Reconcile old URLs with intended relevant destinations.",
+      "remediation": "Create reviewed mappings and explicit removal exceptions.",
+      "false_positive_caveat": "Not every old URL has a useful successor.",
+      "verification": "Automated redirect tests plus content-equivalence samples.",
+      "source_ids": [
+        "G18"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-090",
+      "category": "migration",
+      "title": "Validate deployment and rollback",
+      "basis": "pack_convention",
+      "engine_scope": [
+        "site-governance"
+      ],
+      "applicability": "High-blast-radius releases",
+      "priority_hint": "P1",
+      "evidence_test": "Inspect approvals, baseline, canary plan, stop conditions and rollback.",
+      "remediation": "Create a controlled release plan with owner and reversible configuration.",
+      "false_positive_caveat": "A successful build does not verify deployed SEO behaviour.",
+      "verification": "Run actual post-release route/header/content checks and record rollback readiness.",
+      "source_ids": [
+        "G18"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-091",
+      "category": "migration",
+      "title": "Diagnose traffic drops before mass changes",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Unexpected search decline",
+      "priority_hint": "P1",
+      "evidence_test": "Segment dates/pages/devices/markets and check tracking plus releases.",
+      "remediation": "Investigate evidence-ranked causes before broad content or index changes.",
+      "false_positive_caveat": "Timing near an algorithm update does not prove a penalty.",
+      "verification": "A diagnosis cites actual evidence and monitored correction results.",
+      "source_ids": [
+        "G38"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-092",
+      "category": "bing",
+      "title": "Inspect Bing evidence independently",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Bing"
+      ],
+      "applicability": "Bing visibility claims",
+      "priority_hint": "P2",
+      "evidence_test": "Use available Bing diagnostics and current official guidance.",
+      "remediation": "Report actual Bing status rather than copying Google conclusions.",
+      "false_positive_caveat": "Missing Bing access must stay not-tested.",
+      "verification": "Findings identify the real tool/account and evidence date.",
+      "source_ids": [
+        "B06"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-093",
+      "category": "bing",
+      "title": "Reverify policy when source retrieval is incomplete",
+      "basis": "pack_convention",
+      "engine_scope": [
+        "Bing"
+      ],
+      "applicability": "Policy-sensitive Bing recommendations",
+      "priority_hint": "P2",
+      "evidence_test": "Open current Webmaster Guidelines in a capable browser.",
+      "remediation": "Mark blocked guidance unavailable and avoid claims about unread content.",
+      "false_positive_caveat": "A JavaScript shell is not substantive policy review.",
+      "verification": "Source record reflects actual access and applicable sections.",
+      "source_ids": [
+        "B09"
+      ],
+      "automation": "manual"
+    },
+    {
+      "id": "SEO-094",
+      "category": "bing",
+      "title": "Treat snippet controls as excerpt policy",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Bing"
+      ],
+      "applicability": "data-nosnippet and AI/search excerpts",
+      "priority_hint": "P2",
+      "evidence_test": "Review current supported markup and real content-owner intent.",
+      "remediation": "Apply only authorised excerpt policy without pretending it is security.",
+      "false_positive_caveat": "Page indexability and confidentiality are different from snippet selection.",
+      "verification": "Inspect resulting DOM and current provider behaviour documentation.",
+      "source_ids": [
+        "B04"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-095",
+      "category": "submission",
+      "title": "Notify actual owned-URL changes through IndexNow",
+      "basis": "protocol_requirement",
+      "engine_scope": [
+        "IndexNow-participants"
+      ],
+      "applicability": "Authorised IndexNow integrations",
+      "priority_hint": "P2",
+      "evidence_test": "Check ownership, existing integration, real change events and current protocol.",
+      "remediation": "Use scoped deduplicated notifications with robust error handling.",
+      "false_positive_caveat": "Submission does not guarantee crawl/indexing and is not universal Google submission.",
+      "verification": "Check accepted requests separately from later search visibility.",
+      "source_ids": [
+        "N01",
+        "N02"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-096",
+      "category": "submission",
+      "title": "Respect Google Indexing API eligibility",
+      "basis": "engine_requirement",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "Proposed Google API URL submission",
+      "priority_hint": "P1",
+      "evidence_test": "Compare content type with current allowed API use.",
+      "remediation": "Do not submit ordinary pages through an inapplicable restricted API.",
+      "false_positive_caveat": "Adding deceptive job/video markup does not create eligibility.",
+      "verification": "Record documented eligibility and explicit action permission.",
+      "source_ids": [
+        "G39"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-097",
+      "category": "ai-search",
+      "title": "Do not require speculative AI files or formatting",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google"
+      ],
+      "applicability": "AEO/GEO recommendations",
+      "priority_hint": "P2",
+      "evidence_test": "Compare proposed tactic with current official AI guidance.",
+      "remediation": "Use useful content and actual technical requirements; label experiments.",
+      "false_positive_caveat": "Another consumer may have a legitimate separate llms.txt use.",
+      "verification": "Recommendation makes no unsupported Google ranking/citation promise.",
+      "source_ids": [
+        "G06"
+      ],
+      "automation": "manual"
+    },
+    {
+      "id": "SEO-098",
+      "category": "ai-search",
+      "title": "Keep training, search and snippet controls distinct",
+      "basis": "engine_guidance",
+      "engine_scope": [
+        "Google",
+        "Bing"
+      ],
+      "applicability": "Crawler and AI-use policy changes",
+      "priority_hint": "P1",
+      "evidence_test": "Identify actual product, crawler and owner policy.",
+      "remediation": "Verify provider-specific mechanisms before making scoped changes.",
+      "false_positive_caveat": "One bot directive does not control every AI/search surface.",
+      "verification": "Document intended product impact and verify applicable settings.",
+      "source_ids": [
+        "G04",
+        "G09",
+        "B04"
+      ],
+      "automation": "host-tools"
+    },
+    {
+      "id": "SEO-099",
+      "category": "ai-search",
+      "title": "Do not manufacture authority for generated answers",
+      "basis": "pack_convention",
+      "engine_scope": [
+        "cross-engine-method"
+      ],
+      "applicability": "AI visibility/content proposals",
+      "priority_hint": "P1",
+      "evidence_test": "Inspect citations, entities, reviews and claimed expertise for truth.",
+      "remediation": "Provide substantiated useful information without planted names or endorsements.",
+      "false_positive_caveat": "Citation appearance is not independent fact verification.",
+      "verification": "Editorial owner validates every material factual/authority claim.",
+      "source_ids": [
+        "G07",
+        "B03",
+        "B08"
+      ],
+      "automation": "manual"
+    },
+    {
+      "id": "SEO-100",
+      "category": "verification",
+      "title": "Verify outcomes and disclose unfinished work",
+      "basis": "pack_convention",
+      "engine_scope": [
+        "site-governance"
+      ],
+      "applicability": "Every engagement handoff",
+      "priority_hint": "P1",
+      "evidence_test": "Compare stated work with actual commands, evidence and approvals.",
+      "remediation": "Separate deployed checks, engine uptake and business outcomes.",
+      "false_positive_caveat": "Tests written or scheduled but not run are not successful tests.",
+      "verification": "Handoff lists completed, failed, blocked and untested checks with evidence.",
+      "source_ids": [
+        "G41"
+      ],
+      "automation": "manual"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0",
+  "captured_at": "2026-10-10T08:00:00+01:00",
+  "scope": {
+    "site": "https://shop.example",
+    "inventory_kind": "sample",
+    "known_inventory_as_declared": 24,
+    "note": "Entirely synthetic. Only four snapshots supplied; no live capture performed."
+  },
+  "pages": [
+    {
+      "url": "https://shop.example/products/blue-widget",
+      "html": "snapshots/product.html",
+      "rendered_html": "snapshots/product-rendered.html",
+      "template": "product",
+      "intended_indexable": true,
+      "response_status": 200,
+      "headers": [
+        {
+          "name": "X-Robots-Tag",
+          "value": "bingbot: nofollow"
+        }
+      ],
+      "robots": {
+        "googlebot": "allowed",
+        "bingbot": "allowed"
+      }
+    },
+    {
+      "url": "https://shop.example/account",
+      "html": "snapshots/account.html",
+      "template": "account",
+      "intended_indexable": false,
+      "response_status": 200,
+      "robots": {
+        "googlebot": "allowed",
+        "bingbot": "allowed"
+      }
+    },
+    {
+      "url": "https://shop.example/contact",
+      "html": "snapshots/contact.html",
+      "template": "contact",
+      "intended_indexable": true,
+      "response_status": 200
+    },
+    {
+      "url": "https://shop.example/guide",
+      "html": "snapshots/guide.html",
+      "template": "guide",
+      "intended_indexable": true
+    }
+  ]
+}
