@@ -37,14 +37,14 @@
       "reviewed_on": "2026-10-10"
     },
     "docs/engineering.md": {
-      "document_sha256": "dd039529236a3c27f98fbbed9c8f8fe1dfb43fe8a15ba6f9679ce017e688531f",
+      "document_sha256": "f94564f3e2e96391890ecdf33c7f6928c8279c37a78bfa9a91b919340f169959",
       "evidence": {
-        ".github/workflows/quality.yml": "719257485d86c2c074edc49e80a59c2ab1aebc6b826da667bfcfe347fa8bfadf",
+        ".github/workflows/quality.yml": "baac738f9232570c07b287cf199ad76faf65886c519599115ccd2420beff5871",
         "catalog.json": "da43a55091ab74f116409ca6b189e6cbf47221b0ddcb36c21f69e627ee782bcd",
         "requirements-dev.txt": "b41fbbae6f44bf7394ae818e49b76005e54507b3b7fd8f2f48ebb3b4f3e39d6c",
         "tools/run_checks.py": "1696a52504825caf0d9358e93ca871cd341842414d7201926f794edc50d90f13"
       },
-      "note": "Compared structure, commands and pinned dependency definitions with source and passing local checks. Verified the scanner module path against the tagged upstream go.mod. Remote CI and native host behaviour remain separate unverified surfaces.",
+      "note": "Reviewed library shape and pinned minimum-version requirements against successful Python 3.11/3.12 library checks and Python 3.10 helper checks. CI matrix uses the official validator minimum; native host behaviour is not claimed.",
       "reviewed_on": "2026-10-10"
     }
   },

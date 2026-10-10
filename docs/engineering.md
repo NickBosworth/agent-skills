@@ -27,7 +27,8 @@ active maintainer skills. Do not install a second authoritative copy here.
 
 ## Technology and verification
 
-Python 3.10+ and standard-library helpers are retained. Library tooling uses pinned
+Python 3.10+ and standard-library package helpers are retained. Library maintenance
+requires Python 3.11+ because skills-ref requires it. Library tooling uses pinned
 PyYAML for actual YAML parsing and skills-ref for format validation. Browser capture
 dependencies remain optional in the SVG package. Gitleaks provides independent
 credential detection; lightweight privacy checks cover additional publication rules.

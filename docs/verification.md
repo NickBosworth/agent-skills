@@ -1,6 +1,6 @@
 # Verification of agentic-skills 2.0.0
 
-Executed on 2026-10-10 using macOS and Python 3.12.11. Current source review is
+Executed on 2026-10-10 using macOS and Python 3.11.14/3.12.11. Current source review is
 structural across the library and targeted semantic review of changed workflows,
 publication boundaries and source/code relationships, not exhaustive domain certification.
 
@@ -15,7 +15,9 @@ publication boundaries and source/code relationships, not exhaustive domain cert
   effective Git identity, annotated tags, repository links, historical deletions, privacy-safe reporting, metadata PNG
   rejection, YAML duplicate keys, reference escapes, checksums and release boundaries.
 - Added game contrast suite: five checks for numeric, parser and CLI boundaries.
-- Standard-library total: **234 tests passed** in the isolated package runner.
+- Standard-library total: **234 tests passed** in the isolated package runner on
+  both Python 3.11.14 and 3.12.11. The 207 package helper tests also passed on
+  Python 3.10.19; maintainer dependencies require Python 3.11+.
 - Optional SVG Chromium suite: **eight tests passed** with Playwright 1.63.0 and
   Chrome 154.0.8037.99. CSS/SMIL seeking, reduced motion, repeatability, independent
   WAAPI instances, bounds and cleanup were exercised. JavaScript syntax check passed.
@@ -49,8 +51,9 @@ host/model benchmarks. Native discovery in individual hosts, Unity/Godot/Unreal 
 Firefox/WebKit, production-site SEO, broad assistive-technology testing and every domain
 source's freshness remain unverified. Previous 1.0.0 evidence is explicitly historical.
 
-CI targets Linux/Python 3.10 and 3.14; defined jobs are not passing runs until GitHub
-executes them. GitHub push protection, private reporting and branch settings require
-administrative access; no enabled state is claimed without observation. Heuristic
+CI targets Linux/Python 3.11 and 3.14; defined jobs are not passing runs until GitHub
+executes them. GitHub secret scanning and push protection were observed enabled. Private
+vulnerability reporting was enabled and read back successfully. Branch protection
+and remote CI results are recorded only after their actual configuration/execution. Heuristic
 privacy checks and Gitleaks cannot detect all PII; manual review remains mandatory.
 Existing public forks, downloaded copies and GitHub caches cannot be revoked by a push.

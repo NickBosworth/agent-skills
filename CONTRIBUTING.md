@@ -7,7 +7,8 @@ third-party manuals, private exports or real credentials into examples.
 
 ## Development
 
-Use Python 3.10+ and install `requirements-dev.txt` in an isolated environment:
+Use Python 3.11+ for library maintenance (skills-ref requires it), and install
+`requirements-dev.txt` in an isolated environment:
 
 ```sh
 python3 -m venv .venv

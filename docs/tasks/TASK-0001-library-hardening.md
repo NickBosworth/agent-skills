@@ -43,6 +43,7 @@ redacted Gitleaks checks pass. The local guard is enabled and fails closed when 
 checks/dependencies are unavailable. A private rollback bundle outside the checkout
 is retained only until publication is verified, then it is removed.
 
-Public update remains authorized but awaits GitHub authentication for native Git.
-The remote still has its original history. Do not mark publication or GitHub CI as
+GitHub authentication is available. Secret scanning/push protection were observed
+enabled; private vulnerability reporting was enabled and confirmed. Public update
+remains pending the final verified push; the remote still has its original history. Do not mark publication or GitHub CI as
 passed before observing it. No private value is retained in this record.
