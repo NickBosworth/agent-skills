@@ -43,6 +43,8 @@ Host instructions and the user's authorized scope remain authoritative.
    `contributors@example.invalid` or a GitHub noreply address. Do not retain a
    personal author/committer name here. Do not change global Git configuration. Existing personal
    history requires an expressly authorized, coordinated rewrite.
+   Publish commits through Git with that identity. GitHub web edits/merges can add
+   a personal author or committer; do not use them unless metadata is verified safe.
 7. Validate the actual staged content with `python tools/check_library.py --staged`
    before each commit, then run the full checks below. Never bypass a finding by
    broad exclusions, disabling a rule, changing expected results, or marking a

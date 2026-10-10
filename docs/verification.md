@@ -35,9 +35,12 @@ publication boundaries and source/code relationships, not exhaustive domain cert
 ## History and publication
 
 The user authorized anonymizing author/committer metadata, removing Finder files from
-history and updating the public branch. History privacy and credential checks are run
-after rewriting. GitHub publication and remote CI are separate observed operations;
-the current publication state is recorded in the task record, not inferred from tests.
+history and updating the public branch. History privacy and credential checks passed after rewriting. The rewritten main
+was published with a lease against the inspected remote revision. A fresh public
+clone passed package/privacy and reachable-history checks plus redacted Gitleaks.
+GitHub Library quality run 38039964927 passed all three jobs: credentials and
+packages on Python 3.11 and 3.14. Current publication state is also recorded in
+the task record; later documentation commits receive their own checks.
 
 ## Limitations and maintenance
 

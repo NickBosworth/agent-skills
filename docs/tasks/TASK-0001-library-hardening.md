@@ -1,9 +1,9 @@
 ---
 kind: task
 id: TASK-0001
-status: in_progress
+status: done
 depends_on: []
-validation: []
+validation: ["234 local regression tests passed on Python 3.11 and 3.12; 207 helper tests passed on Python 3.10", "Eight SVG browser checks and all eight official package validators passed", "Fresh public clone passed library/history privacy and redacted Gitleaks checks", "GitHub quality run 38039964927 passed credentials and Python 3.11/3.14 packages"]
 ---
 # Complete and harden the public agentic-skills library
 
@@ -43,7 +43,13 @@ redacted Gitleaks checks pass. The local guard is enabled and fails closed when 
 checks/dependencies are unavailable. A private rollback bundle outside the checkout
 is retained only until publication is verified, then it is removed.
 
-GitHub authentication is available. Secret scanning/push protection were observed
-enabled; private vulnerability reporting was enabled and confirmed. Public update
-remains pending the final verified push; the remote still has its original history. Do not mark publication or GitHub CI as
-passed before observing it. No private value is retained in this record.
+The sanitized history was published to main with a lease against the inspected
+remote revision. A fresh public clone passed library/privacy/history checks and
+redacted Gitleaks. GitHub quality run 38039964927 passed all three jobs, including
+Linux/Python 3.11 and 3.14. Secret scanning and push protection were observed enabled;
+private vulnerability reporting was enabled and confirmed. The temporary private
+rollback bundle was removed after verifying public history.
+
+All implementation acceptance is met. Final documentation commits receive their own
+CI checks. Main branch checks are configured only after successful observed checks;
+GitHub caches/forks and unexecuted host/model behaviour retain the documented limits.
