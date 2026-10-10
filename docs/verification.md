@@ -11,11 +11,11 @@ publication boundaries and source/code relationships, not exhaustive domain cert
   local package references, JSON/Python syntax, public-safe candidate bytes and manifests.
 - The original five helper suites passed: 33 agentic, 12 comments, 81 SEO, 31 voxel,
   and 45 SVG checks (202 total).
-- Added publication regression suite: 25 checks, including staged/worktree divergence,
-  effective Git identity, historical deletions, privacy-safe reporting, metadata PNG
+- Added publication regression suite: 27 checks, including staged/worktree divergence,
+  effective Git identity, annotated tags, repository links, historical deletions, privacy-safe reporting, metadata PNG
   rejection, YAML duplicate keys, reference escapes, checksums and release boundaries.
 - Added game contrast suite: five checks for numeric, parser and CLI boundaries.
-- Standard-library total: **232 tests passed** in the isolated package runner.
+- Standard-library total: **234 tests passed** in the isolated package runner.
 - Optional SVG Chromium suite: **eight tests passed** with Playwright 1.63.0 and
   Chrome 154.0.8037.99. CSS/SMIL seeking, reduced motion, repeatability, independent
   WAAPI instances, bounds and cleanup were exercised. JavaScript syntax check passed.

@@ -28,10 +28,12 @@
     "AGENTS.md": {
       "document_sha256": "58ce16b4d0d9a300ec01d1d31f5e45a12c15ff6e15b5eca8a7a75f2a937c08b3",
       "evidence": {
+        ".githooks/pre-commit": "143176862a0710badab4541ac5308c6d49eb01d44f29bc422c5db8e8815b9959",
+        ".githooks/pre-push": "a6380efe7fc19fadf5afb40c0271140e291e30c474540279ea818cfa7f4e1262",
         "docs/public-repository-policy.md": "dfbf44a7c4ab42637d43077b4d525afaec2f4bb09e41ad71a2c781ac8551535e",
-        "tools/check_library.py": "88fe4086c5b109053d676ccc0651beda6067000cfe355a571ae4b124e7a5d45a"
+        "tools/check_library.py": "537b33571c6212a4063c0f284405d741e6c554526f651504967b54451d78c5be"
       },
-      "note": "Reviewed mandatory publication rules against staged/history privacy checks and manual-review limits; administrative GitHub settings are not claimed configured.",
+      "note": "Reviewed mandatory publication constraints against staged/history/identity checks and enabled local commit/push guards. Scanners and hooks are bounded and bypassable; GitHub administrative settings remain unverified.",
       "reviewed_on": "2026-10-10"
     },
     "docs/engineering.md": {

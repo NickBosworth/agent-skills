@@ -270,6 +270,15 @@ def history_errors(root: Path) -> list[str]:
     """Inspect reachable history and identity metadata without exposing their values."""
     errors = []
     seen = set()
+    for row in git("for-each-ref", "--format=%(objectname) %(objecttype)", "refs/tags", root=root).decode().splitlines():
+        oid, kind = row.split()
+        if kind != "tag":
+            continue
+        data = git("cat-file", "tag", oid, root=root)
+        errors.extend(f"tag {oid[:12]}: {e}" for e in privacy_errors("tag.txt", data))
+        tagger = re.search(rb"^tagger (.*?) <([^>]+)>", data, re.M)
+        if tagger and (tagger.group(1) != b"agentic-skills contributors" or not public_email(tagger.group(2).decode())):
+            errors.append(f"tag {oid[:12]}: identity violates anonymous publication policy")
     for commit in git("rev-list", "--all", root=root).decode().split():
         metadata = git("show", "-s", "--format=%an%n%ae%n%cn%n%ce%n%B", commit, root=root).decode()
         lines = metadata.splitlines()
@@ -313,6 +322,22 @@ def library_errors(root: Path) -> list[str]:
     return errors
 
 
+def root_reference_errors(root: Path, files: list[tuple[str, bytes, str]]) -> list[str]:
+    """Validate maintained repository documents separately from installed package links."""
+    errors = []
+    for relative, data, mode in files:
+        if relative.startswith("skills/") or not relative.endswith(".md") or mode == "120000":
+            continue
+        for raw in LINK.findall(data.decode("utf-8")):
+            target = raw.strip().split(" ", 1)[0].strip("<>")
+            if urlsplit(target).scheme or target.startswith("#"):
+                continue
+            resolved = (root / relative).parent / unquote(target.split("#")[0])
+            if not resolved.resolve().is_relative_to(root.resolve()) or not resolved.exists():
+                errors.append(f"{location(relative)}: missing or escaping repository reference")
+    return errors
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     modes = parser.add_mutually_exclusive_group()
@@ -329,6 +354,7 @@ def main() -> int:
                 errors += identity_errors(ROOT)
             if not args.staged:
                 errors += library_errors(ROOT)
+                errors += root_reference_errors(ROOT, files)
     except (OSError, ValueError, KeyError, TypeError, yaml.YAMLError, subprocess.SubprocessError):
         print("FAIL: check could not complete; inspect configuration locally without publishing sensitive output.")
         return 2

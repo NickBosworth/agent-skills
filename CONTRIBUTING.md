@@ -46,9 +46,10 @@ hardening. Fresh clones can opt into the same guard explicitly:
 git config --local core.hooksPath .githooks
 ```
 
-The hook requires the development environment's Python on PATH and Gitleaks;
-missing tools fail closed. It checks staged bytes and the staged patch, not just
-the working copy. Hooks can be bypassed and do not replace review or CI.
+The commit hook checks staged bytes, effective Git identities and the staged patch,
+not just the working copy. The push hook checks the library, reachable history and
+Gitleaks before publication. Hooks use the ignored local environment when present;
+missing tools fail closed. Hooks can be bypassed and do not replace review or CI.
 
 ## Releases
 

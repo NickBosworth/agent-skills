@@ -34,10 +34,15 @@ Remote settings, forks and caches have separate limits; do not promise erasure.
 
 Steps 1–5 are implemented and verified: eight packages, migration mapping, substantive
 resource reconstruction, public-data rules, metadata, catalogue, quality tooling,
-232 helper/publication tests, eight browser tests, installer discovery and verified
+234 helper/publication tests, eight browser tests, installer discovery and verified
 archive extraction. No host/model benchmark is claimed.
 
-Step 6 is authorized. Local history sanitization is being finalized; publication
-requires the user's GitHub sign-in for native Git. The connected API cannot publish
-anonymously attributed rewritten commit objects. Keep the task active until remote
-publication and its exact result are verified.
+Step 6 local cleanup is complete: all reachable author/committer identities are
+anonymous, Finder files are removed from commit history, and history privacy plus
+redacted Gitleaks checks pass. The local guard is enabled and fails closed when its
+checks/dependencies are unavailable. A private rollback bundle outside the checkout
+is retained only until publication is verified, then it is removed.
+
+Public update remains authorized but awaits GitHub authentication for native Git.
+The remote still has its original history. Do not mark publication or GitHub CI as
+passed before observing it. No private value is retained in this record.

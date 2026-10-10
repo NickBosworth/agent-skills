@@ -10,7 +10,7 @@ import unittest
 import zlib
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
-from check_library import frontmatter, history_errors, identity_errors, location, package_errors, privacy_errors, staged_files
+from check_library import frontmatter, history_errors, identity_errors, location, package_errors, privacy_errors, root_reference_errors, staged_files
 from release import build
 
 
@@ -139,6 +139,18 @@ class RepositoryTests(unittest.TestCase):
         self.assertEqual(identity_errors(self.root), [])
         self.git("config", "user.email", "private" + "@" + "mail-provider.com")
         self.assertTrue(identity_errors(self.root))
+
+    def test_annotated_tag_identity_is_inspected(self):
+        self.write("example.txt", "safe")
+        self.git("add", ".")
+        self.git("commit", "-qm", "Add synthetic fixture")
+        self.git("-c", "user.email=" + "private" + "@" + "mail-provider.com", "tag", "-a", "fixture", "-m", "Synthetic tag")
+        self.assertTrue(history_errors(self.root))
+
+    def test_repository_document_links_are_checked(self):
+        self.write("docs/guide.md", "# Guide")
+        data = b"[valid](docs/guide.md) [missing](missing.md) [escape](../outside.md)"
+        self.assertEqual(len(root_reference_errors(self.root, [("README.md", data, "100644")])), 2)
 
     def package(self):
         name = "agentic-skills-fixture"

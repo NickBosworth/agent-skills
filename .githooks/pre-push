@@ -1,0 +1,9 @@
+#!/bin/sh
+set -eu
+publication_python=python3
+if [ -x .venv/bin/python ]; then publication_python=.venv/bin/python; fi
+"$publication_python" -c 'import yaml' >/dev/null 2>&1 || { echo 'Install requirements-dev.txt in .venv before pushing.' >&2; exit 1; }
+"$publication_python" tools/check_library.py
+"$publication_python" tools/check_library.py --history
+command -v gitleaks >/dev/null 2>&1 || { echo 'Gitleaks is required for the publication hook.' >&2; exit 1; }
+gitleaks git . --redact --log-opts=--all --no-banner
