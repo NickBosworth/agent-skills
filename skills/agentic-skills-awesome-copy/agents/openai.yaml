@@ -1,0 +1,4 @@
+interface:
+  display_name: "agentic-skills · Awesome Copy"
+  short_description: "Write sharp, natural copy without generic AI habits"
+  default_prompt: "Use $agentic-skills-awesome-copy to rewrite this copy in the supplied voice while preserving its facts and removing generic phrasing."
