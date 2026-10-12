@@ -91,7 +91,7 @@ plugin discovery is implemented. URL scope remains enforced by the actual transp
 ## Current analysis limits
 
 Main text is a semantic-main/body heuristic, not full readability or visible-text truth.
-JSON-LD syntax and bounded Schema.org type presence are evaluated, including graph/nested nodes and IDs. Selected Product snippet top-level fields are checked only when explicitly requested. Remote/aliased contexts, complete vocabulary, reference resolution, nested feature eligibility and visible-content truth remain unverified. Microdata and RDFa presence is observed; missing JSON-LD types remain untested when those unparsed encodings may contain them. Link depth is
+JSON-LD syntax, the pinned offline Schema.org vocabulary and bounded reference graphs are evaluated. Selected engine-feature fields and observed main text are checked when explicit contracts and the required evidence are present. Remote or arbitrary contexts, complete engine eligibility and factual truth remain unverified. Vocabulary membership, document references, observed visibility and search eligibility remain separate conclusions. Microdata and RDFa presence is observed; missing JSON-LD types remain untested when those unparsed encodings may contain them. Link depth is
 relative to observed hyperlinks from configured seeds; imported pages begin unknown,
 not zero. Lexical content terms are hypotheses without demand metrics. Imported query
 metrics retain windows, country/device and aggregation. Lab INP is rejected; origin data

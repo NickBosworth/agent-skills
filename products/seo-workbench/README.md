@@ -2,6 +2,9 @@
 
 A local tool for checking your website, understanding the evidence and verifying fixes.
 **Development preview 0.1.0. The full product brief is still in progress.**
+See the [public testing plan](docs/public-testing-plan.md) for the preview gates,
+verification and remaining checks, and the [tester guide](docs/testing-preview.md)
+for setup and safe feedback.
 The core audit works without an account, paid service or AI key. You can try it on a fictional local site, and the app does not track your use.
 Original runtime code is MIT; distributed skills retain their existing licences.
 Run the browser UI on a trusted computer. Its local session checks protect browser

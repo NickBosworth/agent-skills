@@ -1,5 +1,12 @@
 # Changes
 
+## 2.0.2 — 2026-10-12
+
+Use bold numbered question labels, purpose and current-code paragraphs, a bold
+Options label, the justified recommendation first, and a fuller explanation after
+the alternatives. Updated the question guide, worked example and behavioural
+scenarios. One-question turns, evidence limits and approval boundaries are retained.
+
 ## 2.0.1 — 2026-10-12
 
 Clarified installation, scope and verification wording in public documentation.

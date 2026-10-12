@@ -538,3 +538,22 @@ wording and refreshed the idle local preview without deleting private history.
 R08 remains in progress for the wider URL, encoding, traps and retry corpus. Other
 platforms, interactive hosts, independent acceptance and full release remain open.
 No source publication or new dependency was performed by this phase.
+
+
+### Public testing preview finish line
+
+On 2026-10-12 the maintainer requested a step-by-step public testing plan, local
+execution and a stop. Added the product testing plan and tester guide, preserving
+the stable backlog and publication boundary. Finished retry response handling,
+cancellable/durable server waits, paused-page recovery and redacted failed-attempt
+accounting; added actual protocol/discovery regressions. A reproduced HTTP-year
+cutoff defect was fixed with a focused counterexample. No migration or dependency
+was introduced.
+
+Final macOS arm64 product verification passed all 344 tests with browser/package
+opt-ins and zero skips/failures. The 21 focused checks, strict compilation, current
+nine-package root suite/234 regressions and dependency audit passed. Reviewed copy
+and corrected stale claims. Final privacy/history and local archive/installation
+evidence are recorded in the product testing plan, ledger and handover. Remaining
+stable/external acceptance is documented; preparing this candidate does not publish
+it. The maintainer requested stopping after this preview preparation.

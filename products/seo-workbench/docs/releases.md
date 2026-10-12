@@ -35,9 +35,12 @@ The [copy audit and MCP assessment](copy-audit.md) records the release recommend
 and the repaired DNS and symlink-startup regressions. Preparing an archive does not
 establish readiness for unattended production use.
 
-The first public release is being held for broader stable-release acceptance. See
-[the checklist](stable-release-checklist.md) for remaining platform, interactive-host,
-live-integration and independent-review requirements. Publication remains on hold.
+The stable product release remains subject to
+[the checklist](stable-release-checklist.md). On 2026-10-12 the maintainer requested
+a reviewed public testing preview and a stop after preparing it. Follow the
+[public testing plan](public-testing-plan.md) for the local preview gates. Platform,
+interactive-host, live-integration and independent-review gaps must remain explicit.
+Preparing the preview does not authorise a push, npm publication or GitHub release.
 
 ## Archive input and failure handling
 

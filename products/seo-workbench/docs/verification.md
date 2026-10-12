@@ -1169,3 +1169,47 @@ privacy and redacted credential scans passed in their recorded scopes. These are
 heuristic checks plus review, not a guarantee that arbitrary PII can be detected.
 The broader URL/trap/retry corpus, native platform/interactive-host acceptance and
 independent review remain open. No publication was performed by this phase.
+
+
+## Public testing preview candidate — 2026-10-12
+
+The maintainer requested an explicit local plan for a public testing preview, its
+execution and a stop. The [testing plan](public-testing-plan.md) now owns that
+finish line. Stable-release requirements remain open rather than being removed
+or recorded as passed. Source publication, public CI and a tagged release remain
+separate operations.
+
+The crawler no longer reuses an earlier response after a later failed retry. It
+honours server wait instructions for retries and redirects, cancels waits, keeps
+deadlines across worker restart and leaves paused pages recoverable. Failed
+requests retain redacted diagnostic events with request accounting. Loops, scope
+escapes and exhausted allowances stop before unnecessary waits. A new regression
+reproduced JavaScript's fixed cutoff for two-digit HTTP years; the repaired parser
+uses HTTP's rolling future window instead. Access denial and rate limiting still
+stop without automatic retries. No dependency or storage migration was added.
+
+Twenty-one focused protocol/error/robots/worker checks passed. They include normal,
+obsolete and invalid retry headers, the reproduced year boundary, actual delayed
+redirects, restart during a wait, document-base/escaped/query-order discovery and
+visible calendar/filter page limits. The final macOS arm64 product checkpoint
+passed all 344 tests with browser and clean-package checks selected, no skips or
+failures, in about 250 seconds. Strict checking and clean compilation passed. The
+current nine-package root suite passed all official validators and 234 helper
+regressions. Runtime dependency auditing reported zero known vulnerabilities.
+Source/test/package fingerprints stayed unchanged during final verification.
+
+Reader-facing interface/report/help wording and public setup/capability documents
+were reviewed with the copy skill. The new tester guide explains the fictional
+demo, archive/source installation, optional Chromium/MCP steps, partial coverage
+and safe feedback. Stale reference-graph and independent-review claims were
+corrected. The public repository's private vulnerability-reporting endpoint was
+verified enabled through a read-only API call; no token or account identifier was
+printed. No real-site address or capture was added to source.
+
+Library/candidate/index/history privacy and redacted credential checks apply to
+the reviewed local candidate; scanner limits and manual review remain relevant.
+The final archive, checksum/inventory review and clean-install result accompany
+the local handover. A development preview can now be assessed for supervised
+public testing without claiming stable certification. Native Windows/Linux,
+interactive model journeys, live integrations, assistive technology and independent
+security/SEO acceptance remain explicitly unverified.

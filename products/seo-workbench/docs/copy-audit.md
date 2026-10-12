@@ -48,7 +48,7 @@ were blocked. The shared crawler now marks unavailable requested browser checks 
 incomplete sitemaps as partial. Tests cover status, coverage and the incomplete gate
 result. Unsampled pages in automatic mode remain distinct from failed requests.
 
-## Before a public alpha
+## Earlier alpha-review recommendations
 
 The earlier DNS blocker is repaired. The shared network policy now bounds lookup
 waits and responds to cancellation. Crawl deadlines include lookup and HTTP time;
@@ -97,3 +97,24 @@ remain unverified. Cross-platform CI is prepared but has not executed remotely.
 A Linux arm64 container clean installation and CLI demo succeeded. These checks narrow
 the remaining release work; they do not replace live integrations, native platform
 checks or independent security/SEO review. Details and limits are in verification.md.
+
+
+## Public testing preview review — 2026-10-12
+
+The maintainer now requests reviewed source for public testing, followed by a stop.
+The [public testing plan](public-testing-plan.md) records that finish line; the
+stable-release backlog remains open. Earlier host and independent-review
+recommendations above remain important follow-up work, with their unverified status
+visible to testers. They are not represented as passed by local SDK tests.
+
+The new tester guide explains the fictional demo, archive/source setup, optional
+Chromium and MCP checks, partial coverage and private feedback. Current copy removes
+obsolete capability claims about reference graphs and independent review, and
+labels the old container checkpoint as historical. New retry and timeout messages
+explain the actual stop and the next useful action. No slogans, captured-site text
+changes, automatic publication or unsupported quality certification are introduced.
+
+Final local verification and archive review are recorded in the testing plan and
+verification ledger after execution. Rendered/keyboard checks come from the selected
+browser suite; textual review does not certify assistive technology or reader
+preferences.

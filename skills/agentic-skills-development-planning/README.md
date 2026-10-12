@@ -1,6 +1,6 @@
 # agentic-skills · Development Planning
 
-Version **2.0.1** · Licence **CC0-1.0**
+Version **2.0.2** · Licence **CC0-1.0**
 
 Turn rough requirements into a concrete plan with explicit compatibility and delivery decisions.
 
@@ -20,6 +20,10 @@ Use $agentic-skills-development-planning to inspect this change and produce an e
 Read [SKILL.md](SKILL.md) for the workflow, supporting resources and any helper
 requirements. The written guidance needs no runtime service. Use only tools that
 are available and authorized in your project.
+
+Decision questions use a bold **Question N** label, explain the purpose and current
+code, then present **Options** with a justified recommendation first. A fuller
+explanation follows the alternatives. See the [worked example](examples/worked-conversation.md).
 
 ## Scope and verification
 

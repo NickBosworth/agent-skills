@@ -85,6 +85,36 @@
       "must_not": [
         "Mark unavailable verification passed."
       ]
+    },
+    {
+      "id": "question-layout",
+      "prompt": "Plan cancellation for paid orders in a fictional shop. The accounting rule requires retaining paid orders. Inspection shows cancellation and dispatch can race because a shipping worker reads status before dispatch. No shipping design rationale is recorded. Ask the first unresolved decision question without implementing.",
+      "expected": [
+        "Ask one clear decision under a bold Question 1 label, with the purpose paragraph before the current-code paragraph.",
+        "Explain what retaining orders achieves, cite supplied evidence and identify the unrecorded shipping rationale without inventing it.",
+        "Use a bold Options label, put exactly one recommended option first and justify it with evidence and practical trade-offs.",
+        "Offer viable alternatives, then explain more fully why the recommendation fits, its relevant consequences and what evidence would change it.",
+        "Wait for the user answer without writing implementation files."
+      ],
+      "must_not": [
+        "Use the old Q-number heading or numbered subsection headings instead of the requested layout.",
+        "Assert an unsupported historical reason or recommend a saved cancellation label as though it alone prevents the dispatch race.",
+        "Ask several decisions, repeat the option text as the entire closing explanation or assume approval."
+      ]
+    },
+    {
+      "id": "question-resume-two-options",
+      "prompt": "Resume after Question 3. The approved fix addresses a cancellation/dispatch race. The user has already approved the behaviour and says to keep the existing API and database unchanged. Only two test sequences are feasible: add a focused failing regression first, or add that regression with the fix in one slice. The current regression suite tests the worker only sequentially; its historical rationale is unknown. Ask the next unresolved sequencing question. Do not offer a third option or reopen approved behaviour.",
+      "expected": [
+        "Use a bold Question 4 label and keep the same purpose, current-code, Options and closing-explanation order.",
+        "Describe the known sequential coverage and explicitly unknown rationale.",
+        "Offer the two permitted sequences, recommend exactly one first and justify the choice from the race risk and existing tests.",
+        "Explain the recommendation after the alternatives and preserve the user's API, data and behaviour decisions."
+      ],
+      "must_not": [
+        "Reset numbering, invent a third choice, assert an unrecorded rationale or repeat settled approval questions.",
+        "Treat choosing a test sequence as permission to change the API, database or approved behaviour."
+      ]
     }
   ]
 }

@@ -3,7 +3,7 @@ name: agentic-skills-development-planning
 license: CC0-1.0
 description: Guide an engineer from a brain dump, ticket, acceptance criteria, or files to a repository-grounded implementation plan. Inspect existing code and its rationale; challenge direct and indirect conflicts with business rules and acceptance criteria; ask one plain-language question at a time with two or three viable options and one evidence-backed recommendation. Resolve compatibility, database migrations, test sequencing, and documentation scope before declaring readiness. Implement only after explicit approval, then verify and provide an accurate copyable git commit message. Use for features, fixes, refactors, integrations, migrations, and other codebase changes that need guided planning.
 metadata:
-  version: "2.0.1"
+  version: "2.0.2"
   display-name: "Development Planning"
 ---
 
@@ -89,25 +89,25 @@ Maintain a prioritised queue: outcome and invariants → conflicts → costly or
 
 Every decision question, including compatibility, documentation, and approval questions, uses this exact structure:
 
-### Q-<number> — <one clear question>
+**Question <number>**
 
-**1. What we are trying to achieve and why I am asking**  
-Explain the decision and the uncertainty or risk it resolves.
+Explain why you are asking, what you are trying to achieve, and the uncertainty or risk this decision resolves. Include the one clear decision question in this paragraph.
 
-**2. What already exists and why**  
-Describe the relevant current behaviour and evidence. Distinguish recorded rationale from inference. Explain technical terms on first use.
+Describe what the codebase currently does, cite the relevant evidence, and explain what that behaviour achieves. State why it exists only when the rationale is understood from evidence; otherwise identify the reason as unknown or label an inference. Explain technical terms on first use.
 
-**3. Our options**  
-**A — <option> (Recommended).** State its practical effect and justify it using repository evidence, the user's priorities, the main trade-off, and why it fits better than the alternatives. State uncertainty or conditions that would change the recommendation.  
-**B — <genuinely different option>.** Explain its benefit and cost.  
+**Options**
+
+**A — <option> (Recommended).** State its practical effect and give a robust justification grounded in repository evidence, the user's priorities and the main trade-off.
+
+**B — <genuinely different option>.** Explain its benefit and cost.
+
 **C — <third viable option, only if useful>.** Explain its benefit and cost.
 
-**4. Other considerations and longer-term effects**  
-Cover only relevant operational, migration, maintenance, security, cost, rollback, or future-change implications. Distinguish known facts from unresolved risks.
+Finish with a fuller explanation of why the recommendation is the way forward. Compare it with the alternatives and connect the evidence to the outcome. Cover relevant operational, migration, maintenance, security, cost, rollback or future-change implications, distinguishing known facts from unresolved risks. State uncertainty or conditions that would change the recommendation; do not merely repeat the option text.
 
-Reply with A, B, C, or describe another approach.
+Use the bold `Question <number>` and `Options` labels exactly as shown, with blank lines between the paragraphs and options. Replace the placeholders; do not emit descriptive subsection headings or the template instructions. Number questions sequentially within the planning conversation, preserving earlier numbers when resuming.
 
-Exactly one option is recommended; the letter may vary. Give two or three feasible choices, not cosmetic variants. If fewer exist, explain why; do not invent a choice to satisfy a quota. A recommendation may be to investigate rather than to implement.
+Place the one recommended option first, followed by genuinely different alternatives. Give two or three feasible choices, not cosmetic variants. If fewer exist, explain why; do not invent a choice to satisfy a quota. A recommendation may be to investigate rather than to implement. Accept an option letter or a custom approach.
 
 Usually keep the question to about 180–320 words; shorten simple decisions and expand only for material risk. Use plain, concrete language, not jargon-heavy essays or unexplained abbreviations. There is only one decision in the turn; do not hide extra questions in the sections or closing sentence.
 
@@ -117,7 +117,7 @@ Stop discovery questioning when the desired outcome, invariants, selected approa
 
 ## 5. Resolve final implementation decisions before finalising the plan
 
-Review all earlier answers first. Record an already-explicit decision instead of asking it again. Resolve the following in order, **one question per turn**, with the four sections and two or three viable options:
+Review all earlier answers first. Record an already-explicit decision instead of asking it again. Resolve the following in order, **one question per turn**, using the question format above and two or three viable options:
 
 1. **Each distinct breaking change:** name the exact behaviour/contract, affected consumers, and environments. Ask whether this particular break is permitted. Group only changes that truly share a consumer boundary, deployment decision, and approval authority. Never ask a single blanket “Are breaking changes okay?” for unrelated risks. If no breaks are identified, record the examined surfaces and evidence; unknown is not “none.”
 2. **Each breaking database/data change separately:** distinguish schema compatibility, historical-data interpretation, destructive data transformation, and operational disruption. Permission to break an API does not authorise these. Establish preservation/retention, deployment order, mixed-version operation, backfill, verification, and recovery needs. If breaks are disallowed, follow up one question at a time to choose compatibility adapters, parallel versions, staged migration, or a smaller scope. If allowed, still plan coordination and recovery. Never equate permission to design a migration with permission to run it on shared/production data.

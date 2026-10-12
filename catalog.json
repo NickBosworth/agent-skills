@@ -27,7 +27,7 @@
       "path": "skills/agentic-skills-development-planning",
       "title": "Development Planning",
       "description": "Turn rough requirements into a concrete plan with explicit compatibility and delivery decisions.",
-      "version": "2.0.1",
+      "version": "2.0.2",
       "license": "CC0-1.0",
       "status": "packaged",
       "previous_name": "development-planning",

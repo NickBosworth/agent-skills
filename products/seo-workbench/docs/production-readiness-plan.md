@@ -1,5 +1,11 @@
 # Work remaining before a stable release
 
+On 2026-10-12 the maintainer requested a bounded public testing preview and a stop
+after preparing it. The [public testing plan](public-testing-plan.md) owns that
+current finish line. The stable-release requirements below remain a backlog;
+preparing the preview does not complete them or authorise publication.
+
+
 The user approved execution of this plan. Source publication, public CI, packages and
 images remain on hold. The user will perform live account tests separately.
 Repository task TASK-0002 owns the implementation backlog. This document records
