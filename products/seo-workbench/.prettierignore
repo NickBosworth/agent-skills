@@ -1,0 +1,2 @@
+# Preserve the byte-reproducible output of the reviewed offline vocabulary builder.
+data/schema-vocabulary.json

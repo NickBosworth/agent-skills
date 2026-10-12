@@ -1,6 +1,7 @@
 # Maintainer instructions
 
-This is **agentic-skills**, a public library of eight self-contained Agent Skills.
+This is **agentic-skills**, a public library of nine self-contained Agent Skills,
+with an isolated SEO Workbench product in `products/seo-workbench/`.
 Treat every tracked file, commit message, release and CI log as publicly readable.
 Host instructions and the user's authorized scope remain authoritative.
 
@@ -73,6 +74,13 @@ Host instructions and the user's authorized scope remain authoritative.
   examples, adapters, catalogue, migration notes and checksums.
 - Never claim native discovery, agent reliability, browser/engine compatibility
   or domain certification solely from structural checks and helper tests.
+
+## Product work
+
+Read `products/seo-workbench/AGENTS.md` before changing the executable product.
+Product dependencies are optional for skill-only maintainers; keep its checks and
+packaging independent. The current product implementation request does not authorize
+public pushes, releases, paid services, private accounts or production-site changes.
 
 ## Required local checks
 

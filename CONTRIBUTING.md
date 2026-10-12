@@ -2,7 +2,7 @@
 
 Read AGENTS.md and the public repository policy before preparing a contribution.
 Contribute only original or appropriately licensed, public-safe material. All
-packages use CC0-1.0 except the SVG package, which retains MIT. Do not paste
+skill packages use CC0-1.0 except the SVG package, which retains MIT. Do not paste
 third-party manuals, private exports or real credentials into examples.
 
 ## Development
@@ -32,6 +32,13 @@ Before review, add meaningful positive, negative and failure cases for changed
 helper behaviour. Extend agent scenarios for changed decision-making and preserve
 their unexecuted status until a real host/model run supplies evidence. Do not force
 an extra dependency or helper into a prose-only package.
+
+## Executable product contributions
+
+SEO Workbench runtime code is MIT and independently versioned. Read its scoped
+AGENTS.md and CONTRIBUTING.md and run its Node checks when changing that product.
+Skill-only contributors need no product dependencies; the library release remains
+package-only. Private runtime state, captures and reports must stay outside source.
 
 ## Safe commits
 

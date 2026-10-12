@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "method": "manual import",
+  "provider": "Fictional local supplier",
+  "toolVersion": null,
+  "origin": "https://www.example.com",
+  "collectedAt": "2026-10-12T00:00:00Z",
+  "startDate": "2026-09-01",
+  "endDate": "2026-09-30",
+  "timeZone": null,
+  "filters": "No filters were applied to this fictional sample.",
+  "sampling": "One wholly synthetic sample; this is not visitor data.",
+  "complete": false,
+  "limitations": "Fictional records, with no independent provider or identity verification.",
+  "dataset": "analytics",
+  "rows": [
+    {
+      "sampleId": "fictional-1",
+      "page": "https://www.example.com/guide",
+      "evidenceNotes": "A fictional record for demonstrating the import format.",
+      "channel": null,
+      "country": null,
+      "device": null,
+      "sessions": 10,
+      "users": null,
+      "keyEvents": 1,
+      "keyEventDefinition": "A fictional newsletter-completion event, counted by the owner.",
+      "revenue": null,
+      "currency": null
+    }
+  ]
+}

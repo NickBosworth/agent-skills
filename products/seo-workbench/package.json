@@ -1,0 +1,62 @@
+{
+  "name": "@agentic-skills/seo-workbench",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "description": "Local SEO audits, saved page evidence and verification of fixes",
+  "engines": {
+    "node": ">=24.15.0 <25"
+  },
+  "bin": {
+    "seo-workbench": "dist/cli.js"
+  },
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "web",
+    "data",
+    "docs",
+    "README.md",
+    "LICENSE",
+    "NOTICE.md",
+    "CHANGELOG.md",
+    "src",
+    "examples",
+    "CONTRIBUTING.md",
+    "tsconfig.json"
+  ],
+  "scripts": {
+    "build": "node --input-type=module -e \"import { rmSync } from 'node:fs'; rmSync('dist', { recursive: true, force: true });\" && tsc",
+    "check": "tsc --noEmit && node --check web/app.js && tsc --ignoreConfig --noEmit --target ES2023 --module NodeNext --skipLibCheck --strict --allowImportingTsExtensions examples/trusted-rule.ts examples/trusted-extractor.ts examples/trusted-provider.ts",
+    "test": "node --test --test-concurrency=1 tests/*.test.ts",
+    "start": "node src/cli.ts serve",
+    "demo": "node src/cli.ts demo",
+    "doctor": "node src/cli.ts doctor",
+    "benchmark": "node tests/benchmark.ts",
+    "format": "prettier --write src tests web examples data *.json *.md docs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/server": "2.3.1",
+    "cheerio": "1.2.0",
+    "encoding-sniffer": "0.2.1",
+    "fast-xml-parser": "5.11.2",
+    "ipaddr.js": "2.5.0",
+    "robots-parser": "3.0.1",
+    "zod": "4.6.5"
+  },
+  "optionalDependencies": {
+    "lighthouse": "13.5.0",
+    "playwright": "1.64.0",
+    "puppeteer-core": "25.13.0"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
+    "@modelcontextprotocol/client": "2.3.1",
+    "@types/node": "26.6.5",
+    "prettier": "3.9.10",
+    "typescript": "7.0.2"
+  }
+}

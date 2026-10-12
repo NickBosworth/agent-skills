@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SEO Workbench</title>
+    <link rel="stylesheet" href="/style.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#workspace">Skip to audit workspace</a>
+    <header class="masthead">
+      <a href="/" class="wordmark">SEO<span>Workbench</span></a>
+      <span class="local-label">Saved on this computer</span>
+    </header>
+    <div class="layout">
+      <aside aria-label="Projects and audits">
+        <details id="project-panel" open>
+          <summary>Projects and audit settings</summary>
+          <h2>Projects</h2>
+          <div id="projects"><p>Loading saved projects…</p></div>
+          <hr />
+          <details open>
+            <summary>Start an audit</summary>
+            <form id="start-form">
+              <label for="website">Website URL</label
+              ><input
+                id="website"
+                name="website"
+                type="url"
+                placeholder="https://www.example.com/"
+                required
+              />
+              <p class="hint">
+                Use a site you have permission to audit. The crawler does not
+                sign in and follows the site’s crawling restrictions.
+              </p>
+              <details>
+                <summary>Crawl settings</summary>
+                <label for="page-limit">Page limit</label
+                ><input
+                  id="page-limit"
+                  type="number"
+                  min="1"
+                  max="100000"
+                  value="100000"
+                />
+                <label for="time-limit">Time limit in seconds</label>
+                <input
+                  id="time-limit"
+                  type="number"
+                  min="1"
+                  max="86400"
+                  value="86400"
+                />
+                <label for="storage-limit">Saved-data limit in MB</label>
+                <input
+                  id="storage-limit"
+                  type="number"
+                  min="1"
+                  max="1000"
+                  value="1000"
+                />
+                <label for="download-limit">Download limit in MB</label>
+                <input
+                  id="download-limit"
+                  type="number"
+                  min="1"
+                  max="1000"
+                  value="1000"
+                />
+                <p class="hint">
+                  New audits start with the maximum allowances: up to 100,000
+                  pages, 24 hours and 1 GB each for downloads and saved data.
+                  Lower these values for a shorter or smaller audit. The audit
+                  stops when any limit is reached. Saved-data limits include an
+                  allowance for database overhead and result storage. These
+                  settings apply to new audits.
+                </p>
+                <label for="path-prefix">Section path</label
+                ><input id="path-prefix" value="/" pattern="/.*" /><label
+                  for="config-json"
+                  >Or use a saved project configuration (JSON)</label
+                ><textarea
+                  id="config-json"
+                  rows="5"
+                  placeholder="Optional configuration JSON"
+                ></textarea>
+              </details>
+              <button type="submit">Start audit</button>
+            </form>
+          </details>
+        </details>
+      </aside>
+      <main id="workspace" tabindex="-1">
+        <h1 id="audit-title">Website audits</h1>
+        <p id="intro">
+          Start an audit or select a saved audit to review its results.
+        </p>
+        <div id="notice" role="status" aria-live="polite"></div>
+        <section id="audit-section" hidden>
+          <div id="coverage" class="coverage" aria-live="polite"></div>
+          <div class="toolbar">
+            <button data-control="pause">Pause</button
+            ><button data-control="resume">Resume</button
+            ><button data-control="cancel">Cancel</button
+            ><button id="verify">Run a new audit to check changes</button
+            ><button id="reanalyze">Check saved evidence again</button>
+          </div>
+          <nav id="views" aria-label="Audit views">
+            <a href="#overview" data-view="overview">Overview</a
+            ><a href="#groups" data-view="groups">Actions</a
+            ><a href="#pages" data-view="pages">Pages</a
+            ><a href="#graph" data-view="graph">Links</a
+            ><a href="#content" data-view="content">Content</a
+            ><a href="#findings" data-view="findings">All outcomes</a
+            ><a href="#compare" data-view="compare">Compare</a
+            ><a href="#exports" data-view="exports">Export & imports</a>
+          </nav>
+          <div id="view-tools">
+            <label for="search">Search page URLs</label
+            ><input id="search" type="search" /><label for="outcome"
+              >Outcome filter</label
+            ><select id="outcome">
+              <option value="">All outcomes</option>
+              <option value="fail">Needs a fix</option>
+              <option value="warning">Needs review</option>
+              <option value="pass">Passed</option>
+              <option value="not-tested">Not tested</option>
+              <option value="not-applicable">Does not apply</option>
+              <option value="blocked">Could not access</option>
+              <option value="error">Check failed</option>
+            </select>
+            <label for="sort">Sort pages and outcomes</label
+            ><select id="sort">
+              <option value="url">URL</option>
+              <option value="state">State or outcome</option>
+              <option value="depth">Links from a starting page</option>
+            </select>
+            <details>
+              <summary>Saved views</summary>
+              <label for="saved-views">Saved view</label
+              ><select id="saved-views"></select
+              ><label for="saved-name">View name</label
+              ><input id="saved-name" maxlength="100" /><button
+                id="save-view"
+                type="button"
+              >
+                Save current view
+              </button>
+            </details>
+          </div>
+          <section id="view" aria-label="Selected audit view"></section>
+          <div id="pagination">
+            <button id="previous">Previous 100</button
+            ><span id="page-range"></span><button id="next">Next 100</button>
+          </div>
+        </section>
+      </main>
+    </div>
+    <footer>
+      <span>SEO Workbench 0.1.0 · development preview</span>
+    </footer>
+  </body>
+</html>

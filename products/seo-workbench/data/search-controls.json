@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "version": "0.1.0",
+  "providers": [
+    {
+      "token": "Googlebot",
+      "purpose": "Google Search discovery",
+      "sourceId": "google-crawlers",
+      "interpretation": "Robots permission concerns crawling; search inclusion and rankings require separate observations."
+    },
+    {
+      "token": "Google-Extended",
+      "purpose": "Gemini training and selected grounding uses",
+      "sourceId": "google-crawlers",
+      "interpretation": "This product-control token is independent of Google Search inclusion and ranking; it has no separate HTTP user agent."
+    },
+    {
+      "token": "OAI-SearchBot",
+      "purpose": "ChatGPT search discovery",
+      "sourceId": "openai-crawlers",
+      "interpretation": "Automatic search crawl control; navigational links and actual answer inclusion remain separate."
+    },
+    {
+      "token": "GPTBot",
+      "purpose": "OpenAI model training crawl",
+      "sourceId": "openai-crawlers",
+      "interpretation": "Training crawl permission is independent of search crawl permission."
+    },
+    {
+      "token": "ChatGPT-User",
+      "purpose": "User-initiated retrieval",
+      "sourceId": "openai-crawlers",
+      "interpretation": "Observed robots declaration only; provider documentation says user-initiated requests may not follow robots rules and do not control Search."
+    },
+    {
+      "token": "bingbot",
+      "purpose": "Bing Search discovery",
+      "sourceId": "robots-rfc",
+      "interpretation": "Observed robots group matching only; no Bing indexing or current AI-answer behavior is inferred."
+    }
+  ]
+}

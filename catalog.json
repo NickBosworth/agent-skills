@@ -14,6 +14,15 @@
       "previous_path": "agentic/agentic-codebase"
     },
     {
+      "name": "agentic-skills-awesome-copy",
+      "path": "skills/agentic-skills-awesome-copy",
+      "title": "Awesome Copy",
+      "description": "Write and edit natural, specific titles and copy while preserving voice, facts and reader intent.",
+      "version": "1.0.0",
+      "license": "CC0-1.0",
+      "status": "packaged"
+    },
+    {
       "name": "agentic-skills-development-planning",
       "path": "skills/agentic-skills-development-planning",
       "title": "Development Planning",

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "name": "Synthetic javascript configuration",
+  "seeds": ["https://www.example.com/"],
+  "origins": ["https://www.example.com/"],
+  "profile": "javascript",
+  "render": "auto",
+  "contracts": [
+    {
+      "pathPrefix": "/app/",
+      "indexability": "indexable",
+      "criticalText": ["Useful guide"],
+      "template": "application"
+    }
+  ]
+}

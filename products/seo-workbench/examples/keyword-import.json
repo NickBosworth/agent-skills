@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "provider": "Fictional research supplier",
+  "method": "manual import",
+  "url": "https://www.example.com/",
+  "collectedAt": "2026-10-11T00:00:00Z",
+  "market": "Fictional market",
+  "language": "en",
+  "device": "unknown",
+  "methodology": "One synthetic keyword record demonstrating the import format.",
+  "limitations": "This example provides no real search demand or ranking evidence.",
+  "dataset": "keywords",
+  "periodStart": "2026-09-01",
+  "periodEnd": "2026-09-30",
+  "volumeUnit": "estimated searches per month",
+  "rows": [
+    {
+      "sampleId": "fictional-keyword-1",
+      "keyword": "fictional guide topic",
+      "targetPage": null,
+      "estimatedVolume": null,
+      "evidenceNotes": "No estimate or approved destination has been supplied."
+    }
+  ]
+}

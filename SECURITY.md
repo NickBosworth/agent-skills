@@ -12,3 +12,7 @@ they cannot guarantee an absence of sensitive information.
 
 See [public repository policy](docs/public-repository-policy.md) for incident
 handling, history remediation and disclosure limits.
+
+SEO Workbench has separate runtime trust boundaries in
+[its threat model](products/seo-workbench/docs/security.md). Its local-only preview
+is not a remote multi-user service. Apply the same private reporting channel.

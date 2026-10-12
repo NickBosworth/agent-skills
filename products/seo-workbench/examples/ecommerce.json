@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "name": "Synthetic ecommerce configuration",
+  "seeds": ["https://www.example.com/"],
+  "origins": ["https://www.example.com/"],
+  "profile": "ecommerce",
+  "render": "none",
+  "contracts": [
+    {
+      "pathPrefix": "/products/",
+      "indexability": "indexable",
+      "template": "product",
+      "importance": "important",
+      "criticalText": ["Product details"],
+      "sitemap": true,
+      "requiredStructuredTypes": ["Product"],
+      "googleFeatures": ["product-snippet"],
+      "requiredLinks": ["https://www.example.com/shipping"]
+    },
+    {
+      "pathPrefix": "/account",
+      "indexability": "excluded",
+      "template": "utility"
+    }
+  ]
+}

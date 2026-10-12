@@ -1,7 +1,8 @@
-# Verification of agentic-skills 2.0.0
+# Verification of agentic-skills
 
-Executed on 2026-10-10 using macOS and Python 3.11.14/3.12.11. Current source review is
-structural across the library and targeted semantic review of changed workflows,
+The historical 2.0.0 checkpoint below was executed on 2026-10-10 using macOS and
+Python 3.11.14/3.12.11. Source review at that checkpoint was structural across the
+library and targeted semantic review of changed workflows,
 publication boundaries and source/code relationships, not exhaustive domain certification.
 
 ## Executed checks
@@ -49,8 +50,8 @@ warnings for valid nested YAML. Actual YAML parsing and official skills-ref vali
 passed for those files; do not weaken valid metadata to silence the lightweight parser.
 Core guidance review evidence is recorded separately in .agents/project.json.
 
-There are 88 defined behavioural scenarios across the packages. These are not executed
-host/model benchmarks. Native discovery in individual hosts, Unity/Godot/Unreal runtime,
+At that checkpoint there were 88 defined behavioural scenarios across the packages.
+These were not executed host/model benchmarks. Native discovery in individual hosts, Unity/Godot/Unreal runtime,
 Firefox/WebKit, production-site SEO, broad assistive-technology testing and every domain
 source's freshness remain unverified. Previous 1.0.0 evidence is explicitly historical.
 
@@ -62,3 +63,32 @@ administrators are included, and force pushes/deletion are disabled. Finalized
 main run 38040114564 passed all three jobs. Heuristic
 privacy checks and Gitleaks cannot detect all PII; manual review remains mandatory.
 Existing public forks, downloaded copies and GitHub caches cannot be revoked by a push.
+
+## Awesome Copy 1.0.0 addition — 2026-10-12
+
+Executed on macOS using Python 3.12.11, pinned PyYAML 6.0.3 and skills-ref 0.1.1.
+This checkpoint adds a ninth package; it does not rerun or renew the historical
+browser, installer, public-clone or CI evidence above.
+
+- Reviewed 14 public primary sources and authored the editorial synthesis, two
+  focused guides and 11 synthetic worked examples. Reviewed factual fidelity,
+  source limits, routing, standalone references and the final changes manually.
+- `python tools/run_checks.py` passed all nine official package validators,
+  library checks, the existing 234 regression tests and existing package gates.
+  No new helper code was needed for this prose-only skill.
+- The skill-creator frontmatter validator accepted the new package. Optional
+  tool-availability information lives in its body so both validators accept it.
+- `python tools/check_library.py` passed candidate-file privacy and structure;
+  `--history` passed reachable-history privacy. `--staged` passed against the
+  existing index, which this task did not change; new files were covered by
+  candidate-file checks rather than that index scan.
+- Redacted Gitleaks passed for reachable Git history and a directory scan of the
+  new package. No new binaries or raw research datasets were added.
+- The new 28 behavioral scenarios are defined, not executed. The library now has
+  116 scenario definitions; neither this count nor the checks establish writing
+  quality, reader preference, conversion gains or detector outcomes.
+
+No host/model writing trials, native discovery, rendered copy-fit checks or
+reader experiments were run for the new package. No global installation,
+commit, push or release publication was performed. Existing SEO Workbench changes
+were outside this task's scope; its runtime checks were not rerun here.

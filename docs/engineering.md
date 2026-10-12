@@ -2,7 +2,7 @@
 
 ## Purpose and boundaries
 
-A public, branded library of eight reusable Agent Skills. Packages should be
+A public, branded library of nine reusable Agent Skills. Packages should be
 independently installable, evidence-conscious and straightforward to maintain.
 No telemetry, paid service, automatic deployment or mandatory runtime server.
 Repository policy applies to maintainers; packaged skills adapt to their consumers'
@@ -11,6 +11,8 @@ actual instructions and permissions rather than importing this repository's poli
 ## Structure and sources of truth
 
 - `skills/agentic-skills-*/`: canonical skill instructions, resources and helpers.
+- `products/seo-workbench/`: independently versioned optional Node product; its
+  scoped guidance and checks do not change skill installation or library releases.
 - `catalog.json`: package identities, licences, versions and migration mapping.
 - `AGENTS.md`: maintainer entry point and mandatory publication constraints.
 - `docs/public-repository-policy.md`: public-data rules and incident handling.
@@ -48,7 +50,9 @@ quarterly and after host or major model changes; no unattended schedule is impli
 Keep structural, helper, host-discovery, behavioural and visual checks distinct.
 Record only actual executions. A scenario catalogue is not a model benchmark.
 
-The library has no application deployment. Public push, release publication and
+The library has no application deployment. SEO Workbench is a separate local-only
+product preview, with its own architecture, security limits, dependency lock and checks.
+Its implementation task is tracked in TASK-0002; read its scoped guidance for product work. Public push, release publication and
 history rewrites remain explicit operations. Update affected adapters, examples,
 tests, manifests, catalogue and migration notes together. See verification.md for
 the current evidence and limitations.

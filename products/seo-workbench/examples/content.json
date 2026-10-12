@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "name": "Synthetic content configuration",
+  "seeds": ["https://www.example.com/"],
+  "origins": ["https://www.example.com/"],
+  "profile": "content",
+  "render": "none",
+  "contracts": [
+    {
+      "pathPrefix": "/guides/",
+      "indexability": "indexable",
+      "language": "en",
+      "template": "guide",
+      "sitemap": true
+    }
+  ]
+}

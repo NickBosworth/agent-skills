@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "method": "manual import",
+  "provider": "Bing Webmaster Tools",
+  "toolVersion": null,
+  "origin": "https://www.example.com",
+  "collectedAt": "2026-10-12T00:00:00Z",
+  "startDate": "2026-09-01",
+  "endDate": "2026-09-30",
+  "timeZone": null,
+  "filters": "No filters were applied to this fictional sample.",
+  "sampling": "One wholly synthetic sample; this is not visitor data.",
+  "complete": false,
+  "limitations": "Fictional records, with no independent provider or identity verification.",
+  "dataset": "bing-search",
+  "searchType": null,
+  "aggregation": "query",
+  "rows": [
+    {
+      "sampleId": "fictional-1",
+      "page": null,
+      "evidenceNotes": "A fictional record for demonstrating the import format.",
+      "query": "fictional guide",
+      "country": null,
+      "device": null,
+      "clicks": 0,
+      "impressions": null,
+      "averagePosition": null
+    }
+  ]
+}

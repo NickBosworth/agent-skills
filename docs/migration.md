@@ -26,3 +26,10 @@ material and an honest scope description.
 History sanitization changes previous commit IDs. Fresh clones should be used after
 the rewrite; do not merge or push old history back. Public forks/downloads are outside
 the maintainer's direct control. No old private values are retained in this guide.
+
+## Later additions
+
+`skills/agentic-skills-awesome-copy` was added on 2026-10-12 at version 1.0.0.
+Invoke it as `$agentic-skills-awesome-copy`. It is a new, independently versioned
+package with no previous folder, invocation or alias; existing 2.0.0 packages do
+not require migration for this addition.

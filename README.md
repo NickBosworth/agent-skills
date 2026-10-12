@@ -1,7 +1,8 @@
 # agentic-skills
 
-A public library of eight self-contained skills for repository guidance, engineering
-planning, documentation, SEO, web/player interfaces, voxel games and SVG work.
+A public library of nine self-contained skills for repository guidance, engineering
+planning, documentation, writing and copy, SEO, web/player interfaces, voxel games
+and SVG work.
 Packages contain original guidance, routed resources, synthetic examples and relevant
 helpers. They are guidance rather than an autonomous security or correctness guarantee.
 
@@ -10,6 +11,7 @@ helpers. They are guidance rather than an autonomous security or correctness gua
 | Skill | Use it for |
 | --- | --- |
 | [agentic-skills-agentic-codebase](skills/agentic-skills-agentic-codebase/README.md) | Audit and maintain repository guidance, decisions, task routes and agent adapters. |
+| [agentic-skills-awesome-copy](skills/agentic-skills-awesome-copy/README.md) | Write and edit natural, specific titles and copy while preserving voice, facts and reader intent. |
 | [agentic-skills-development-planning](skills/agentic-skills-development-planning/README.md) | Turn rough requirements into a concrete plan with explicit compatibility and delivery decisions. |
 | [agentic-skills-game-ui-ux](skills/agentic-skills-game-ui-ux/README.md) | Design and verify menus, HUDs and player interface flows across game platforms. |
 | [agentic-skills-professional-code-comments](skills/agentic-skills-professional-code-comments/README.md) | Generate or repair meaningful comments and API documentation without inventing rationale. |
@@ -42,14 +44,24 @@ and report coverage, evidence and remaining live checks.` Your host controls syn
 
 ## Quality and support
 
-All packages are version 2.0.0 and have consistent names, licences, UI metadata and
-behavioural scenarios. Helper checks, package checks and declared agent scenarios are
-distinct. See [verification](docs/verification.md) for actual results and limits;
+Package versions are recorded in the [catalogue](catalog.json). All packages have
+consistent names, licences, UI metadata and behavioural scenarios. Helper checks,
+package checks and declared agent scenarios are distinct. See
+[verification](docs/verification.md) for actual results and limits;
 no cross-model or universal host compatibility is claimed.
 
 Use [migration](docs/migration.md) when replacing an old installation. For overlapping
 tasks, read [selection and evaluation](docs/evaluations.md). Avoid duplicate old/new
 copies. Source dates are evidence snapshots, not guarantees of current API behaviour.
+
+## Executable products
+
+[SEO Workbench](products/seo-workbench/README.md) is a separately versioned local SEO
+analysis application alongside the skills. Its development preview includes a synthetic
+audit/repair demonstration, private evidence, CLI/workbench/MCP and portable reports.
+It has its own optional Node dependencies and MIT software licence; it is not a skill
+package and is not included in skill-only release archives. The full product brief remains
+in progress; see its capability and verification records.
 
 ## Maintain and contribute
 
@@ -57,6 +69,6 @@ Read [AGENTS.md](AGENTS.md), [contributing](CONTRIBUTING.md), [engineering](docs
 and [public repository policy](docs/public-repository-policy.md). Run the documented
 checks before commits/releases. Report vulnerabilities privately; see [security](SECURITY.md).
 
-Original repository material is CC0-1.0 unless stated otherwise. The SVG package is
-MIT and retains its notice. Each package includes its licence for independent copying.
+Original repository material is CC0-1.0 unless stated otherwise. The SVG package and SEO Workbench runtime are
+MIT and retain their notices. Each package includes its licence for independent copying.
 Third-party documentation, trademarks and required attribution remain with their owners.
