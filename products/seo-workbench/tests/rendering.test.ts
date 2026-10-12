@@ -5,6 +5,58 @@ import { NetworkPolicy, Transport } from "../src/network.ts";
 import { parseConfig } from "../src/domain.ts";
 import { renderBrowser } from "../src/browser-runner.ts";
 test(
+  "sandboxed delayed rendering preserves viewport and locale while separating browser storage",
+  { skip: process.env.WORKBENCH_BROWSER_TESTS !== "1" },
+  async () => {
+    const fixture = await fixtureSite({
+      routes: {
+        "/profile": {
+          status: 200,
+          body: `<html><title>Waiting</title><main id="content">Waiting</main><script>
+      setTimeout(() => {
+        document.title = navigator.language + ':' + innerWidth + ':' + (localStorage.getItem('previous') ?? 'empty');
+        localStorage.setItem('previous', 'captured');
+        document.querySelector('main').textContent = 'Delayed fictional content';
+        document.documentElement.dataset.ready = 'yes';
+      }, 30);
+      </script></html>`,
+        },
+      },
+    });
+    try {
+      for (const profile of [
+        { locale: "en-GB", viewport: { width: 1280, height: 720 } },
+        { locale: "fr-FR", viewport: { width: 375, height: 812 } },
+        { locale: "en-GB", viewport: { width: 1280, height: 720 } },
+      ]) {
+        const config = parseConfig({
+          ...fixture.config,
+          ...profile,
+          render: "all",
+          renderReadySelector: "html[data-ready]",
+        });
+        const transport = new Transport(
+          config,
+          new NetworkPolicy({ localOrigins: [fixture.origin] }),
+        );
+        const result = await renderBrowser(
+          await transport.request(fixture.origin + "/profile"),
+          config,
+          transport,
+        );
+        assert.equal(result?.status, "observed");
+        assert.equal(
+          result?.facts?.title,
+          `${profile.locale}:${profile.viewport.width}:empty`,
+        );
+        assert(result?.dom?.includes("Delayed fictional content"));
+      }
+    } finally {
+      await fixture.close();
+    }
+  },
+);
+test(
   "sandboxed readiness cannot outlive the audit's remaining time allowance",
   { skip: process.env.WORKBENCH_BROWSER_TESTS !== "1" },
   async () => {

@@ -49,6 +49,16 @@ export class Workbench {
     value: unknown,
     projectId?: string,
   ): { projectId: string; auditId: string } {
+    const ids = this.queue(value, projectId);
+    this.launch(ids.auditId);
+    return ids;
+  }
+  async run(value: unknown, projectId?: string) {
+    const ids = this.queue(value, projectId);
+    await this.crawler.run(ids.auditId);
+    return ids;
+  }
+  private queue(value: unknown, projectId?: string) {
     const config = parseConfig(value);
     let project: string, id: string;
     let release: () => void;
@@ -74,7 +84,6 @@ export class Workbench {
     } finally {
       release();
     }
-    this.launch(id);
     return { projectId: project, auditId: id };
   }
   /** Detached worker owns its SQLite job; client disconnect does not terminate it. */

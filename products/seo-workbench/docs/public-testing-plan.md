@@ -8,6 +8,11 @@ release backlog is complete. That backlog remains in
 [production readiness](production-readiness-plan.md); its unverified items are not
 marked complete by preparing this preview.
 
+The subsequent request to complete outstanding work resumes local implementation.
+The completion record below remains the earlier preview checkpoint; current
+increments and unmet stable gates are recorded in [verification](verification.md)
+and [production readiness](production-readiness-plan.md). Publication remains on hold.
+
 Use Ponytail for the smallest complete implementation, Awesome Copy for reader-facing
 language, Development Planning for compatibility and verification, and Agentic
 Codebase for repository guidance. Preserve scope validation, sandboxed Chromium,
@@ -85,7 +90,7 @@ The archive destination must be outside the checkout. Before a future commit, th
 staged-content check must run against the actual proposed index. Before a future
 push, inspect the remote revision and history; local readiness is not push approval.
 
-## Completion record
+## Earlier preview completion record
 
 The local preparation steps were completed on 2026-10-12. Strict checking and a
 clean build passed. All 344 product tests passed with browser and package checks

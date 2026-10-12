@@ -9,6 +9,12 @@ This preview assumes a trusted computer and trusted local users/processes. It is
 service or multi-user SaaS. Security reports follow the root SECURITY.md private
 reporting channel. The user has not authorized publishing or production-site writes.
 
+Monitoring uses saved project settings and an explicit configuration selection;
+the ordinary network policy and worker admission still apply. Its preview includes
+private addresses. Execution summaries omit captures and addresses but retain
+counts and local identifiers. No scheduler, outbound message or retention task is
+installed. An operator must review any external log/notification destination.
+
 | Trust boundary        | Threat                                                                          | Current enforcement / limitation                                                                                                                                                                                                                                                                                             |
 | --------------------- | ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Untrusted URL and DNS | SSRF, metadata/private targets, rebinding                                       | WHATWG HTTP(S) URLs, no userinfo, exact origin/path scope; every connection validates all DNS answers and pins one validated address in the socket lookup; mixed answers rejected                                                                                                                                            |

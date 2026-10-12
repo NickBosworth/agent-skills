@@ -2,6 +2,11 @@
 
 ## 0.1.0 — unreleased development preview
 
+Add preview-first, selection-approved one-shot monitoring with private scope review,
+preserved project history and count summaries. Foreground and detached audits now
+share worker admission. Gate evaluation streams all saved findings. Additional native
+checks cover locale/viewport/storage separation and a 1,001-page interface/report.
+
 Introduce isolated local SEO Workbench product, source/rule mapping, strict configs,
 SQLite evidence, durable anonymous HTTP crawl and queue, original synthetic repair demo,
 contextual technical checks, intent contracts, graph/content review, manual first-party

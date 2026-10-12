@@ -390,3 +390,11 @@ audit/observation; they do not alter captured words or SEO rules. Draft referenc
 remain owner-supplied and unverified. Saves and evidence checks share one SQLite
 write transaction. The local server snapshots its three UI assets at startup so a
 running API does not hot-load later interface files; restart after a reviewed upgrade.
+
+Foreground audits, detached starts and explicit monitoring now share transactional
+queue admission and the existing worker reservation. An active or queued job blocks
+another audit before an extra project/history is created. Monitoring previews hash
+the saved configuration and require its exact selection before execution. It runs
+one audit, preserves earlier histories and returns counts; scheduling, deletion and
+outbound messaging remain separate operator actions. CLI gates iterate complete
+result cursors rather than buffering at most one million findings.

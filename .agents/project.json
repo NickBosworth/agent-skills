@@ -19,7 +19,7 @@
     },
     {
       "cwd": "products/seo-workbench",
-      "evidence": "Public testing preview checkpoint on 2026-10-12: final 344 macOS arm64 product tests passed with browser/clean-package checks selected and zero skips/failures, about 250 seconds. Twenty-one focused protocol/error/robots/worker checks passed after reproducing and fixing HTTP-year handling. Strict build and dependency audit passed. Stable/platform/interactive/live/independent acceptance remains separate; see product public-testing-plan and verification.",
+      "evidence": "Final resumed local checkpoint on 2026-10-12: 352 macOS arm64 product tests passed with browser/clean-package checks selected, zero skips/failures, about 272 seconds. Six monitoring/admission cases, locale/storage rendering and 1,001-page UI/offline print acceptance included. All 109 source/test/package inputs stayed unchanged. Stable breadth/platform/interactive/live/assistive/independent acceptance remains open; see product verification.",
       "id": "workbench-tests",
       "run": "npm test",
       "source": "products/seo-workbench/package.json",
@@ -57,10 +57,10 @@
       "evidence": {
         ".github/workflows/prepare-workbench.yml": "6dbe5accdbd3e3a614e0f203ef6e05181d76431c1802092c83076390a2676c77",
         ".github/workflows/quality.yml": "28246b1d347708ed2c3f42745a8aaaadfe80bb1bb6ac0283b5eb85ba855e37ac",
-        "catalog.json": "efb197a39f8fda35b0d0840fbee67c3951f2f2b3840acf242fe4d63a41e78bad",
+        "catalog.json": "7d38c59b196833d34ff259deefc4ef27efb2a8a7df03e3d87de9f97fa9965c19",
         "products/seo-workbench/package.json": "ec555f70dee212cda0d69516f08ac19656ce8e627779f1ce25b3f61a977d25ca",
         "tools/run_checks.py": "1696a52504825caf0d9358e93ca871cd341842414d7201926f794edc50d90f13",
-        "skills/agentic-skills-awesome-copy/SKILL.md": "c5143f203ba3865bf6feeb57720071cc336a5835fed91281a39777073422daca"
+        "skills/agentic-skills-awesome-copy/SKILL.md": "08ee2153357eb9669ec71f87154cd3b48494e3215033a78faa1958777b96c42b"
       },
       "note": "Reviewed trusted in-process extractor/provider interfaces, versioned capture facts, resume manifests and private/shareable boundaries against public policy. Only original synthetic callback examples are in source; runtime data/manifests stay external. Contract tests do not establish arbitrary-code containment or live/external release acceptance; publication stays on hold. Awesome Copy package, nine-skill inventory and catalogue integration reviewed on 2026-10-12; writing scenarios remain unexecuted.",
       "reviewed_on": "2026-10-12"
@@ -68,12 +68,12 @@
     "products/seo-workbench/AGENTS.md": {
       "document_sha256": "cc7e4794f2badb213d8c4bfcb67e24fab41efb2274a695fd00172b0cd73d0be3",
       "evidence": {
-        "products/seo-workbench/docs/architecture.md": "16e16a679070488b3be26dbc04bc79980e5806e9f5db116bda99c9a017219651",
+        "products/seo-workbench/docs/architecture.md": "b7d307a0263b198c5d9c11613b95bb4d29c561df74dd49ae473120df94a43fe5",
         "products/seo-workbench/docs/copy-audit.md": "bf3b97a081b1739d17b1fc471dac3aa15d7e462607fa70a9bea4f86ea8a07e92",
-        "products/seo-workbench/docs/security.md": "7687ded2e8a1bfe3caee5ad76297d63e56e70b5191e7cb8b53fe5a1a71150bf1",
+        "products/seo-workbench/docs/security.md": "0fe7b38458d5941adfcff881e2f2c6248d5e57c9fd63c75287c7a7e72b3d57d0",
         "products/seo-workbench/package.json": "ec555f70dee212cda0d69516f08ac19656ce8e627779f1ce25b3f61a977d25ca"
       },
-      "note": "Reviewed trusted in-process extractor/provider interfaces, versioned capture facts, resume manifests and private/shareable boundaries against public policy. Only original synthetic callback examples are in source; runtime data/manifests stay external. Contract tests do not establish arbitrary-code containment or live/external release acceptance; publication stays on hold. Reviewed bounded compressed response/sitemap decoding, preserved wire evidence, browser decoded-body forwarding and omission of both body representations from bounded tools/projections; no new dependency or schema migration. Reviewed the public testing preview boundary, tester guidance, accurate capability claims, durable retry/pause diagnostics and local verification; broader stable acceptance remains unverified and publication requires separate authority.",
+      "note": "Reviewed trusted in-process extractor/provider interfaces, versioned capture facts, resume manifests and private/shareable boundaries against public policy. Only original synthetic callback examples are in source; runtime data/manifests stay external. Contract tests do not establish arbitrary-code containment or live/external release acceptance; publication stays on hold. Reviewed bounded compressed response/sitemap decoding, preserved wire evidence, browser decoded-body forwarding and omission of both body representations from bounded tools/projections; no new dependency or schema migration. Reviewed the public testing preview boundary, tester guidance, accurate capability claims, durable retry/pause diagnostics and local verification; broader stable acceptance remains unverified and publication requires separate authority. Reviewed explicit monitoring selection, shared queue admission, count-only summaries, streaming gates, original acceptance mapping and conservative native browser advisory interpretation. No scheduler, outbound provider or publication was configured.",
       "reviewed_on": "2026-10-12"
     }
   },

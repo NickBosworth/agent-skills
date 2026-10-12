@@ -3,7 +3,7 @@ kind: task
 id: TASK-0002
 status: in_progress
 depends_on: ["TASK-0001"]
-validation: ["327 native macOS arm64 product tests passed with browser/clean-package opt-ins; exact scope and pending full-release gates are recorded in the product verification ledger"]
+validation: ["352 native macOS arm64 product tests passed with browser/clean-package opt-ins; exact scope and pending full-release gates are recorded in the product verification ledger"]
 ---
 # Build SEO Workbench alongside the skill library
 
@@ -557,3 +557,23 @@ and corrected stale claims. Final privacy/history and local archive/installation
 evidence are recorded in the product testing plan, ledger and handover. Remaining
 stable/external acceptance is documented; preparing this candidate does not publish
 it. The maintainer requested stopping after this preview preparation.
+
+
+### Resumed readiness execution — 2026-10-12
+
+Implemented preview-first, token-approved one-shot monitoring, shared foreground/
+detached queue admission and streaming pinned-analysis gates. No scheduler,
+notification provider, new dependency or database migration was added. Added
+six focused monitoring/admission cases, delayed desktop/mobile-width locale/storage
+render acceptance and a real 1,001-page paginated/mobile/offline-print journey.
+The final native macOS suite passed 352 tests with browser/package checks selected,
+zero skips/failures, strict checking and clean build; all 109 source/test/package
+inputs remained unchanged. Root validators and 234 helper checks passed; dependency
+and privacy/history/credential reviews remain scoped to their recorded evidence.
+
+The acceptance map accounts for all 22 original brief sections without closing
+unexecuted local breadth or external acceptance. R15 has locally verified one-shot
+implementation; external scheduling/notification setup was not performed. The
+full task remains in progress. Native platforms, live/interactive and independent
+reviews cannot be represented as passed by local contract tests. Publication stays
+on hold. See the updated verification and production-readiness records.

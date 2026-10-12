@@ -1213,3 +1213,50 @@ the local handover. A development preview can now be assessed for supervised
 public testing without claiming stable certification. Native Windows/Linux,
 interactive model journeys, live integrations, assistive technology and independent
 security/SEO acceptance remain explicitly unverified.
+
+
+## Resumed local readiness work — 2026-10-12
+
+The maintainer requested completion of outstanding work after the preview handover.
+Local implementation resumed; publication and live-account boundaries remain intact.
+The original 22-part acceptance map now links each requirement to runnable checks
+and its remaining acceptance. It does not turn unexecuted scenarios into passes.
+
+A new one-shot monitoring API/CLI previews private scope and limits, binds execution
+to an approved configuration token, preserves project histories and emits count
+summaries without addresses/captures. It installs no scheduler or outbound provider.
+Six focused cases cover missing/stale selection, configuration drift, real before/after
+history, preserved captures, buffered-read refusal, partial limits, duplicate queue
+admission and actual CLI execution. Foreground audits now use the same transaction
+and worker-admission path as detached starts. Streaming gates pin one saved analysis
+and iterate all findings without the previous whole-array retrieval ceiling.
+
+Native sandboxed rendering passed delayed readiness at desktop and mobile widths,
+en-GB/fr-FR locales and repeated fresh storage. An actual 1,001-page crawl/UI test
+passed all ten subsequent pagination steps, final-row limits, URL filtering and
+page evidence drilldown. Mobile automated accessibility found no violations in the
+reviewed summary, offline reports made no HTTP requests and print PDF generation
+passed. These executions are not manual visual or assistive certification.
+
+Strict checking and a clean build passed. The final macOS arm64 checkpoint passed
+all 352 product tests with browser and package checks selected, zero failures/skips,
+in about 272 seconds. All 109 source/test/package inputs stayed unchanged throughout
+that final run. The nine skill validators and 234 library helper regressions passed.
+Runtime dependency auditing reported zero known vulnerabilities. A private installed
+CycloneDX inventory contained 143 components. Sandboxed Chromium reported
+156.0.8078.4; the browser-review document records primary-source advisory review and
+the unverified development-build patch lineage rather than claiming security clearance.
+
+The current compiled candidate clean-installed with locked runtime dependencies
+outside source, passed its doctor and completed both fictional comparison audits.
+The exact final archive, deterministic repeat, privacy/credential/inventory review
+and final installation evidence accompany the handover. Actual-index, candidate,
+reachable-history and redacted credential gates passed; scanners retain their
+usual heuristic/exclusion limits and manual review remains required.
+
+Stable acceptance remains open: wider specialist/profile/sitemap/interaction and
+workflow/outcome corpora, larger rendering/manual report journeys, physical/native
+storage faults, actual Windows/Linux/architecture runs, interactive host/model and
+live provider evaluation, assistive testing, independent security/SEO assessment and
+publication approval. No external test, independent clearance or stable release is
+claimed. No source was pushed, no public CI was run and no outbound message was sent.

@@ -4,6 +4,10 @@ SEO Workbench 0.1.0 is a local development preview for supervised testing. The c
 audit needs no account, paid service or AI key. Start with its fictional site before
 auditing a site you control. Keep captures, reports and provider data private.
 
+Use [monitoring](monitoring.md) to preview and explicitly run one repeat audit.
+The [acceptance map](acceptance-map.md) distinguishes local test coverage from
+remaining stable acceptance. No scheduler or notification provider is configured.
+
 ## From the source repository
 
 Use Node 24.15 or later in the 24.x line. Open `products/seo-workbench/` and run:

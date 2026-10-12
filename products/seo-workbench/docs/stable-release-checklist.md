@@ -27,6 +27,10 @@ advertised platform. No container build or image-distribution gate is part of th
 product. The current local dependency inventory is not independent security or legal
 clearance.
 
+The [native browser review](browser-review.md) records the installed version,
+primary sources and the remaining patch-lineage limitation. The
+[acceptance map](acceptance-map.md) identifies current runnable local coverage.
+
 ## Interactive MCP hosts
 
 Use original synthetic data in an actual supported host. Confirm discovery, approval

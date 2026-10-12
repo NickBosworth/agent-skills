@@ -41,6 +41,7 @@ import { ModelAllowance, modelUsage } from "./model-allowance.ts";
 import { importData } from "./imports.ts";
 import { compareSearchPeriods } from "./search-comparison.ts";
 import { mapSource } from "./source-mapping.ts";
+import { monitoringPlan, runMonitoring } from "./monitoring.ts";
 import {
   collectSearchConsole,
   inspectIndexedURL,
@@ -135,6 +136,8 @@ Commands:
   review-content FILE                     save a proposed content decision
   import PROJECT search-console|performance|search-visibility|external-research|site-data FILE
   gate AUDIT                               test the project’s approved requirements
+  monitor PROJECT                          preview a recurring audit's scope and limits
+    [--selection TOKEN --execute]           run one reviewed audit; install no scheduler
   backup NEW_DIRECTORY                     create and verify a private database snapshot
   retention PROJECT --before TIMESTAMP      preview old stopped audit histories
     [--selection TOKEN --confirm-delete]     remove exactly the previewed selection
@@ -193,6 +196,7 @@ export async function main(): Promise<void> {
       "confirm-delete": { type: "boolean" },
       before: { type: "string" },
       selection: { type: "string" },
+      execute: { type: "boolean" },
       help: { type: "boolean" },
     },
   });
@@ -280,11 +284,8 @@ export async function main(): Promise<void> {
         let ids;
         if (command === "start") ids = app.start(config);
         else {
-          const projectId = store.createProject(config),
-            auditId = store.createAudit(projectId);
-          ids = { projectId, auditId };
-          await app.crawler.run(auditId);
-          process.exitCode = gate(store, auditId);
+          ids = await app.run(config);
+          process.exitCode = gate(store, ids.auditId);
         }
         console.log(
           JSON.stringify(
@@ -293,6 +294,18 @@ export async function main(): Promise<void> {
             2,
           ),
         );
+        break;
+      }
+      case "monitor": {
+        if (!values.execute) {
+          console.log(JSON.stringify(monitoringPlan(store, arg), null, 2));
+        } else {
+          const summary = await runMonitoring(app, arg, values.selection);
+          process.exitCode = gate(store, summary.auditId);
+          console.log(
+            JSON.stringify({ ...summary, exitCode: process.exitCode }, null, 2),
+          );
+        }
         break;
       }
       case "serve": {
@@ -789,14 +802,9 @@ export function gate(store: Store, id: string): number {
     state = audit.state,
     coverage = store.coverage(id);
   if (state === "error") return 2;
-  if (!store.latestAnalysis(id)) return 3;
+  const analysis = store.latestAnalysis(id);
+  if (!analysis) return 3;
   if (state !== "complete" || !coverage.completeDiscoveredQueue) return 3;
-  if (
-    store
-      .results(id, { outcome: "fail", limit: 1000000 })
-      .some((r) => !r.exception)
-  )
-    return 1;
   const contractRules = new Set([
     "index-intent",
     "canonical-contract",
@@ -810,21 +818,20 @@ export function gate(store: Store, id: string): number {
     "google-product-basics",
     "google-feature-fields",
   ]);
-  if (
-    store
-      .results(id, { limit: 1000000 })
-      .some(
-        (r) =>
-          r.outcome === "error" ||
-          (["blocked", "not-tested"].includes(r.outcome) &&
-            contractRules.has(r.ruleId) &&
-            audit.config.contracts.some((c) =>
-              new URL(r.url).pathname.startsWith(c.pathPrefix),
-            )),
-      )
-  )
-    return 3;
-  return 0;
+  let incomplete = false;
+  for (const r of store.allResults(id, analysis)) {
+    if (r.outcome === "fail" && !r.exception) return 1;
+    if (
+      r.outcome === "error" ||
+      (["blocked", "not-tested"].includes(r.outcome) &&
+        contractRules.has(r.ruleId) &&
+        audit.config.contracts.some((c) =>
+          new URL(r.url).pathname.startsWith(c.pathPrefix),
+        ))
+    )
+      incomplete = true;
+  }
+  return incomplete ? 3 : 0;
 }
 if (
   process.argv[1] &&

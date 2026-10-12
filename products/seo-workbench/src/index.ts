@@ -43,6 +43,7 @@ export {
 } from "./providers.ts";
 export { OllamaProvider } from "./ollama.ts";
 export { ModelAllowance, ModelLimits, modelUsage } from "./model-allowance.ts";
+export { monitoringPlan, runMonitoring } from "./monitoring.ts";
 
 export {
   demandOpportunities,

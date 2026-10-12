@@ -1,5 +1,7 @@
 /** Public explanations use fixed text so private diagnostic values are never echoed. */
 const messages: Record<string, string> = {
+  "monitor-selection-changed":
+    "This monitoring selection is missing or no longer matches the project settings. Preview the project again and explicitly approve its new selection before running an audit.",
   "extractor-must-be-synchronous":
     "This trusted extractor returned asynchronous work. Use a synchronous JSON callback; no custom facts were recorded.",
   "extractor-output-budget":
@@ -51,7 +53,7 @@ const messages: Record<string, string> = {
   "local-lighthouse-unavailable":
     "Lighthouse did not return a complete navigation measurement. Check the page response and the browser’s time allowance before retrying.",
   "local-lighthouse-failed":
-    "The Lighthouse worker could not finish. Check the installed Chromium browser or selected image and configured limits; no complete measurement series was saved.",
+    "The Lighthouse worker could not finish. Check the installed Chromium browser and configured limits; no complete measurement series was saved.",
   "invalid-lighthouse-message":
     "The local speed-test worker received an unsupported message. Use matching reviewed worker and host builds before retrying.",
   "lab-target-scope":
