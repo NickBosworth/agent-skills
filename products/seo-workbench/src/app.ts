@@ -121,6 +121,7 @@ export class Workbench {
           "download-budget",
           "storage-budget",
           "time-budget",
+          "retry-delay-budget",
           "persistent-storage-budget",
           "discovery-budget",
         ].includes(audit.reason ?? "") ||

@@ -1,7 +1,8 @@
 # Stable release acceptance
 
-Source and release publication are on hold at the user’s request. Live integration testing will be performed by the user outside this build. This is the remaining acceptance work
-for a broader stable release, not a list of completed certifications. Keep the full
+Source and release publication are on hold at the user’s request. The user will
+perform live integration tests separately. This checklist records the work still
+needed for a stable release; it does not list completed certifications. Keep the full
 product backlog in TASK-0002; a first release does not make deferred features complete.
 
 ## Platform installation and private storage
@@ -68,7 +69,7 @@ inspect archive contents and notices, and update version/migration/capability re
 Build the reviewed ZIP twice and compare hashes. Clean-install the final artifact,
 not an earlier archive. Record unavailable checks and scope exclusions accurately.
 
-Obtain applicable authorization before publishing source, running public CI, creating
-a release. Public CI and a source push are publication too.
+Obtain applicable authorization before publishing source, running public CI or
+creating a release. Public CI and a source push are publication too.
 Use anonymous Git metadata and the repository’s staged/history/privacy gates. No job
 in this repository automatically publishes a Workbench release.

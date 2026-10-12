@@ -1,6 +1,6 @@
 # Rule and source maintenance
 
-[data/rules.json](../data/rules.json) is the versioned executable-definition register.
+[data/rules.json](../data/rules.json) records the versioned executable rule definitions.
 [src/rules.ts](../src/rules.ts) owns deterministic evaluation. Sources resolve in
 [data/sources.json](../data/sources.json); distinguish standards, engine guidance,
 product contracts/heuristics and vendor claims. Bing's guideline body could not be
@@ -8,12 +8,13 @@ retrieved substantively; no automated Bing requirement is inferred from it.
 
 [data/skill-mapping.json](../data/skill-mapping.json) maps implemented subsets to
 canonical SEO skill IDs and records its catalogue hash. Every mapping/source reference
-is tested. Other skill entries remain guidance-only; the product does not pretend
-100 prose checks are executable. Review semantic differences, changed applicability,
+is tested. Other skill entries remain guidance-only; the product does not treat
+all 100 checks in the written guidance as executable rules. Review semantic
+differences, changed applicability,
 source dates and evidence prerequisites before changing the hash. The skill remains
 self-contained with no product/runtime dependency.
 
-To add a trusted rule, give it stable ID/version, title, source/skill IDs, basis,
+To add a trusted rule, give it a stable ID and version, title, source and skill IDs, basis,
 prerequisites, severity, remediation and verification. Add a true defect, a valid
 counterexample and absent-evidence regression in tests. Runtime extensions may use
 `analyze(context, [{definition, evaluate}])` from trusted code; config cannot execute

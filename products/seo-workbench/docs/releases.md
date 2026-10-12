@@ -7,7 +7,9 @@ is pinned to the verified official v7 tag commit. No reports, captures, credenti
 provider inputs, private state or browser screenshots are uploaded. No workflow was
 pushed or remotely executed in this implementation session.
 
-This prepares a review candidate, not a public npm package, GitHub release. The package remains `private: true`, workflow permissions are contents:read and
+This prepares an archive for review. It does not publish an npm package or GitHub
+release. The package remains `private: true`, workflow permissions are contents:read
+and
 no publish command/token is present. A public artifact is still publication of source:
 root public-repository policy, anonymous Git metadata, staged/history/Gitleaks checks,
 manual package review and applicable authorization must precede pushing/running it.
@@ -33,7 +35,9 @@ The [copy audit and MCP assessment](copy-audit.md) records the release recommend
 and the repaired DNS and symlink-startup regressions. Preparing an archive does not
 establish readiness for unattended production use.
 
-The user selected a broader stable first release. [Stable release acceptance](stable-release-checklist.md) records the outstanding platform, interactive host, live integration and independent review gates. Publication remains on hold.
+The first public release is being held for broader stable-release acceptance. See
+[the checklist](stable-release-checklist.md) for remaining platform, interactive-host,
+live-integration and independent-review requirements. Publication remains on hold.
 
 ## Archive input and failure handling
 

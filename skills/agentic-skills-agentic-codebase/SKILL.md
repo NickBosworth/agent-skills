@@ -3,7 +3,7 @@ name: agentic-skills-agentic-codebase
 license: CC0-1.0
 description: "Set up, maintain, audit, repair, or migrate a repository's agentic development environment: AGENTS.md, scoped instructions, portable local skills, architecture and technology decisions, tasks, rules, verification, and agent adapters. Use for greenfield agent-ready setup, stale or contradictory project guidance, or consolidation of existing agent structures. Inspect first, preserve useful conventions, perform authorized improvements, and ask one contextual question at a time for consequential uncertainty."
 metadata:
-  version: "2.0.0"
+  version: "2.0.1"
 ---
 
 # Agentic Codebase

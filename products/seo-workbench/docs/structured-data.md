@@ -34,8 +34,8 @@ is not automatically an invalid reference. Multiple definitions can be legitimat
 JSON-LD, but this reader does not merge them; selected Product detail checks remain
 unknown when they cannot choose one understood definition.
 
-From a source checkout, maintainers can reproduce the index offline after obtaining the exact public release
-outside the source checkout:
+To reproduce the index offline, obtain the exact public release and save it
+outside the source checkout. Then run this from the product source directory:
 
 ```sh
 python tools/build_schema_vocabulary.py \

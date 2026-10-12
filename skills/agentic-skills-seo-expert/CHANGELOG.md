@@ -1,5 +1,10 @@
 # Changes
 
+## 2.0.1 — 2026-10-12
+
+Clarified installation, scope and verification wording in public documentation.
+Skill workflows, invocation names and helper behaviour are unchanged.
+
 ## 2.0.0 — 2026-10-10
 
 Breaking identity and distribution change: canonical name/folder now uses the

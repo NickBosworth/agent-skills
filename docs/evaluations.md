@@ -1,4 +1,4 @@
-# Selection, compatibility and behavioural evaluation
+# Choose and evaluate a skill
 
 | Pair | Boundary |
 | --- | --- |
@@ -12,8 +12,9 @@
 | Awesome Copy / UI skills | Wording for the actual reader and state versus visual design and interaction behavior |
 | Awesome Copy / Professional Code Comments | Reader-facing titles and prose versus source comments and API contracts |
 
-Use more than one skill only when each has a concrete role. Preserve the user's
-scope and host precedence; no skill grants external permissions. Each package's
+Use more than one skill when each contributes to the task. Follow the user's scope
+and the host's instructions; a skill cannot grant permission for an external action.
+Each package's
 scenarios include activation and negative routing, unavailable tools, injection,
 existing decisions, rule conflicts, public-data handling and honest completion.
 SEO retains its more detailed original scenario set; SVG retains its original

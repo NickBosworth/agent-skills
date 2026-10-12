@@ -1,4 +1,4 @@
-# Import Bing, analytics, logs and another crawler's data
+# Import Bing, analytics, log summaries and crawl data
 
 Use **Bing, analytics, logs or another crawl** in Export & imports, or run:
 
@@ -37,14 +37,14 @@ Files admit up to 10,000 records and 5 MB; configured memory allowances still ap
   codes are syntax-checked, not independently certified. Different attribution,
   consent, filtering and metric definitions are not interchangeable. Counts are
   not added across files or dimensions. See [the fictional analytics file](../examples/analytics-import.json).
-- **Access logs** accepts aggregates by page, request method, response status and
+- **Access logs** preserve aggregates by page, request method, response status and
   declared agent class. Raw logs, client addresses, cookies, headers and user-agent
   strings are unsupported. Aggregate and remove personal identifiers before
   import. Request counts are not visitor counts. A claimed search bot is not a
   verified bot; a supplied verified classification needs its verification method.
   Workbench does not perform that verification or DNS lookups. See
   [the fictional aggregate log file](../examples/access-log-import.json).
-- **Third-party crawls** accepts supplied page/status/title/canonical facts with
+- **Third-party crawls** preserve supplied page/status/title/canonical facts with
   observation time when known and the supplier's rendering mode. External declared
   canonicals are references only and are never fetched. This format has no original
   response bytes/headers, DOM/runtime evidence, robots rules, redirect hops or

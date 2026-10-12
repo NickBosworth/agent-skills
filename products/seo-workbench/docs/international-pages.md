@@ -2,8 +2,8 @@
 
 A language alternative identifies another version of the same page for a language,
 script or region. The workbench combines declarations in the HTML head and response
-`Link` headers. It keeps whether an HTML address was complete and whether its tag was
-in the head. Invalid or missing addresses remain evidence rather than disappearing.
+`Link` headers. It records whether each HTML address was complete and whether
+its tag appeared in the head. Invalid or missing addresses remain evidence rather than disappearing.
 HTML and header declarations can describe cross-domain alternatives, but an audit
 fetches only destinations the operator has approved. It never expands access to
 follow a language cluster.

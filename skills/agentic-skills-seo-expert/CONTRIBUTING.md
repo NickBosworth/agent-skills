@@ -1,7 +1,7 @@
 # Contributing
 Contribute original improvements under the pack's CC0-1.0 dedication. Do not paste copyrighted articles, proprietary datasets, credentials or real customer exports into a pull request.
 
-For a new rule, identify its applicability, engine, evidence class, current primary source, useful test, remedy, false positives and verification. Keep the entry concise and update the routed reference rather than expanding the entire SKILL.md. Do not add universal ranking guarantees, invented thresholds or vendor scores as engine requirements.
+For a new rule, state where it applies, which engine it concerns, what evidence it needs, its current primary source, how to test and fix it, possible false positives and how to verify the fix. Keep the entry concise and update the routed reference rather than expanding the entire SKILL.md. Do not add universal ranking guarantees, invented thresholds or vendor scores as engine requirements.
 
 For changed guidance, update the source access/review date, research decisions, affected rules/examples and a regression test or agent evaluation case. Distinguish a source clarification from a changed feature. Explain commercial/vendor conflicts rather than hiding them.
 

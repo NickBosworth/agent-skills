@@ -1,4 +1,4 @@
-# Product thesis and comparison
+# Product approach and comparison
 
 Reviewed public primary product documentation on 2026-10-11. Statements below are
 vendor-documented offerings, not independently verified behaviour or speed. No paid
@@ -12,9 +12,10 @@ Source IDs/URLs/review limits resolve in [sources](../data/sources.json).
 | Ahrefs / ahrefs                   | Technical/on-page categories, JavaScript, prioritisation and vendor health summaries                    | Use explicit outcomes and known denominators. Do not imitate or claim its independently collected backlink/keyword datasets. Advertised throughput untested here.                                      |
 | Semrush / semrush                 | Site Audit technical/on-page and performance views; related keyword, backlink and AI products           | Complement supported provider evidence/imports. Avoid inventing demand, authority or AI-visibility scores. No private API capability assumed.                                                          |
 
-The thesis is a transparent local decision/remediation loop: immutable capture →
-source-linked check → approved intent → grouped handoff → compatible fresh recheck.
-It needs independent usefulness/false-positive evaluation before a market claim.
+Workbench saves immutable page captures, runs source-linked checks against
+approved page expectations, groups findings for handoff and collects fresh evidence
+to verify fixes. Independent review of usefulness and false positives is needed
+before making market claims.
 JavaScript execution and MCP alone are not differentiators. A crawler cannot replace
 engine-selected canonical/index observations, a global backlink index, comprehensive
 keyword database, market-specific SERP observation or business analytics.

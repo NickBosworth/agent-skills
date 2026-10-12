@@ -1,8 +1,9 @@
 # Migration to agentic-skills 2.0.0
 
-The user selected this brand on 2026-10-10. All folders, frontmatter names, examples
-and adapter prompts now use the same `agentic-skills-` prefix. Install one complete
-new package and remove the old installed copy after checking its local customizations.
+Version 2.0.0 adopted the `agentic-skills` brand on 2026-10-10. Package folders,
+frontmatter names, examples and adapter prompts use the `agentic-skills-` prefix.
+Install the complete replacement package, check any customizations in your old copy,
+then remove that old copy.
 No automatic modification of personal/global skill installations is performed.
 Do not distribute duplicate legacy skills as aliases; they can activate ambiguously.
 

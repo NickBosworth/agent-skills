@@ -1,12 +1,13 @@
 # Optional first-party and measurement adapters
 
-Core crawl/workbench/report/CI comparison works without any provider. No private
+Crawling, the local interface, reports and CI comparisons work without a provider. No private
 account, token, paid service or live third-party audit was used during implementation.
 The adapters below have synthetic contract tests; live authorization/quota/provider
 behaviour remains **unverified**. Their data is observed provider evidence, not a model
 prediction, search-engine score or comprehensive market inventory.
 
-Manual JSON imports need no network/account. Search Console imports preserve page,
+Manual JSON imports need no network access or provider account. Search Console
+imports preserve page,
 query, country, device, window, search type, aggregation and completeness. Duplicate
 rows are rejected and CTR is recomputed from sums. Imports through CLI/UI are labelled
 manual even if an input file claims API provenance. Performance imports preserve lab
@@ -59,8 +60,9 @@ PageSpeed Insights can run without a key where the service permits it; optional
 **remote Lighthouse lab**, distinct from a local controlled runner, real-user CrUX,
 and the crawl's resource-blocking profile. One to three sequential repeats retain
 tool/device/config/time/warnings and show min/max/median LCP without invented precision.
-Lab INP is always null; TBT is separately labelled. PSI's own field fields are not used
-as a substitute for the separate CrUX adapter. A local Lighthouse runner is pending.
+Lab INP is always null; TBT is separately labelled. The field measurements returned by
+PageSpeed Insights do not replace the separate CrUX adapter. For the implemented
+local Lighthouse runner, see [local page-speed measurements](local-performance.md).
 
 Fixed HTTPS endpoints, validated pinned DNS, no automatic redirects, bounded JSON,
 timeouts, error categories and no raw credential diagnostics protect the adapter
@@ -80,8 +82,9 @@ quality need separate evaluations; a mocked test is not a live model pass.
 ## Optional local Ollama
 
 An executable local adapter is also available; it never installs/pulls a model or uses
-Ollama Cloud. You need an independently installed local service/model. This environment
-has no Ollama installation, so live model behavior/advice is **unverified**. Synthetic
+Ollama Cloud. You need an independently installed local service and model. No
+Ollama installation was available during the recorded implementation checks,
+so live model behaviour and advice remain **unverified**. Synthetic
 adapter tests cover metadata/JSON probes, cloud refusal, token overrun and malicious
 packet content. Those are protocol/security tests, not model quality evaluations.
 

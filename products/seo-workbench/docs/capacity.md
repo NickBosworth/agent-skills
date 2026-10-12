@@ -1,8 +1,9 @@
 # Audit allowances and report size
 
-New audits use the largest admitted resource allowances. These are stopping limits,
-not a promise that every site can be completed at every maximum. The audit stops
-when any allowance is exhausted and retains its coverage and available analysis.
+New audits start with the maximum supported resource allowances. An allowance
+sets when an audit must stop; it does not promise that every site can be completed.
+The audit stops when any allowance is exhausted and retains its coverage and
+available analysis.
 Existing audit configurations are preserved; changing limits requires a new audit.
 
 | Setting                                     | Default and maximum |
@@ -21,8 +22,8 @@ Existing audit configurations are preserved; changing limits requires a new audi
 | Retries                                     | 3                   |
 
 The depth ceiling now matches the page ceiling because the queue and graph traversal
-are iterative and the page/discovery limits still apply. A 60-level link chain was
-actually exercised; this does not prove a 100,000-level workload. Other upper limits
+are iterative and the page/discovery limits still apply. Tests exercised a 60-level link chain;
+a 100,000-level workload remains unverified. Other upper limits
 remain bounded by the current runtime, extraction and storage design. Raising them
 further needs complete collection/analysis/export stress tests rather than just larger
 validation constants. Inventory input remains limited to 10,000 explicit URLs per
@@ -47,7 +48,7 @@ Consumers of iterators must finish successfully before treating output as comple
 Configured memory and logical storage are not whole-process RSS or physical-disk
 quotas. Browser processes share the computer's CPU and memory; there is no separate browser resource quota. Filesystem free space,
 allocator state, extraction complexity, other programs and concurrency still matter.
-Current measurements and unavailable checks are recorded in verification.md. Native
+See [verification](verification.md) for measurements and checks that have not run. Native
 platform, larger full-render, assistive-technology and independent review gates remain
 open; these maximum settings do not close the production plan.
 

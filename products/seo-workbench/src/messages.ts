@@ -370,6 +370,8 @@ const messages: Record<string, string> = {
     "The downloaded or expanded response exceeded the configured size allowance. Its content was not saved as a complete response; review the allowance before retrying.",
   "request-timeout":
     "The response did not finish downloading and decoding within the request timeout. Its content was not saved as complete; retry or review the configured timeout.",
+  "retry-delay-budget":
+    "The wait before the next request would exceed the audit’s remaining time. The audit stopped with incomplete coverage. Start a new audit later, or review its time allowance.",
   "robots-redirect-limit":
     "The robots instructions redirected too many times. Review the redirect chain before treating access permissions as known.",
   "robots-redirect-loop":

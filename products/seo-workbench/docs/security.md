@@ -36,6 +36,15 @@ the encoding header removed. Known HTTP(S) proxies/environment variables are not
 transport. Production origins use public unicast IPs and ports 80/443; IPv6 mapped ranges
 are classified through ipaddr.js. This is application enforcement, not a firewall.
 
+Access denial and rate limiting still stop the audit without automatic retries.
+Server-error retries and redirect follow-ups honour valid `Retry-After` delays,
+using the existing backoff when a retry header is invalid. A wait that cannot fit
+within the remaining allowance stops with explicit partial coverage. Saved wait
+deadlines survive pause/restart; cancellation stops the timer, and unfinished work
+remains recoverable. Failed-request diagnostics contain fixed categories rather
+than raw network exception messages. See
+[HTTP Retry-After semantics](https://www.rfc-editor.org/rfc/rfc9110.html#section-10.2.3).
+
 Stored raw bodies/redirect headers can contain private website content or embedded
 identifiers. Use only authorized sites and minimal profiles. Shareable exports omit
 URLs/content/contracts but retain rule counts: review inference risks before sharing.
@@ -53,7 +62,7 @@ credential import and archive import are unsupported. Local Chromium rendering i
 
 ## Release blockers
 
-Wider adversarial browser channels beyond the exercised networkless boundary; broader
+Browser background channels beyond the brokered page-request boundary; broader
 process/OS fault corpus; retained capture cleanup; browser dependency notices review;
 untested installation platforms; broader robots RFC corpus. Atomic worker/crash resume,
 resource guards, clean external npm install and scoped robots redirects have been tested. An independent vulnerability review is still required. A green suite is

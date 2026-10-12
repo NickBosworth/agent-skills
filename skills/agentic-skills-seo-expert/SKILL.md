@@ -4,7 +4,7 @@ description: Audit and improve whole-site technical SEO, content quality, search
 license: CC0-1.0
 compatibility: Requires a host that can read local skill files. Web research, browser, repository, analytics and command tools are optional host capabilities; Python 3.10+ is required only for the bundled offline utilities.
 metadata:
-  version: "2.0.0"
+  version: "2.0.1"
   research-snapshot: "2026-10-10"
   category: "seo-content-and-technical"
 ---

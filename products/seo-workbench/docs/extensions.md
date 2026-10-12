@@ -1,6 +1,7 @@
 # Trusted rule extensions
 
-An embedding application can pass developer-authored rule functions to
+An application using Workbench as a library can pass developer-authored rule
+functions to
 `analyze(context, extensions)`. The executable example in
 `examples/trusted-rule.ts` checks an explicit owner requirement for a support link.
 It is a project rule, not a general SEO or ranking claim. Tests exercise defects,
@@ -49,7 +50,7 @@ An extractor declares its identifier, version, title, basis, source IDs and requ
 before any extractor runs. Identifiers must be distinct within the extractor list;
 this is a separate namespace from rule identifiers. At most 100 can be registered.
 
-Use an in-process embedding to collect and persist these facts:
+To collect and save these facts in your application process:
 
 ```ts
 import { Crawler, Store, NetworkPolicy, parseConfig } from "../src/index.ts";
@@ -128,8 +129,9 @@ adapter subsequently mutates its fields. The probe must report actual JSON suppo
 and a valid input allowance. Missing evidence prevents interpretation; invalid or
 unsupported advice cannot become a suggestion.
 
-Embeddings must choose and authorise their provider explicitly. This interface does
-not authorise remote transfers, price an unknown service or enforce an arbitrary
+Applications using this interface must choose and authorise their provider
+explicitly. This interface does not authorise remote transfers, price an unknown
+service or enforce an arbitrary
 provider's billing. Use the durable `ModelAllowance` path for audit-wide call/output
 reservations, and preserve unknown costs and independent human review. Callbacks
 must honour cancellation and requested output limits; contract tests alone do not

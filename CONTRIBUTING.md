@@ -1,6 +1,7 @@
 # Contributing to agentic-skills
 
-Read AGENTS.md and the public repository policy before preparing a contribution.
+Read [AGENTS.md](AGENTS.md) and the [public repository policy](docs/public-repository-policy.md)
+before preparing a contribution.
 Contribute only original or appropriately licensed, public-safe material. All
 skill packages use CC0-1.0 except the SVG package, which retains MIT. Do not paste
 third-party manuals, private exports or real credentials into examples.
@@ -44,8 +45,9 @@ package-only. Private runtime state, captures and reports must stay outside sour
 
 Stage explicit intended paths. Run `python tools/check_library.py --staged` against
 the actual index and inspect `git diff --cached --stat` and the diff. Use the
-anonymous project contributor name with its reserved email or a GitHub noreply email; keep private names/contact
-details out of commit messages. Run `--history` and redacted Gitleaks before pushing.
+Git identity `agentic-skills contributors` with `contributors@example.invalid`
+or a GitHub noreply address. Keep private names and contact details out of commit
+messages. Run `--history` and redacted Gitleaks before pushing.
 GitHub web edits and merges can introduce personal author/committer metadata.
 Publish reviewed, anonymously attributed commits through Git instead. Direct
 fast-forward pushes to main are allowed. CI runs on pushes and pull requests, but

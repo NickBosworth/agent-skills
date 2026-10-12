@@ -4,7 +4,7 @@ description: Design, implement, audit, repair and polish web interfaces without 
 license: CC0-1.0
 compatibility: Framework-neutral. Repository access is useful; a browser is needed for rendered verification. No mandatory MCP, network service, or build dependency.
 metadata:
-  version: "2.0.0"
+  version: "2.0.1"
   research-date: "2026-10-10"
 ---
 

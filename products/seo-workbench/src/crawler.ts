@@ -2,6 +2,7 @@
 import { parseRobots } from "./robots.ts";
 import { headerCanonicals, headerAlternates } from "./response-directives.ts";
 import { randomUUID } from "node:crypto";
+import { setTimeout as delay } from "node:timers/promises";
 import { decompress } from "./compression.ts";
 import {
   RULESET,
@@ -211,8 +212,73 @@ export class Crawler {
         ? policy.parser.isAllowed(value, "SEO-Workbench") !== false
         : policy.allowed;
     };
+    const waitForFollowUp = async (
+      response: ResponseEvidence | undefined,
+      minimumMs: number,
+      pageUrl: string,
+    ): Promise<string | null> => {
+      if (controller.signal.aborted) return "cancelled";
+      const exhausted =
+        transport.requests >= config.maxRequests
+          ? "request-budget"
+          : transport.bytes >= config.maxDownloadBytes
+            ? "download-budget"
+            : null;
+      if (exhausted) {
+        this.store.state(id, "partial", exhausted);
+        controller.abort();
+        return exhausted;
+      }
+      const value = response?.headers["retry-after"]?.trim() ?? "";
+      let dateValue = value;
+      const legacy = /^([A-Za-z]+, \d{2}-[A-Za-z]{3}-)(\d{2}) /.exec(value);
+      if (legacy) {
+        const horizon = new Date();
+        horizon.setUTCFullYear(horizon.getUTCFullYear() + 50);
+        const year =
+          Math.floor(horizon.getUTCFullYear() / 100) * 100 + Number(legacy[2]);
+        dateValue = value.replace(legacy[0], legacy[1] + year + " ");
+        // HTTP's rolling century differs from JavaScript's fixed two-digit cutoff.
+        if (Date.parse(dateValue) > horizon.getTime())
+          dateValue = value.replace(legacy[0], legacy[1] + (year - 100) + " ");
+      }
+      const date =
+        /^(?:[A-Za-z]{3}, \d{2} [A-Za-z]{3} \d{4} \d{2}:\d{2}:\d{2} GMT|[A-Za-z]+, \d{2}-[A-Za-z]{3}-\d{2} \d{2}:\d{2}:\d{2} GMT|[A-Za-z]{3} [A-Za-z]{3} [ \d]\d \d{2}:\d{2}:\d{2} \d{4})$/.test(
+          value,
+        )
+          ? Date.parse(dateValue) - Date.now()
+          : 0;
+      const suggested = /^\d+$/.test(value) ? Number(value) * 1000 : date;
+      const milliseconds = Math.max(
+        minimumMs,
+        Number.isNaN(suggested) ? 0 : suggested,
+      );
+      if (
+        milliseconds >=
+        transport.started + config.maxSeconds * 1000 - Date.now()
+      ) {
+        this.store.state(id, "partial", "retry-delay-budget");
+        controller.abort();
+        return "retry-delay-budget";
+      }
+      if (milliseconds > 0) {
+        this.store.event(id, "request-follow-up-wait", {
+          url: response?.url ?? null,
+          pageUrl,
+          milliseconds,
+          notBefore: Date.now() + milliseconds,
+        });
+        try {
+          await delay(milliseconds, undefined, { signal: controller.signal });
+        } catch {
+          return "cancelled";
+        }
+      }
+      return controller.signal.aborted ? "cancelled" : null;
+    };
     const fetch = async (
       value: string,
+      recoverWait = false,
     ): Promise<{
       attempts: ResponseEvidence[];
       response: ResponseEvidence | null;
@@ -222,6 +288,29 @@ export class Crawler {
       const attempts: ResponseEvidence[] = [];
       const seen = new Set<string>();
       let target = value;
+      const savedWait = recoverWait
+        ? Number(
+            this.store.db
+              .prepare(
+                "SELECT json_extract(detail,'$.notBefore') AS deadline FROM events WHERE audit_id=? AND kind='request-follow-up-wait' AND json_extract(detail,'$.pageUrl')=? ORDER BY id DESC LIMIT 1",
+              )
+              .get(id, value)?.deadline ?? 0,
+          )
+        : 0;
+      if (Number.isFinite(savedWait) && savedWait > Date.now()) {
+        const interrupted = await waitForFollowUp(
+          undefined,
+          savedWait - Date.now(),
+          value,
+        );
+        if (interrupted)
+          return {
+            attempts,
+            response: null,
+            finalUrl: target,
+            error: interrupted,
+          };
+      }
       for (let hop = 0; hop < 6; hop++) {
         if (seen.has(target))
           return {
@@ -250,6 +339,10 @@ export class Crawler {
         let response: ResponseEvidence | undefined,
           last = "request-failed";
         for (let retry = 0; retry <= config.retries; retry++) {
+          // An earlier response is evidence, not the result of a later failed request.
+          response = undefined;
+          const attemptedAt = Date.now(),
+            previousRequests = transport.requests;
           try {
             response = await transport.scoped(target);
             attempts.push(response);
@@ -265,16 +358,37 @@ export class Crawler {
             if (response.status < 500 || retry === config.retries) break;
           } catch (error) {
             last = errorCode(error);
+            this.store.event(id, "request-attempt-failed", {
+              url: target,
+              reason: last,
+              requestedAt: new Date(attemptedAt).toISOString(),
+              durationMs: Date.now() - attemptedAt,
+              chargedRequest: transport.requests > previousRequests,
+              requestNumber:
+                transport.requests > previousRequests
+                  ? transport.requests
+                  : null,
+            });
             if (
               controller.signal.aborted ||
+              retry === config.retries ||
               last.endsWith("budget") ||
               last.includes("blocked")
             )
               break;
           }
-          await new Promise((resolve) =>
-            setTimeout(resolve, Math.min(1000 * 2 ** retry, 4000)),
+          const interrupted = await waitForFollowUp(
+            response,
+            Math.min(1000 * 2 ** retry, 4000),
+            value,
           );
+          if (interrupted)
+            return {
+              attempts,
+              response: interrupted === "cancelled" ? null : (response ?? null),
+              finalUrl: target,
+              error: interrupted,
+            };
         }
         if (!response)
           return { attempts, response: null, finalUrl: target, error: last };
@@ -283,8 +397,9 @@ export class Crawler {
           response.status < 400 &&
           response.headers.location
         ) {
+          let redirected: string;
           try {
-            target = fetchKey(response.headers.location, target);
+            redirected = fetchKey(response.headers.location, target);
           } catch {
             return {
               attempts,
@@ -293,6 +408,24 @@ export class Crawler {
               error: "invalid-redirect",
             };
           }
+          if (seen.has(redirected) || scopeReason(config, redirected))
+            return {
+              attempts,
+              response: null,
+              finalUrl: redirected,
+              error: seen.has(redirected)
+                ? "redirect-loop"
+                : "redirect-scope-blocked",
+            };
+          const interrupted = await waitForFollowUp(response, 0, value);
+          if (interrupted)
+            return {
+              attempts,
+              response: interrupted === "cancelled" ? null : response,
+              finalUrl: target,
+              error: interrupted,
+            };
+          target = redirected;
           continue;
         }
         return { attempts, response, finalUrl: target, error: null };
@@ -312,7 +445,7 @@ export class Crawler {
       }
       visitedMaps.add(value);
       try {
-        const result = await fetch(value);
+        const result = await fetch(value, initial.requests > 0);
         if (!result.response || result.response.status !== 200)
           throw new Error("sitemap-unavailable");
         let xml = result.response.body;
@@ -415,7 +548,24 @@ export class Crawler {
           break;
         }
         this.store.queueState(id, row.url, "fetching");
-        const fetched = await fetch(row.url);
+        const fetched = await fetch(
+          row.url,
+          row.reason === "recovered-interrupted-attempt",
+        );
+        if (["paused", "cancelled"].includes(this.store.audit(id).state)) {
+          this.store.event(id, "page-attempt-interrupted", {
+            url: row.url,
+            responses: fetched.attempts.map((response) => ({
+              url: response.url,
+              status: response.status,
+              requestedAt: response.requestedAt,
+              bytes: response.bytes,
+              bodyHash: hash(response.body),
+            })),
+          });
+          // Leave unfinished work recoverable; resume claims reset fetching rows to queued.
+          break;
+        }
         const isHTML = Boolean(
           fetched.response &&
           /^(?:text\/html|application\/xhtml\+xml)/i.test(

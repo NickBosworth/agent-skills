@@ -1,7 +1,8 @@
 # Architecture and evidence contracts
 
-Repository decision ADR-0002 records this product boundary; this document also ships with the standalone package.
-Node 24.15+ in the 24.x release line is the presently bounded runtime claim. TypeScript
+Repository decision ADR-0002 explains why the product is separate from the skill
+library. This architecture guide also ships with the standalone package.
+Node 24.15+ in the 24.x release line is the current runtime requirement. TypeScript
 uses erasable syntax for direct local development and compiles to independent ESM.
 The public API is [src/index.ts](../src/index.ts); adapters call Workbench/Crawler.
 
@@ -70,6 +71,15 @@ representations. Private evidence resources retain them within their existing li
 Each compression layer is bounded and cancellable. Gzip sitemap files may add a file
 compression layer after HTTP decoding; their parsed XML hash is recorded only after
 successful expansion and parsing. There is no database schema migration.
+
+Retry responses remain separate from the final response: a later failed request
+cannot reuse an earlier server error. Failed requests retain redacted diagnostic
+events and whether they consumed a request allowance. Follow-up waits use the
+larger of the existing backoff and a valid `Retry-After` delay, including redirects;
+loops and scope escapes are refused before waiting. Waits are cancellable and
+bounded by the audit's remaining allowances. Their deadlines are saved so pausing
+and restarting a worker cannot bypass them. Interrupted pages stay unfinished for
+the existing queue recovery mechanism; completed observations are not overwritten.
 
 ## Extension boundary
 

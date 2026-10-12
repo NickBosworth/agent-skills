@@ -3,7 +3,7 @@ name: agentic-skills-voxel-game-dev
 license: CC0-1.0
 description: Design, implement, debug, extend, and optimize voxel-based games in new or existing projects. Use for block worlds, editable scalar-field terrain, voxel art game assets, chunk meshing, terrain streaming, procedural generation, mining/building, collision, lighting, world saves, and voxel multiplayer. Adapt to Godot, Unity, Unreal, web, or custom engines. Inspect the project, choose the representation, deliver playable increments, and verify voxel-specific correctness and performance. Exclude medical/scientific voxel analysis, standalone voxel-style images, and unrelated game work.
 metadata:
-  version: "2.0.0"
+  version: "2.0.1"
 ---
 
 # Voxel Game Development

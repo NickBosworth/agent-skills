@@ -1119,3 +1119,53 @@ work appeared. This phase does not modify or register the separate package. Prod
 tests and the explicitly selected candidate privacy/credential checks remain passed;
 the current repository-wide library gate is not green and must be reconciled with
 that package's owner before the final release review.
+
+## Compressed responses and gzip sitemaps — 2026-10-12
+
+HTTP transport now reads gzip, wrapped deflate and Brotli, including up to three
+declared encoding layers. Downloaded wire bytes and each expanded layer are bounded.
+Asynchronous native decoding stops on cancellation/deadline; the final response also
+checks its deadline after text/base64 conversion. Bodyless 204/304 responses do not
+require an encoded message body. Unsupported formats and damaged data remain errors.
+The original compressed page bytes, decoded representation, headers and expanded
+size are saved without changing schema 5 or rewriting older identity captures.
+Analysis projections, bounded MCP output and human request details omit encoded
+bodies; explicit private evidence resources retain them within existing limits.
+Chromium receives decoded HTML and resources without the encoding header.
+
+Gzip sitemap indexes and files are detected from their bytes, including a file layer
+inside an HTTP gzip response. Successful parsed XML receives its own evidence hash;
+damaged or oversized files leave explicit partial sitemap coverage. The configured
+response allowance applies to expanded files and may be lower than the protocol's
+maximum. No dependency, service or container execution was added. Research used the
+[Sitemap protocol](https://www.sitemaps.org/protocol.html) and
+[pinned Node 24.15 compression documentation](https://nodejs.org/download/release/v24.15.0/docs/api/zlib.html).
+
+Six focused compression checks cover formats, stacking, exact output bounds,
+malformed/unsupported input, cancellation/deadlines, wire/download accounting,
+charset handling, empty responses, nested sitemap discovery, database reopening,
+private projections, official SDK MCP tool/resource reads and real native rendering
+with a compressed script. An initial focused checkpoint found a missing maintained
+size-error explanation. It was added, along with a readable timeout explanation;
+the final compression/public-error checkpoint passed all eight tests. The final
+native macOS arm64 run passed all 333 product tests with browser and clean-package
+opt-ins, zero skips/failures, in about 232 seconds. Strict checks, clean compilation
+and the locked runtime dependency audit passed; no known vulnerabilities were
+reported. Source/test/package fingerprints were unchanged during final verification.
+
+A fresh anonymous HTTP check of the previously authorised site recorded 60 successful
+pages, all with compressed HTTP evidence, using 68 requests. It stopped at the
+deliberately selected 60-page allowance with state `partial` and reason `page-budget`.
+This confirms progress past the reported 40-page point, not complete whole-site
+coverage, browser behaviour on that site or performance on other sites. Its address,
+configuration and all captures remain outside the repository. The existing local
+preview was refreshed only after checking it had no active or owned jobs; earlier
+private evidence was retained. No live provider/model call was made.
+
+The separate skill catalogue work has since been reconciled. The current nine-package
+root suite passed all official structural validators and 234 helper regressions;
+library privacy, actual-index checks, selected candidate privacy, reachable-history
+privacy and redacted credential scans passed in their recorded scopes. These are
+heuristic checks plus review, not a guarantee that arbitrary PII can be detected.
+The broader URL/trap/retry corpus, native platform/interactive-host acceptance and
+independent review remain open. No publication was performed by this phase.

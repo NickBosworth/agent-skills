@@ -3,7 +3,7 @@ name: agentic-skills-awesome-copy
 description: Write, edit or critique titles, headlines and reader-facing copy that sounds natural, specific and well written. Use for website copy, articles, emails, newsletters, social posts, product text, or requests to remove AI slop, generic phrasing and robotic prose. Preserve the author's voice, facts and intended effect. Not an AI-authorship detector; code/API documentation and visual design alone are outside scope.
 license: CC0-1.0
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
   research-date: "2026-10-12"
 ---
 

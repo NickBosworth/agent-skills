@@ -14,7 +14,7 @@ link sources may belong to other websites; they are recorded references only.
 Credential-bearing and non-HTTP URLs are refused. Do not include credentials or private
 account identifiers. Keep real supplier files outside the source checkout.
 
-The three datasets preserve different evidence:
+Choose the dataset that matches your evidence:
 
 - `keywords` records the estimate period, volume unit and individual keywords.
   `estimatedVolume: null` means the supplier did not provide an estimate. Zero means
@@ -31,8 +31,8 @@ The three datasets preserve different evidence:
   availability, link quality, an endorsement or the cause of a ranking change.
 
 Each record has a unique `sampleId` within its file and an `evidenceNotes` explanation.
-Files admit at most 10,000 records and 5 MB; invalid files create no import. Supplier
-estimates and separate files are not merged or averaged automatically. No authority
+Files are limited to 10,000 records and 5 MB. Invalid files are rejected without
+saving an import. Supplier estimates and separate files are not merged or averaged automatically. No authority
 score, competition score, universal ranking or global backlink index is calculated.
 Recorded timestamps are supplier declarations, not independently verified freshness.
 

@@ -113,3 +113,28 @@ tests passed. The local pre-push hook passed candidate/history privacy and redac
 Gitleaks checks. Staged privacy passed against the unchanged index; documentation
 edits were checked as candidates. Whitespace checks passed. No product runtime
 checks were rerun for this workflow-only change.
+
+## Public documentation edit — 2026-10-12
+
+Applied Awesome Copy to the repository overview, skill READMEs, contributor and
+evaluation guides, documentation indexes and SEO Workbench user guides. Clarified
+installation and evidence limits, reduced compressed wording and corrected stale
+container and local Lighthouse references. Package patch versions, changelogs and
+the existing SEO/SVG checksum inventories were updated. Skill workflows, helper
+code, commands, notices and historical verification results were preserved.
+
+- All nine official skill validators and 234 library regression tests passed.
+- Final candidate-file structure/privacy and local documentation links passed.
+- Staged privacy passed against the unchanged index; editorial changes were checked
+  as working-tree candidates, not staged content. Reachable-history privacy and
+  redacted Gitleaks history scanning passed.
+- Product type/syntax checks and build passed. Its default suite reported 333 tests:
+  311 passed and 22 optional browser tests skipped, with no failures. These results
+  cover the working tree, including concurrent product work outside this copy edit.
+- Compared fenced examples with the base revision; the edited documentation
+  retained its code blocks. Whitespace checks passed.
+
+No rendered GitHub review, reader study, host/model benchmark or live integration
+check was performed. Agent instructions, templates, legal notices and historical
+task/evidence records were outside the editorial scope. No commit, push or release
+publication was performed.

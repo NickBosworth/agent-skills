@@ -1,6 +1,6 @@
 # Original examples and planning templates
 
-These are small, readable fixtures demonstrating techniques, not a comprehensive art library or a mandatory visual style. Open the SVGs directly in a suitable browser for a quick preview; use the capture tool for timed evidence. Their internal CSS/SMIL behaviour is not an engine rig.
+These small fixtures demonstrate SVG techniques. They are examples, not a complete art library or a required visual style. Open the SVGs in a suitable browser to preview them, or use the capture tool to inspect specific times. Their CSS and SMIL animations do not provide a game-engine rig.
 
 | File | Demonstrates |
 | --- | --- |

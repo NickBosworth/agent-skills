@@ -1,6 +1,7 @@
 # Backup, recovery and retention
 
-Stop queued/running jobs, then create a new external backup folder:
+Stop queued or running jobs, then use the backup command to create a new folder
+outside the source checkout:
 
 ```sh
 node dist/cli.js backup /path/to/private-backup --data /path/to/private-state
@@ -13,7 +14,8 @@ Recover by opening the verified backup folder with `--data`. Jobs do not restart
 automatically. Keep backups private and outside the repository, like the original data.
 Do not copy just a live database's main file while its WAL may contain changes.
 
-Retention previews stopped histories last updated before the cutoff. To apply it,
+The retention command previews stopped audit histories last updated before the
+cutoff. To apply it,
 repeat the command with `--selection PREVIEW_TOKEN --confirm-delete`. A changed
 selection is refused transactionally. Active/paused jobs, other projects and project
 provider imports survive. Selected history review decisions are removed with the audit.

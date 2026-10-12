@@ -1,6 +1,7 @@
 # Connect the local MCP server
 
-Build or clean-install the reviewed Workbench package first. The server runs locally
+Build Workbench from source or clean-install the reviewed package first. The server
+runs locally
 through standard input and output; it does not provide a public HTTP endpoint or
 require a website account. Its process can access files and networks permitted by
 its operating-system user. MCP is not an operating-system sandbox. Your host may send tool results and captured evidence to its model provider; review its data handling before using real captures.
@@ -43,7 +44,7 @@ Check the discovered schemas for exact argument names. The tool names are `proje
 The optional speed test and JavaScript
 rendering need the installed Playwright Chromium browser, with sandboxing enabled.
 See [browser setup](rendering.md). Five
-runs may need up to 150 seconds; use fewer repeats if the host has a shorter timeout. Tool responses and resources
+runs may need up to 150 seconds; use fewer repeats if the host has a shorter timeout. Tool responses and evidence resources
 have separate size limits. Request fewer rows when a response is too large. Shareable
 exports omit page URLs and captured content, but still require review before sharing.
 

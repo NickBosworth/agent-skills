@@ -1,10 +1,12 @@
 # agentic-skills
 
-A public library of nine self-contained skills for repository guidance, engineering
-planning, documentation, writing and copy, SEO, web/player interfaces, voxel games
-and SVG work.
-Packages contain original guidance, routed resources, synthetic examples and relevant
-helpers. They are guidance rather than an autonomous security or correctness guarantee.
+Nine self-contained Agent Skills for maintaining repositories, planning changes,
+writing documentation and copy, auditing SEO, designing web and game interfaces,
+building voxel games, and creating SVG art and animation.
+
+Each package includes its instructions, supporting resources, synthetic examples
+and any relevant helpers. Skills guide an agent's work; they do not guarantee
+security or correctness.
 
 ## Choose a skill
 
@@ -22,10 +24,13 @@ helpers. They are guidance rather than an autonomous security or correctness gua
 
 ## Install
 
-Select a package and copy its entire folder into your host's documented skill location,
-keeping the folder/name unchanged. Confirm it appears in that host's skill picker.
-A host that can read files but does not discover skills can explicitly read SKILL.md
-and its routed references; that manual route is not native compatibility certification.
+Choose a skill above and copy its entire folder into your agent host's documented
+skill directory. Keep the folder name unchanged and confirm that the skill appears
+in the host's picker.
+
+If your host can read files but cannot discover skills, ask it to read `SKILL.md`
+and the supporting references directly. This manual route does not establish native
+skill support in that host.
 
 From a checkout, an installer that supports local paths can list/select packages:
 
@@ -44,11 +49,11 @@ and report coverage, evidence and remaining live checks.` Your host controls syn
 
 ## Quality and support
 
-Package versions are recorded in the [catalogue](catalog.json). All packages have
-consistent names, licences, UI metadata and behavioural scenarios. Helper checks,
-package checks and declared agent scenarios are distinct. See
-[verification](docs/verification.md) for actual results and limits;
-no cross-model or universal host compatibility is claimed.
+Find package versions in the [catalogue](catalog.json) and completed checks in
+[verification](docs/verification.md). Every package includes a licence, host UI
+metadata and behavioural test scenarios. Package validation and helper tests check
+structure and code; scenario definitions describe agent behaviour to test. They do
+not establish compatibility across models or hosts.
 
 Use [migration](docs/migration.md) when replacing an old installation. For overlapping
 tasks, read [selection and evaluation](docs/evaluations.md). Avoid duplicate old/new
@@ -57,11 +62,14 @@ copies. Source dates are evidence snapshots, not guarantees of current API behav
 ## Executable products
 
 [SEO Workbench](products/seo-workbench/README.md) is a separately versioned local SEO
-analysis application alongside the skills. Its development preview includes a synthetic
-audit/repair demonstration, private evidence, CLI/workbench/MCP and portable reports.
+analysis application. Try its development preview on a fictional site to crawl
+pages, inspect saved evidence, make a fixture repair and compare the results. Use
+it through the command line, local browser interface or MCP, and export reports.
 It has its own optional Node dependencies and MIT software licence; it is not a skill
-package and is not included in skill-only release archives. The full product brief remains
-in progress; see its capability and verification records.
+package and is not included in skill-only release archives. Development is still
+in progress; see its
+[capabilities](products/seo-workbench/docs/capabilities.md) and
+[verification record](products/seo-workbench/docs/verification.md).
 
 ## Maintain and contribute
 

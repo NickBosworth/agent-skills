@@ -4,7 +4,7 @@ description: Create, inspect, edit, repair and animate SVG source for icons, ill
 license: MIT
 compatibility: Instructions are agent-independent. Optional local tools use Python 3.10+; browser frame capture additionally needs Playwright and a browser. No MCP server, paid API or network connection is required after optional dependency setup.
 metadata:
-  version: "2.0.0"
+  version: "2.0.1"
   reviewed: "2026-10-02"
 ---
 

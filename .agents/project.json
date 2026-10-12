@@ -11,7 +11,7 @@
     },
     {
       "cwd": "products/seo-workbench",
-      "evidence": "Strict source/browser checks, three trusted extension examples and clean compiled build passed on 2026-10-12; exact scope and repaired failures are recorded in product verification.",
+      "evidence": "Strict source/browser checks, all three trusted extension examples and clean compiled build passed again on 2026-10-12 after bounded compression and decoded-browser forwarding work; runtime dependency audit reported zero known vulnerabilities. Scope and limitations are recorded in product verification.",
       "id": "workbench-check",
       "run": "npm run check",
       "source": "products/seo-workbench/package.json",
@@ -19,7 +19,7 @@
     },
     {
       "cwd": "products/seo-workbench",
-      "evidence": "Trusted extension checkpoint on 2026-10-12: final 327 macOS arm64 tests passed with browser/clean-package opt-ins and no skips/failures. 38 focused extension/provider/allowance and 20 repair/browser/error checks passed. Prerequisites, output bounds, private persistence, atomic resume manifests and stable session-expiry guidance verified. Live models, arbitrary-code containment, other platforms and broader release work remain unverified/open. See product verification. A later 23-case extractor/worker/recovery checkpoint passed after canonical metadata fingerprinting; strict checking/build passed again.",
+      "evidence": "Compressed collection checkpoint on 2026-10-12: final 333 macOS arm64 product tests passed with browser/clean-package opt-ins and zero skips/failures, about 232 seconds. Eight focused compression/public-error checks passed after maintained-label repair. Exact source/test/package fingerprint unchanged; private-only 60-page HTTP check reached its explicit page allowance with 60 successful compressed pages. Wider protocol/trap/retry, platform/host and independent acceptance remain open; see product verification.",
       "id": "workbench-tests",
       "run": "npm test",
       "source": "products/seo-workbench/package.json",

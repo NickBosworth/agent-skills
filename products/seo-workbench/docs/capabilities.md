@@ -1,8 +1,9 @@
 # Capability matrix — 0.1.0 development preview
 
-Implemented means executable locally; verified scope belongs in verification.md.
-The full requested product remains in progress. No unsupported item receives a green
-SEO result. Optional integrations require supported access and explicit user configuration.
+“Implemented” means the capability can run locally. The
+[verification record](verification.md) states what has actually been tested.
+Development remains in progress, and unsupported checks never receive a passing
+SEO result. Optional integrations need supported access and explicit configuration.
 
 | Capability                                                                                    | Status and limit                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | --------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

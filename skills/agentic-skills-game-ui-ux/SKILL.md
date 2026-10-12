@@ -3,7 +3,7 @@ name: agentic-skills-game-ui-ux
 license: CC0-1.0
 description: Design, implement, audit, repair, and evolve game menus, HUDs, inventories, maps, settings, onboarding, and other player interfaces. Use for game UX/UI, interaction flows, information hierarchy, visual direction, accessible controls, and interface polish across action, strategy, simulation, RPG, narrative, puzzle, sports, rhythm, social, casual, and hybrid games on desktop, console, handheld, mobile, and XR. Derive decisions from the actual game, its players, mechanics, art direction, and platform; deliver working, verified increments when implementation is requested. Exclude ordinary websites, unrelated applications, and general gameplay programming without a player-interface task.
 metadata:
-  version: "2.0.0"
+  version: "2.0.1"
 ---
 
 # Game UI and UX

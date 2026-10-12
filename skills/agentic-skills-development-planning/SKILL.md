@@ -3,7 +3,7 @@ name: agentic-skills-development-planning
 license: CC0-1.0
 description: Guide an engineer from a brain dump, ticket, acceptance criteria, or files to a repository-grounded implementation plan. Inspect existing code and its rationale; challenge direct and indirect conflicts with business rules and acceptance criteria; ask one plain-language question at a time with two or three viable options and one evidence-backed recommendation. Resolve compatibility, database migrations, test sequencing, and documentation scope before declaring readiness. Implement only after explicit approval, then verify and provide an accurate copyable git commit message. Use for features, fixes, refactors, integrations, migrations, and other codebase changes that need guided planning.
 metadata:
-  version: "2.0.0"
+  version: "2.0.1"
   display-name: "Development Planning"
 ---
 

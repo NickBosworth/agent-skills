@@ -1,5 +1,10 @@
 # Changes
 
+## 1.0.1 — 2026-10-12
+
+Clarified installation, scope and verification wording in public documentation.
+Skill workflows, invocation names and helper behaviour are unchanged.
+
 ## 1.0.0 — 2026-10-12
 
 Initial self-contained package for writing, revising and critiquing natural,

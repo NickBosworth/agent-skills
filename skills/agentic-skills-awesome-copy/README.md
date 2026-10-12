@@ -1,10 +1,10 @@
 # agentic-skills · Awesome Copy
 
-Version **1.0.0** · Licence **CC0-1.0**
+Version **1.0.1** · Licence **CC0-1.0**
 
-Write titles and copy with a clear idea, supported detail and a voice that fits
-the reader. Edit generic AI habits at the level of meaning, structure and rhythm,
-while preserving strong original language and factual qualifications.
+Write titles and copy with a clear idea, accurate detail and a voice that fits
+the reader. Improve generic wording by editing meaning, structure and rhythm.
+Keep strong original language and the qualifications that make a claim accurate.
 
 ## Installation and use
 

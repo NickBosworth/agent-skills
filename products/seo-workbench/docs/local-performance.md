@@ -1,8 +1,8 @@
 # Measure page speed locally
 
 The optional local runner uses Lighthouse 13.5.0, Puppeteer Core 25.13.0 and the
-locally installed Playwright Chromium, with its sandbox enabled. The ordinary audit does not need
-these packages, a model or an account. No measurement is sent to Google or another
+locally installed Playwright Chromium, with its sandbox enabled. Ordinary audits do not need
+these measurement packages, a model or an account. No measurement is sent to Google or another
 measurement provider. The host contacts the selected website to fetch the page and
 permitted resources.
 
@@ -47,8 +47,8 @@ summarises blocking work during this navigation test. Interaction to Next Paint
 No aggregate SEO score or ranking prediction is produced.
 
 Local runs share this computer's processing and memory, so other work affects results.
-Lighthouse uses provided throttling;
-the host broker buffers responses and respects request pacing. An initial page
+Lighthouse uses provided throttling. The host broker buffers responses and
+respects request pacing. An initial page
 request warms the server before the repeat series. Mobile emulation changes the
 browser profile; it does not reproduce a particular phone, mobile network or visitor.
 These conditions affect timing. Compare runs only when the browser mode/version, profile, project

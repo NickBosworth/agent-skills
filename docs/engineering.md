@@ -2,9 +2,9 @@
 
 ## Purpose and boundaries
 
-A public, branded library of nine reusable Agent Skills. Packages should be
-independently installable, evidence-conscious and straightforward to maintain.
-No telemetry, paid service, automatic deployment or mandatory runtime server.
+This library distributes nine reusable Agent Skills. Each package must work on
+its own, state the evidence behind its claims and remain straightforward to maintain.
+The library requires no telemetry, paid service, automatic deployment or runtime server.
 Repository policy applies to maintainers; packaged skills adapt to their consumers'
 actual instructions and permissions rather than importing this repository's policy.
 
@@ -52,7 +52,8 @@ Record only actual executions. A scenario catalogue is not a model benchmark.
 
 The library has no application deployment. SEO Workbench is a separate local-only
 product preview, with its own architecture, security limits, dependency lock and checks.
-Its implementation task is tracked in TASK-0002; read its scoped guidance for product work. Public push, release publication and
-history rewrites remain explicit operations. Update affected adapters, examples,
+Its implementation is tracked in [TASK-0002](tasks/TASK-0002-seo-workbench.md);
+read its scoped guidance before product work. Public pushes, release publication
+and history rewrites require explicit authorization. Update affected adapters, examples,
 tests, manifests, catalogue and migration notes together. See verification.md for
 the current evidence and limitations.

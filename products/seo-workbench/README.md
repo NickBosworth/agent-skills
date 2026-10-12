@@ -8,7 +8,7 @@ Run the browser UI on a trusted computer. Its local session checks protect brows
 requests but do not identify operating-system users; it is unsuitable for shared
 computers with untrusted local users. See [security](docs/security.md).
 
-## First successful audit
+## Run your first audit
 
 Use Node 24.15+ in the 24.x line. From this directory in the source checkout:
 
@@ -19,8 +19,8 @@ node dist/cli.js doctor
 node dist/cli.js demo --serve
 ```
 
-Open `http://127.0.0.1:4173`. The demo crawls an original local site, stores real
-page responses and findings, corrects the site and runs a second audit. Choose an
+Open `http://127.0.0.1:4173`. The demo crawls a fictional local site, saves its
+page responses and findings, repairs the fixture and runs a second audit. Choose an
 audit, open Actions or Pages, and use Compare to check what changed. The fictional
 site stays running while the demo workbench is running. Closing the server ends that site;
 its historical observations remain inspectable. Re-run the demo for fresh evidence.
@@ -59,7 +59,7 @@ repository. Choose another location with `--data /path/to/private-state`. Keep r
 page captures, databases and reports out of this repository. Captured data is not
 automatically anonymised.
 
-## Intent, scope and configurations
+## Set the scope and audit limits
 
 See [examples](examples/) for ecommerce, content and JavaScript configurations.
 New audits start with the maximum allowances: 100,000 pages, 24 hours, 1 GB of
@@ -71,14 +71,16 @@ accounted per audit, so older histories do not consume another audit’s allowan
 
 Use `--config /path/to/project.json` instead of a seed URL. Strict schemas reject
 unknown fields and imported network-policy changes. Saved configurations live with
-the private project, not in source. Focus a section with `include: ["/guides/"]`,
-or diagnose a single page using `maxPages: 1`; undiscovered/unfinished relationships
-will remain explicit. Initial intent comes from approved contracts, not inference.
+the private project, not in source. Focus on a section with `include: ["/guides/"]`,
+or check a single page with `maxPages: 1`. Results identify relationships that were
+not discovered or fully checked. Page expectations come from approved contracts
+rather than guesses about intent.
 
-`none` collects HTTP only. `auto` samples the first observed page per declared
-template/first path segment, plus empty/title/noindex anomalies; it is reproducible
-route sampling, not statistical coverage. `all` requests a render of each fetched
-HTML document within budgets. Browser results are observations, not search-engine
+`none` collects HTTP responses only. `auto` renders the first observed page for
+each declared template or first path segment, plus pages with empty content, title
+issues or noindex anomalies. This repeatable route sample does not establish
+statistical coverage. `all` requests a render of every fetched HTML document
+within the audit limits. Browser results are observations, not search-engine
 emulation. Rendering uses local Chromium with its sandbox enabled and a fresh
 session. No container software or image configuration is used; see
 [security](docs/security.md) and [rendering](docs/rendering.md).
@@ -147,9 +149,10 @@ node dist/cli.js mcp --data /path/to/private-state
 ```
 
 See [local MCP setup and host checks](docs/mcp-setup.md).
-Configure your host to launch that command over stdio. Tool surface: projects,
+Configure your host to launch that command over stdio. Available tools: projects,
 start_audit, audit_status, control_audit, audit_results, page_evidence, compare_audits,
-export_report and verify_audit; immutable evidence resources are also available.
+export_report, verify_audit and measure_performance. Immutable page-evidence
+resources are also available.
 Poll durable audit handles; no long-running-task extension is required. Stdout is
 protocol-only. The official SDK v2 client is exercised in tests; individual external
 hosts are not certified. The server does not grant private network permission.
@@ -172,11 +175,15 @@ store.close();
 For embedding use local `dist/index.js` or an independently built private package;
 this preview is not published to npm. Rule and extractor extension functions are trusted application
 code, never imported JSON. See [trusted extensions](docs/extensions.md) for
-working examples, fact limits and explicit in-process collection. Optional enrichment has an evidence-bound provider interface
-with mocked contract tests; an optional local Ollama adapter is supplied but no model/provider is installed or configured automatically. See
+working examples, fact limits and explicit in-process collection.
+
+Optional enrichment accepts advice tied to saved evidence. Its provider interface
+has mocked contract tests, and a local Ollama adapter is supplied. No model or
+provider is installed or configured automatically. See
 [capabilities](docs/capabilities.md), [integrations](docs/integrations.md), [architecture](docs/architecture.md),
 [rules and sources](docs/rules.md), [contributing](CONTRIBUTING.md),
-[verification](docs/verification.md), [copy audit and MCP readiness](docs/copy-audit.md). Repository task TASK-0002 retains the full acceptance backlog.
+[verification](docs/verification.md), [copy audit and MCP readiness](docs/copy-audit.md).
+In the source checkout, repository task TASK-0002 tracks the full acceptance backlog.
 
 ## Content and publisher review
 
@@ -193,7 +200,7 @@ sharing the machine. Full evidence and provider samples remain outside the check
 ## Reviewed standalone archive
 
 A locally prepared review ZIP contains compiled code, runtime source, synthetic examples,
-docs, image definition and the exact canonical package-lock.json. After extracting it
+documentation and the exact canonical package-lock.json. After extracting it
 outside source, enter its seo-workbench directory, run `npm ci --omit=dev --ignore-scripts`,
 then `node dist/cli.js doctor` and `node dist/cli.js demo --serve`. Full contributor/skill
 consistency tests use the complete repository. The npm scope remains an internal name;
@@ -221,6 +228,6 @@ Use [saved recheck plans](docs/verification-workflow.md) to verify fresh evidenc
 dependencies after a fix. Ordinary comparisons describe saved analyses separately.
 
 Optional [local page-speed measurements](docs/local-performance.md) run repeated
-Lighthouse tests inside the selected networkless browser image. The workbench, CLI
+Lighthouse tests using local sandboxed Chromium. The workbench, CLI
 and MCP share the same collection and saved-record contract. Lab measurements stay
 separate from real-visitor data and do not predict ranking changes.

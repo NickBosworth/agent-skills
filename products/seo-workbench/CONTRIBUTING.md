@@ -1,9 +1,11 @@
 # Contributing to SEO Workbench
 
-Root public-data policy applies. Runtime source is MIT; do not relicense skills or
-copy third-party rules/assets. Start with scoped AGENTS.md, architecture, security,
-source/rule registers and the existing TASK-0002 record. Use synthetic fixtures only. The development suite needs Git for real tracked-file
-source-reference tests; core audits do not require it.
+Follow the root public repository policy in the source checkout. Runtime source is
+MIT; do not relicense skills or copy third-party rules or assets. Start with [AGENTS.md](AGENTS.md), [architecture](docs/architecture.md),
+[security](docs/security.md), the source and rule registers, and repository task
+TASK-0002 in the source checkout. Use synthetic fixtures only.
+The development suite needs Git to test references to tracked source files; core
+audits do not require it.
 
 ```sh
 npm ci --ignore-scripts
@@ -15,9 +17,9 @@ WORKBENCH_BROWSER_TESTS=1 npm test
 node tests/benchmark.ts 1000 10000
 ```
 
-Native browser checks are optional dependencies with explicit opt-in; absent runs
-are skipped/unverified, not passed. Re-run affected boundary/rule tests for changed
-behaviour. Review benchmark completeness and denominators, not test counts alone.
+Browser checks require optional dependencies and explicit opt-in. Checks that
+have not run remain skipped or unverified; do not record them as passed. Re-run
+affected boundary and rule tests for changed behaviour. Review benchmark completeness and denominators, not test counts alone.
 Check source links/version claims against actual current official documentation.
 
 Use a migration for persisted schema changes and refuse newer unsupported schemas.

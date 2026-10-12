@@ -3,7 +3,7 @@ name: agentic-skills-professional-code-comments
 license: CC0-1.0
 description: Generate, audit, repair and maintain accurate source comments and API documentation in plain language. Use for requested comment or documentation work, stale or misleading explanations, and changed code whose non-obvious contracts or decisions need documentation. Match the actual language and toolchain, preserve executable directives, and distinguish observed behavior from recorded intent. Do not activate solely to annotate routine self-explanatory code.
 metadata:
-  version: "2.0.0"
+  version: "2.0.1"
 ---
 
 # Professional Code Comments

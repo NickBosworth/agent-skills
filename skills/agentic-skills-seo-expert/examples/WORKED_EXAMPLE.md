@@ -37,7 +37,7 @@ python scripts/audit_snapshots.py tests/fixtures/manifest.json
 python scripts/lint_sitemaps.py tests/fixtures/sitemap.xml --site https://shop.example --as-of 2026-10-10
 python scripts/analyse_search_export.py tests/fixtures/search.csv
 ```
-These commands operate only on local synthetic inputs. To save JSON, add `--output` with a new explicit filename outside sensitive/public mixing; existing files are not overwritten. Exact results depend on fixture version and are validated by the tests, not hand-edited to look clean.
+These commands operate only on local synthetic inputs. To save JSON, add `--output` with a new filename in a private evidence folder outside the repository. Existing files are not overwritten. Exact results depend on fixture version and are validated by the tests, not hand-edited to look clean.
 
 ## Included reproducible outputs
 The [snapshot audit](results/snapshot-audit.json), [sitemap lint](results/sitemap-lint.json) and [search analysis](results/search-analysis.json) were produced by the bundled utilities from the synthetic fixtures during release validation. They are not live-site results.

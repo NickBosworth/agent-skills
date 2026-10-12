@@ -21,7 +21,8 @@ node dist/cli.js status NEW_AUDIT --data /path/to/private-state
 node dist/cli.js evaluate-verification PLAN_ID NEW_AUDIT --data /path/to/private-state
 ```
 
-Operator permissions such as exact development origins and browser resource origins must be supplied to the process that starts the run. A saved plan cannot
+Supply operator permissions, including exact development origins and browser
+resource origins, to the process that starts the run. A saved plan cannot
 add private-network permission or choose executable code. The programmatic API uses
 `Workbench.planVerification`, `startVerification` and `evaluateVerification`.
 MCP keeps the existing `verify_audit` tool: its default action remains a full crawl;

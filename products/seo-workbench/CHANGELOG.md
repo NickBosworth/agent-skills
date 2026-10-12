@@ -345,3 +345,10 @@ Full stable-release acceptance and publication remain on hold.
 - Read gzip, deflate and Brotli HTTP responses with bounded, cancellable expansion; preserve compressed and decoded page evidence while counting downloaded wire bytes.
 - Discover pages from gzip sitemap indexes and files, including an additional HTTP compression layer. Damaged or oversized files leave explicit partial coverage.
 - Supply decoded HTML and resources to sandboxed Chromium, and omit encoded captures from bounded MCP output and analysis projections. No dependency or database migration is added.
+
+### Retry waits and interrupted collection
+
+- Keep earlier server-error responses as attempted evidence when a later request fails; do not reuse them as the final response.
+- Honour server retry and redirect waits, stop when the remaining allowance is insufficient, and retain redacted failed-request diagnostics.
+- Cancel waits promptly and retain their deadlines across worker restart. Paused pages remain recoverable through the existing queue mechanism.
+- Add actual document-base, escaped-address, query-order, calendar/filter limit, redirect and retry regressions. Access denial and rate limiting continue to stop collection.

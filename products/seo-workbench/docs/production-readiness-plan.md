@@ -1,8 +1,9 @@
-# Production readiness execution
+# Work remaining before a stable release
 
 The user approved execution of this plan. Source publication, public CI, packages and
-images remain on hold. Live account testing remains user-owned. TASK-0002 is the
-single task authority; this document records acceptance work, not a second backlog.
+images remain on hold. The user will perform live account tests separately.
+Repository task TASK-0002 owns the implementation backlog. This document records
+the acceptance work needed to close it.
 
 Statuses mean pending, in progress, locally verified or externally verified. A passing
 contract test cannot close a live, independent, native-platform or full-feature gate.

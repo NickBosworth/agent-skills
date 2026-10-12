@@ -516,3 +516,25 @@ notices; all 20 repair checks passed. The final native macOS arm64 suite passed 
 327 tests with browser/clean-package opt-ins, no skips or failures, in about 230
 seconds. Strict checks/build and root suites passed. Full release, other platforms,
 independent assessment and live supplier/model acceptance remain open.
+
+### Compressed collection responses and sitemap files
+
+Implemented bounded, cancellable HTTP gzip/deflate/Brotli decoding with original
+compressed evidence and wire accounting. Native browser forwarding uses decoded
+bytes without encoding headers. Gzip sitemap indexes/files, including a second file
+layer after HTTP decoding, discover pages; damaged/oversized files leave explicit
+partial coverage. Both body representations are omitted from analysis projections
+and bounded MCP output. Existing schema and old captures remain unchanged.
+
+The repaired focused compression/public-error checkpoint passed eight tests; the
+final native macOS arm64 suite passed all 333 with browser/clean-package opt-ins,
+no skips/failures, in about 232 seconds. Strict checks/build, the current nine-package
+root suite with 234 regressions, privacy/credential scans and runtime dependency
+audit passed within their recorded scopes. A fresh private-only HTTP test recorded
+60 successful compressed pages and stopped at its deliberate page allowance; its
+address and captures are absent from source. Updated current/historical verification
+wording and refreshed the idle local preview without deleting private history.
+
+R08 remains in progress for the wider URL, encoding, traps and retry corpus. Other
+platforms, interactive hosts, independent acceptance and full release remain open.
+No source publication or new dependency was performed by this phase.
