@@ -3,11 +3,11 @@
   "commands": [
     {
       "cwd": ".",
-      "evidence": "Executed library checks, all nine official skills-ref validators and 234 isolated regression tests on macOS/Python 3.12.11 on 2026-10-12. Candidate/staged/history privacy and redacted Gitleaks passed within the scopes recorded in docs/verification.md; Awesome Copy writing scenarios remain unexecuted.",
+      "evidence": "Executed library checks, all nine official skills-ref validators and 234 isolated regression tests on macOS/Python 3.12.11 on 2026-10-12. Candidate/staged/history privacy and redacted Gitleaks passed within the scopes recorded in docs/verification.md; Awesome Copy writing scenarios remain unexecuted. Re-executed the current nine-package library suite after catalogue reconciliation during compressed-response work: all structural validators and 234 isolated regressions passed.",
       "id": "library-checks",
       "run": "python tools/run_checks.py",
       "source": "tools/run_checks.py",
-      "status": "unverified"
+      "status": "verified"
     },
     {
       "cwd": "products/seo-workbench",
@@ -68,12 +68,12 @@
     "products/seo-workbench/AGENTS.md": {
       "document_sha256": "cc7e4794f2badb213d8c4bfcb67e24fab41efb2274a695fd00172b0cd73d0be3",
       "evidence": {
-        "products/seo-workbench/docs/architecture.md": "99726f66a1f25ec0dc4834f4f3aeb17b0bf67fc6ff540da9a64108794c4cf66c",
+        "products/seo-workbench/docs/architecture.md": "9bc069860fda082212ded0933f52c913f49f47863348a41c0c3778c4a143fec5",
         "products/seo-workbench/docs/copy-audit.md": "681bccf61ed3000fda024b906130491f8f1a0a11e1ea7757eda45ee516cdfa11",
-        "products/seo-workbench/docs/security.md": "b9f76156df723ee183376d6facc0d29e2d701d84faa9a40c94da5ba996b145f9",
+        "products/seo-workbench/docs/security.md": "42592f97c3676ec255970d0ad87f380faf7bcf2258ae34361099629c49cb97d2",
         "products/seo-workbench/package.json": "ec555f70dee212cda0d69516f08ac19656ce8e627779f1ce25b3f61a977d25ca"
       },
-      "note": "Reviewed trusted in-process extractor/provider interfaces, versioned capture facts, resume manifests and private/shareable boundaries against public policy. Only original synthetic callback examples are in source; runtime data/manifests stay external. Contract tests do not establish arbitrary-code containment or live/external release acceptance; publication stays on hold.",
+      "note": "Reviewed trusted in-process extractor/provider interfaces, versioned capture facts, resume manifests and private/shareable boundaries against public policy. Only original synthetic callback examples are in source; runtime data/manifests stay external. Contract tests do not establish arbitrary-code containment or live/external release acceptance; publication stays on hold. Reviewed bounded compressed response/sitemap decoding, preserved wire evidence, browser decoded-body forwarding and omission of both body representations from bounded tools/projections; no new dependency or schema migration.",
       "reviewed_on": "2026-10-12"
     }
   },

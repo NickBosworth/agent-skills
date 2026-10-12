@@ -49,6 +49,11 @@ on pages, requests, time and downloads keep the crawl bounded. Review the settin
 and confirm that you have permission before auditing a real site. The same limits
 apply whether you use the browser, commands or an agent connection.
 
+The crawler reads gzip, deflate and Brotli responses, as well as gzip sitemap files.
+Size limits apply to both downloaded and expanded data. Damaged compression or an
+oversized sitemap leaves an explicit gap in coverage instead of being treated as
+a successful empty response.
+
 Audit data is saved in your user account’s local data folder, outside the source
 repository. Choose another location with `--data /path/to/private-state`. Keep real
 page captures, databases and reports out of this repository. Captured data is not

@@ -339,3 +339,9 @@ Full stable-release acceptance and publication remain on hold.
 - Validate provider identities and literal consent before callbacks, retain probed provenance consistently and compile a deterministic local abstention example. No automatic plugin loader, dependency or service is added.
 
 - Keep expired-session guidance stable during background status polling and ignore obsolete-view notices, so a stale request cannot replace the current recovery message.
+
+### Compressed crawl responses and sitemap files
+
+- Read gzip, deflate and Brotli HTTP responses with bounded, cancellable expansion; preserve compressed and decoded page evidence while counting downloaded wire bytes.
+- Discover pages from gzip sitemap indexes and files, including an additional HTTP compression layer. Damaged or oversized files leave explicit partial coverage.
+- Supply decoded HTML and resources to sandboxed Chromium, and omit encoded captures from bounded MCP output and analysis projections. No dependency or database migration is added.

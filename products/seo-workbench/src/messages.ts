@@ -368,6 +368,8 @@ const messages: Record<string, string> = {
     "The compressed response is incomplete or damaged. Its content could not be read reliably; retry the request or check the server.",
   "response-budget":
     "The downloaded or expanded response exceeded the configured size allowance. Its content was not saved as a complete response; review the allowance before retrying.",
+  "request-timeout":
+    "The response did not finish downloading and decoding within the request timeout. Its content was not saved as complete; retry or review the configured timeout.",
   "robots-redirect-limit":
     "The robots instructions redirected too many times. Review the redirect chain before treating access permissions as known.",
   "robots-redirect-loop":

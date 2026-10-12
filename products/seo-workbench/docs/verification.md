@@ -11,7 +11,11 @@ executions, not universal SEO correctness, full browser isolation certification 
 cross-platform release readiness. The complete capability/traceability backlog remains
 open. Final combined regression runs are recorded after execution, not before.
 
-## Current acceptance checkpoint
+## Historical preview checkpoint
+
+This table predates the switch to native-only execution and the later checkpoints
+below. Its container results and earlier test counts do not describe the current
+release candidate.
 
 | Check                                         | Latest observed result                                                                                                     |
 | --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |

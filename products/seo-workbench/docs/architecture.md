@@ -61,6 +61,15 @@ response bodies, extract facts and optional DOM/profile/runtime are retained. Fe
 remove fragments and use WHATWG URL parsing; they preserve path case, trailing slash,
 query ordering and repeated parameters. Canonical relationships never merge fetch identity.
 No cookies/authorization values are retained in request reproducibility metadata.
+For compressed HTTP captures, `bytes` records downloaded wire bytes, `bodyBase64`
+holds decoded representation bytes and `encodedBodyBase64` preserves the original
+compressed representation. `decodedBytes` records its expanded size. Old identity
+captures remain readable without rewriting. Browser fulfilment removes the encoding
+header from decoded data; analysis projections and bounded MCP tools omit both body
+representations. Private evidence resources retain them within their existing limits.
+Each compression layer is bounded and cancellable. Gzip sitemap files may add a file
+compression layer after HTTP decoding; their parsed XML hash is recorded only after
+successful expansion and parsing. There is no database schema migration.
 
 ## Extension boundary
 

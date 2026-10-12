@@ -54,3 +54,12 @@ All implementation acceptance is met. Final documentation commits receive their 
 CI checks. Main branch protection is configured and read back: all three observed successful
 checks are required, including for administrators; force pushes/deletion are disabled.
 GitHub caches/forks and unexecuted host/model behaviour retain the documented limits.
+
+## Later workflow change — 2026-10-12
+
+At the user's explicit request, the required-status-check protection for main was
+removed through GitHub's dedicated endpoint and read back successfully. Direct
+fast-forward pushes no longer require the credential and package CI jobs to have
+run first. CI still runs on pushes and pull requests. The local publication hooks
+remain enabled; force pushes and branch deletion remain disabled. The hardening
+checks and publication evidence above describe the original 2026-10-10 checkpoint.

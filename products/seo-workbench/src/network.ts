@@ -305,7 +305,7 @@ export class Transport {
                 if (res.headers[key] !== undefined)
                   headers[key] = String(res.headers[key]);
               }
-              resolve({
+              const evidence: ResponseEvidence = {
                 url: url.href,
                 status: res.statusCode ?? 0,
                 headers,
@@ -334,7 +334,13 @@ export class Transport {
                       decodedBytes: decoded.length,
                     }
                   : {}),
-              });
+              };
+              if (activeSignal?.aborted) throw new Error("cancelled");
+              if (Date.now() >= expires)
+                throw new Error(
+                  expires === auditDeadline ? "time-budget" : "request-timeout",
+                );
+              resolve(evidence);
             } catch (error) {
               reject(error);
             }

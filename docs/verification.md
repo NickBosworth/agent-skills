@@ -92,3 +92,24 @@ No host/model writing trials, native discovery, rendered copy-fit checks or
 reader experiments were run for the new package. No global installation,
 commit, push or release publication was performed. Existing SEO Workbench changes
 were outside this task's scope; its runtime checks were not rerun here.
+
+## Direct main pushes — 2026-10-12
+
+The user explicitly authorized removing the requirement to run CI before a direct
+main push. GitHub's dedicated status-check-protection removal succeeded. A fresh
+read of main's protection confirmed no required status checks and no associated
+up-to-date requirement. Other protection settings matched the inspected prior
+state, including disabled force pushes and branch deletion. No pull request,
+signature, branch lock or push restriction is required by that configuration.
+
+CI workflows and local publication hooks remain enabled. CONTRIBUTING.md now
+describes direct fast-forward pushes with local privacy checks. This supersedes
+the historical required-check workflow recorded above and in TASK-0001; it does
+not retroactively alter that checkpoint's evidence. No commit or push was performed
+as part of this settings change, so a successful direct push has not been observed.
+
+After the change, all nine official package validators and 234 existing regression
+tests passed. The local pre-push hook passed candidate/history privacy and redacted
+Gitleaks checks. Staged privacy passed against the unchanged index; documentation
+edits were checked as candidates. Whitespace checks passed. No product runtime
+checks were rerun for this workflow-only change.
