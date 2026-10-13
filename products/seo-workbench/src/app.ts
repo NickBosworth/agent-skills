@@ -156,6 +156,7 @@ export class Workbench {
       search?: string;
       sort?: string;
       outcome?: string;
+      groupId?: string;
       ruleId?: string;
       url?: string;
       importId?: string;
@@ -183,9 +184,10 @@ export class Workbench {
           search: options.search,
           sort: options.sort,
         });
+      case "group-members":
       case "groups": {
         const analysisId = this.store.latestAnalysis(id);
-        return groups(
+        const collected = groups(
           analysisId ? this.store.allResults(id, analysisId) : [],
           audit.config,
           this.store
@@ -195,7 +197,28 @@ export class Workbench {
           this.store
             .imports(audit.projectId, "source-mapping")
             .filter((r: any) => r.auditId === id),
-        ).slice(offset, offset + limit);
+        );
+        if (view === "group-members") {
+          const group = collected.find((item) => item.id === options.groupId);
+          if (!group) throw new Error("action-group-not-found");
+          const affected: string[] = [];
+          let bytes = 0;
+          for (const url of group.affected.slice(offset, offset + limit)) {
+            const size = Buffer.byteLength(JSON.stringify(url)) + 1;
+            if (bytes + size > 70000) break;
+            bytes += size;
+            affected.push(url);
+          }
+          const end = offset + affected.length;
+          return {
+            groupId: group.id,
+            total: group.affected.length,
+            offset,
+            affected,
+            nextOffset: end < group.affected.length ? end : null,
+          };
+        }
+        return collected.slice(offset, offset + limit);
       }
       case "pages":
         return this.store.pages(

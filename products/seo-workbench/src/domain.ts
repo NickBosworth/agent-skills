@@ -5,7 +5,7 @@ import { createHash } from "node:crypto";
 
 export const VERSION = "0.1.0";
 export const DATABASE_SCHEMA_VERSION = 5;
-export const RULESET = "0.1.8";
+export const RULESET = "0.1.9";
 export const AGENT = "SEO-Workbench/0.1";
 const url = z
   .string()

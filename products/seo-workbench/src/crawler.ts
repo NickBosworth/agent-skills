@@ -128,85 +128,107 @@ export class Crawler {
         reason,
       );
     };
-    const allowed = async (value: string): Promise<boolean> => {
+    const resourceOrigins = new Set([
+      ...config.origins,
+      ...config.renderResources.map((url) => new URL(url).origin),
+    ]);
+    const robotsPending = new Map<string, Promise<void>>();
+    const allowed = async (
+      value: string,
+      signal?: AbortSignal,
+    ): Promise<boolean> => {
       const origin = new URL(value).origin;
-      if (!robots.has(origin)) {
-        try {
-          let response = await transport.request(origin + "/robots.txt");
-          const attempts = [response],
-            seen = new Set([response.url]);
-          for (
-            let hop = 0;
-            response.status >= 300 && response.status < 400;
-            hop++
-          ) {
-            if (hop >= 5 || !response.headers.location)
-              throw new Error("robots-redirect-limit");
-            const target = fetchKey(response.headers.location, response.url);
-            if (
-              !config.origins.includes(new URL(target).origin) ||
-              scopeReason(
-                {
-                  ...config,
-                  recheckUrls: undefined,
-                  include: ["/"],
-                  exclude: [],
-                },
-                target,
+      if (!resourceOrigins.has(origin)) return false;
+      if (!robots.has(origin) && !robotsPending.has(origin)) {
+        robotsPending.set(
+          origin,
+          (async () => {
+            try {
+              let response = await transport.request(
+                origin + "/robots.txt",
+                signal,
+              );
+              const attempts = [response],
+                seen = new Set([response.url]);
+              for (
+                let hop = 0;
+                response.status >= 300 && response.status < 400;
+                hop++
+              ) {
+                if (hop >= 5 || !response.headers.location)
+                  throw new Error("robots-redirect-limit");
+                const target = fetchKey(
+                  response.headers.location,
+                  response.url,
+                );
+                if (
+                  !resourceOrigins.has(new URL(target).origin) ||
+                  scopeReason(
+                    {
+                      ...config,
+                      recheckUrls: undefined,
+                      origins: [...resourceOrigins],
+                      include: ["/"],
+                      exclude: [],
+                    },
+                    target,
+                  )
+                )
+                  throw new Error("robots-redirect-scope-blocked");
+                if (seen.has(target)) throw new Error("robots-redirect-loop");
+                seen.add(target);
+                response = await transport.request(target, signal);
+                attempts.push(response);
+              }
+              const allowed =
+                response.status >= 400 &&
+                response.status < 500 &&
+                ![401, 403, 429].includes(response.status);
+              const parsed =
+                response.status >= 200 && response.status < 300
+                  ? parseRobots(origin + "/robots.txt", response.body)
+                  : undefined;
+              robots.set(origin, {
+                allowed,
+                parser: parsed,
+                hash: hash(response.body),
+              });
+              const crawlDelay = parsed?.getCrawlDelay("SEO-Workbench");
+              if (
+                crawlDelay !== undefined &&
+                Number.isFinite(crawlDelay) &&
+                crawlDelay > 0
               )
-            )
-              throw new Error("robots-redirect-scope-blocked");
-            if (seen.has(target)) throw new Error("robots-redirect-loop");
-            seen.add(target);
-            response = await transport.request(target);
-            attempts.push(response);
-          }
-          const allowed =
-            response.status >= 400 &&
-            response.status < 500 &&
-            ![401, 403, 429].includes(response.status);
-          const parsed =
-            response.status >= 200 && response.status < 300
-              ? parseRobots(origin + "/robots.txt", response.body)
-              : undefined;
-          robots.set(origin, {
-            allowed,
-            parser: parsed,
-            hash: hash(response.body),
-          });
-          const crawlDelay = parsed?.getCrawlDelay("SEO-Workbench");
-          if (
-            crawlDelay !== undefined &&
-            Number.isFinite(crawlDelay) &&
-            crawlDelay > 0
-          )
-            transport.originDelays.set(origin, crawlDelay * 1000);
-          this.store.event(id, "robots-observation", {
-            origin,
-            url: response.url,
-            status: response.status,
-            redirects: attempts.slice(0, -1).map((a) => ({
-              url: a.url,
-              status: a.status,
-              location: a.headers.location,
-            })),
-            crawlDelaySeconds: crawlDelay ?? null,
-            hash: hash(response.body),
-            policy: parsed
-              ? "parsed"
-              : allowed
-                ? "unavailable-allow"
-                : "unreachable-block",
-            timestamp: response.requestedAt,
-          });
-        } catch (error) {
-          robots.set(origin, { allowed: false });
-          this.store.event(id, "robots-unavailable", {
-            origin,
-            reason: errorCode(error),
-          });
-        }
+                transport.originDelays.set(origin, crawlDelay * 1000);
+              this.store.event(id, "robots-observation", {
+                origin,
+                url: response.url,
+                status: response.status,
+                redirects: attempts.slice(0, -1).map((a) => ({
+                  url: a.url,
+                  status: a.status,
+                  location: a.headers.location,
+                })),
+                crawlDelaySeconds: crawlDelay ?? null,
+                hash: hash(response.body),
+                policy: parsed
+                  ? "parsed"
+                  : allowed
+                    ? "unavailable-allow"
+                    : "unreachable-block",
+                timestamp: response.requestedAt,
+              });
+            } catch (error) {
+              robots.set(origin, { allowed: false });
+              this.store.event(id, "robots-unavailable", {
+                origin,
+                reason: errorCode(error),
+              });
+            }
+          })(),
+        );
       }
+      await robotsPending.get(origin);
       const policy = robots.get(origin)!;
       return policy.parser
         ? policy.parser.isAllowed(value, "SEO-Workbench") !== false
@@ -615,6 +637,8 @@ export class Crawler {
             fetched.response!,
             config,
             transport,
+            undefined,
+            allowed,
           );
           sampledTemplates.add(template);
         }

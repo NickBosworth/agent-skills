@@ -14,6 +14,7 @@ import {
 } from "./domain.ts";
 import { LabResultSchema, type LabResult } from "./lab-contract.ts";
 import { Transport } from "./network.ts";
+import { resourceRobotsPolicy } from "./robots.ts";
 const Message = z.discriminatedUnion("kind", [
   z.strictObject({
     kind: z.literal("request"),
@@ -33,6 +34,8 @@ export async function renderBrowser(
     device: "desktop" | "mobile";
     allowRequest?: (url: string, signal?: AbortSignal) => Promise<boolean>;
   },
+  allowRequest = measurement?.allowRequest ??
+    resourceRobotsPolicy(config, transport),
 ): Promise<
   (NonNullable<Observation["render"]> & { measurement?: LabResult }) | null
 > {
@@ -202,8 +205,16 @@ export async function renderBrowser(
             finish({ status: "error", reason: "invalid-render-result" });
             return;
           }
+          const policyBlocked = resourceEvidence.some((resource) =>
+            ["render-robots-blocked", "lab-robots-unavailable"].includes(
+              resource.error ?? "",
+            ),
+          );
           finish({
             ...result,
+            ...(policyBlocked
+              ? { status: "blocked" as const, reason: "render-robots-blocked" }
+              : {}),
             profile: {
               ...(result.profile as object),
               browserMode: "local",
@@ -227,11 +238,8 @@ export async function renderBrowser(
           };
           if (scopeReason(resourceConfig, url))
             throw new Error("resource-scope-blocked");
-          if (
-            measurement?.allowRequest &&
-            !(await measurement.allowRequest(url, abort.signal))
-          )
-            throw new Error("lab-robots-blocked");
+          if (!(await allowRequest(url, abort.signal)))
+            throw new Error("render-robots-blocked");
           const resource = await transport.request(url, abort.signal);
           // Redirects are not blindly forwarded into a browser; it must request a new approved hop.
           payload = {

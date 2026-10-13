@@ -58,6 +58,8 @@ const messages: Record<string, string> = {
     "The local speed-test worker received an unsupported message. Use matching reviewed worker and host builds before retrying.",
   "lab-target-scope":
     "Choose a page within the project’s approved crawl scope.",
+  "render-robots-blocked":
+    "A browser resource was blocked by the website’s crawl policy, or its policy could not be checked. Render-dependent findings remain untested. Review the saved resource evidence before retrying.",
   "lab-robots-unavailable":
     "The website’s crawl policy could not be checked. Resolve the response or connection problem before running a local speed test.",
   "lab-robots-blocked":
@@ -176,6 +178,8 @@ const messages: Record<string, string> = {
     "The import contains duplicate rows for the same measurement. Remove duplicate entries and try again.",
   "content-review-evidence-mismatch":
     "This decision refers to evidence that does not belong to the selected page. Reload the page and try again.",
+  "action-group-not-found":
+    "Choose a group from the current audit results and supply its groupId to read its affected pages.",
   "action-review-group-not-found":
     "This action is no longer available in the selected analysis. Reload the Actions view and try again.",
   "data-directory-inside-repository":

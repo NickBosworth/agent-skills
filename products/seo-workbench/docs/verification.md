@@ -1260,3 +1260,33 @@ storage faults, actual Windows/Linux/architecture runs, interactive host/model a
 live provider evaluation, assistive testing, independent security/SEO assessment and
 publication approval. No external test, independent clearance or stable release is
 claimed. No source was pushed, no public CI was run and no outbound message was sent.
+
+## Five audit repairs — 2026-10-13
+
+On macOS arm64 with Node 24.15.0, strict checks and the compiled build passed.
+The final combined suite passed 358 tests with zero failures or skips, with both
+browser and clean-package acceptance enabled. Six added regressions cover:
+
+- Open and nested shadow roots, direct shadow text, assigned slots, hidden hosts,
+  main-text navigation exclusions and the actual critical-content rule outcome.
+- Cached resource-origin robots policies, permitted and blocked resource redirect
+  hops, allowed scripts and incomplete rendering remaining untested.
+- Child browser requests outside the broker making no request to the synthetic server.
+- Source and compiled MCP reads of every member in a 1,001-page group, large-record
+  summaries, complete Unicode source reconstruction and first/last record chunks.
+- Positive and negative Product aggregate/review rating formats and custom scales.
+- The public feature rule accepting valid fraction/percentage formats and rejecting
+  an out-of-range default-scale score, with a new rule version.
+
+Ruleset 0.1.9 and feature rule 0.1.2 distinguish the updated checks. Existing
+observations and analyses were not rewritten. Rendering fixes require fresh collection.
+Large MCP groups now expose sample members and explicit totals; large resources
+return labelled summaries with a complete bounded read path, documented in MCP setup.
+
+All 234 root helper tests and structural validators passed. Candidate-file, staged
+and reachable-history privacy checks passed. Redacted Gitleaks checks found no
+leaks in reachable history or the changed working files. The staged check examined
+an empty index; candidate-file checks and manual diff review covered this work.
+No commits, public pushes or releases were made. These checks do not certify
+privacy, native Windows/Linux, live providers, interactive host behaviour or every
+SEO feature. Recipe-specific validation remains a recommended next feature.

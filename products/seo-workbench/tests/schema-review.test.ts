@@ -132,7 +132,7 @@ test("recognition accepts standard and full term names while unknown names requi
     )?.ruleVersion,
     "0.1.0",
   );
-  assert.equal(RULESET, "0.1.8");
+  assert.equal(RULESET, "0.1.9");
 });
 test("relative and absolute references share a document base without fetching external entities", () => {
   const blocks = [
@@ -356,5 +356,26 @@ test("vocabulary source files reject unreviewed content and non-file inputs with
     }
   } finally {
     rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("rating formats and bounds reach the public Google feature outcome", () => {
+  for (const [ratingValue, expected] of [
+    ["60%", "pass"],
+    ["6 / 10", "pass"],
+    [999, "fail"],
+  ] as const) {
+    const finding = checked({
+      "@context": context,
+      "@type": "Product",
+      name: "Fictional lamp",
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue,
+        ratingCount: 5,
+      },
+    }).find((result) => result.ruleId === "google-feature-fields")!;
+    assert.equal(finding.outcome, expected);
+    assert.equal(finding.ruleVersion, "0.1.2");
   }
 });

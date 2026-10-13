@@ -67,7 +67,7 @@ holds decoded representation bytes and `encodedBodyBase64` preserves the origina
 compressed representation. `decodedBytes` records its expanded size. Old identity
 captures remain readable without rewriting. Browser fulfilment removes the encoding
 header from decoded data; analysis projections and bounded MCP tools omit both body
-representations. Private evidence resources retain them within their existing limits.
+representations. Private evidence resources retain them within their existing limits; oversized resources return a labelled summary with a bounded section-reading path. MCP group summaries sample members and evidence identifiers; the member view retains complete pagination.
 Each compression layer is bounded and cancellable. Gzip sitemap files may add a file
 compression layer after HTTP decoding; their parsed XML hash is recorded only after
 successful expansion and parsing. There is no database schema migration.

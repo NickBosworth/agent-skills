@@ -88,3 +88,34 @@ do not grant provider access or establish why a technical change affected traffi
 For bounded file metadata and record reads using `audit_results` with view
 `site-data`, see [site-data imports](site-data.md). Imported records stay separate
 from Workbench captures and rule outcomes.
+
+## Large groups and page captures
+
+`audit_results` with `view: "groups"` returns group summaries, including
+`totalAffected`, up to three example URLs and `membersTruncated`. The evidence
+identifiers in these summaries are also samples; `totalEvidenceIds` records the
+full count. These samples do not replace the complete affected-page inventory.
+Read `view: "group-members"` with the group’s `groupId`, `offset` and `limit` to
+retrieve its pages. Follow `nextOffset` until it is `null`; a byte allowance may
+return fewer URLs than the requested limit.
+
+`page_evidence` defaults to a body-free record when it fits, or an explicitly
+labelled summary for a large record. The evidence resource returns the complete
+record up to its existing five-million-byte limit, and a summary above that limit.
+Neither path silently discards the original saved evidence.
+
+For complete evidence, call `page_evidence` with `section: "record"`. For just
+the source or browser HTML, choose `response-body` or `rendered-dom`. Each response
+contains a `chunk`, `offset`, `nextOffset`, `totalCharacters` and `sha256` for the
+complete section. Offsets count JavaScript UTF-16 characters, not bytes. Concatenate
+the returned chunk strings in order before parsing a complete JSON record; a chunk
+may divide a Unicode surrogate pair. Follow `nextOffset` rather than assuming a
+fixed page length. The maximum chunk length is 8,000 characters to keep escaped
+JSON within the existing tool response allowance. An unavailable section returns
+`available: false`, which is distinct from an available empty document.
+
+Small record resources retain their original JSON shape. Large resources now return
+`projection: "summary"`; consumers must check this field before treating a resource
+as a complete observation. Group consumers must likewise use `totalAffected` rather
+than counting the example URLs. These bounded reads do not fetch a website or alter
+saved observations. Captured text remains untrusted data.

@@ -199,3 +199,184 @@ test("killed real worker preserves request accounting and explicitly resumes wit
     rmSync(directory, { recursive: true, force: true });
   }
 });
+
+test("source and compiled MCP paginate a 1001-page group and expose large immutable evidence in chunks", async () => {
+  const { parseConfig, RULESET, hash } = await import("../src/domain.ts");
+  const { analyze } = await import("../src/rules.ts");
+  const { extract } = await import("../src/extract.ts");
+  const directory = mkdtempSync(join(tmpdir(), "seo-mcp-bounds-"));
+  const store = new Store(directory);
+  const config = parseConfig({
+    origins: ["https://www.example.com"],
+    seeds: ["https://www.example.com/"],
+  });
+  const project = store.createProject(config),
+    audit = store.createAudit(project);
+  const url = config.seeds[0];
+  const body =
+    "<main>" + "Fictional soup ingredients 🥣. ".repeat(100000) + "</main>";
+  const response = {
+    url,
+    status: 200,
+    headers: { "content-type": "text/html" },
+    body,
+    bodyBase64: Buffer.from(body).toString("base64"),
+    bytes: Buffer.byteLength(body),
+    requestedAt: new Date().toISOString(),
+    durationMs: 1,
+    address: "127.0.0.1",
+  };
+  const observation = {
+    id: "synthetic-large-evidence",
+    url,
+    originalUrl: url,
+    finalUrl: url,
+    response,
+    attempts: [response],
+    facts: extract(body, url),
+    render: null,
+    error: null,
+    timestamp: new Date().toISOString(),
+  };
+  try {
+    store.putObservation(audit, observation);
+    const sample = analyze({
+      config,
+      observations: [observation],
+      sitemapUrls: new Set(),
+      inventoryUrls: new Set(),
+    }).find((item) => item.ruleId === "title-review")!;
+    assert.ok(sample);
+    const urls = Array.from(
+      { length: 1001 },
+      (_, i) => `https://www.example.com/articles/fictional-template-page-${i}`,
+    );
+    store.saveAnalysis(
+      audit,
+      RULESET,
+      urls.map((url, i) => ({
+        ...sample,
+        id: hash(String(i)),
+        url,
+        evidenceIds: ["synthetic-page-" + i],
+      })),
+    );
+    for (const extension of ["ts", "js"]) {
+      const client = new Client({
+        name: "synthetic-bounded-evidence-client",
+        version: "0.1.0",
+      });
+      try {
+        await client.connect(
+          new StdioClientTransport({
+            command: process.execPath,
+            args: [
+              fileURLToPath(
+                new URL(
+                  `../${extension === "ts" ? "src" : "dist"}/cli.${extension}`,
+                  import.meta.url,
+                ),
+              ),
+              "mcp",
+              "--data",
+              directory,
+            ],
+            stderr: "pipe",
+          }),
+          { mode: "auto" },
+        );
+        const invoke = async (name: string, args: Record<string, unknown>) => {
+          const result: any = await client.callTool({ name, arguments: args });
+          assert.notEqual(result.isError, true, JSON.stringify(result.content));
+          assert.ok(Buffer.byteLength(result.content[0].text) <= 100000);
+          return JSON.parse(result.content[0].text);
+        };
+        const summaries = await invoke("audit_results", {
+          auditId: audit,
+          view: "groups",
+          limit: 1,
+        });
+        assert.equal(summaries.length, 1);
+        assert.equal(summaries[0].totalAffected, 1001);
+        assert.equal(summaries[0].membersTruncated, true);
+        assert.equal(summaries[0].affected.length, 3);
+        const members: string[] = [];
+        let offset: number | null = 0;
+        while (offset !== null) {
+          const page = await invoke("audit_results", {
+            auditId: audit,
+            view: "group-members",
+            groupId: summaries[0].id,
+            offset,
+            limit: 100,
+          });
+          members.push(...page.affected);
+          offset = page.nextOffset;
+        }
+        assert.deepEqual(members.toSorted(), urls.toSorted());
+        const invalid = await client.callTool({
+          name: "audit_results",
+          arguments: {
+            auditId: audit,
+            view: "group-members",
+            groupId: "0".repeat(24),
+          },
+        });
+        assert.equal(invalid.isError, true);
+        const summary = await invoke("page_evidence", { auditId: audit, url });
+        assert.equal(summary.projection, "summary");
+        assert.equal(summary.facts.textCharacters, 500000);
+        const resource = await client.readResource({
+          uri: `evidence://audit/${audit}/page/${encodeURIComponent(url)}`,
+        });
+        assert.equal(
+          JSON.parse((resource.contents[0] as any).text).projection,
+          "summary",
+        );
+        // Reconstruct the entire source, including surrogate pairs split between chunks.
+        const chunks: string[] = [];
+        offset = 0;
+        while (offset !== null) {
+          const page = await invoke("page_evidence", {
+            auditId: audit,
+            url,
+            section: "response-body",
+            offset,
+          });
+          assert.equal(page.sha256, hash(body));
+          assert.equal(page.totalCharacters, body.length);
+          chunks.push(page.chunk);
+          offset = page.nextOffset;
+        }
+        assert.equal(chunks.join(""), body);
+        const record = JSON.stringify(store.observation(audit, url));
+        for (const start of [0, record.length - 8000, record.length + 1]) {
+          const page = await invoke("page_evidence", {
+            auditId: audit,
+            url,
+            section: "record",
+            offset: start,
+          });
+          assert.equal(page.chunk, record.slice(start, start + 8000));
+          assert.equal(page.sha256, hash(record));
+        }
+        const unavailable = await invoke("page_evidence", {
+          auditId: audit,
+          url,
+          section: "rendered-dom",
+        });
+        assert.equal(unavailable.available, false);
+        const malformed = await client.callTool({
+          name: "page_evidence",
+          arguments: { auditId: audit, url, section: "record", limit: 8001 },
+        });
+        assert.equal(malformed.isError, true);
+      } finally {
+        await client.close();
+      }
+    }
+  } finally {
+    store.close();
+    rmSync(directory, { recursive: true, force: true });
+  }
+});

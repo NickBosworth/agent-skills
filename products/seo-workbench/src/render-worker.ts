@@ -74,7 +74,15 @@ async function run(config: z.infer<typeof Init>) {
   let requests = 0;
   const start = Date.now();
   try {
-    browser = await chromium.launch({ headless: true, chromiumSandbox: true });
+    browser = await chromium.launch({
+      headless: true,
+      chromiumSandbox: true,
+      // Unintercepted child targets must fail rather than fetch outside the host broker.
+      args: [
+        "--proxy-server=http://127.0.0.1:0",
+        "--proxy-bypass-list=<-loopback>",
+      ],
+    });
     const context = await browser.newContext({
       viewport: config.viewport,
       locale: config.locale,
@@ -84,55 +92,70 @@ async function run(config: z.infer<typeof Init>) {
     });
     const page = await context.newPage();
     await page.routeWebSocket("**/*", (socket) => socket.close());
-    await page.route("**/*", async (route) => {
-      const request = route.request();
-      requests++;
-      if (request.method() !== "GET" || requests > config.maxRequests) {
-        failures.push("resource-method-or-budget-blocked");
-        await route.abort();
-        return;
-      }
-      if (
-        request.isNavigationRequest() &&
-        request.frame() === page.mainFrame() &&
-        request.url() === config.url &&
-        requests === 1
-      ) {
-        await route.fulfill({
-          status: config.status,
-          headers: config.headers,
-          body: Buffer.from(config.htmlBase64, "base64"),
-        });
-        return;
-      }
-      const id = requests;
-      const response = await new Promise<z.infer<typeof Response>>(
-        (resolve) => {
-          pending.set(id, resolve);
-          send({
-            kind: "request",
-            id,
-            url: request.url(),
-            method: request.method(),
+    // Fetch pauses every redirect hop; Playwright routes only the first URL of a redirect.
+    const session = await context.newCDPSession(page);
+    session.on(
+      "Fetch.requestPaused",
+      async ({ requestId, request, resourceType }) => {
+        const abort = () =>
+          session
+            .send("Fetch.failRequest", {
+              requestId,
+              errorReason: "BlockedByClient",
+            })
+            .catch(() => {});
+        try {
+          const id = ++requests;
+          if (request.method !== "GET" || id > config.maxRequests) {
+            failures.push("resource-method-or-budget-blocked");
+            await abort();
+            return;
+          }
+          const response =
+            resourceType === "Document" &&
+            request.url === config.url &&
+            id === 1
+              ? {
+                  error: undefined,
+                  status: config.status,
+                  headers: config.headers,
+                  body: config.htmlBase64,
+                }
+              : await new Promise<z.infer<typeof Response>>((resolve) => {
+                  pending.set(id, resolve);
+                  send({
+                    kind: "request",
+                    id,
+                    url: request.url,
+                    method: "GET",
+                  });
+                });
+          if (response.error || response.body === undefined) {
+            failures.push(response.error ?? "resource-unavailable");
+            await abort();
+            return;
+          }
+          if (Buffer.from(response.body, "base64").length > config.maxBytes) {
+            failures.push("resource-size-budget");
+            await abort();
+            return;
+          }
+          await session.send("Fetch.fulfillRequest", {
+            requestId,
+            responseCode: response.status ?? 200,
+            responseHeaders: Object.entries(response.headers ?? {}).map(
+              ([name, value]) => ({ name, value }),
+            ),
+            body: response.body,
           });
-        },
-      );
-      if (response.error || !response.body) {
-        failures.push(response.error ?? "resource-unavailable");
-        await route.abort();
-        return;
-      }
-      const bytes = Buffer.from(response.body, "base64");
-      if (bytes.length > config.maxBytes) {
-        failures.push("resource-size-budget");
-        await route.abort();
-        return;
-      }
-      await route.fulfill({
-        status: response.status ?? 200,
-        headers: response.headers ?? {},
-        body: bytes,
-      });
+        } catch {
+          failures.push("resource-unavailable");
+          await abort();
+        }
+      },
+    );
+    await session.send("Fetch.enable", {
+      patterns: [{ urlPattern: "*", requestStage: "Request" }],
     });
     page.on("pageerror", () => failures.push("page-script-error"));
     page.on("requestfailed", () => failures.push("resource-failed"));

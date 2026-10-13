@@ -2,6 +2,13 @@
 
 ## 0.1.0 — unreleased development preview
 
+Repair five audited defects: browser resource robots policies, visible text in open
+shadow roots and slots, MCP member pagination for large issue groups, bounded reads
+of large immutable evidence, and Product review/aggregate rating formats and scales.
+Ruleset 0.1.9 and Google feature check 0.1.2 identify the changed checks. Existing
+observations and analyses remain unchanged; collect fresh evidence for rendering fixes.
+
+
 Add preview-first, selection-approved one-shot monitoring with private scope review,
 preserved project history and count summaries. Foreground and detached audits now
 share worker admission. Gate evaluation streams all saved findings. Additional native

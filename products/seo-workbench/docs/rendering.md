@@ -40,3 +40,19 @@ The launch uses [Playwright's browser options](https://playwright.dev/docs/api/c
 with `chromiumSandbox: true`. Lighthouse uses Puppeteer's normal sandboxed launch
 without sandbox-disabling flags. Browser control and capture exchange use pipes;
 no browser debugging port is exposed.
+
+Browser resources now use cached robots.txt policies for each approved origin,
+including redirect destinations. A blocked or unavailable policy leaves rendering
+marked as blocked, with the resource reason retained. Render-dependent content
+checks remain untested rather than failing because a required script was unavailable.
+
+Visible-text snapshots include open shadow roots and assigned slot content, respect
+hidden host ancestors and omit navigation from main text. Traversal remains bounded;
+closed shadow roots and complete browser visibility certification are unsupported.
+Start a new audit to collect these snapshots; older observations are not rewritten.
+
+Resource redirects are intercepted through Chromium’s Fetch protocol so each hop
+is checked by the host broker. An unavailable local proxy prevents unhandled child
+targets from making ordinary HTTP requests outside that broker; it is not an OS
+network firewall. Cross-process embedded content that cannot be brokered remains
+unavailable, and its collection failures keep visibility checks untested.

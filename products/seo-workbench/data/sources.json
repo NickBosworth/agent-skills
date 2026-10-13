@@ -767,6 +767,19 @@
       "reviewStatus": "retrieved and reviewed",
       "applicability": "Observed HTML and HTTP declarations and destination settings; code registry, sitemap alternatives, language accuracy and engine interpretation remain separate",
       "accessLimitations": "Public primary documentation; no Search Console or location-based live acceptance"
+    },
+    {
+      "id": "google-review-snippet",
+      "url": "https://developers.google.com/search/docs/appearance/structured-data/review-snippet",
+      "publisher": "Google Search Central",
+      "supportedClaim": "Review and aggregate rating values support numbers, fractions and percentages. Plain numeric values default to a one-to-five scale unless an alternative is declared.",
+      "basis": "engine requirement",
+      "engine": "Google",
+      "retrievedOn": "2026-10-13",
+      "reviewedOn": "2026-10-13",
+      "reviewStatus": "retrieved and selected rating fields reviewed",
+      "applicability": "Selected Product rating fields only; full review eligibility, factual accuracy and search display remain separate",
+      "accessLimitations": "Public primary-source documentation only; no live rich-result inspection or private accounts"
     }
   ]
 }

@@ -577,3 +577,18 @@ implementation; external scheduling/notification setup was not performed. The
 full task remains in progress. Native platforms, live/interactive and independent
 reviews cannot be represented as passed by local contract tests. Publication stays
 on hold. See the updated verification and production-readiness records.
+
+
+### Five reproduced audit defects repaired — 2026-10-13
+
+The scoped audit repair request is complete: rendering resources respect cached
+robots policies and redirect hops; open shadow roots and slots reach visible-text
+checks; MCP issue members paginate independently of group size; large immutable
+evidence has labelled summaries and complete bounded reads; Product rating formats
+and scales are checked by the shared validator. Ruleset 0.1.9 identifies the change.
+The final combined product suite passed 358 tests without skips, including browser
+and clean-package checks; the root helper/structure suite passed 234 tests. Privacy
+and redacted secret checks passed with their documented limits. See the product
+verification ledger for exact scope. No publication occurred; the larger product
+task remains separate from this completed repair request. Recipe validation and
+structured-data coverage transparency are recommended next.

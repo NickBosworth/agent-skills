@@ -1,5 +1,7 @@
 /** Keep the pinned parser's matching while repairing observed RFC 9309 input gaps. */
 import { createRequire } from "node:module";
+import { fetchKey, scopeReason, type Config } from "./domain.ts";
+import type { Transport } from "./network.ts";
 
 interface Robot {
   isAllowed(url: string, ua?: string): boolean | undefined;
@@ -74,4 +76,72 @@ export function parseRobots(url: string, text: string): Robot {
       (declared.has(agentKey(agent ?? "*")) ? undefined : delays.get("*")),
     getSitemaps: () => sitemaps.filter(Boolean),
   };
+}
+
+/** Cache one policy request per approved origin, including concurrent browser resources. */
+export function resourceRobotsPolicy(config: Config, transport: Transport) {
+  const origins = new Set([
+    ...config.origins,
+    ...config.renderResources.map((url) => new URL(url).origin),
+  ]);
+  const robots = new Map<
+    string,
+    Promise<ReturnType<typeof parseRobots> | null>
+  >();
+  const allowed = async (url: string, requestSignal?: AbortSignal) => {
+    const origin = new URL(url).origin;
+    if (!origins.has(origin)) return false;
+    if (!robots.has(origin))
+      robots.set(
+        origin,
+        (async () => {
+          let address = origin + "/robots.txt";
+          const seen = new Set<string>();
+          for (let hop = 0; hop <= 5; hop++) {
+            if (seen.has(address)) throw new Error("lab-robots-unavailable");
+            seen.add(address);
+            const response = await transport.request(address, requestSignal);
+            if (response.status >= 300 && response.status < 400) {
+              if (!response.headers.location || hop === 5)
+                throw new Error("lab-robots-unavailable");
+              address = fetchKey(response.headers.location, address);
+              if (
+                !origins.has(new URL(address).origin) ||
+                scopeReason(
+                  {
+                    ...config,
+                    recheckUrls: undefined,
+                    origins: [...origins],
+                    include: ["/"],
+                    exclude: [],
+                  },
+                  address,
+                )
+              )
+                throw new Error("lab-robots-unavailable");
+              continue;
+            }
+            if (response.status >= 200 && response.status < 300) {
+              const parsed = parseRobots(origin + "/robots.txt", response.body),
+                delay = parsed.getCrawlDelay("SEO-Workbench");
+              if (delay !== undefined && Number.isFinite(delay) && delay > 0)
+                transport.originDelays.set(origin, delay * 1000);
+              return parsed;
+            }
+            if (
+              response.status >= 400 &&
+              response.status < 500 &&
+              ![401, 403, 429].includes(response.status)
+            )
+              return null;
+            throw new Error("lab-robots-unavailable");
+          }
+          throw new Error("lab-robots-unavailable");
+        })(),
+      );
+    return (
+      (await robots.get(origin))?.isAllowed(url, "SEO-Workbench") !== false
+    );
+  };
+  return allowed;
 }

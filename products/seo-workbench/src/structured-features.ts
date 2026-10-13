@@ -30,6 +30,61 @@ const number = (value: unknown) =>
     (typeof value === "string" && /^\d+(?:\.\d+)?$/.test(value))) &&
   Number.isFinite(Number(value)) &&
   Number(value) >= 0;
+/** Fractions and percentages carry their own scale; plain scores default to one through five. */
+function validRatingValue(rating: Record<string, unknown>): boolean {
+  const numeric = (value: unknown): number | null => {
+    if (
+      typeof value !== "number" &&
+      (typeof value !== "string" ||
+        !/^[+-]?(?:\d+(?:\.\d+)?|\.\d+)$/.test(value.trim()))
+    )
+      return null;
+    const parsed = Number(value);
+    return Number.isFinite(parsed) ? parsed : null;
+  };
+  const value = field(rating, "ratingValue");
+  let score = numeric(value),
+    minimum = 1,
+    maximum = 5;
+  if (score === null && typeof value === "string") {
+    const fraction = /^\s*(\d+(?:\.\d+)?)\s*\/\s*(\d+(?:\.\d+)?)\s*$/.exec(
+      value,
+    );
+    const percentage = /^\s*(\d+(?:\.\d+)?)\s*%\s*$/.exec(value);
+    if (fraction || percentage) {
+      score = Number((fraction ?? percentage)![1]);
+      minimum = 0;
+      maximum = fraction ? Number(fraction[2]) : 100;
+      if (
+        !Number.isFinite(maximum) ||
+        maximum <= 0 ||
+        !Number.isFinite(score) ||
+        score < 0 ||
+        score > maximum
+      )
+        return false;
+    }
+  }
+  const worst = field(rating, "worstRating"),
+    best = field(rating, "bestRating");
+  if (worst !== undefined) {
+    const parsed = numeric(worst);
+    if (parsed === null) return false;
+    minimum = parsed;
+  }
+  if (best !== undefined) {
+    const parsed = numeric(best);
+    if (parsed === null) return false;
+    maximum = parsed;
+  }
+  return (
+    score !== null &&
+    Number.isFinite(score) &&
+    maximum > minimum &&
+    score >= minimum &&
+    score <= maximum
+  );
+}
 const definitions = new WeakMap<
   SchemaNode[],
   Map<string, Record<string, unknown>[]>
@@ -213,7 +268,7 @@ export function featureFields(
           }
           const validRating = ratings.objects.some(
             (rating) =>
-              number(field(rating, "ratingValue")) &&
+              validRatingValue(rating) &&
               ["ratingCount", "reviewCount"].some(
                 (name) =>
                   number(field(rating, name)) &&
@@ -232,9 +287,7 @@ export function featureFields(
             unknown ||= authors.unknown || scores.unknown;
             if (
               authors.objects.some((author) => text(field(author, "name"))) &&
-              scores.objects.some((rating) =>
-                number(field(rating, "ratingValue")),
-              )
+              scores.objects.some((rating) => validRatingValue(rating))
             )
               validReview = true;
           }

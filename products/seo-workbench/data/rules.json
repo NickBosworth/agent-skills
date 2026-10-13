@@ -300,13 +300,14 @@
   },
   {
     "id": "google-feature-fields",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "title": "Selected Google structured-data fields",
     "sourceIds": [
       "google-product-snippet",
       "google-article",
       "google-local-business",
-      "google-product-variants"
+      "google-product-variants",
+      "google-review-snippet"
     ],
     "skillIds": ["SEO-054", "SEO-059"],
     "basis": "product contract",

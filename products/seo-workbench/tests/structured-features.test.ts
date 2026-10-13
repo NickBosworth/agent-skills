@@ -450,3 +450,60 @@ test("bounded variant-parent indexing handles a large declared group set without
   );
   assert.ok(performance.now() - started < 2000);
 });
+
+test("Product aggregate and review ratings accept explicit formats and enforce their scales", () => {
+  const valid = [
+    { ratingValue: "60%" },
+    { ratingValue: "6 / 10" },
+    { ratingValue: 1 },
+    { ratingValue: 5 },
+    { ratingValue: "9.5", bestRating: "10", worstRating: "0" },
+    { ratingValue: -1, worstRating: -2, bestRating: 2 },
+    { ratingValue: 999, bestRating: 1000, worstRating: 0 },
+  ];
+  const invalid = [
+    { ratingValue: 999 },
+    { ratingValue: 0 },
+    { ratingValue: -1 },
+    { ratingValue: "101%" },
+    { ratingValue: "101%", bestRating: 200 },
+    { ratingValue: "11 / 10" },
+    { ratingValue: "1 / 0" },
+    { ratingValue: "nonsense" },
+    { ratingValue: 4, bestRating: "unknown" },
+    { ratingValue: 4, worstRating: 5, bestRating: 1 },
+    { ratingValue: 4, worstRating: 4, bestRating: 4 },
+    { ratingValue: 6, bestRating: 5 },
+    {},
+  ];
+  for (const [cases, expected] of [
+    [valid, false],
+    [invalid, true],
+  ] as const) {
+    for (const score of cases) {
+      for (const detail of [
+        { aggregateRating: { ...score, ratingCount: 5 } },
+        {
+          review: {
+            author: { name: "Fictional reviewer" },
+            reviewRating: score,
+          },
+        },
+      ]) {
+        const review = featureFields(
+          [
+            {
+              "@context": context,
+              "@type": "Product",
+              name: "Fictional lamp",
+              ...detail,
+            },
+          ],
+          base,
+          ["product-snippet"],
+        )[0];
+        assert.equal(review.requiredDefect, expected, JSON.stringify(detail));
+      }
+    }
+  }
+});
