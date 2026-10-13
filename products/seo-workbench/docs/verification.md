@@ -1290,3 +1290,48 @@ an empty index; candidate-file checks and manual diff review covered this work.
 No commits, public pushes or releases were made. These checks do not certify
 privacy, native Windows/Linux, live providers, interactive host behaviour or every
 SEO feature. Recipe-specific validation remains a recommended next feature.
+
+## Four recommended audit improvements — 2026-10-13
+
+The scoped implementation is complete: Recipe validation; explicit detected-type
+coverage; untyped nested-property vocabulary review; and current MCP browser
+requirements plus an interactive developer-host journey. Ruleset 0.1.10 records
+these semantics; feature/vocabulary/visible-text rules are 0.1.3/0.1.1/0.1.2.
+Existing captures and analyses were retained. Coverage views read saved analyses;
+old records need reanalysis and missing browser evidence needs fresh collection.
+
+On macOS arm64 with Node 24.15.0, strict checks and the compiled build passed.
+The combined suite passed 366 tests with zero failures or skips, including browser
+and clean-package acceptance. Following the final mobile layout and fixture
+presentation changes, all eight browser tests passed again; final strict checks
+and build passed. Focused cases cover required/recommended/conditional Recipe
+fields, image objects and references, malformed image-array members, sections and
+substeps, unknown contexts/references/depth bounds, untyped nested spelling errors,
+valid counterexamples, automatic/owner selection, unsupported types, visible text,
+image response evidence, saved API/MCP reads and shareable report redaction.
+Desktop/mobile synthetic screenshots were inspected outside the checkout.
+The new coverage table passed automated accessibility checks and mobile scrolling
+checks; this is not assistive-technology or WCAG certification.
+
+MCP Inspector 2.10.1's web interface negotiated protocol 2025-11-25 with the compiled
+server and discovered ten tools and the evidence template. The interactive journey
+started a rendered synthetic Recipe audit, observed its required image defect,
+read saved coverage and bounded evidence, exported a shareable report, recollected
+after a fixture repair and compared the resolved finding. A restarted connection
+read the final compiled report and the immutable evidence resource. The report
+retained aggregate coverage and omitted the fixture origin and instruction-like
+page text; private evidence retained that text as data. The Inspector template
+form accepts a raw page URL and encodes it itself.
+
+No host settings or real websites were changed; no model, account or paid service
+was used. All captures, host configuration and screenshots stayed outside source.
+Inspector verifies a developer-client workflow, not model interpretation,
+prompt-injection resistance or another host's approval decisions. Native
+Windows/Linux, live providers, full rich-result eligibility, image meaning,
+factual accuracy and independent product assessment remain separate acceptance.
+
+Root validators and all 234 helper regressions passed. Candidate-file, staged and
+reachable-history privacy checks and redacted Gitleaks history/candidate scans
+passed. The staged check examined an empty index; working-file checks and manual
+diff review covered this work. Scanners retain heuristic and exclusion limits.
+No commits, public pushes or releases were made.

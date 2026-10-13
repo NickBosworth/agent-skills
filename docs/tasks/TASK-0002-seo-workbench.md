@@ -592,3 +592,21 @@ and redacted secret checks passed with their documented limits. See the product
 verification ledger for exact scope. No publication occurred; the larger product
 task remains separate from this completed repair request. Recipe validation and
 structured-data coverage transparency are recommended next.
+
+
+### Four recommended audit improvements completed — 2026-10-13
+
+The scoped follow-up is complete: bounded Recipe field/text/image-evidence checks,
+automatic supported-type reviews with saved explicit coverage, vocabulary review
+of untyped nested objects, and corrected native-browser MCP requirements. An actual
+interactive MCP Inspector synthetic audit/export/fresh-verification/comparison and
+evidence-resource journey passed, including reconnect. This is developer-client
+acceptance; model-host approval/injection evaluation remains separate.
+
+The product suite passed 366 tests with browser and clean-package checks enabled,
+zero failures or skips. After the final mobile layout correction, all eight browser
+tests passed again; final strict/build checks and all 234 root helper regressions
+passed. Privacy and redacted credential gates passed within their documented limits.
+No dependency or database migration was added; saved evidence was not rewritten.
+The broader stable release plan remains in progress, with native platforms, live
+providers and independent acceptance recorded separately. No publication occurred.

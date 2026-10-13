@@ -130,9 +130,9 @@ test("recognition accepts standard and full term names while unknown names requi
     checked({ "@context": context, "@type": "Product" }).find(
       (r) => r.ruleId === "structured-vocabulary",
     )?.ruleVersion,
-    "0.1.0",
+    "0.1.1",
   );
-  assert.equal(RULESET, "0.1.9");
+  assert.equal(RULESET, "0.1.10");
 });
 test("relative and absolute references share a document base without fetching external entities", () => {
   const blocks = [
@@ -376,6 +376,6 @@ test("rating formats and bounds reach the public Google feature outcome", () => 
       },
     }).find((result) => result.ruleId === "google-feature-fields")!;
     assert.equal(finding.outcome, expected);
-    assert.equal(finding.ruleVersion, "0.1.2");
+    assert.equal(finding.ruleVersion, "0.1.3");
   }
 });

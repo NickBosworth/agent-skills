@@ -38,9 +38,64 @@ function reportContext(
   analysisId: string | null,
   results: Iterable<RuleResult>,
 ) {
+  const structuredCounts = new Map<
+    string,
+    {
+      type: string;
+      vocabulary: string;
+      featureFields: string;
+      visibleText: string;
+      pages: number;
+    }
+  >();
+  function* inspected() {
+    for (const result of results) {
+      if (result.ruleId === "google-feature-fields") {
+        const coverage = (
+          result.observed as {
+            coverage?: {
+              types?: {
+                feature: string | null;
+                vocabulary: string;
+                featureFields: string;
+                visibleText: string;
+              }[];
+            };
+          } | null
+        )?.coverage;
+        for (const row of coverage?.types ?? []) {
+          const type =
+            (
+              {
+                recipe: "Recipe",
+                "product-snippet": "Product",
+                article: "Article",
+                "local-business": "Local Business",
+              } as Record<string, string>
+            )[row.feature ?? ""] ?? "Other types";
+          const key = JSON.stringify([
+            type,
+            row.vocabulary,
+            row.featureFields,
+            row.visibleText,
+          ]);
+          const entry = structuredCounts.get(key) ?? {
+            type,
+            vocabulary: row.vocabulary,
+            featureFields: row.featureFields,
+            visibleText: row.visibleText,
+            pages: 0,
+          };
+          entry.pages++;
+          structuredCounts.set(key, entry);
+        }
+      }
+      yield result;
+    }
+  }
   const audit = store.audit(id),
     findingGroups = groups(
-      results,
+      inspected(),
       audit.config,
       store
         .imports(audit.projectId, "action-review")
@@ -58,6 +113,7 @@ function reportContext(
     generatedAt: new Date().toISOString(),
     synthetic: audit.config.environment === "synthetic",
     profile,
+    structuredDataCoverage: [...structuredCounts.values()],
     state: audit.state,
     coverage: store.coverage(id),
     limitations: [
@@ -381,6 +437,24 @@ export function* reportChunks(
         `${ruleTitle(row.ruleId)}: ${labels[row.outcome] ?? row.outcome}, ${number(row.count)} ${row.count === 1 ? "check result" : "check results"}.`,
     )
     .join("\n");
+  const stateSentence = (subject: string, status: string) =>
+    status === "checked" || status === "recognised"
+      ? `${subject} were ${status}.`
+      : status === "needs-review"
+        ? `${subject} need review.`
+        : status === "not-implemented"
+          ? `${subject} have no implemented check.`
+          : status === "not-applicable"
+            ? `${subject} do not apply here.`
+            : `${subject} were not tested.`;
+  const structuredText = data.structuredDataCoverage
+    .map(
+      (row) =>
+        `${row.type} markup has ${number(row.pages)} recorded type ${row.pages === 1 ? "review" : "reviews"}. ${stateSentence("Vocabulary names", row.vocabulary)} ${stateSentence("Selected feature fields", row.featureFields)} ${stateSentence("Visible-text comparisons", row.visibleText)}`,
+    )
+    .join("\n");
+  const structuredLimit =
+    "Field and vocabulary checks are separate. Factual accuracy and image meaning need human review. Full search eligibility and actual display are not established. Older analyses do not record this coverage; run a fresh audit when it is missing.";
   if (format === "markdown") {
     // Indented passages prevent page-supplied Markdown from loading remote content.
     const block = (value: unknown) =>
@@ -402,6 +476,9 @@ export function* reportChunks(
       yield block(
         `${ruleTitle(result.ruleId)}: ${labels[result.outcome] ?? result.outcome}.\n${"url" in result ? result.url : "Page URL removed."}\n${"reason" in result ? result.reason : "Read the private report for the evidence and explanation."}`,
       ) + "\n";
+    yield "\n\n## Structured-data coverage\n" +
+      block(structuredText || "No interpreted type coverage is recorded.") +
+      block(structuredLimit);
     yield "\n\n## Content to review\n";
     for (const opportunity of data.opportunities)
       yield block(contentText(opportunity)) + "\n";
@@ -447,7 +524,7 @@ export function* reportChunks(
           : "Read the private report for the evidence and explanation.",
       ) +
       "</td></tr>";
-  yield `</tbody></table><section class="content-evidence"><h2>Content to review</h2>`;
+  yield `</tbody></table><h2>Structured-data coverage</h2><pre>${escapeHTML(structuredText || "No interpreted type coverage is recorded.")}</pre>${paragraph(structuredLimit)}<section class="content-evidence"><h2>Content to review</h2>`;
   for (const opportunity of data.opportunities)
     yield "<article><h3>" +
       escapeHTML(opportunity.title || "Untitled page") +

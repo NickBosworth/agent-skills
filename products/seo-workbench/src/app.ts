@@ -184,6 +184,28 @@ export class Workbench {
           search: options.search,
           sort: options.sort,
         });
+      case "structured-data":
+        return this.store
+          .results(id, {
+            offset,
+            limit,
+            ruleId: "google-feature-fields",
+            url: options.url,
+            search: options.search,
+          })
+          .map((finding) => ({
+            url: finding.url,
+            analysisId: this.store.latestAnalysis(id),
+            ruleVersion: finding.ruleVersion,
+            ...(finding.observed &&
+            typeof finding.observed === "object" &&
+            !Array.isArray(finding.observed)
+              ? finding.observed
+              : {
+                  coverage: null,
+                  hint: "Coverage is unavailable for this record. Collect complete page evidence and analyse it again.",
+                }),
+          }));
       case "group-members":
       case "groups": {
         const analysisId = this.store.latestAnalysis(id);

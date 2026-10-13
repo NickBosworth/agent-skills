@@ -398,3 +398,19 @@ the saved configuration and require its exact selection before execution. It run
 one audit, preserves earlier histories and returns counts; scheduling, deletion and
 outbound messaging remain separate operator actions. CLI gates iterate complete
 result cursors rather than buffering at most one million findings.
+
+## Saved structured-data coverage
+
+Ruleset 0.1.10 automatically selects the implemented Product, Article, Local Business
+and Recipe field reviews from detected types. Owner contracts determine which
+required defects fail; detection alone produces advisory findings. The bounded graph
+retains all property objects for vocabulary review while keeping typed/id definitions
+separate for references. Untyped children inherit their context; custom mappings
+remain untested rather than being interpreted as Schema.org.
+
+Feature results save their field reviews and per-type coverage alongside the immutable
+analysis. The shared `structured-data` view reads those saved results with exact-page
+filtering and ordinary pagination. It never silently applies a newer validator to an
+old analysis. UI and MCP consume that view; HTML/Markdown/JSON reports aggregate its
+safe feature categories without exporting custom captured type labels. Recipe image
+coverage uses existing broker response evidence and makes no additional requests.

@@ -31,6 +31,7 @@ export interface ResultOptions {
   ruleId?: string;
   analysis?: string;
   search?: string;
+  url?: string;
   sort?: string;
 }
 
@@ -1055,6 +1056,10 @@ export class Store {
     if (options.search) {
       conditions.push("url LIKE ? ESCAPE '\\'");
       params.push("%" + options.search.replace(/[\\%_]/g, "\\$&") + "%");
+    }
+    if (options.url) {
+      conditions.push("url=?");
+      params.push(options.url);
     }
     if (options.outcome) {
       conditions.push("outcome=?");

@@ -264,6 +264,76 @@ async function showPage(url) {
       }),
       detail("Extracted facts", data.facts),
     );
+    const structured = await api(query("structured-data", { url }));
+    const coverage = structured[0]?.coverage;
+    v.append(node("h3", "Structured-data checks"));
+    if (!coverage)
+      v.append(
+        node(
+          "p",
+          "This analysis has no coverage record. Run a new analysis or audit to see which structured-data checks were performed.",
+        ),
+      );
+    else {
+      const checkLabel = (status) =>
+        ({
+          checked: "Checked",
+          recognised: "Names recognised",
+          "needs-review": "Needs review",
+          "selected-fields-present": "Selected fields checked",
+          "not-implemented": "Unsupported",
+          "not-tested": "Not tested",
+          "not-present": "Not present",
+          "not-applicable": "Does not apply",
+          "human-review": "Human review needed",
+        })[status] ?? status;
+      v.append(
+        node(
+          "p",
+          `JSON-LD syntax: ${checkLabel(coverage.syntax)}. Microdata: ${checkLabel(coverage.microdata)}. RDFa: ${checkLabel(coverage.rdfa)}.`,
+        ),
+      );
+      if (coverage.types.length) {
+        const checks = table(
+          [
+            "Detected type",
+            "Vocabulary",
+            "Feature fields",
+            "Visible text",
+            "Fields checked",
+          ],
+          coverage.types.map((row) => [
+            row.type,
+            checkLabel(row.vocabulary),
+            checkLabel(row.featureFields),
+            checkLabel(row.visibleText),
+            row.checkedFields.join(", ") || "No standalone feature checks",
+          ]),
+          "Checks by detected type.",
+        );
+        checks.classList.add("structured-coverage");
+        v.append(
+          node(
+            "p",
+            "Image meaning and factual accuracy need human review. Nested fields may be checked within a parent feature. Full search eligibility and actual display are not established. Scroll the table to read all columns on a small screen.",
+          ),
+          checks,
+        );
+      } else
+        v.append(
+          node(
+            "p",
+            "No interpreted JSON-LD types were collected. This does not establish that other structured-data formats are valid.",
+          ),
+        );
+      if (coverage.images?.length)
+        v.append(
+          detail(
+            "Recipe image responses and remaining checks",
+            coverage.images,
+          ),
+        );
+    }
     const columns = node("div", undefined, "columns");
     const raw = node("section"),
       rendered = node("section");

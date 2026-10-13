@@ -91,6 +91,7 @@ export async function renderBrowser(
     url: string;
     status?: number;
     hash?: string;
+    contentType?: string;
     error?: string;
   }[] = [];
   const start = Date.now();
@@ -259,6 +260,7 @@ export async function renderBrowser(
             url,
             status: resource.status,
             hash: hash(resource.bodyBase64 ?? resource.body),
+            contentType: resource.headers["content-type"],
           });
         } catch (error) {
           const reason = errorCode(error);

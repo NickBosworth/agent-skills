@@ -4,10 +4,12 @@ import { readFileSync } from "node:fs";
 import { z } from "zod";
 import {
   featureFields,
+  featureForType,
+  type GoogleFeature,
   structuredTextClaims,
   productVariantReview,
 } from "./structured-features.ts";
-import { structuredVocabulary } from "./schema-review.ts";
+import { structuredVocabulary, structuredCoverage } from "./schema-review.ts";
 import { populatedDetails, schemaNodes } from "./schema.ts";
 import {
   headerCanonicals,
@@ -791,16 +793,21 @@ const evaluate: Record<string, TrustedRule> = {
     };
   },
   "google-feature-fields": (o, c) => {
-    const features = contractFor(c.config, o.url)?.googleFeatures ?? [];
-    if (!features.length)
-      return {
-        outcome: "not-applicable",
-        observed: null,
-        expected: null,
-        reason:
-          "The owner has not selected a Google structured-data feature for this page.",
-      };
+    const selected = contractFor(c.config, o.url)?.googleFeatures ?? [];
     const facts = activeFacts(o)!;
+    const detected = schemaNodes(facts.jsonld, facts.documentBase ?? o.finalUrl)
+      .nodes.flatMap((node) => node.types.map(featureForType))
+      .filter((feature): feature is GoogleFeature => feature !== null);
+    const features = [...new Set([...selected, ...detected])];
+    const reviews = featureFields(
+      facts.jsonld,
+      facts.documentBase ?? o.finalUrl,
+      features,
+    ).map((review) => ({
+      ...review,
+      selection: selected.includes(review.feature) ? "owner" : "detected",
+    }));
+    const coverage = structuredCoverage(o, reviews, c.config.render !== "none");
     if (
       facts.jsonldErrors ||
       (c.config.render !== "none" && o.render?.status !== "observed") ||
@@ -808,33 +815,28 @@ const evaluate: Record<string, TrustedRule> = {
     )
       return {
         outcome: "not-tested",
-        observed: {
-          parseErrors: facts.jsonldErrors,
-          render: o.render?.status ?? null,
-        },
+        observed: { reviews, coverage },
         expected: features,
         reason:
-          "The selected structured-data format or requested browser evidence could not be fully interpreted.",
+          "The structured-data format or requested browser evidence could not be fully interpreted.",
       };
-    const reviews = featureFields(
-      facts.jsonld,
-      facts.documentBase ?? o.finalUrl,
-      features,
-    );
     return {
       outcome: reviews.some((review) => review.status === "not-tested")
         ? "not-tested"
-        : reviews.some((review) => review.requiredDefect)
+        : reviews.some(
+              (review) => review.requiredDefect && review.selection === "owner",
+            )
           ? "fail"
-          : reviews.every((review) => review.status === "not-applicable")
+          : !reviews.length ||
+              reviews.every((review) => review.status === "not-applicable")
             ? "not-applicable"
             : reviews.some((review) => review.status === "needs-review")
               ? "warning"
               : "pass",
-      observed: reviews,
+      observed: { reviews, coverage },
       expected: features,
       reason:
-        "This checks selected published field requirements and recommendations. Article recommendations are advisory. A pass does not establish visible accuracy, all provider policies, eligibility or actual display.",
+        "Detected supported markup receives selected field checks automatically. Owner settings determine which features must be present. Recommendations and detected defects need review; required defects in an owner-selected feature fail its contract. Coverage lists unsupported checks separately. These checks do not certify factual accuracy, full search eligibility or actual display.",
       denominator: reviews.length,
     };
   },
@@ -855,7 +857,7 @@ const evaluate: Record<string, TrustedRule> = {
         observed: null,
         expected: null,
         reason:
-          "No understood Product, Article or Local Business name or headline was collected for this text review.",
+          "No supported name, headline or Recipe ingredient/instruction text was collected for this review.",
       };
     const snapshot = facts.renderedPageText;
     if (
@@ -895,9 +897,9 @@ const evaluate: Record<string, TrustedRule> = {
         notFoundInRenderedPageText: missing,
       },
       expected:
-        "declared selected names and headlines represented in observed main text",
+        "declared selected names, headlines and Recipe text represented in observed page text",
       reason:
-        "A declared name or headline was compared with the browser text snapshot. Review differences in wording or presentation. Variant names requiring unvisited selection states remain unknown. This does not verify prices, reviews, images, all visibility techniques or factual truth.",
+        "A declared name or headline was compared with the browser text snapshot. Review differences in wording or presentation. Variant names requiring unvisited selection states remain unknown. Recipe ingredient and instruction text is also compared where supplied. This does not verify prices, review authenticity, image meaning, all visibility techniques or factual truth.",
       denominator: review.claims.length,
     };
   },

@@ -8,7 +8,6 @@ of large immutable evidence, and Product review/aggregate rating formats and sca
 Ruleset 0.1.9 and Google feature check 0.1.2 identify the changed checks. Existing
 observations and analyses remain unchanged; collect fresh evidence for rendering fixes.
 
-
 Add preview-first, selection-approved one-shot monitoring with private scope review,
 preserved project history and count summaries. Foreground and detached audits now
 share worker admission. Gate evaluation streams all saved findings. Additional native
@@ -364,3 +363,20 @@ Full stable-release acceptance and publication remain on hold.
 - Honour server retry and redirect waits, stop when the remaining allowance is insufficient, and retain redacted failed-request diagnostics.
 - Cancel waits promptly and retain their deadlines across worker restart. Paused pages remain recoverable through the existing queue mechanism.
 - Add actual document-base, escaped-address, query-order, calendar/filter limit, redirect and retry regressions. Access denial and rate limiting continue to stop collection.
+
+### Recipe validation and explicit structured-data coverage
+
+- Check detected Product, Article, Local Business and Recipe markup automatically;
+  owner-selected required defects still fail their contract, while detected defects
+  and recommendations need review.
+- Add bounded Recipe name/image, ingredient/instruction, duration/yield, conditional
+  nutrition and selected rating checks, plus captured visible-text and image-response
+  evidence. Human accuracy, image meaning and full search eligibility stay separate.
+- Recognise property names inside untyped nested objects without inventing custom
+  context semantics. Preserve the bounded graph and existing saved analyses.
+- Expose saved per-type coverage in MCP/API and page inspection; include aggregate
+  coverage in shareable reports without captured types or page content.
+- Replace the retired MCP browser-image prerequisite with local sandboxed Chromium
+  requirements. Verify an interactive Inspector synthetic audit-to-comparison journey.
+- Advance ruleset to 0.1.10, feature rule to 0.1.3, vocabulary rule to 0.1.1 and
+  visible-text rule to 0.1.2. Existing observations and analyses are not rewritten.

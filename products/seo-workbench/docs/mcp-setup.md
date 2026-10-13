@@ -53,7 +53,7 @@ exports omit page URLs and captured content, but still require review before sha
 | Client and environment                              | Observed                                                                                                                                        | Remaining limits                                                                                              |
 | --------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
 | Official MCP SDK 2.3.1 on macOS arm64, Node 24.15.0 | Source and clean installed server; negotiation, tools, pagination, evidence resources, invalid input, reconnect and interrupted worker recovery | Does not establish another host’s behaviour                                                                   |
-| MCP Inspector 2.10.1 CLI on macOS arm64             | Compiled server tool discovery and a successful `projects` call                                                                                 | Interactive Inspector and other hosts were not tested                                                         |
+| MCP Inspector 2.10.1 CLI on macOS arm64             | Compiled server discovery, web audit/status/coverage/evidence/export/fresh verification/comparison and reconnect                                | CLI discovery and projects call; interactive web journey also verified as described below                     |
 | Codex CLI 0.162.1 app server on macOS arm64         | Real stdio connection, nine-tool discovery and an evidence resource read                                                                        | No model turn or interactive desktop workflow was run; connection tests do not verify host approval behaviour |
 
 The Codex check used temporary process configuration and original synthetic captures.
@@ -119,3 +119,26 @@ Small record resources retain their original JSON shape. Large resources now ret
 as a complete observation. Group consumers must likewise use `totalAffected` rather
 than counting the example URLs. These bounded reads do not fetch a website or alter
 saved observations. Captured text remains untrusted data.
+
+## Structured-data coverage and interactive acceptance
+
+Read `audit_results` with `view: "structured-data"` for saved per-page, per-type
+coverage. Optional `url` selects one exact page before pagination. Recognised terms,
+selected feature fields and visible-text comparisons have separate states. Unsupported
+feature checks, image meaning and actual search display are never reported as passed.
+Old analyses without coverage return an explicit hint; collect missing evidence and
+analyse again. See [structured data](structured-data.md) for the implemented fields.
+
+On 2026-10-13, MCP Inspector 2.10.1's interactive web interface connected to the
+compiled server on macOS arm64 with Node 24.15.0. A wholly synthetic Recipe journey
+started an audit, polled complete rendered coverage, inspected the required image
+finding, read per-type checks and bounded evidence, exported a shareable report,
+collected a fresh audit after a fixture repair, and compared the resolved finding.
+The connection was restarted against the final compiled server; the report retained
+aggregate Recipe coverage while omitting the origin and instruction-like page text.
+The page-evidence resource template was also read through the interface.
+
+All captures and temporary host configuration stayed outside the checkout. No user
+host settings, model request, provider account or public website were involved.
+Inspector is an interactive developer client. This verifies its protocol/workflow,
+not model interpretation, prompt-injection resistance or another host's approvals.

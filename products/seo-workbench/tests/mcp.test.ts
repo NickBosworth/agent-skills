@@ -38,6 +38,11 @@ test("official SDK client negotiates stdio, validates tools, and detached audit 
     );
     const tools = await client.listTools();
     assert.equal(tools.tools.length, 10);
+    const performanceTool = tools.tools.find(
+      (t) => t.name === "measure_performance",
+    )!;
+    assert.match(performanceTool.description!, /installed Playwright Chromium/);
+    assert.doesNotMatch(performanceTool.description!, /browser image|docker/i);
     assert.ok(
       tools.tools.every(
         (t) => !["shell", "sql", "browser_script"].includes(t.name),
@@ -92,6 +97,28 @@ test("official SDK client negotiates stdio, validates tools, and detached audit 
       assert.equal(JSON.parse(pages.content[0].text).length, 1);
       const store = new Store(directory),
         observation = store.observations(audit!)[0];
+      const structured: any = await second.callTool({
+        name: "audit_results",
+        arguments: {
+          auditId: audit,
+          view: "structured-data",
+          url: observation.url,
+          limit: 1,
+        },
+      });
+      const coverageRows = JSON.parse(structured.content[0].text);
+      assert.equal(coverageRows.length, 1);
+      assert.equal(coverageRows[0].url, observation.url);
+      assert.ok(coverageRows[0].coverage);
+      const missingCoverage: any = await second.callTool({
+        name: "audit_results",
+        arguments: {
+          auditId: audit,
+          view: "structured-data",
+          url: fixture.origin + "/not-collected",
+        },
+      });
+      assert.deepEqual(JSON.parse(missingCoverage.content[0].text), []);
       const empty: any = await second.callTool({
         name: "audit_results",
         arguments: { auditId: audit, view: "model-usage" },

@@ -12,7 +12,8 @@ CC-BY-SA-3.0 attribution are recorded in `data/schema-vocabulary.json` and NOTIC
 No vendor examples, descriptions, personal contributor records or website captures
 are included in the derived index.
 
-Unknown type or property names produce a review warning. They can be spelling
+Unknown type or property names produce a review warning. Property names are also
+reviewed inside untyped nested objects, using their inherited or local context. They can be spelling
 mistakes or deliberate extensions. Schema.org permits flexible combinations;
 recognition does not enforce a closed-world property/type grammar. A successful
 recognition check does not establish correct values, matching visible content,
@@ -53,25 +54,41 @@ The review follows the [Schema.org data model](https://schema.org/docs/datamodel
 [30.1 release](https://schema.org/version/30.1/),
 [machine-readable definitions](https://schema.org/docs/developers.html) and
 [JSON-LD node identifiers](https://www.w3.org/TR/json-ld11/#node-identifiers).
-See the production-readiness plan for remaining visible-content and engine-feature
-work and independent domain acceptance.
+See the production-readiness plan for broader feature and independent domain acceptance.
 
 ## Selected fields and rendered text
 
-Contracts can opt into `googleFeatures` values `product-snippet`, `article` and
-`local-business`. The new selected-fields check distinguishes required Product/Local
-Business fields from Article recommendations. Missing required fields fail an approved
-feature contract; missing Article recommendations need review and never establish
-Top stories ineligibility. No Article markup is itself required by this check.
-Unresolved references or unsupported property mappings remain untested. Product
-checks include free and nested offer prices, counted aggregate ratings and attributed
-review ratings. The review does not prove a review is authentic, a price is current
-or a business physically occupies an address.
+Detected Product, Article, Local Business and Recipe types receive selected field
+checks automatically. Contracts can also select `googleFeatures` values
+`product-snippet`, `article`, `local-business` and `recipe` to state an owner
+expectation. Missing required fields fail an owner-selected contract; defects in
+automatically detected markup produce review warnings. Article recommendations
+remain recommendations, and absent Article markup does not fail this check.
 
-A browser snapshot compares selected Product/Local Business names and Article
-headlines with rendered page text. It omits common hidden/display/visibility/opacity
+Recipe checks cover required name and image addresses; ingredient text; plain-text,
+HowToStep and HowToSection instructions; durations; yield; calorie values; and
+selected aggregate-rating fields. Per-serving nutrition requires a serving yield.
+Local references are resolved when understood. Missing definitions, unsupported
+contexts and bounded or incomplete collection stay untested. Optional author,
+video, cuisine/category and other specialist fields are not comprehensively checked.
+Product checks include free and nested offer prices, counted aggregate ratings and
+attributed review ratings. No check proves that a review is authentic, a price is
+current, nutrition is correct or a business occupies an address.
+
+The `structured-data` audit view returns saved coverage for each detected type:
+syntax, vocabulary recognition, selected feature fields, visible-text comparisons
+and remaining human checks. Unsupported types are labelled explicitly; recognised
+vocabulary alone is not a feature-validation pass. Nested types can contribute to
+a checked parent without having a standalone feature check. Older analyses without
+a coverage record need reanalysis; missing browser evidence needs fresh collection.
+Private views retain exact types and fields. Shareable HTML, Markdown and JSON
+reports include aggregate coverage and omit captured type extensions and page data.
+
+A browser snapshot compares selected Product/Local Business names, Article
+headlines and Recipe names, ingredients and instructions with rendered page text. It omits common hidden/display/visibility/opacity
 states, hidden ancestors and zero-area text. It does not inspect clipped or occluded
-text exhaustively, shadow DOM, iframe text or unvisited interaction states. Wording
+text exhaustively, closed shadow roots, iframe text or unvisited interaction states.
+Open shadow roots and assigned slots are included. Wording
 differences produce review warnings, not an accusation of false markup. Missing,
 truncated or failed browser collection stays untested. Older captures without this
 snapshot must be collected again for this check.
@@ -121,3 +138,15 @@ selected. Parent references are indexed once per graph rather than rescanning th
 whole graph for each group. A synthetic 800-group regression checks this resource
 path. Site-wide uniqueness, current selections and complete shopping eligibility
 remain outside this page-level result.
+
+## Recipe images
+
+Recipe image addresses and ImageObject URLs are checked structurally. When rendering
+has already requested an image through the broker, coverage records its response
+and content type; otherwise the response is untested. These checks make no extra
+network requests. A response or visible image reference does not prove that the
+image depicts the finished dish, meets image-size guidance or can be indexed.
+Image meaning, factual accuracy and full eligibility need separate review.
+
+The selected Recipe checks follow [Google’s Recipe documentation](https://developers.google.com/search/docs/appearance/structured-data/recipe),
+reviewed on 2026-10-13. Rich-result display is never guaranteed.

@@ -257,6 +257,16 @@ h3 {
   overflow: auto;
   margin: 1rem 0;
 }
+.structured-coverage table {
+  min-width: 760px;
+}
+.structured-coverage th,
+.structured-coverage td {
+  min-width: 100px;
+}
+.structured-coverage td:last-child {
+  min-width: 240px;
+}
 table {
   border-collapse: collapse;
   width: 100%;

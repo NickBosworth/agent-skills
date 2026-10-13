@@ -129,10 +129,279 @@ function objects(value: unknown, nodes: SchemaNode[], base: string) {
   }
   return { objects, unknown };
 }
+export type GoogleFeature =
+  "product-snippet" | "article" | "local-business" | "recipe";
+export function featureForType(type: string): GoogleFeature | null {
+  if (schemaSubtype(type, "ProductGroup")) return null;
+  for (const [parent, feature] of [
+    ["Product", "product-snippet"],
+    ["Article", "article"],
+    ["LocalBusiness", "local-business"],
+    ["Recipe", "recipe"],
+  ] as const)
+    if (schemaSubtype(type, parent)) return feature;
+  return null;
+}
+const list = (value: unknown) =>
+  Array.isArray(value) ? value : value === undefined ? [] : [value];
+function imageUrls(value: unknown, nodes: SchemaNode[], base: string) {
+  const entries = list(value).slice(0, 5000);
+  const details = objects(entries, nodes, base);
+  details.unknown ||= list(value).length > entries.length;
+  let invalid =
+    entries.some(
+      (item) =>
+        !text(item) &&
+        (!item || typeof item !== "object" || Array.isArray(item)),
+    ) ||
+    details.objects.some(
+      (image) =>
+        field(image, "url") === undefined &&
+        field(image, "contentUrl") === undefined,
+    );
+  const candidates = [
+    ...entries.filter(text),
+    ...details.objects.flatMap((image) =>
+      list(field(image, "url") ?? field(image, "contentUrl")),
+    ),
+  ];
+  const urls: string[] = [];
+  for (const candidate of candidates) {
+    if (!text(candidate)) {
+      invalid = true;
+      continue;
+    }
+    try {
+      const url = new URL(candidate, base);
+      if (
+        ["http:", "https:"].includes(url.protocol) &&
+        !url.username &&
+        !url.password
+      )
+        urls.push(url.href);
+      else invalid = true;
+    } catch {
+      invalid = true;
+    }
+  }
+  return { urls: [...new Set(urls)], unknown: details.unknown, invalid };
+}
+function recipeDetails(
+  value: Record<string, unknown>,
+  nodes: SchemaNode[],
+  base: string,
+) {
+  const missing: string[] = [],
+    recommendations: string[] = [],
+    instructionTexts: string[] = [];
+  let unknown = false;
+  const images = imageUrls(field(value, "image"), nodes, base);
+  unknown ||= images.unknown;
+  if (images.invalid && images.urls.length)
+    recommendations.push(
+      "image contains an unsupported or malformed value alongside a usable address",
+    );
+  if (!text(field(value, "name"))) missing.push("name");
+  if (!images.urls.length && !images.unknown)
+    missing.push("image URL or ImageObject URL");
+  const allIngredients = list(field(value, "recipeIngredient"));
+  const ingredients = allIngredients.slice(0, 5000);
+  unknown ||= allIngredients.length > ingredients.length;
+  if (!ingredients.length || !ingredients.every(text))
+    recommendations.push(
+      "recipeIngredient must contain nonempty ingredient text",
+    );
+  const instructions = list(field(value, "recipeInstructions"));
+  unknown ||= instructions.length > 5000;
+  const pending = instructions.slice(0, 5000).map((value) => ({
+    value,
+    depth: 0,
+    allowed: ["HowToStep", "HowToSection"],
+    textAllowed: true,
+  }));
+  const seen = new Set<Record<string, unknown>>();
+  let invalidInstructions = !pending.length,
+    visited = 0;
+  while (pending.length) {
+    if (++visited > 5000) {
+      unknown = true;
+      break;
+    }
+    const item = pending.pop()!;
+    if (item.depth > 20) {
+      unknown = true;
+      continue;
+    }
+    if (text(item.value)) {
+      if (!item.textAllowed) invalidInstructions = true;
+      instructionTexts.push(item.value);
+      continue;
+    }
+    const resolved = objects(item.value, nodes, base);
+    unknown ||= resolved.unknown;
+    if (!resolved.objects.length && !resolved.unknown)
+      invalidInstructions = true;
+    for (const instruction of resolved.objects) {
+      if (seen.has(instruction)) {
+        unknown = true;
+        continue;
+      }
+      seen.add(instruction);
+      const types = list(field(instruction, "@type"))
+        .filter(text)
+        .map((type) => type.replace(/^https?:\/\/schema\.org\//, ""));
+      if (
+        !types.some((type) =>
+          item.allowed.some((parent) => schemaSubtype(type, parent)),
+        )
+      )
+        invalidInstructions = true;
+      const children = list(field(instruction, "itemListElement"));
+      if (children.length + visited + pending.length > 5000) unknown = true;
+      if (types.some((type) => schemaSubtype(type, "HowToSection"))) {
+        if (!text(field(instruction, "name")) || !children.length)
+          invalidInstructions = true;
+        for (const value of children.slice(
+          0,
+          Math.max(0, 5000 - visited - pending.length),
+        ))
+          pending.push({
+            value,
+            depth: item.depth + 1,
+            allowed: ["HowToStep", "HowToSection"],
+            textAllowed: false,
+          });
+      } else if (
+        types.some((type) =>
+          ["HowToStep", "HowToDirection", "HowToTip"].some((parent) =>
+            schemaSubtype(type, parent),
+          ),
+        )
+      ) {
+        const content = field(instruction, "text");
+        if (text(content)) instructionTexts.push(content);
+        else if (
+          children.length &&
+          types.some((type) => schemaSubtype(type, "HowToStep"))
+        )
+          for (const value of children.slice(
+            0,
+            Math.max(0, 5000 - visited - pending.length),
+          ))
+            pending.push({
+              value,
+              depth: item.depth + 1,
+              allowed: ["HowToDirection", "HowToTip"],
+              textAllowed: false,
+            });
+        else invalidInstructions = true;
+      } else invalidInstructions = true;
+    }
+  }
+  if (invalidInstructions)
+    recommendations.push(
+      "recipeInstructions must contain text or populated HowToStep/HowToSection instructions",
+    );
+  for (const name of ["prepTime", "cookTime", "totalTime"]) {
+    const duration = field(value, name);
+    if (
+      duration !== undefined &&
+      (!text(duration) ||
+        !/^P(?=\d|T\d)(?:\d+(?:\.\d+)?W|(?:\d+(?:\.\d+)?D)?(?:T(?=\d)(?:\d+(?:\.\d+)?H)?(?:\d+(?:\.\d+)?M)?(?:\d+(?:\.\d+)?S)?)?)$/.test(
+          duration,
+        ))
+    )
+      recommendations.push(name + " must use a supported ISO 8601 duration");
+  }
+  if (
+    field(value, "totalTime") === undefined &&
+    (field(value, "prepTime") === undefined ||
+      field(value, "cookTime") === undefined)
+  )
+    recommendations.push("totalTime or both prepTime and cookTime");
+  const yields = list(field(value, "recipeYield"));
+  const servings = yields.some(
+    (value) =>
+      (typeof value === "number" && Number.isInteger(value) && value > 0) ||
+      (text(value) && /^[1-9]\d*(?:\s+servings?)?$/i.test(value.trim())),
+  );
+  if (
+    !yields.length ||
+    !yields.every(
+      (value) =>
+        text(value) ||
+        (typeof value === "number" && Number.isInteger(value) && value > 0),
+    )
+  )
+    recommendations.push(
+      "recipeYield must contain a positive integer or quantity text",
+    );
+  const nutrition = objects(field(value, "nutrition"), nodes, base);
+  unknown ||= nutrition.unknown;
+  const nutrients = [
+    "calories",
+    "fatContent",
+    "saturatedFatContent",
+    "unsaturatedFatContent",
+    "transFatContent",
+    "cholesterolContent",
+    "sodiumContent",
+    "carbohydrateContent",
+    "fiberContent",
+    "sugarContent",
+    "proteinContent",
+    "servingSize",
+  ];
+  if (
+    nutrition.objects.some((item) =>
+      nutrients.some((name) => field(item, name) !== undefined),
+    )
+  ) {
+    if (!servings)
+      missing.push(
+        "recipeYield with the number of servings when nutrition per serving is provided",
+      );
+    for (const item of nutrition.objects) {
+      const calories = field(item, "calories");
+      if (
+        calories !== undefined &&
+        !(
+          number(calories) ||
+          (text(calories) &&
+            /^\d+(?:\.\d+)?\s*(?:calories|kcal|cal)$/i.test(calories.trim()))
+        )
+      )
+        recommendations.push(
+          "nutrition.calories must contain a nonnegative calorie value",
+        );
+    }
+  }
+  const ratings = objects(field(value, "aggregateRating"), nodes, base);
+  unknown ||= ratings.unknown;
+  for (const rating of ratings.objects)
+    if (
+      !validRatingValue(rating) ||
+      !["ratingCount", "reviewCount"].some(
+        (name) =>
+          number(field(rating, name)) &&
+          Number(field(rating, name)) > 0 &&
+          Number.isInteger(Number(field(rating, name))),
+      )
+    )
+      recommendations.push("aggregateRating value, scale and positive count");
+  return {
+    missing,
+    recommendations,
+    instructionTexts,
+    ingredientTexts: ingredients.filter(text),
+    imageUrls: images.urls,
+    unknown,
+  };
+}
 export function featureFields(
   blocks: unknown[],
   base: string,
-  features: ("product-snippet" | "article" | "local-business")[],
+  features: GoogleFeature[],
 ) {
   const graph = schemaNodes(blocks, base);
   return features.map((feature) => {
@@ -141,7 +410,9 @@ export function featureFields(
           ? "Product"
           : feature === "article"
             ? "Article"
-            : "LocalBusiness",
+            : feature === "recipe"
+              ? "Recipe"
+              : "LocalBusiness",
       selected = graph.nodes.filter(
         (node) =>
           node.types.some((type) => schemaSubtype(type, parent)) &&
@@ -163,7 +434,12 @@ export function featureFields(
       const value = node.value,
         absent: string[] = [],
         recommended: string[] = [];
-      if (feature === "article") {
+      if (feature === "recipe") {
+        const review = recipeDetails(value, graph.nodes, base);
+        absent.push(...review.missing);
+        recommended.push(...review.recommendations);
+        unknown ||= review.unknown;
+      } else if (feature === "article") {
         if (!text(field(value, "headline"))) recommended.push("headline");
         for (const name of ["datePublished", "dateModified"]) {
           const date = field(value, name);
@@ -345,10 +621,20 @@ export function structuredTextClaims(blocks: unknown[], base: string) {
     for (const member of members.objects) variants.add(member);
   }
   for (const node of graph.nodes.filter((node) => node.knownContext)) {
-    const parent = ["Product", "Article", "LocalBusiness"].find((parent) =>
-      node.types.some((type) => schemaSubtype(type, parent)),
+    const parent = ["Product", "Article", "LocalBusiness", "Recipe"].find(
+      (parent) => node.types.some((type) => schemaSubtype(type, parent)),
     );
     if (!parent) continue;
+    if (parent === "Recipe") {
+      const details = recipeDetails(node.value, graph.nodes, base);
+      uncertainVariants ||= details.unknown;
+      for (const [field, texts] of [
+        ["recipeIngredient", details.ingredientTexts],
+        ["recipeInstructions", details.instructionTexts],
+      ] as const)
+        for (const text of texts)
+          claims.push({ id: node.id, type: parent, field, text });
+    }
     const name = parent === "Article" ? "headline" : "name",
       value = field(node.value, name);
     if (!text(value)) continue;
@@ -501,4 +787,18 @@ export function productVariantReview(blocks: unknown[], base: string) {
     limitations:
       "This page-level review does not establish site-wide identifier uniqueness, correct variant preselection, prices/images/availability, canonical strategy or shopping-result eligibility.",
   };
+}
+
+/** Inspect Recipe image addresses without fetching additional or unapproved resources. */
+export function recipeImageClaims(blocks: unknown[], base: string) {
+  const graph = schemaNodes(blocks, base);
+  return graph.nodes
+    .filter(
+      (node) =>
+        node.knownContext &&
+        node.types.some((type) => schemaSubtype(type, "Recipe")),
+    )
+    .flatMap(
+      (node) => imageUrls(field(node.value, "image"), graph.nodes, base).urls,
+    );
 }

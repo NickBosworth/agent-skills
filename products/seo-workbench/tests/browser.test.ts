@@ -115,6 +115,15 @@ test(
         .getByRole("button", { name: fixture.origin + "/product", exact: true })
         .click();
       await page.getByRole("heading", { name: "Page evidence" }).waitFor();
+      await page
+        .getByRole("heading", { name: "Structured-data checks" })
+        .waitFor();
+      await page
+        .getByText(
+          "No interpreted JSON-LD types were collected. This does not establish that other structured-data formats are valid.",
+          { exact: true },
+        )
+        .waitFor();
       assert.ok(
         await page.getByRole("heading", { name: "Initial response" }).count(),
       );
@@ -1040,6 +1049,109 @@ test(
           await exited;
         }
       }
+    }
+  },
+);
+
+test(
+  "browser shows supported and unsupported structured-data coverage separately",
+  { skip: !enabled },
+  async () => {
+    const directory = mkdtempSync(join(tmpdir(), "seo-coverage-ui-"));
+    const store = new Store(directory);
+    const fixture = await fixtureSite({
+      routes: {
+        "/product": {
+          status: 200,
+          body:
+            '<title>Fictional lamp</title><main><h1>Fictional lamp</h1></main><script type="application/ld+json">' +
+            JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                { "@type": "Product", name: "Fictional lamp" },
+                { "@type": "Event", name: "Fictional launch" },
+              ],
+            }) +
+            "</script>",
+        },
+      },
+    });
+    const app = new Workbench(
+      store,
+      new NetworkPolicy({ localOrigins: [fixture.origin] }),
+    );
+    const config = parseConfig({
+      ...fixture.config,
+      seeds: [fixture.origin + "/product"],
+      include: ["/product"],
+      render: "all",
+    });
+    const project = store.createProject(config),
+      audit = store.createAudit(project);
+    await app.crawler.run(audit);
+    const server = await serve(app, 0);
+    const browser = await chromium.launch({
+      headless: true,
+      chromiumSandbox: true,
+    });
+    try {
+      const context = await browser.newContext();
+      const page = await context.newPage();
+      await page.goto(server.origin);
+      await page.getByRole("link", { name: "Pages", exact: true }).click();
+      await page
+        .getByRole("button", { name: fixture.origin + "/product", exact: true })
+        .click();
+      await page.getByRole("columnheader", { name: "Detected type" }).waitFor();
+      const row = page.getByRole("row").filter({
+        has: page.getByRole("cell", { name: "Product", exact: true }),
+      });
+      assert.match(await row.innerText(), /Names recognised/);
+      assert.match(await row.innerText(), /Needs review/);
+      assert.match(await row.innerText(), /Checked/);
+      const unsupported = page.getByRole("row").filter({
+        has: page.getByRole("cell", { name: "Event", exact: true }),
+      });
+      assert.match(await unsupported.innerText(), /Unsupported/);
+      assert.match(
+        await unsupported.innerText(),
+        /No standalone feature checks/,
+      );
+      assert.match(
+        await page.locator("main").innerText(),
+        /Full search eligibility and actual display are not established/,
+      );
+      const scan = await new AxeBuilder({ page }).analyze();
+      assert.deepEqual(scan.violations, []);
+      await page.setViewportSize({ width: 390, height: 844 });
+      assert.ok(
+        await page
+          .getByRole("heading", { name: "Structured-data checks" })
+          .isVisible(),
+      );
+      const explanation = page.getByText(
+        "Image meaning and factual accuracy need human review. Nested fields may be checked within a parent feature. Full search eligibility and actual display are not established. Scroll the table to read all columns on a small screen.",
+        { exact: true },
+      );
+      const box = await explanation.boundingBox();
+      assert.ok(box && box.width <= 390);
+      assert.ok((await row.boundingBox())!.height < 160);
+      const scroll = page.locator(".structured-coverage");
+      assert.ok(await scroll.evaluate((el) => el.scrollWidth > el.clientWidth));
+      await scroll.evaluate((el) => (el.scrollLeft = el.scrollWidth));
+      assert.ok(await scroll.evaluate((el) => el.scrollLeft > 0));
+      assert.equal(
+        await page.evaluate(
+          () => document.documentElement.scrollWidth <= window.innerWidth,
+        ),
+        true,
+      );
+    } finally {
+      await browser.close();
+      await server.close();
+      store.close();
+      await fixture.close();
+      rmSync(directory, { recursive: true, force: true });
     }
   },
 );

@@ -80,6 +80,7 @@ export function schemaNodes(
   base?: string,
 ): {
   nodes: SchemaNode[];
+  propertyObjects: SchemaNode[];
   unresolvedContext: boolean;
   truncated: boolean;
   references: string[];
@@ -88,6 +89,7 @@ export function schemaNodes(
       .slice(0, 5000)
       .map((value) => ({ value, knownContext: false })),
     nodes: SchemaNode[] = [],
+    propertyObjects: SchemaNode[] = [],
     references: string[] = [];
   let unresolvedContext = false,
     visited = 0,
@@ -156,26 +158,28 @@ export function schemaNodes(
         return null;
       })
       .filter((type): type is string => type !== null);
+    const node: SchemaNode = {
+      types: understood,
+      value: object,
+      id:
+        typeof object["@id"] === "string"
+          ? schemaIdentifier(object["@id"], base)
+          : null,
+      knownContext: known,
+    };
+    propertyObjects.push(node);
     if (
       understood.length ||
-      (typeof object["@id"] === "string" &&
-        Object.keys(object).some((key) => !key.startsWith("@")))
+      (node.id && Object.keys(object).some((key) => !key.startsWith("@")))
     )
-      nodes.push({
-        types: understood,
-        value: object,
-        id:
-          typeof object["@id"] === "string"
-            ? schemaIdentifier(object["@id"], base)
-            : null,
-        knownContext: known,
-      });
+      nodes.push(node);
     for (const [key, child] of Object.entries(object))
       if (key !== "@context" && child && typeof child === "object")
         if (!enqueue(child, known)) break;
   }
   return {
     nodes,
+    propertyObjects,
     unresolvedContext,
     truncated: truncated || pending.length > 0,
     references: [...new Set(references)],

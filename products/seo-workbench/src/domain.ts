@@ -5,7 +5,7 @@ import { createHash } from "node:crypto";
 
 export const VERSION = "0.1.0";
 export const DATABASE_SCHEMA_VERSION = 5;
-export const RULESET = "0.1.9";
+export const RULESET = "0.1.10";
 export const AGENT = "SEO-Workbench/0.1";
 const url = z
   .string()
@@ -39,8 +39,8 @@ export const ContractSchema = z.strictObject({
     .max(20)
     .default([]),
   googleFeatures: z
-    .array(z.enum(["product-snippet", "article", "local-business"]))
-    .max(3)
+    .array(z.enum(["product-snippet", "article", "local-business", "recipe"]))
+    .max(4)
     .default([]),
   importance: z.enum(["ordinary", "important"]).default("ordinary"),
 });

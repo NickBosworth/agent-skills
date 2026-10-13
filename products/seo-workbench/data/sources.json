@@ -780,6 +780,19 @@
       "reviewStatus": "retrieved and selected rating fields reviewed",
       "applicability": "Selected Product rating fields only; full review eligibility, factual accuracy and search display remain separate",
       "accessLimitations": "Public primary-source documentation only; no live rich-result inspection or private accounts"
+    },
+    {
+      "id": "google-recipe",
+      "url": "https://developers.google.com/search/docs/appearance/structured-data/recipe",
+      "publisher": "Google Search Central",
+      "supportedClaim": "Recipe name and image are required; ingredients, instructions, durations and yield are recommended, with serving yield conditional on per-serving nutrition.",
+      "basis": "engine requirement",
+      "engine": "Google",
+      "retrievedOn": "2026-10-13",
+      "reviewedOn": "2026-10-13",
+      "reviewStatus": "retrieved and selected Recipe fields reviewed",
+      "applicability": "Selected fields and captured text/image responses only; no full policy, image meaning or actual display certification",
+      "accessLimitations": "Public primary documentation only; no live rich-result inspection or private accounts"
     }
   ]
 }
