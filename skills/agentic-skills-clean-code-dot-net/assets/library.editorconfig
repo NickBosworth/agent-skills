@@ -1,0 +1,3 @@
+# Merge under the actual app-independent library source glob, after context review.
+[*.cs]
+dotnet_diagnostic.CA2007.severity = warning

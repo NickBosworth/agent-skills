@@ -1,0 +1,4 @@
+interface:
+  display_name: "agentic-skills · Clean Code for .NET"
+  short_description: "Readable C# contracts, docs and verified quality"
+  default_prompt: "Use $agentic-skills-clean-code-dot-net to implement or review this C# change with preserved contracts and verified quality."

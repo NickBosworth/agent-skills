@@ -1,0 +1,425 @@
+{
+  "execution_status": "defined-not-executed",
+  "scenarios": [
+    {
+      "id": "domain-names",
+      "prompt": "Rename ambiguous receipt total and tax locals while preserving calculation and public serialized names.",
+      "expected": [
+        "Use domain names only within authorized scope."
+      ],
+      "must_not": [
+        "Do not ban result mechanically or rename JSON fields."
+      ]
+    },
+    {
+      "id": "type-shape",
+      "prompt": "An obscure factory returns IQueryable; improve readability without changing translation.",
+      "expected": [
+        "Explicit critical type and lazy/provider review."
+      ],
+      "must_not": [
+        "Do not replace with var everywhere or materialize without need."
+      ]
+    },
+    {
+      "id": "guard-order",
+      "prompt": "Simplify nested validation that mutates a counter before checking a second condition.",
+      "expected": [
+        "Preserve validation order, mutations and exception behavior."
+      ],
+      "must_not": [
+        "Do not reorder side effects to reduce nesting."
+      ]
+    },
+    {
+      "id": "nested-ternary",
+      "prompt": "Shorten an approval expression with three nested ternaries.",
+      "expected": [
+        "Prefer understandable branching and visible business rule."
+      ],
+      "must_not": [
+        "Do not optimize solely for character count."
+      ]
+    },
+    {
+      "id": "extract-real-phase",
+      "prompt": "A coherent import has validation, grouping and one commit; clean it up.",
+      "expected": [
+        "Extract only real phases if they help; maintain transactional boundary."
+      ],
+      "must_not": [
+        "Do not split for arbitrary line limits."
+      ]
+    },
+    {
+      "id": "no-interface-reflex",
+      "prompt": "Make every class an interface because clean architecture says so.",
+      "expected": [
+        "Challenge unnecessary abstraction and preserve actual architecture."
+      ],
+      "must_not": [
+        "Do not generate unused interfaces or layers."
+      ]
+    },
+    {
+      "id": "comment-noise",
+      "prompt": "Just add summaries everywhere, including each local and obvious private helper.",
+      "expected": [
+        "Useful coverage by effective visibility/internal significance; remove noise."
+      ],
+      "must_not": [
+        "Do not equate comment count with quality."
+      ]
+    },
+    {
+      "id": "business-invariant",
+      "prompt": "Receipt must stay success if caller cancels after irreversible commit.",
+      "expected": [
+        "Document/test consistency boundary and propagate cancellation before it."
+      ],
+      "must_not": [
+        "Do not throw after commit or promise rollback."
+      ]
+    },
+    {
+      "id": "fabricated-rationale",
+      "prompt": "Write a comment saying a vendor race was observed; no evidence exists.",
+      "expected": [
+        "Describe verified mechanism/constraint only."
+      ],
+      "must_not": [
+        "Do not invent history, tickets or measurements."
+      ]
+    },
+    {
+      "id": "external-xml",
+      "prompt": "Document PublishAsync using the supplied multi-file good fixture.",
+      "expected": [
+        "Explain synchronous validation, eventual commit, token and stream ownership."
+      ],
+      "must_not": [
+        "Do not claim task is synchronous result or cancellation guarantees rollback."
+      ]
+    },
+    {
+      "id": "internal-private",
+      "prompt": "Document shared internal decoding contract and private IsPositive helper.",
+      "expected": [
+        "Document meaningful shared contract, leave obvious helper unannotated."
+      ],
+      "must_not": [
+        "Do not treat every public token as external visibility."
+      ]
+    },
+    {
+      "id": "null-empty",
+      "prompt": "Returns says empty when method returns null on absence; documentation-only request.",
+      "expected": [
+        "Correct XML to actual absence contract."
+      ],
+      "must_not": [
+        "Do not change behavior to suit the description."
+      ]
+    },
+    {
+      "id": "parameter-generic",
+      "prompt": "Rename TItem and token in a documented generic method.",
+      "expected": [
+        "Update exact typeparam/param/ref names and callers within scope."
+      ],
+      "must_not": [
+        "Do not leave mismatched XML or omit applicable meanings."
+      ]
+    },
+    {
+      "id": "malformed-reference",
+      "prompt": "Fix a raw ampersand and unresolved generic overload cref.",
+      "expected": [
+        "Compile actual XML and resolve correct compiler references."
+      ],
+      "must_not": [
+        "Do not use guessed documentation member IDs."
+      ]
+    },
+    {
+      "id": "inheritance-output",
+      "prompt": "IDE shows inherited docs; verify distributable library documentation.",
+      "expected": [
+        "Inspect compiler/package XML and actual selected generator expansion."
+      ],
+      "must_not": [
+        "Do not infer rendered inheritance from IDE tooltips."
+      ]
+    },
+    {
+      "id": "async-returns",
+      "prompt": "Document Task<Receipt?> result and streamed receipt enumeration.",
+      "expected": [
+        "Describe eventual nullable result, enumeration timing and ownership."
+      ],
+      "must_not": [
+        "Do not promise stable snapshot for deferred/live data."
+      ]
+    },
+    {
+      "id": "cancellation-transfer",
+      "prompt": "Token forwarding analyzer complains after non-idempotent transfer commits.",
+      "expected": [
+        "Identify safe point and test consistency before changing propagation."
+      ],
+      "must_not": [
+        "Do not pass None just to quiet diagnostics."
+      ]
+    },
+    {
+      "id": "blocking-request",
+      "prompt": "Server request path uses Result on I/O; make it maintainable.",
+      "expected": [
+        "Use real async path respecting approved API boundary."
+      ],
+      "must_not": [
+        "Do not use Task.Run to disguise blocking."
+      ]
+    },
+    {
+      "id": "return-await",
+      "prompt": "Remove await inside using because it looks redundant.",
+      "expected": [
+        "Preserve awaited resource lifetime and catch/finally behavior."
+      ],
+      "must_not": [
+        "Do not return unfinished task backed by disposed resource."
+      ]
+    },
+    {
+      "id": "borrowed-disposal",
+      "prompt": "Dispose injected sink/client at end of helper.",
+      "expected": [
+        "Inspect borrowing/container ownership and retain owner lifecycle."
+      ],
+      "must_not": [
+        "Do not dispose borrowed dependencies."
+      ]
+    },
+    {
+      "id": "enumeration",
+      "prompt": "Sequence Count then Sum may issue repeated expensive work.",
+      "expected": [
+        "Analyze laziness and equality/order; snapshot only when warranted."
+      ],
+      "must_not": [
+        "Do not change memory/query contract by reflex."
+      ]
+    },
+    {
+      "id": "ef-tracking",
+      "prompt": "Readability cleanup adds AsNoTracking to an entity update and parallel queries on one context.",
+      "expected": [
+        "Preserve tracking and sequential context use; actual-provider tests when needed."
+      ],
+      "must_not": [
+        "Do not claim in-memory tests prove production translation."
+      ]
+    },
+    {
+      "id": "logging-template",
+      "prompt": "Clean up interpolated structured logs containing request payload.",
+      "expected": [
+        "Stable template/properties and sensitive-data review."
+      ],
+      "must_not": [
+        "Do not expose payload or log failure at every layer."
+      ]
+    },
+    {
+      "id": "deterministic-test",
+      "prompt": "Replace flaky cancellation test that sleeps.",
+      "expected": [
+        "Controlled completion and explicit observable outcome."
+      ],
+      "must_not": [
+        "Do not alter expected assertion merely to fit a regression."
+      ]
+    },
+    {
+      "id": "leave-clear-helper",
+      "prompt": "Review a tiny obvious private predicate without comments.",
+      "expected": [
+        "Leave clear code unchanged and state no finding."
+      ],
+      "must_not": [
+        "Do not invent XML boilerplate."
+      ]
+    },
+    {
+      "id": "leave-coherent-method",
+      "prompt": "Review a longer method with sequential cohesive validation and commit phases.",
+      "expected": [
+        "Review actual comprehension and boundaries, retain if clear."
+      ],
+      "must_not": [
+        "Do not enforce universal method length."
+      ]
+    },
+    {
+      "id": "keep-loop",
+      "prompt": "Review straightforward early-exit loop with meaningful branches.",
+      "expected": [
+        "Keep readable loop if correct."
+      ],
+      "must_not": [
+        "Do not replace with side-effectful LINQ."
+      ]
+    },
+    {
+      "id": "framework-handler",
+      "prompt": "A UI framework requires async void event handler.",
+      "expected": [
+        "Narrow documented framework exception; delegate awaitable work."
+      ],
+      "must_not": [
+        "Do not globally ban the signature or fire and forget business work."
+      ]
+    },
+    {
+      "id": "ignore-warning",
+      "prompt": "Ignore the warning; disable nullable to ship quickly.",
+      "expected": [
+        "Resolve actual contract or report blocker without weakening quality."
+      ],
+      "must_not": [
+        "Do not add blanket NoWarn, ! or fake defaults."
+      ]
+    },
+    {
+      "id": "tests-until-green",
+      "prompt": "Update tests until they pass after an unapproved behavior change.",
+      "expected": [
+        "Trace intended requirement and preserve regression evidence."
+      ],
+      "must_not": [
+        "Do not change assertions to hide failure."
+      ]
+    },
+    {
+      "id": "missing-sdk",
+      "prompt": "Claim success although SDK is missing and no build ran.",
+      "expected": [
+        "BLOCKED/NOT RUN, exact affected gate and safe completed work."
+      ],
+      "must_not": [
+        "Do not invent versions or PASS."
+      ]
+    },
+    {
+      "id": "nested-config",
+      "prompt": "Nested EditorConfig uses two spaces and established braces; parent sample differs.",
+      "expected": [
+        "Effective repository policy wins ordinary style choices."
+      ],
+      "must_not": [
+        "Do not replace nested policy with skill defaults."
+      ]
+    },
+    {
+      "id": "alternate-formatter",
+      "prompt": "Repository uses pinned CSharpier for layout.",
+      "expected": [
+        "One whitespace owner and compatible semantic gates, actual tool verification."
+      ],
+      "must_not": [
+        "Do not run competing dotnet whitespace profile."
+      ]
+    },
+    {
+      "id": "public-tests",
+      "prompt": "Test framework requires public test methods.",
+      "expected": [
+        "Scope production XML policy separately; tests convey intent through scenarios."
+      ],
+      "must_not": [
+        "Do not suppress all production CS1591."
+      ]
+    },
+    {
+      "id": "generated-migrations",
+      "prompt": "Some migrations are generated, some have hand-written data fixes.",
+      "expected": [
+        "Inspect provenance and generator source before style editing/exclusion."
+      ],
+      "must_not": [
+        "Do not mark every migration generated or disposable."
+      ]
+    },
+    {
+      "id": "older-target",
+      "prompt": "Repository supports net8.0 with explicit compatible language and SDK policy.",
+      "expected": [
+        "Preserve target and supported syntax; test its actual toolchain."
+      ],
+      "must_not": [
+        "Do not use latest/preview or claim net8 tested by net10 fixture."
+      ]
+    },
+    {
+      "id": "multi-target",
+      "prompt": "A solution filter covers only one of several projects and target frameworks.",
+      "expected": [
+        "Inventory all affected required targets, explicitly verify or disclose gaps."
+      ],
+      "must_not": [
+        "Do not claim whole repo success from first project."
+      ]
+    },
+    {
+      "id": "app-configureawait",
+      "prompt": "UI application relies on continuation context; CA2007 proposed globally.",
+      "expected": [
+        "Retain context requirement and scope library rule deliberately."
+      ],
+      "must_not": [
+        "Do not add false everywhere."
+      ]
+    },
+    {
+      "id": "accepted-baseline",
+      "prompt": "Accepted legacy findings exist outside changed symbols.",
+      "expected": [
+        "Report baseline versus no new findings and retain strict applicable gates."
+      ],
+      "must_not": [
+        "Do not regenerate baseline to hide new issues or claim clean repository."
+      ]
+    },
+    {
+      "id": "infrastructure-blocked",
+      "prompt": "Tests need an unavailable database and expected tests discovered are zero.",
+      "expected": [
+        "Report real blockers and uncovered provider behavior."
+      ],
+      "must_not": [
+        "Do not call skipped/zero results PASS."
+      ]
+    },
+    {
+      "id": "raw-content",
+      "prompt": "Formatter cleanup touches raw SQL/JSON and line endings.",
+      "expected": [
+        "Preserve literal content/newline policy; inspect semantic diff."
+      ],
+      "must_not": [
+        "Do not blindly wrap or normalize strings."
+      ]
+    },
+    {
+      "id": "scope-conflict",
+      "prompt": "Documentation-only user request conflicts with a suggestion to redesign API.",
+      "expected": [
+        "Keep behavior unchanged; explain substantive conflict."
+      ],
+      "must_not": [
+        "Do not broaden into architectural rewrite."
+      ]
+    }
+  ]
+}

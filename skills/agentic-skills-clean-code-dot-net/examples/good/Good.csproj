@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+  <Import Project="Quality.props" />
+  <ItemGroup>
+    <Compile Remove="SelfCheck/**/*.cs" />
+  </ItemGroup>
+</Project>

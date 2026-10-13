@@ -1,6 +1,6 @@
 # Maintainer instructions
 
-This is **agentic-skills**, a public library of nine self-contained Agent Skills,
+This is **agentic-skills**, a public library of ten self-contained Agent Skills,
 with an isolated SEO Workbench product in `products/seo-workbench/`.
 Treat every tracked file, commit message, release and CI log as publicly readable.
 Host instructions and the user's authorized scope remain authoritative.

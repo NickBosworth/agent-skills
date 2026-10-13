@@ -2,7 +2,7 @@
 
 ## Purpose and boundaries
 
-This library distributes nine reusable Agent Skills. Each package must work on
+This library distributes ten reusable Agent Skills. Each package must work on
 its own, state the evidence behind its claims and remain straightforward to maintain.
 The library requires no telemetry, paid service, automatic deployment or runtime server.
 Repository policy applies to maintainers; packaged skills adapt to their consumers'

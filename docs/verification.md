@@ -138,3 +138,30 @@ No rendered GitHub review, reader study, host/model benchmark or live integratio
 check was performed. Agent instructions, templates, legal notices and historical
 task/evidence records were outside the editorial scope. No commit, push or release
 publication was performed.
+
+## Clean Code for C#/.NET 1.0.0 addition — 2026-10-13
+
+Added the tenth package with mandatory workflows, 27 traceable rules, 54 primary-source
+references, mergeable quality assets, 32 worked cases and 42 defined behavioral
+scenarios. The scenarios are not executed host/model trials.
+[Package evidence](../skills/agentic-skills-clean-code-dot-net/VALIDATION.md)
+records exact SDK/compiler/formatter/analyzer versions and enforcement gaps.
+
+- DNC_DOTNET_TESTS=1 .venv/bin/python tools/run_checks.py passed ten official package
+  validators and 254 regression tests: 234 existing plus 20 helper/SDK tests.
+- The net10.0/C#14 fixtures passed with SDK 10.0.400: compilation/XML,
+  formatter idempotence, nine behavioral assertions, 20 diagnostic failure/repair
+  cases and actual source-read-only verifier execution in disposable workspaces.
+- Creator validation, candidate structure/privacy/links, history privacy and
+  redacted Gitleaks history/package-directory scans passed. Staged scanning passed
+  against the unchanged index; new files were checked as candidates.
+- Temporary package-only release packaging passed CRC, inventory and fresh extraction.
+  Manual diff and semantic/contradiction/enforcement review found no known introduced
+  defect within the reviewed scope. No new binaries were added.
+
+The optional SDK job is now defined in CI; no remote run is claimed. No native
+discovery, host/model benchmark, actual VSTest adapter, rendered API generator,
+older/multi-target SDK or production framework integration was executed.
+CA2000 did not flag the tested FileStream leak; ownership still requires semantic
+review. No product check, global installation, commit, push, release publication
+or branch-protection change was performed.

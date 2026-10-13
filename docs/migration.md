@@ -34,3 +34,8 @@ the maintainer's direct control. No old private values are retained in this guid
 Invoke it as `$agentic-skills-awesome-copy`. It is a new, independently versioned
 package with no previous folder, invocation or alias; existing 2.0.0 packages do
 not require migration for this addition.
+
+`skills/agentic-skills-clean-code-dot-net` was added on 2026-10-13 at version 1.0.0.
+Invoke it as `$agentic-skills-clean-code-dot-net`. This new package has no previous
+name, folder or alias; existing packages need no migration. Its templates apply
+only through explicit scoped adoption in a consuming C# repository.

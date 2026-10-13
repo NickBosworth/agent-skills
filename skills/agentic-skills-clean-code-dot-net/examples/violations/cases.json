@@ -1,0 +1,84 @@
+{
+  "missing-public-doc": {
+    "diagnostic": "CS1591",
+    "source": "namespace CleanCode.Examples; public sealed class MissingDocumentation { }"
+  },
+  "malformed-xml": {
+    "diagnostic": "CS1570",
+    "source": "namespace CleanCode.Examples;\n/// <summary>Broken & content.</summary>\npublic sealed class MalformedDocumentation { }"
+  },
+  "invalid-cref": {
+    "diagnostic": "CS1574",
+    "source": "namespace CleanCode.Examples;\n/// <summary>See <see cref=\"UnresolvedReceiptType\"/>.</summary>\npublic sealed class InvalidReference { }"
+  },
+  "wrong-param": {
+    "diagnostic": "CS1572",
+    "source": "namespace CleanCode.Examples;\n/// <summary>Provides an identity operation.</summary>\npublic static class WrongParameter\n{\n    /// <summary>Returns the value.</summary>\n    /// <param name=\"absent\">Incorrect parameter name.</param>\n    /// <returns>The supplied value.</returns>\n    public static int Identity(int value) => value;\n}"
+  },
+  "naming": {
+    "diagnostic": "IDE1006",
+    "source": "namespace CleanCode.Examples;\n/// <summary>Demonstrates invalid type casing.</summary>\npublic sealed class badTypeName { }"
+  },
+  "cancellation": {
+    "diagnostic": "CA2016",
+    "source": "namespace CleanCode.Examples;\ninternal static class LostCancellation\n{\n    internal static async Task PauseAsync(CancellationToken cancellationToken)\n    {\n        await Task.Delay(1).ConfigureAwait(false);\n    }\n}"
+  },
+  "rethrow": {
+    "diagnostic": "CA2200",
+    "source": "namespace CleanCode.Examples;\ninternal static class LostStack\n{\n    internal static void Rethrow(Action action)\n    {\n        try\n        {\n            action();\n        }\n        catch (InvalidOperationException exception)\n        {\n            throw exception;\n        }\n    }\n}"
+  },
+  "async-alternative": {
+    "diagnostic": "CA1849",
+    "source": "namespace CleanCode.Examples;\ninternal static class BlockingRead\n{\n    internal static async Task<string> ReadAsync(string path)\n    {\n        string text = File.ReadAllText(path);\n        await Task.Delay(1).ConfigureAwait(false);\n        return text;\n    }\n}"
+  },
+  "valuetask-reuse": {
+    "diagnostic": "CA2012",
+    "source": "namespace CleanCode.Examples;\ninternal static class ReusedValueTask\n{\n    internal static async Task<int> ReadAsync(Func<ValueTask<int>> getValue)\n    {\n        ValueTask<int> value = getValue();\n        int first = await value.ConfigureAwait(false);\n        return first + await value.ConfigureAwait(false);\n    }\n}"
+  },
+  "multiple-enumeration": {
+    "diagnostic": "CA1851",
+    "source": "namespace CleanCode.Examples;\ninternal static class RepeatedSequence\n{\n    internal static int Total(IEnumerable<int> values)\n    {\n        int count = values.Count();\n        return count + values.Sum();\n    }\n}"
+  },
+  "disposal": {
+    "diagnostic": "CA2000",
+    "source": "namespace CleanCode.Examples;\ninternal static class LeakedResource\n{\n    internal static int TokenHash()\n    {\n        var cancellation = new CancellationTokenSource();\n        return cancellation.Token.GetHashCode();\n    }\n}"
+  },
+  "comparison": {
+    "diagnostic": "CA1309",
+    "source": "namespace CleanCode.Examples;\ninternal static class ImplicitComparison\n{\n    internal static bool Equal(string left, string right) => string.Equals(left, right, StringComparison.CurrentCulture);\n}"
+  },
+  "library-continuation": {
+    "diagnostic": "CA2007",
+    "editorconfig": "\n[*.cs]\ndotnet_diagnostic.CA2007.severity = warning\n",
+    "source": "namespace CleanCode.Examples;\ninternal static class ContextDependency\n{\n    internal static async Task PauseAsync()\n    {\n        await Task.Delay(1);\n    }\n}"
+  },
+  "logging": {
+    "diagnostic": "CA2254",
+    "framework": true,
+    "source": "using Microsoft.Extensions.Logging;\nnamespace CleanCode.Examples;\ninternal static class UnstableLog\n{\n    internal static void Write(ILogger logger, int count)\n    {\n        logger.LogInformation($\"Committed {count} receipts\");\n    }\n}"
+  },
+  "unused-import": {
+    "diagnostic": "IDE0005",
+    "source": "using System.Text.RegularExpressions;\nnamespace CleanCode.Examples;\ninternal static class UnusedImport\n{\n}"
+  },
+  "brace-policy": {
+    "diagnostic": "IDE0011",
+    "source": "namespace CleanCode.Examples;\ninternal static class MissingBraces\n{\n    internal static bool Positive(int value)\n    {\n        if (value > 0)\n            return true;\n        return false;\n    }\n}"
+  },
+  "type-style": {
+    "diagnostic": "IDE0008",
+    "source": "namespace CleanCode.Examples;\ninternal static class HiddenType\n{\n    internal static object Create() => new object();\n    internal static object Read()\n    {\n        var value = Create();\n        return value;\n    }\n}"
+  },
+  "namespace-style": {
+    "diagnostic": "IDE0161",
+    "source": "namespace CleanCode.Examples\n{\n    internal static class BlockNamespace\n    {\n    }\n}"
+  },
+  "static-field-naming": {
+    "diagnostic": "IDE1006",
+    "source": "namespace CleanCode.Examples;\ninternal static class StaticNaming\n{\n    private static readonly int _retryLimit = 3;\n    internal static int RetryLimit => _retryLimit;\n}"
+  },
+  "constant-naming": {
+    "diagnostic": "IDE1006",
+    "source": "namespace CleanCode.Examples;\ninternal static class ConstantNaming\n{\n    private const int s_retryLimit = 3;\n    internal static int RetryLimit => s_retryLimit;\n}"
+  }
+}

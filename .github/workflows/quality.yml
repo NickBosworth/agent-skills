@@ -93,3 +93,21 @@ jobs:
         run: npx playwright install --with-deps chromium
       - run: npm test
       - run: npm audit --omit=dev
+
+  clean-code-dot-net:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.14'
+      - uses: actions/setup-dotnet@d4c94342e560b34958eacfc5d055d21461ed1c5d
+        with:
+          dotnet-version: '10.0.400'
+      - name: Verify isolated C# fixtures and verifier failures
+        env:
+          DNC_DOTNET_TESTS: '1'
+        run: python -m unittest discover -s skills/agentic-skills-clean-code-dot-net/tests -p 'test_*.py' -v
