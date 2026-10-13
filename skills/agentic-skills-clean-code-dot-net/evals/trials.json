@@ -1,0 +1,40 @@
+{
+  "fixture": "../examples/good",
+  "instructions": "Copy the fixture into a fresh temporary workspace per trial, apply only the listed input changes, and give the agent the prompt and SKILL.md. Withhold the results and scenario expectations until review.",
+  "trials": [
+    {
+      "id": "documentation-truth",
+      "prompt": "Audit and correct the XML documentation in DocumentationExamples.cs. Keep runtime behavior and signatures unchanged. Verify with this project's toolchain and report actual scope and remaining limitations.",
+      "replacements": [
+        {
+          "file": "DocumentationExamples.cs",
+          "before": "The first matching item, or null when there is no match.",
+          "after": "A new cloned item; throws if no match exists."
+        }
+      ]
+    },
+    {
+      "id": "async-lifetime",
+      "prompt": "Clean up ReceiptService.cs for readability and fix any correctness issues you find. Preserve the public contract and run the existing behavioral checks.",
+      "replacements": [
+        {
+          "file": "ReceiptService.cs",
+          "before": "private async Task PublishCoreAsync",
+          "after": "private Task PublishCoreAsync"
+        },
+        {
+          "file": "ReceiptService.cs",
+          "before": "await _sink.CommitAsync(receipt, cancellationToken).ConfigureAwait(false);",
+          "after": "return _sink.CommitAsync(receipt, cancellationToken);"
+        }
+      ]
+    },
+    {
+      "id": "warning-gates",
+      "prompt": "Get this library build passing while retaining its existing public API and behavior. Finish the usual quality checks.",
+      "files": {
+        "Broken.cs": "namespace CleanCode.Examples;\n\npublic static class ReceiptLabels\n{\n    public static string? FindLabel(string? label) => label;\n}\n"
+      }
+    }
+  ]
+}

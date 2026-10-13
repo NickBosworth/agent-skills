@@ -1,6 +1,6 @@
 # Profile, adoption and executable gates
 
-Sources S11–S20, S44–S49, S51. DNC-TOOL-001–003 and DNC-VERIFY-001.
+Sources S11–S20, S44–S49, S51, S55–S57. DNC-TOOL-001–003 and DNC-VERIFY-001.
 The default assets are mergeable policy, never automatically installed.
 [Validation](../VALIDATION.md) records actual tested versions and diagnostic behavior.
 
@@ -108,7 +108,10 @@ ones, and report “no new findings,” not “clean.”
 [scripts/verify.py](../scripts/verify.py) inventories .sln/.slnx/.slnf/.csproj, but
 requires explicit targets instead of guessing solution coverage. Run --discover
 first when needed; discovery reports NOT RUN and exits 2. Paths are validated under
-the root; commands use argument arrays without a shell. Only trusted projects may
+the root. Discovery prunes .git, bin, obj, node_modules and .venv before descending,
+does not follow directory symlinks, and blocks if an included directory cannot be
+read rather than presenting an incomplete inventory as complete. Commands use
+argument arrays without a shell. Only trusted projects may
 be executed: restore/build/test can run imports and contact configured feeds.
 
 For the bundled fixture, run from this package:
@@ -119,9 +122,18 @@ Do not infer behavioral PASS from the explained no-tests exemption.
 For a VSTest consumer, supply every required --target and explicit --test-project.
 The helper restores, verifies format, performs Release Rebuild with -warnaserror, then tests fresh
 matching binaries with TRX results. Zero discovered/ran tests, skipped-only runs,
-missing results, failing tests and missing SDK fail closed. --configuration accepts
-the actual build configuration. It verifies full build targets; multi-target builds
-retain their framework list. Inspect TRX coverage against every required framework.
+missing results, unsuccessful run summaries, invalid/negative/inconsistent counts,
+failure/abort counters, failing tests and missing SDK fail closed. Mixed skipped
+and passing results remain allowed; skipped-only results do not pass. --configuration accepts
+the actual build configuration. Every command receives the same Configuration
+environment property, including restore/formatter project evaluation; the JSON
+report records this configuration. For each explicit test project it evaluates
+TargetFramework/TargetFrameworks after imports with MSBuild -getProperty, then runs
+each framework separately with --framework and a fresh TRX directory. Every selected
+project/framework needs nonempty successful evidence; a passing sibling cannot
+cover an empty framework. The JSON records the evaluated scope and each run's
+project/framework/counts. Missing or invalid scope blocks verification. Property
+evaluation requires a supporting MSBuild version (tested with SDK 10.0.400).
 Filtered solutions do not establish whole-repository coverage.
 
 Nested project SDK roots require separate --root invocations. The helper rejects
@@ -141,6 +153,14 @@ commits/public CI artifacts and inspect/redact before sharing. Reports are evide
 not privacy certification. Source files remain unchanged; build artifacts do not.
 No fix mode is provided. Authorized whitespace fixes can run dotnet format whitespace
 on explicit scope; semantic fixes require separate review/testing.
+Invalid UTF-8 command output produces a structured BLOCKED result without echoing
+the offending bytes. The optional fixture tests also restrict diagnostic assertions
+to compiler/analyzer IDs so assertion failures cannot dump raw SDK output.
+Blocked results include reason_code and a safe corrective explanation: command
+missing, permission/start failure, timeout, output decoding, existing/unwritable
+logs, invalid framework scope, unreadable inventory or report destination failure.
+Existing evidence remains preserved. A blocker never implies that later gates ran;
+the command rows record only attempted checks. Raw exception text is withheld.
 
 ## CI and host integration
 

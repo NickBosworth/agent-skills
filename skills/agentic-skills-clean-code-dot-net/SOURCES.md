@@ -75,6 +75,13 @@ Microsoft mandates every MUST. Bundled guidance works offline.
 - **S53** [CA2000 disposal diagnostic](https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca2000) — checked 2026-10-13. Stream-family exclusions leave ownership gaps; the executable negative fixture uses an owned CancellationTokenSource.
 - **S54** [Pinned setup-dotnet action](https://github.com/actions/setup-dotnet/commit/d4c94342e560b34958eacfc5d055d21461ed1c5d) — checked 2026-10-13. Commit resolves; no executed GitHub Actions run is implied.
 
+- **S55** [VSTest run summary counters](https://github.com/microsoft/vstest/blob/main/src/Microsoft.TestPlatform.Extensions.TrxLogger/ObjectModel/TestRunSummary.cs) and [TRX logger summary construction](https://github.com/microsoft/vstest/blob/main/src/Microsoft.TestPlatform.Extensions.TrxLogger/TrxLogger.cs) — checked 2026-10-13 for the 1.0.1 parser fix. VSTest serializes the run outcome separately from counts, uses Completed for successful runs, and can include skipped results in total without populating notExecuted. These living source links inform parser policy; they are not an executed adapter compatibility claim.
+
+- **S56** [MSBuild command-line properties](https://learn.microsoft.com/en-us/visualstudio/msbuild/msbuild-command-line-reference) — checked 2026-10-13. -getProperty evaluates imported project properties without a build target; the helper reads both TargetFramework and TargetFrameworks.
+- **S57** [dotnet test with VSTest](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-test-vstest) — checked 2026-10-13. --framework scopes a run; VSTest supports TRX output. The package executes each evaluated framework separately rather than merging evidence across frameworks.
+
+- **S58** [Python: os.walk](https://docs.python.org/3/library/os.html#os.walk) — checked 2026-10-13. Top-down traversal permits pruning directory names in place; onerror is used to reject incomplete inventories.
+
 ## Execution versus research
 
 See [VALIDATION.md](VALIDATION.md) for selected SDK/compiler/formatter/analyzer

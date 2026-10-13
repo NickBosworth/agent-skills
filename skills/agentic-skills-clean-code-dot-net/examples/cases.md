@@ -12,6 +12,9 @@ root or copy global.json into an unrelated consumer.
 UTF-8 stream, propagates the token and awaits consumption before disposal.
 [SelfCheck](good/SelfCheck/Program.cs) uses controlled completion, checking lifetime,
 pre-cancel behavior, synchronous validation, post-commit success and sink failure.
+[Stream checks](good/SelfCheck/StreamChecks.cs) exercise deferred validation,
+borrowed identity/order, token forwarding and combined enumeration cancellation,
+and enumerator disposal after completion, early exit, cancellation and failure.
 There is no real service, database, clock, sleep or network dependency.
 
 This models a service/API boundary, not a full architecture. The test sink is an
@@ -34,6 +37,18 @@ tested rendered documentation website.
 [test harness](../tests/test_dotnet.py) injects each into a temporary workspace,
 expects the stated diagnostic and failing build, removes it, then expects success.
 They never join the ordinary good build. No destructive example is executed.
+
+## Actual VSTest fixture
+
+[Runner.csproj](vstest/Runner.csproj) is a separate minimal xUnit/VSTest fixture
+targeting net8.0 and net10.0. It has its own test-only formatting policy and does
+not weaken the production example's XML/analyzer gates. Its pinned packages are
+Microsoft.NET.Test.Sdk 17.14.0, xUnit 2.9.3 and Visual Studio adapter 3.1.5.
+The [runner regression](../tests/test_vstest.py) copies the fixture and pinned SDK
+selection into a temporary workspace. It checks passing, failing, skipped-only,
+empty and net10.0-only empty cases, then repairs the fixture and requires PASS.
+Both runtimes must be installed; package restore may contact configured feeds.
+Only this fixture/runner combination is demonstrated, not arbitrary adapters.
 
 ## Focused review cases
 

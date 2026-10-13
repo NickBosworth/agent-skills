@@ -1,6 +1,9 @@
 # Behavioral evaluation
 
-[42 scenarios](scenarios.json) are defined, not executed host/model benchmarks.
+[46 scenarios](scenarios.json) remain defined, not executed host/model benchmarks.
+[Three concrete trials](trials.json) have separate raw-input recipes and
+[reviewed results](results.md). These trials were actually executed; they do not
+turn the scenario catalogue into an executed benchmark.
 [Examples](../examples/cases.md) supply review cases and the multi-file fixture.
 Automated SDK/helper tests are separate from agent adherence and human readability.
 

@@ -3,7 +3,7 @@
   "commands": [
     {
       "cwd": ".",
-      "evidence": "Executed library checks, all nine official skills-ref validators and 234 isolated regression tests on macOS/Python 3.12.11 on 2026-10-12. Candidate/staged/history privacy and redacted Gitleaks passed within the scopes recorded in docs/verification.md; Awesome Copy writing scenarios remain unexecuted. Re-executed the current nine-package library suite after catalogue reconciliation during compressed-response work: all structural validators and 234 isolated regressions passed. On 2026-10-13, ten validators and 254 tests passed with DNC_DOTNET_TESTS=1 using SDK 10.0.400; no host/model or product execution is implied.",
+      "evidence": "Executed library checks, all nine official skills-ref validators and 234 isolated regression tests on macOS/Python 3.12.11 on 2026-10-12. Candidate/staged/history privacy and redacted Gitleaks passed within the scopes recorded in docs/verification.md; Awesome Copy writing scenarios remain unexecuted. Re-executed the current nine-package library suite after catalogue reconciliation during compressed-response work: all structural validators and 234 isolated regressions passed. On 2026-10-13, ten validators and 254 tests passed with DNC_DOTNET_TESTS=1 using SDK 10.0.400; no host/model or product execution is implied. The 1.0.1 verifier follow-up passed all ten validators and 257 tests with SDK checks selected on 2026-10-13. The 1.1.0 follow-up passed ten validators and 264 regressions, including actual two-framework VSTest evidence and async-stream assertions; three isolated agent trials were reviewed separately. The 1.1.1 follow-up passed ten validators and 270 regressions, closing the original twelve-item review; 46 broader scenarios remain unexecuted.",
       "id": "library-checks",
       "run": "python tools/run_checks.py",
       "source": "tools/run_checks.py",
@@ -56,13 +56,14 @@
       "document_sha256": "f92139e460ffa59b506360356827e7daafd6e085fa2e1d7340bd63ba726e91e2",
       "evidence": {
         ".github/workflows/prepare-workbench.yml": "6dbe5accdbd3e3a614e0f203ef6e05181d76431c1802092c83076390a2676c77",
-        ".github/workflows/quality.yml": "f1f70becf802188fdcd35c9ace3607ed51386755018be9fe40513d9cd4fef087",
-        "catalog.json": "a042ab61ee1d3254cd7908704fd3b5bb91145f8b7c31a52c29bdd45c4f71f4fc",
+        ".github/workflows/quality.yml": "5e82f11185b4f97e11288d096a354ffcadaa64bab00bb5bcbda05c8d14e531a4",
+        "catalog.json": "cc0a50ed664204776a7fa407558f6bc22b3fe5f0435a75b9fbca8a242270a1f9",
         "products/seo-workbench/package.json": "ec555f70dee212cda0d69516f08ac19656ce8e627779f1ce25b3f61a977d25ca",
         "tools/run_checks.py": "1696a52504825caf0d9358e93ca871cd341842414d7201926f794edc50d90f13",
-        "skills/agentic-skills-awesome-copy/SKILL.md": "08ee2153357eb9669ec71f87154cd3b48494e3215033a78faa1958777b96c42b"
+        "skills/agentic-skills-awesome-copy/SKILL.md": "08ee2153357eb9669ec71f87154cd3b48494e3215033a78faa1958777b96c42b",
+        "skills/agentic-skills-clean-code-dot-net/SKILL.md": "7f05b1fb220e75f5e5791776cf77fc349435d45c7ee3eb11d0197cfdfeaaa781"
       },
-      "note": "Reviewed trusted in-process extractor/provider interfaces, versioned capture facts, resume manifests and private/shareable boundaries against public policy. Only original synthetic callback examples are in source; runtime data/manifests stay external. Contract tests do not establish arbitrary-code containment or live/external release acceptance; publication stays on hold. Awesome Copy package, nine-skill inventory and catalogue integration reviewed on 2026-10-12; writing scenarios remain unexecuted. Clean Code for C#/.NET, ten-package inventory, isolated SDK CI and public-safe fixtures reviewed on 2026-10-13; SDK/helper execution and semantic gaps are recorded separately, and 42 model scenarios remain unexecuted.",
+      "note": "Reviewed trusted in-process extractor/provider interfaces, versioned capture facts, resume manifests and private/shareable boundaries against public policy. Only original synthetic callback examples are in source; runtime data/manifests stay external. Contract tests do not establish arbitrary-code containment or live/external release acceptance; publication stays on hold. Awesome Copy package, nine-skill inventory and catalogue integration reviewed on 2026-10-12; writing scenarios remain unexecuted. Clean Code for C#/.NET, ten-package inventory, isolated SDK CI and public-safe fixtures reviewed on 2026-10-13; SDK/helper execution and semantic gaps are recorded separately, and 42 model scenarios remain unexecuted. Reviewed Clean Code for C#/.NET 1.0.1 configuration/TRX fixes and catalogue version on 2026-10-13; 257 local regressions passed, with remaining evidence gaps recorded in package validation. Reviewed Clean Code for C#/.NET 1.1.0 helper, optional runner fixture, CI, catalogue and isolated trial evidence; broad compatibility is unverified. Reviewed Clean Code for C#/.NET 1.1.1 discovery pruning, private blocked categories, completion template, all 27 direct source mappings and updated scope evidence.",
       "reviewed_on": "2026-10-13"
     },
     "products/seo-workbench/AGENTS.md": {

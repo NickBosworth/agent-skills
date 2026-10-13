@@ -2,8 +2,9 @@
 
 Stable IDs identify review findings and adopted policy. MUST/MUST NOT are binding
 requirements or explicit adopted policy; SHOULD is a reasoned default, MAY optional.
-Facts/conventions are evidence, not universal aesthetic mandates. Sources resolve
-in [SOURCES](../SOURCES.md). Entry-point hard stops use these obligations.
+Facts/conventions are evidence, not universal aesthetic mandates. Each Evidence
+link opens its primary source directly; [SOURCES](../SOURCES.md) retains source
+names, access dates and applicability caveats. Entry-point hard stops use these obligations.
 
 For every rule, a stated review obligation is mandatory where the rule applies.
 Review is evidence from implementation/callers/tests, not claimed human approval.
@@ -17,7 +18,7 @@ fixes require diff/contract review and affected tests. None authorizes global fi
 - **Status/provenance:** Requirement / original skill policy.
 - **Context/purpose:** All meaningful C# symbols; visible intent and normal path.
 - **Instruction:** MUST make the business rule, main execution path and significant types understandable in a plain diff.
-- **Evidence:** S01, S10; the operational obligation is original policy where broader than the source.
+- **Evidence:** [S01](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions), [S10](https://google.github.io/eng-practices/review/reviewer/looking-for.html); the operational obligation is original policy where broader than the source.
 - **Enforcement/gap:** Comprehension review: purpose, normal path, failures, changes and ownership. No mechanical readability proof.
 - **Compliant:** ReceiptService.PublishAsync validates then delegates one lifetime phase.
 - **Violation:** Nested ternaries conceal validation and side effects.
@@ -29,7 +30,7 @@ fixes require diff/contract review and affected tests. None authorizes global fi
 - **Status/provenance:** Default / widely adopted conventions plus original profile.
 - **Context/purpose:** New or meaningfully changed names; names express domain meaning.
 - **Instruction:** SHOULD use meaningful PascalCase types/members, camelCase parameters, I interfaces, TItem generics, Async methods and positive booleans.
-- **Evidence:** S02, S03; the operational obligation is original policy where broader than the source.
+- **Evidence:** [S02](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/identifier-names), [S03](https://github.com/dotnet/runtime/blob/main/docs/coding-guidelines/coding-style.md); the operational obligation is original policy where broader than the source.
 - **Enforcement/gap:** IDE1006 covers configured symbols; semantic naming and Async/local conventions require review.
 - **Compliant:** canRetry and ReceiptService identify intent.
 - **Violation:** data1/data2 compete for different business concepts.
@@ -41,7 +42,7 @@ fixes require diff/contract review and affected tests. None authorizes global fi
 - **Status/provenance:** Default / original profile.
 - **Context/purpose:** Files, namespaces and members; coherent ownership.
 - **Instruction:** SHOULD keep one principal production type per matching file, related members together and meaningful module ownership.
-- **Evidence:** S01, S03, S10; the operational obligation is original policy where broader than the source.
+- **Evidence:** [S01](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions), [S03](https://github.com/dotnet/runtime/blob/main/docs/coding-guidelines/coding-style.md), [S10](https://google.github.io/eng-practices/review/reviewer/looking-for.html); the operational obligation is original policy where broader than the source.
 - **Enforcement/gap:** Review ownership/member order and meaningful exceptions; no forced project count.
 - **Compliant:** ReceiptService owns publication; a feature fixture keeps supporting documentation types together.
 - **Violation:** Move every domain helper into Common.
@@ -53,7 +54,7 @@ fixes require diff/contract review and affected tests. None authorizes global fi
 - **Status/provenance:** Recommendation / design judgment.
 - **Context/purpose:** New design and scoped cleanup; minimal useful boundaries.
 - **Instruction:** SHOULD use cohesive responsibilities, explicit dependencies and minimal appropriate public surfaces without speculative layers.
-- **Evidence:** S04, S31; the operational obligation is original policy where broader than the source.
+- **Evidence:** [S04](https://learn.microsoft.com/en-us/dotnet/standard/design-guidelines/), [S31](https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection/guidelines); the operational obligation is original policy where broader than the source.
 - **Enforcement/gap:** Review dependency direction and real seams; no automatic SOLID metric.
 - **Compliant:** IReceiptSink is a real destination boundary used by controlled tests.
 - **Violation:** Add an interface and wrapper for each BCL operation.
@@ -65,7 +66,7 @@ fixes require diff/contract review and affected tests. None authorizes global fi
 - **Status/provenance:** Requirement / compatibility.
 - **Context/purpose:** Public/shared API changes; preserved public contracts.
 - **Instruction:** MUST preserve approved observable contracts or trace an authorized change through callers, tests and documentation.
-- **Evidence:** S43; the operational obligation is original policy where broader than the source.
+- **Evidence:** [S43](https://learn.microsoft.com/en-us/dotnet/standard/library-guidance/breaking-changes); the operational obligation is original policy where broader than the source.
 - **Enforcement/gap:** Caller/API/serialization/route/extensibility review plus relevant tests.
 - **Compliant:** Keep text validation synchronous in PublishAsync.
 - **Violation:** Rename a public parameter without checking named arguments.
@@ -77,7 +78,7 @@ fixes require diff/contract review and affected tests. None authorizes global fi
 - **Status/provenance:** Default; MUST once explicitly adopted / profile policy.
 - **Context/purpose:** C# layout under actual formatter; deterministic applicable layout.
 - **Instruction:** MUST comply with the adopted formatter and check idempotence; SHOULD use bundled defaults only absent repository policy.
-- **Evidence:** S13, S15, S45, S48; the operational obligation is original policy where broader than the source.
+- **Evidence:** [S13](https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/csharp-formatting-options), [S15](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-format), [S45](https://csharpier.com/docs/About), [S48](https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/ide0055); the operational obligation is original policy where broader than the source.
 - **Enforcement/gap:** Selected formatter check and second-run no-diff; line width remains review.
 - **Compliant:** Four-space Allman blocks under the default asset.
 - **Violation:** Run CSharpier and dotnet whitespace with contradictory ownership.
@@ -89,7 +90,7 @@ fixes require diff/contract review and affected tests. None authorizes global fi
 - **Status/provenance:** Default / original readability policy.
 - **Context/purpose:** Locals and modern constructs; readable supported idioms.
 - **Instruction:** SHOULD use var for immediately apparent types and explicit types for obscured contracts; supported modern syntax only when clearer.
-- **Evidence:** S01, S03, S18; the operational obligation is original policy where broader than the source.
+- **Evidence:** [S01](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions), [S03](https://github.com/dotnet/runtime/blob/main/docs/coding-guidelines/coding-style.md), [S18](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/configure-language-version); the operational obligation is original policy where broader than the source.
 - **Enforcement/gap:** IDE0007/0008 plus overload/type/capture review.
 - **Compliant:** var receipt = new MemoryStream(...); Task publishing = service.PublishAsync(...);
 - **Violation:** var x = obscureFactory(); obscures a critical shape.
@@ -101,7 +102,7 @@ fixes require diff/contract review and affected tests. None authorizes global fi
 - **Status/provenance:** Requirement / correctness.
 - **Context/purpose:** Input, state and migration changes; nullability and boundary validation.
 - **Instruction:** MUST resolve real nullable contracts and validate required trust boundaries without fake defaults or blanket disabling.
-- **Evidence:** S21, S23; the operational obligation is original policy where broader than the source.
+- **Evidence:** [S21](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/null-safety/nullable-reference-types), [S23](https://learn.microsoft.com/en-us/dotnet/standard/exceptions/best-practices-for-exceptions); the operational obligation is original policy where broader than the source.
 - **Enforcement/gap:** Nullable compiler diagnostics plus validation/failure-state review and tests.
 - **Compliant:** Find returns TItem? when absent; required text is validated.
 - **Violation:** Use string.Empty or ! to conceal a required missing value.
@@ -113,7 +114,7 @@ fixes require diff/contract review and affected tests. None authorizes global fi
 - **Status/provenance:** Requirement / correctness.
 - **Context/purpose:** Records, collections and persistence identities; state semantics.
 - **Instruction:** MUST preserve identity, value equality, mutation and snapshot/live semantics.
-- **Evidence:** S22, S38; the operational obligation is original policy where broader than the source.
+- **Evidence:** [S22](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/record), [S38](https://learn.microsoft.com/en-us/ef/core/dbcontext-configuration/); the operational obligation is original policy where broader than the source.
 - **Enforcement/gap:** Review equality/ownership and test observable state; no deep-immutability inference.
 - **Compliant:** ReceiptSnapshot is a value carrier; ReceiptView keeps caller-owned content.
 - **Violation:** Convert an EF tracked identity to a record for style.
@@ -125,7 +126,7 @@ fixes require diff/contract review and affected tests. None authorizes global fi
 - **Status/provenance:** Requirement / original documentation policy.
 - **Context/purpose:** Changed implementation and nearby comments; useful truthful comments.
 - **Instruction:** MUST document significant non-obvious invariants accurately and MUST NOT invent rationale; omit tautological noise.
-- **Evidence:** S10; the operational obligation is original policy where broader than the source.
+- **Evidence:** [S10](https://google.github.io/eng-practices/review/reviewer/looking-for.html); the operational obligation is original policy where broader than the source.
 - **Enforcement/gap:** Comment evidence review plus testable invariant checks.
 - **Compliant:** Explain why no token check follows a confirmed commit.
 - **Violation:** Invent a vendor bug or add // Constructor.
@@ -137,7 +138,7 @@ fixes require diff/contract review and affected tests. None authorizes global fi
 - **Status/provenance:** Requirement / adopted documentation policy.
 - **Context/purpose:** External production and significant shared internal contracts; appropriate xml coverage.
 - **Instruction:** MUST provide useful XML for effective external APIs and significant shared internal contracts; no private/test boilerplate mandate.
-- **Evidence:** S05, S08, S50; the operational obligation is original policy where broader than the source.
+- **Evidence:** [S05](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/xmldoc/recommended-tags), [S08](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-messages/cs1591), [S50](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/tutorials/xml-documentation); the operational obligation is original policy where broader than the source.
 - **Enforcement/gap:** CS1591 for selected effective external coverage plus explicit internal-contract review.
 - **Compliant:** IReceiptSink describes stream borrowing and commit behavior.
 - **Violation:** Suppress CS1591 across production because test methods are public.
@@ -149,7 +150,7 @@ fixes require diff/contract review and affected tests. None authorizes global fi
 - **Status/provenance:** Requirement / adopted documentation policy.
 - **Context/purpose:** Changed documented contracts; truthful complete xml content.
 - **Instruction:** MUST align parameter/generic/returns/value/remarks/exception semantics with implementation, nullability and tests.
-- **Evidence:** S05, S06, S07; the operational obligation is original policy where broader than the source.
+- **Evidence:** [S05](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/xmldoc/recommended-tags), [S06](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/documentation-comments), [S07](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/xmldoc/examples); the operational obligation is original policy where broader than the source.
 - **Enforcement/gap:** Compiler structural checks and semantic rubric; all-parameter coverage/English require review.
 - **Compliant:** PublishAsync documents eventual commit and synchronous validation.
 - **Violation:** Grammatical returns promises a snapshot of a live collection.
@@ -161,7 +162,7 @@ fixes require diff/contract review and affected tests. None authorizes global fi
 - **Status/provenance:** Requirement / documentation contracts.
 - **Context/purpose:** Inherited and distributable API docs; verified inheritance and delivery.
 - **Instruction:** MUST use a real matching inheritance target and check actual packaged/rendered artifacts when in scope.
-- **Evidence:** S05, S09; the operational obligation is original policy where broader than the source.
+- **Evidence:** [S05](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/xmldoc/recommended-tags), [S09](https://dotnet.github.io/docfx/docs/dotnet-api-docs.html); the operational obligation is original policy where broader than the source.
 - **Enforcement/gap:** Emitted XML inspection plus selected generator output/link review.
 - **Compliant:** DiscardingSink inherits IReceiptSink's actual borrowing contract.
 - **Violation:** Claim expanded package XML from IDE tooltips.
@@ -173,7 +174,7 @@ fixes require diff/contract review and affected tests. None authorizes global fi
 - **Status/provenance:** Requirement / reliability.
 - **Context/purpose:** Async paths and background operations; awaitable owned work.
 - **Instruction:** MUST avoid hidden blocking/unowned work and preserve task consumption and error/shutdown ownership.
-- **Evidence:** S24, S29, S30; the operational obligation is original policy where broader than the source.
+- **Evidence:** [S24](https://learn.microsoft.com/en-us/dotnet/csharp/asynchronous-programming/), [S29](https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1849), [S30](https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca2012); the operational obligation is original policy where broader than the source.
 - **Enforcement/gap:** CA1849/CA2012 selected checks plus blocking/background review.
 - **Compliant:** Await sink.CommitAsync while receipt remains open.
 - **Violation:** Result on request I/O or unowned async void.
@@ -185,7 +186,7 @@ fixes require diff/contract review and affected tests. None authorizes global fi
 - **Status/provenance:** Requirement / correctness.
 - **Context/purpose:** Cancellable effects and streams; cancellation consistency.
 - **Instruction:** MUST propagate meaningful cancellation and identify/test the consistency boundary; no fake cancellation after successful commit.
-- **Evidence:** S26, S27; the operational obligation is original policy where broader than the source.
+- **Evidence:** [S26](https://devblogs.microsoft.com/premier-developer/recommended-patterns-for-cancellationtoken/), [S27](https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca2016); the operational obligation is original policy where broader than the source.
 - **Enforcement/gap:** CA2016 plus before/after-commit tests and semantic review.
 - **Compliant:** Pass token to sink and keep success after sink commits.
 - **Violation:** Pass None to silence propagation or throw after commit.
@@ -197,7 +198,7 @@ fixes require diff/contract review and affected tests. None authorizes global fi
 - **Status/provenance:** Default / context-sensitive recommendation.
 - **Context/purpose:** Applications and app-independent libraries; continuation context.
 - **Instruction:** SHOULD select continuation policy from actual context requirements; MUST NOT apply false everywhere or claim it creates a thread.
-- **Evidence:** S25, S28; the operational obligation is original policy where broader than the source.
+- **Evidence:** [S25](https://devblogs.microsoft.com/dotnet/configureawait-faq/), [S28](https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca2007); the operational obligation is original policy where broader than the source.
 - **Enforcement/gap:** Context review; CA2007 only in adopted library scope.
 - **Compliant:** Library stream transfer uses ConfigureAwait(false); UI retains required context.
 - **Violation:** Global CA2007 forces UI state updates off required context.
@@ -209,7 +210,7 @@ fixes require diff/contract review and affected tests. None authorizes global fi
 - **Status/provenance:** Requirement / correctness.
 - **Context/purpose:** Exceptions, disposable/lazy/async resources; failure and resource ownership.
 - **Instruction:** MUST preserve failures and own resource lifetimes explicitly; no fake success, stack loss or borrowed disposal.
-- **Evidence:** S23, S31, S32; the operational obligation is original policy where broader than the source.
+- **Evidence:** [S23](https://learn.microsoft.com/en-us/dotnet/standard/exceptions/best-practices-for-exceptions), [S31](https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection/guidelines), [S32](https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/implementing-dispose); the operational obligation is original policy where broader than the source.
 - **Enforcement/gap:** CA2200/CA2000 selected checks and lifetime/failure tests.
 - **Compliant:** using stream surrounds awaited sink consumption; failures propagate.
 - **Violation:** return task from using or dispose a DI-owned dependency.
@@ -221,7 +222,7 @@ fixes require diff/contract review and affected tests. None authorizes global fi
 - **Status/provenance:** Requirement / reliability.
 - **Context/purpose:** Shared state, parallelism and retries; safe concurrent work and retries.
 - **Instruction:** MUST bound growing independent work and preserve synchronization, idempotency and shutdown; no concurrent use of one DbContext.
-- **Evidence:** S26, S31, S38; the operational obligation is original policy where broader than the source.
+- **Evidence:** [S26](https://devblogs.microsoft.com/premier-developer/recommended-patterns-for-cancellationtoken/), [S31](https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection/guidelines), [S38](https://learn.microsoft.com/en-us/ef/core/dbcontext-configuration/); the operational obligation is original policy where broader than the source.
 - **Enforcement/gap:** Concurrency/cancellation/transaction review and relevant tests; no blanket analyzer proof.
 - **Compliant:** Release semaphore in finally with explicit ownership.
 - **Violation:** Parallelize two operations on one context or retry duplicate writes blindly.
@@ -233,7 +234,7 @@ fixes require diff/contract review and affected tests. None authorizes global fi
 - **Status/provenance:** Requirement / correctness.
 - **Context/purpose:** LINQ, loops and queries; enumeration and provider semantics.
 - **Instruction:** MUST preserve lazy/eager ordering, comparers, provider translation and lifetime; choose loops when clearer.
-- **Evidence:** S37, S42; the operational obligation is original policy where broader than the source.
+- **Evidence:** [S37](https://learn.microsoft.com/en-us/ef/core/performance/efficient-querying), [S42](https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1851); the operational obligation is original policy where broader than the source.
 - **Enforcement/gap:** CA1851 candidate plus query/enumeration review and actual-provider tests.
 - **Compliant:** Find uses one early-exit loop.
 - **Violation:** Count then enumerate a stateful source, or move filter after AsEnumerable.
@@ -245,7 +246,7 @@ fixes require diff/contract review and affected tests. None authorizes global fi
 - **Status/provenance:** Requirement / correctness.
 - **Context/purpose:** Strings, time, money and serialized values; representation and culture.
 - **Instruction:** MUST preserve appropriate comparers, cultures, precision, rounding, encoding and time meaning.
-- **Evidence:** S33, S35, S52; the operational obligation is original policy where broader than the source.
+- **Evidence:** [S33](https://learn.microsoft.com/en-us/dotnet/standard/base-types/best-practices-strings), [S35](https://learn.microsoft.com/en-us/dotnet/standard/datetime/timeprovider-overview), [S52](https://learn.microsoft.com/en-us/dotnet/core/extensions/timeprovider-testing); the operational obligation is original policy where broader than the source.
 - **Enforcement/gap:** CA1309 candidate plus representation tests and domain review.
 - **Compliant:** Use TimeSpan for duration and explicit ordinal identifier equality.
 - **Violation:** Lowercase arbitrary identifiers or convert local business dates to UTC mechanically.
@@ -257,7 +258,7 @@ fixes require diff/contract review and affected tests. None authorizes global fi
 - **Status/provenance:** Requirement / security and reliability.
 - **Context/purpose:** ASP.NET, EF, SQL, HTTP and DI; framework boundary preservation.
 - **Instruction:** MUST retain auth/validation, transaction/response contracts, parameterization, scope and ownership.
-- **Evidence:** S31, S36, S37, S38, S39; the operational obligation is original policy where broader than the source.
+- **Evidence:** [S31](https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection/guidelines), [S36](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/best-practices?view=aspnetcore-10.0), [S37](https://learn.microsoft.com/en-us/ef/core/performance/efficient-querying), [S38](https://learn.microsoft.com/en-us/ef/core/dbcontext-configuration/), [S39](https://learn.microsoft.com/en-us/dotnet/fundamentals/networking/http/httpclient-guidelines); the operational obligation is original policy where broader than the source.
 - **Enforcement/gap:** Relevant integration/authorization/query/lifetime tests and review.
 - **Compliant:** Read projection with intentional tracking and caller-owned client strategy.
 - **Violation:** AsNoTracking update flow, interpolated SQL, scoped singleton capture.
@@ -269,7 +270,7 @@ fixes require diff/contract review and affected tests. None authorizes global fi
 - **Status/provenance:** Requirement / logging contracts.
 - **Context/purpose:** Structured logs; stable safe logging.
 - **Instruction:** MUST retain stable templates/meaningful fields and exclude sensitive payloads; avoid duplicate error noise.
-- **Evidence:** S40, S41; the operational obligation is original policy where broader than the source.
+- **Evidence:** [S40](https://learn.microsoft.com/en-us/dotnet/core/extensions/logging/high-performance-logging), [S41](https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca2254); the operational obligation is original policy where broader than the source.
 - **Enforcement/gap:** CA2254 candidate plus privacy/template review.
 - **Compliant:** LogInformation("Receipt {ReceiptId} committed", receiptId).
 - **Violation:** Interpolate secret-bearing request into a log template.
@@ -281,7 +282,7 @@ fixes require diff/contract review and affected tests. None authorizes global fi
 - **Status/provenance:** Requirement / compatibility.
 - **Context/purpose:** Quality setup and every task discovery; effective governed tools.
 - **Instruction:** MUST inspect effective SDK/import/config/runner policies; no incidental latest/preview/upgrade or blind file replacement.
-- **Evidence:** S11, S12, S17, S18, S19; the operational obligation is original policy where broader than the source.
+- **Evidence:** [S11](https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/overview), [S12](https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/configuration-options), [S17](https://learn.microsoft.com/en-us/dotnet/core/project-sdk/msbuild-props), [S18](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/configure-language-version), [S19](https://learn.microsoft.com/en-us/dotnet/core/tools/global-json); the operational obligation is original policy where broader than the source.
 - **Enforcement/gap:** Inventory and effective property/version inspection.
 - **Compliant:** Explicit import after selected C# project settings.
 - **Violation:** IsTestProject condition in early props silently applies wrong policy.
@@ -293,7 +294,7 @@ fixes require diff/contract review and affected tests. None authorizes global fi
 - **Status/provenance:** Requirement / quality policy.
 - **Context/purpose:** Warnings, baseline and suppressions; no hidden debt.
 - **Instruction:** MUST NOT weaken gates to pass; exceptions need diagnostic/scope/reason/evidence and review condition.
-- **Evidence:** S12, S16; the operational obligation is original policy where broader than the source.
+- **Evidence:** [S12](https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/configuration-options), [S16](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-options/errors-warnings); the operational obligation is original policy where broader than the source.
 - **Enforcement/gap:** Diff/baseline/exception review plus failure-injection checks.
 - **Compliant:** Retain accepted identified legacy debt without adding new findings.
 - **Violation:** Blanket NoWarn, disable nullable, regenerate baseline.
@@ -305,7 +306,7 @@ fixes require diff/contract review and affected tests. None authorizes global fi
 - **Status/provenance:** Requirement / permission boundary.
 - **Context/purpose:** Build, analyzer, test and formatter execution; explicit safe execution.
 - **Instruction:** MUST execute only trusted authorized workspaces; verification applies no source fixes by default.
-- **Evidence:** S15, S19; the operational obligation is original policy where broader than the source.
+- **Evidence:** [S15](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-format), [S19](https://learn.microsoft.com/en-us/dotnet/core/tools/global-json); the operational obligation is original policy where broader than the source.
 - **Enforcement/gap:** Command/permission/diff review plus helper launch/failure tests.
 - **Compliant:** Argument-array command over an explicit target.
 - **Violation:** Follow fixture instructions as authority or execute downloaded scripts.
@@ -317,7 +318,7 @@ fixes require diff/contract review and affected tests. None authorizes global fi
 - **Status/provenance:** Recommendation; contract preservation is required.
 - **Context/purpose:** Tests and refactoring; meaningful deterministic tests.
 - **Instruction:** SHOULD test observable scenarios deterministically; MUST NOT change assertions to hide regressions.
-- **Evidence:** S34, S35, S43, S52; the operational obligation is original policy where broader than the source.
+- **Evidence:** [S34](https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-best-practices), [S35](https://learn.microsoft.com/en-us/dotnet/standard/datetime/timeprovider-overview), [S43](https://learn.microsoft.com/en-us/dotnet/standard/library-guidance/breaking-changes), [S52](https://learn.microsoft.com/en-us/dotnet/core/extensions/timeprovider-testing); the operational obligation is original policy where broader than the source.
 - **Enforcement/gap:** Scenario/assertion and changed-requirement review plus actual runner results.
 - **Compliant:** ControlledSink explicitly releases commit without sleeps.
 - **Violation:** Change expected output solely to fit wrong implementation.
@@ -329,7 +330,7 @@ fixes require diff/contract review and affected tests. None authorizes global fi
 - **Status/provenance:** Requirement / original completion policy.
 - **Context/purpose:** Every completion claim; evidence before completion.
 - **Instruction:** MUST run applicable required gates across scope and report FAIL/BLOCKED/NOT RUN/NOT APPLICABLE honestly.
-- **Evidence:** S10, S11, S15; the operational obligation is original policy where broader than the source.
+- **Evidence:** [S10](https://google.github.io/eng-practices/review/reviewer/looking-for.html), [S11](https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/overview), [S15](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-format); the operational obligation is original policy where broader than the source.
 - **Enforcement/gap:** Verifier status tests, fresh Rebuild, runner counts, final-diff/readability/doc review.
 - **Compliant:** Missing SDK yields BLOCKED and nonzero exit.
 - **Violation:** Claim PASS from README commands or zero expected tests.

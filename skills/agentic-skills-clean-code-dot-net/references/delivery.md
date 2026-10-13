@@ -53,3 +53,8 @@ observed failure; BLOCKED/NOT RUN means unavailable/unexecuted; NOT APPLICABLE
 needs a scope rationale. State uncovered frameworks/configurations and accepted
 baseline findings. Zero expected tests is not PASS. Never claim human approval
 from agent review or semantic correctness from regex/CS1591/formatter success.
+
+Use the [compact completion template](../assets/completion-report.md) when useful.
+Keep each required gate even when blocked or unrun, separate completed scope from
+uncovered targets, and give the next corrective prerequisite. The verifier's
+reason_code identifies the blocked category without exposing exception text.

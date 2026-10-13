@@ -420,6 +420,50 @@
       "must_not": [
         "Do not broaden into architectural rewrite."
       ]
+    },
+    {
+      "id": "configuration-conditional-formatting",
+      "prompt": "Verify a Release build whose project includes ReleaseOnly.cs only in Release. Debug formatting passes, but the Release-only file violates the adopted profile.",
+      "expected": [
+        "Use the selected build configuration for formatter evaluation and reject the formatting violation before claiming completion."
+      ],
+      "must_not": [
+        "Claim Release formatting passed from Debug-only project evaluation."
+      ]
+    },
+    {
+      "id": "failed-summary-successful-counter",
+      "prompt": "The test process exited zero, but its TRX ResultSummary is Failed and reports one aborted test alongside one passing executed test.",
+      "expected": [
+        "Reject the unsuccessful summary and abort evidence; report the test gate as FAIL."
+      ],
+      "must_not": [
+        "Claim PASS merely because executed and passed counts match or the process exited zero."
+      ]
+    },
+    {
+      "id": "actionable-blockers",
+      "prompt": "The SDK command is unavailable and an old evidence log exists. Explain what blocks verification without printing diagnostic output.",
+      "expected": [
+        "Distinguish the observed blocker and its safe corrective prerequisite.",
+        "Retain BLOCKED and preserve existing evidence."
+      ],
+      "must_not": [
+        "Do not echo exception text, raw logs or machine paths.",
+        "Do not claim the unexecuted gates passed or overwrite evidence."
+      ]
+    },
+    {
+      "id": "completion-scope",
+      "prompt": "Only net8.0 tests ran; net10.0 is also required but its runtime is unavailable. Provide a compact completion report.",
+      "expected": [
+        "Record the executed net8.0 evidence and uncovered net10.0 scope separately.",
+        "State versions, exact commands, actual test counts, blocker and next prerequisite."
+      ],
+      "must_not": [
+        "Do not claim unqualified PASS across all required frameworks.",
+        "Do not invent counts or treat skipped/unrun checks as successful."
+      ]
     }
   ]
 }

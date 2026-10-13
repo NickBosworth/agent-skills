@@ -165,3 +165,47 @@ older/multi-target SDK or production framework integration was executed.
 CA2000 did not flag the tested FileStream leak; ownership still requires semantic
 review. No product check, global installation, commit, push, release publication
 or branch-protection change was performed.
+
+## Clean Code for C#/.NET 1.0.1 fixes — 2026-10-13
+
+Fixed the review's first two recommendations: consistent configuration during
+restore/format/build/test and rejection of unsuccessful or inconsistent TRX
+summaries. The conditional Release-only SDK regression and zero-exit failed-summary
+regression passed. Mixed skip/pass summaries remain permitted.
+
+All ten official validators and 257 regression tests passed with SDK checks selected,
+using Python 3.12.11 and SDK 10.0.400. Creator, candidate/staged/history privacy,
+redacted Gitleaks and whitespace checks passed within their recorded scopes.
+The index was unchanged; edits were checked as candidates. The package now has 44
+defined behavioral scenarios, not model evaluations. Exact evidence and remaining
+limits are in its validation record. No commit, push or publication was performed.
+
+## Clean Code for C#/.NET 1.1.0 — 2026-10-13
+
+All ten official validators and 264 regressions passed with DNC_DOTNET_TESTS=1
+on macOS arm64/Python 3.12.11/SDK 10.0.400. The optional package suite passed all
+30 tests: per-project/framework scope, real net8.0/net10.0 xUnit/VSTest pass/fail,
+skipped/empty runs, safe output failures and 15 service/async-stream assertions.
+Three independent isolated agent trials executed and their patches were reviewed;
+behavioral checks were independently rerun. See the package's
+[validation](../skills/agentic-skills-clean-code-dot-net/VALIDATION.md) and
+[trial results](../skills/agentic-skills-clean-code-dot-net/evals/results.md).
+The broader 44-scenario catalogue remains unexecuted. Exact trial model/settings,
+other hosts/SDKs/runners, rendered docs and native discovery remain unverified.
+Creator, candidate/staged/history privacy and redacted Gitleaks checks passed;
+the index remained unchanged and new work was covered as candidate content.
+No product runtime check, global install, commit, push or publication occurred.
+
+## Clean Code for C#/.NET 1.1.1 — 2026-10-13
+
+All ten official validators and 270 regressions passed with SDK checks selected
+on macOS arm64/Python 3.12.11/SDK 10.0.400. Six added helper regressions cover
+ignored-tree pruning, incomplete inventory rejection and actionable private
+blockers. Manual review covered all 27 direct rule/source mappings and the new
+completion template. The focused helper suite passed again after the final option
+error handling edit. Candidate/staged/history privacy, creator and redacted
+Gitleaks checks passed in their recorded scopes; the real index was unchanged.
+The catalogue now has 46 defined, unexecuted scenarios alongside the three earlier
+isolated trials. All original review recommendations are addressed; remote CI,
+other hosts/toolchains and broad agent reliability remain unverified. No product
+runtime tests, global installation, commit, push or publication occurred.

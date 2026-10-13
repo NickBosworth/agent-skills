@@ -3,7 +3,7 @@ name: agentic-skills-clean-code-dot-net
 description: Create, change, review, document or refactor C#/.NET code and quality tooling for human readability, preserved contracts, useful comments and XML documentation, and verified formatting and correctness. Use for implementation, tests and public API examples; respect the repository's SDK, architecture and formatter. Other languages and generated output retain their own policies.
 license: CC0-1.0
 metadata:
-  version: "1.0.0"
+  version: "1.1.1"
   research-date: "2026-10-13"
 ---
 
@@ -90,7 +90,8 @@ Essential .NET rules do not depend on their installation. Never fabricate approv
    configuration, examples and nearby comments. Correct findings; repeat affected
    checks until evidence supports the result.
 8. Report scope, actual versions, PASS/FAIL/BLOCKED or NOT RUN/NOT APPLICABLE,
-   baseline debt, semantic findings and uncovered targets. Do not turn an
+   baseline debt, semantic findings and uncovered targets. Use the compact
+   [completion template](assets/completion-report.md) when useful. Do not turn an
    agent-reviewed result into claimed human approval.
 
 ## Hard stops and completion
