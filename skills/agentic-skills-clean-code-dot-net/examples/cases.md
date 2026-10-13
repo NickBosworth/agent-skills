@@ -147,3 +147,27 @@ An import loop that validates each row, records an accepted row, stops at a
 business limit and reports an index can remain one coherent operation. Replace it
 only when a real concept/boundary clarifies reasoning; a one-line Aggregate with
 hidden mutation is not automatically cleaner. Preserve row order and failures.
+
+## Security, concurrency and deployment boundaries
+
+[Concurrency checks](good/SelfCheck/ConcurrencyChecks.cs) use dedicated test workers
+and a bounded barrier to force two GetOrAdd factories. They verify duplicate
+candidate creation, shared retained identity and one initialization of a retained
+Lazy value. There are no sleeps or production side effects; this is not a universal
+cache implementation or eviction/failure policy.
+
+The certificate-validation-bypass entry in [diagnostic cases](violations/cases.json)
+expects CA5359 with a narrow fixture-only error severity. It is compiled, never
+executed against a network, and does not claim comprehensive security coverage.
+
+[Security guidance](../references/security.md) covers trust-boundary review.
+[Library delivery](../references/packaging.md) separates source/binary/behavioral
+compatibility and describes actual package consumption and supported publish gates.
+AOT guidance is conditional; ordinary fixture success is not native publish evidence.
+
+The [SDK package regression](../tests/test_dotnet.py) packs the good fixture,
+checks its DLL/XML assets, runs a synthetic consumer restored from an isolated local
+feed, then makes Find internal. A local baseline comparison must fail with CP0002;
+restoring the original public member must pass. PackageValidationBaselinePath is
+used with SDK 10.0.400 to avoid downloading a baseline or publishing anything.
+This checks one removed-member case, not all source/binary/behavioral compatibility.

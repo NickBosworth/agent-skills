@@ -27,7 +27,7 @@
       "path": "skills/agentic-skills-clean-code-dot-net",
       "title": "Clean Code for C#/.NET",
       "description": "Implement and review readable C# with preserved contracts, useful XML docs and verified quality gates.",
-      "version": "1.1.1",
+      "version": "1.2.0",
       "license": "CC0-1.0",
       "status": "packaged"
     },

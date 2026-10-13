@@ -53,3 +53,29 @@ Returned tasks/streams/lazy sequences may still require a connection/resource.
 Finalizers are not routine; use correct inheritance/dispose patterns and safe
 handles for actual native ownership. Review idempotence and concurrent-use contracts.
 CA2000/CA2213 are candidates, not proofs of ownership; confirm installed behavior.
+
+## Shared caches and compound operations
+
+DNC-CONCUR-001; source S65. MUST distinguish thread-safe collection operations from
+invariants across reads/writes. ContainsKey followed by Add, and read/compute/write,
+are not atomic merely because the collection is concurrent. Protect the actual
+invariant with an appropriate operation, lock or existing coordination policy.
+Ordinary locks cannot span await; async coordination needs failure/cancellation
+release and a defined lifetime.
+
+ConcurrentDictionary.GetOrAdd/AddOrUpdate delegates may execute more than once,
+outside dictionary locks. MUST NOT assume their side effects happen exactly once.
+Keep candidate construction safe to repeat or justify a coordination boundary.
+Repeated candidates are not automatically a bug: determine whether effects are
+required once per key, per retained value or per construction. If that contract
+is unknown, report the demonstrated repetition as a conditional risk.
+A retained Lazy value using ExecutionAndPublication can coordinate initialization,
+but discarded wrappers must remain harmless; cached faults, eviction and disposal
+still need policies. Do not reflexively cache Lazy<Task<T>>: the first caller's
+cancellation, shared faults and retry semantics can affect other callers.
+
+Mutable cached values need their own synchronization/immutability contract.
+Review capacity, eviction and disposal when lifetime changes; a static dictionary
+is not a free optimization. Test interleavings with controlled coordination, not
+sleeps. [Concurrency checks](../examples/good/SelfCheck/ConcurrencyChecks.cs) force
+competing factories and check retained identity and initialization counts.

@@ -35,6 +35,13 @@
       "files": {
         "Broken.cs": "namespace CleanCode.Examples;\n\npublic static class ReceiptLabels\n{\n    public static string? FindLabel(string? label) => label;\n}\n"
       }
+    },
+    {
+      "id": "boundary-cache-review",
+      "prompt": "Review BoundaryHelpers.cs for correctness and security in a service that accepts caller-supplied paths and caches receipts. The callback records receipt creation. Leave source unchanged, prioritize actionable findings and report the evidence and limits.",
+      "files": {
+        "BoundaryHelpers.cs": "using System.Collections.Concurrent;\n\nnamespace CleanCode.Examples;\n\ninternal static class BoundaryHelpers\n{\n    internal static byte[] Read(string root, string requestedPath)\n    {\n        string path = Path.Combine(root, requestedPath);\n        if (!path.StartsWith(root, StringComparison.Ordinal))\n        {\n            throw new ArgumentException(\"Outside approved directory.\");\n        }\n\n        return File.ReadAllBytes(path);\n    }\n\n    internal static HttpClientHandler CreateHandler() => new()\n    {\n        ServerCertificateCustomValidationCallback = (_, _, _, _) => true\n    };\n\n    internal static ReceiptView GetReceipt(ConcurrentDictionary<string, ReceiptView> receipts, string key, Action recordCreation)\n    {\n        return receipts.GetOrAdd(key, _ =>\n        {\n            recordCreation();\n            return new ReceiptView(key);\n        });\n    }\n}\n"
+      }
     }
   ]
 }

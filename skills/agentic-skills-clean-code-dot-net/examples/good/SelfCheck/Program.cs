@@ -51,7 +51,8 @@ Require(ReceiptCollections.Find(new[] { first }, item => item.Text == "first") =
 Require(ReceiptCollections.Find(new[] { first }, item => item.Text == "absent") is null, "Absence stays null.");
 Require(first[0] == 'f' && new ReceiptView(null).ToString() == string.Empty, "View display contracts agree.");
 await StreamChecks.RunAsync();
-Console.WriteLine("PASS: 15 behavioral assertions.");
+await ConcurrencyChecks.RunAsync();
+Console.WriteLine("PASS: 19 behavioral assertions.");
 
 static void Require(bool condition, string message)
 {

@@ -3,7 +3,7 @@ kind: task
 id: TASK-0004
 status: done
 depends_on: []
-validation: ["Ten official validators and 270 regression tests passed with the SDK suite selected", "SDK 10.0.400: 20 diagnostic failure/repair cases, 15 behavioral assertions and actual net8.0/net10.0 VSTest evidence gates passed", "Creator and candidate/staged/history privacy plus redacted Gitleaks passed in recorded scopes", "Three isolated agent trials executed and reviewed; 46 broader scenarios remain defined, not executed"]
+validation: ["Ten official validators and 271 regression tests passed with the SDK suite selected", "SDK 10.0.400: 21 diagnostic failure/repair cases, 19 behavioral assertions, real VSTest and local package compatibility gates passed", "Creator and candidate/staged/history privacy plus redacted Gitleaks passed in recorded scopes", "Four isolated agent trials executed and reviewed; 54 broader scenarios remain defined, not executed"]
 ---
 # Add Clean Code for C#/.NET
 
@@ -74,3 +74,15 @@ selected; two additional report scenarios remain definitions only. This closes t
 original twelve-item review. Further work is optional consuming-repository trials
 and compatibility evidence, not an outstanding mandatory fix. No publication or
 global installation occurred.
+
+## 1.2.0 conditional scope extensions — 2026-10-13
+
+Added everyday security, library/package compatibility, concrete concurrency and
+conditional trimming/Native AOT guidance. The package has 31 traceable rules,
+54 unexecuted scenario definitions, 21 diagnostic injection/repair cases and
+19 self-check assertions. All ten validators and 271 regressions passed with SDK
+checks selected. Actual local package consumption and removed-member CP0002
+failure/repair passed. A fourth isolated review trial preserved source and exposed
+an overconfident cache-contract interpretation; guidance was narrowed accordingly.
+Native publishing remains untested. Outstanding work is consuming-repository and
+publish/model validation, not another identified mandatory implementation fix.

@@ -58,3 +58,8 @@ Use the [compact completion template](../assets/completion-report.md) when usefu
 Keep each required gate even when blocked or unrun, separate completed scope from
 uncovered targets, and give the next corrective prerequisite. The verifier's
 reason_code identifies the blocked category without exposing exception text.
+
+For packaged libraries and promised trimming/AOT deployments, load
+[library delivery](packaging.md). Include applicable package/API comparison and
+published-artifact smoke gates in completion evidence; a build-only PASS does not
+cover those obligations.

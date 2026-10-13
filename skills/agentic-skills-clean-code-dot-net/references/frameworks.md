@@ -12,7 +12,8 @@ and unowned work after completion. Background services need shutdown/failure
 ownership and appropriate DI scopes; no scoped service captured by a singleton.
 A long-running action may need the existing durable work mechanism, not an
 invented queue. Deep security assessment requires appropriate security guidance;
-this skill is not a certification.
+this skill is not a certification. Use [everyday security](security.md) for
+affected input, file/process, deserialization, certificate and output boundaries.
 
 ## Persistence
 

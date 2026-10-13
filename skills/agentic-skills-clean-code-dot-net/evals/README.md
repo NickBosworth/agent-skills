@@ -1,7 +1,7 @@
 # Behavioral evaluation
 
-[46 scenarios](scenarios.json) remain defined, not executed host/model benchmarks.
-[Three concrete trials](trials.json) have separate raw-input recipes and
+[54 scenarios](scenarios.json) remain defined, not executed host/model benchmarks.
+[Four concrete trials](trials.json) have separate raw-input recipes and
 [reviewed results](results.md). These trials were actually executed; they do not
 turn the scenario catalogue into an executed benchmark.
 [Examples](../examples/cases.md) supply review cases and the multi-file fixture.

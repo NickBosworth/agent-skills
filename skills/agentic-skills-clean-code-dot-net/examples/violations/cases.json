@@ -80,5 +80,10 @@
   "constant-naming": {
     "diagnostic": "IDE1006",
     "source": "namespace CleanCode.Examples;\ninternal static class ConstantNaming\n{\n    private const int s_retryLimit = 3;\n    internal static int RetryLimit => s_retryLimit;\n}"
+  },
+  "certificate-validation-bypass": {
+    "diagnostic": "CA5359",
+    "editorconfig": "\n[*.cs]\ndotnet_diagnostic.CA5359.severity = error\n",
+    "source": "namespace CleanCode.Examples;\ninternal static class InsecureCertificate\n{\n    internal static void Configure()\n    {\n        System.Net.ServicePointManager.ServerCertificateValidationCallback = (_, _, _, _) => true;\n    }\n}"
   }
 }

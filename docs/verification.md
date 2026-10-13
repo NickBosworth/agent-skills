@@ -209,3 +209,16 @@ The catalogue now has 46 defined, unexecuted scenarios alongside the three earli
 isolated trials. All original review recommendations are addressed; remote CI,
 other hosts/toolchains and broad agent reliability remain unverified. No product
 runtime tests, global installation, commit, push or publication occurred.
+
+## Clean Code for C#/.NET 1.2.0 — 2026-10-13
+
+All ten validators and 271 regressions passed with SDK checks selected on the
+recorded macOS/Python 3.12.11/SDK 10.0.400 toolchain. New evidence includes CA5359
+failure/repair, controlled factory repetition, local package-consumer execution and
+CP0002 baseline failure/repair. SelfCheck now has 19 assertions. The package has
+31 rules and 54 scenario definitions, separate from four executed isolated trials.
+The fourth trial was review-only and used offline synthetic compiler/probes; a
+cache-contract interpretation limit led to a narrow guidance clarification.
+Creator, candidate/staged/history privacy and redacted Gitleaks passed in recorded
+scopes. Native AOT/trim publishing, other hosts and broad model reliability remain
+unverified. No product runtime, global install, commit or publication occurred.

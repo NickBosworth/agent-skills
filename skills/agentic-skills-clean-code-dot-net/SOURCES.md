@@ -82,6 +82,16 @@ Microsoft mandates every MUST. Bundled guidance works offline.
 
 - **S58** [Python: os.walk](https://docs.python.org/3/library/os.html#os.walk) — checked 2026-10-13. Top-down traversal permits pruning directory names in place; onerror is used to reject incomplete inventories.
 
+- **S59** [Security analyzer rules](https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/security-warnings) — checked 2026-10-13. Selected rules inform boundary review; a clean analyzer run is not security certification.
+- **S60** [BinaryFormatter security](https://learn.microsoft.com/en-us/dotnet/standard/serialization/binaryformatter-security-guide) — checked 2026-10-13. A binder does not make BinaryFormatter safe.
+- **S61** [CA5359 certificate validation](https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca5359) — checked 2026-10-13. Always-true validation callbacks remove server authentication.
+- **S62** [SDK package validation](https://learn.microsoft.com/en-us/dotnet/fundamentals/apicompat/package-validation/overview) — checked 2026-10-13. Package checks cover API/baseline consistency, not behavioral semantics.
+- **S63** [Prepare libraries for trimming](https://learn.microsoft.com/en-us/dotnet/core/deploying/trimming/prepare-libraries-for-trimming) — checked 2026-10-13. Analyzer configuration differs from a compatibility declaration; consuming-app analysis exposes dependency paths.
+- **S64** [Native AOT deployment](https://learn.microsoft.com/en-us/dotnet/core/deploying/native-aot/) — checked 2026-10-13. Native publishing has deployment/toolchain constraints; managed build success is insufficient.
+- **S65** [ConcurrentDictionary competing factories](https://learn.microsoft.com/en-us/dotnet/standard/collections/thread-safe/how-to-add-and-remove-items) — checked 2026-10-13. Factory delegates run outside collection locks and may execute more than once.
+
+- **S66** [Baseline package validation](https://learn.microsoft.com/en-us/dotnet/fundamentals/apicompat/package-validation/baseline-version-validator) — checked 2026-10-13. Optional-parameter changes can break compiled callers; SDK baseline checks detect missing members. The local SDK also exposes PackageValidationBaselinePath for a synthetic local package.
+
 ## Execution versus research
 
 See [VALIDATION.md](VALIDATION.md) for selected SDK/compiler/formatter/analyzer

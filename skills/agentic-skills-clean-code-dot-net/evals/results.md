@@ -64,3 +64,36 @@ Warning-gate trial (runtime lines unchanged):
 No skill-instruction change was justified by these outcomes. Next useful trials
 are older SDK policy, a repository with a different formatter and a review-only
 framework ownership case; retain explicit scope and failure evidence.
+
+## Boundary/cache review trial — 1.2.0, 2026-10-13
+
+A fourth independent subagent received the same host/model setup and isolation
+protocol, the updated skill and the raw boundary-cache-review input recipe. It was
+not given expected findings, the catalogue, prior conversation or validation record.
+This trial was review-only; the implementing reviewer compared all fixture source
+and policy bytes afterward and confirmed they were unchanged. No patch resulted.
+
+The agent read core/documentation/tooling/reliability/security/delivery/framework
+and applicable rules guidance plus the fixture's boundary/service/contract/project
+files. Using SDK 10.0.400's local compiler/reference assemblies without restore or
+feeds, it compiled actual fixture code and ran offline synthetic probes. Reported
+observations were directory escapes through traversal, an absolute sibling path
+and a symlink; a validation callback accepting combined certificate error flags;
+and two factory callbacks with one retained cache entry. No network request or
+production data was used. The reviewer inspected source and independently checked
+unchanged inputs; the probe executions are agent-reported evidence, not separately
+rerun by the reviewer. Temporary probe files were removed by the evaluating agent.
+
+Scope, comprehension, tool selection, test/failure evidence and honest completion
+scored 2 each. Contract interpretation scored 1: the cache finding asserted a need
+for exactly-once recording without an explicit once-per-retained-value contract.
+Repeated factory callbacks were demonstrated, but whether they violate business
+semantics requires that contract. Comments/XML truth was not applicable. No critical
+failure or source modification occurred. The reliability guide now explicitly
+requires identifying the effect's intended cardinality and reporting conditional
+risk when it is unknown; this clarification has not had a second model trial.
+
+Full project analyzers/formatting and existing self-checks were not run in this
+review-only trial. Native publish, deployment callers, other filesystems and race
+exploitation remain unverified. These observations do not establish certification
+or broad agent reliability. Only sanitized findings and scope are retained here.

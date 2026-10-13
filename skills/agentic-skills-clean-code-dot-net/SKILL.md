@@ -3,7 +3,7 @@ name: agentic-skills-clean-code-dot-net
 description: Create, change, review, document or refactor C#/.NET code and quality tooling for human readability, preserved contracts, useful comments and XML documentation, and verified formatting and correctness. Use for implementation, tests and public API examples; respect the repository's SDK, architecture and formatter. Other languages and generated output retain their own policies.
 license: CC0-1.0
 metadata:
-  version: "1.1.1"
+  version: "1.2.0"
   research-date: "2026-10-13"
 ---
 
@@ -53,6 +53,8 @@ primary sources for unfamiliar APIs, changing tools or unsupported assumptions.
 | Every C# task: comments; contract tasks also XML sections | [Documentation](references/documentation.md) |
 | Every C# task: configuration, adoption, checks | [Tooling](references/tooling.md) |
 | Async, cancellation, exceptions, lifetime or shared state | [Reliability](references/reliability.md) |
+| Untrusted inputs, file/process boundaries, deserialization or sensitive output | [Everyday security](references/security.md) |
+| Public packages, compatibility, trimming or Native AOT | [Library delivery and deployment](references/packaging.md) |
 | Web, persistence, HTTP, DI or logging | [Framework extensions](references/frameworks.md) |
 | Refactoring, tests, final review | [Delivery and checklists](references/delivery.md) |
 | Resolve policy or enforcement questions | [Rule catalogue](references/rules.md), [sources](SOURCES.md) |

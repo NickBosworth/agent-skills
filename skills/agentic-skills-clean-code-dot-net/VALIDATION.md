@@ -198,3 +198,44 @@ failure. Do not add broad compatibility claims based on this local checkpoint.
 Remote CI, other operating systems, alternate runners/formatters, rendered docs,
 native discovery and broad agent reliability remain unverified. No product runtime
 checks, global installation, commit, push or publication were performed.
+
+## 1.2.0 conditional coverage extensions — 2026-10-13
+
+Added everyday security, package compatibility, concrete cache/concurrency and
+trimming/Native AOT guidance, with conditional loading. Four new traceable rules
+bring the catalogue to 31; eight added behavioral definitions bring it to 54.
+The default production profile, SDK selection and verifier command scope are unchanged.
+
+Executed with the same macOS arm64/Python 3.12.11/SDK 10.0.400 toolchain:
+- All ten official validators and 271 library regressions passed with SDK checks
+  selected (234 existing plus 37 in this package), no package skips.
+- The existing injection/repair harness passed 21 cases, including CA5359 for an
+  always-true certificate callback under a narrow fixture-only severity. The
+  insecure callback was compiled but never executed against a network.
+- SelfCheck passed 19 assertions. Four added checks force competing dictionary
+  factories with dedicated workers and a bounded barrier, verify retained identity,
+  and verify one initialization through retained Lazy wrappers. No sleep is used.
+- A local SDK package check inspected DLL/XML assets and ran a consumer restored
+  from an isolated local feed. Making Find internal failed baseline validation
+  with CP0002; restoring the public method passed. The temporary baseline path
+  avoided baseline downloads and publication. This is one representative case,
+  not a complete package/source/binary/behavioral compatibility certification.
+- One independent review-only trial exercised security and factory repetition with
+  offline synthetic probes. All source/policy bytes stayed unchanged. The evaluator's
+  overconfident interpretation of cache recording cardinality led to a narrow
+  guidance clarification; a second model trial has not been run. See trial results.
+- Creator, candidate/staged/history privacy, redacted Gitleaks, whitespace and
+  temporary archive CRC/SHA-256/fresh-extraction checks passed. The index was
+  unchanged; new work was checked as candidates.
+
+Native AOT/trim analyzer or published-artifact smoke tests were not executed.
+Conditional guidance describes required evidence for consumers that promise those
+modes; it does not claim this package's fixtures support them. No additional runtime
+or development dependency was introduced. No product runtime tests, global install,
+commit, push or publication occurred. All original review items remain addressed.
+
+Outstanding recommendations are validation: a real consuming-repository pilot;
+actual trimmed/Native AOT smoke coverage before claiming those modes; and targeted
+agent trials for package/deployment decisions and the cache-contract clarification.
+Other hosts, alternate runners/formatters and broader model reliability remain
+unverified. No additional mandatory implementation gap was identified in this pass.

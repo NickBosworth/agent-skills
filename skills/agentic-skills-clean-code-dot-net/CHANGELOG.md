@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.0 — 2026-10-13
+
+- Add conditional everyday security, published-library compatibility and trimming/AOT guidance.
+- Expand cache/concurrency invariants with controlled competing-factory checks.
+- Add four traceable rules, eight behavioral scenarios and a certificate-bypass diagnostic probe.
+
 ## 1.1.1 — 2026-10-13
 
 - Distinguish blocked command, scope and evidence-output causes with safe corrective guidance.

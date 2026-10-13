@@ -337,3 +337,51 @@ fixes require diff/contract review and affected tests. None authorizes global fi
 - **Legitimate exceptions:** Explained scope-based not-applicable check; no unqualified clean claim with blockers.
 - **Tool constraints/fix risk:** No automated fix; report gaps rather than fabricating evidence. SDK coverage is limited to the recorded probes; semantic judgment remains required.
 
+
+## DNC-SEC-001 — Preserved trust boundaries
+
+- **Status/provenance:** Requirement / original conditional policy grounded in primary guidance.
+- **Context/purpose:** Affected untrusted input, deserialization, file/process/network and output boundaries.
+- **Instruction:** MUST preserve authorization, input/resource limits, safe serialization, certificate validation and appropriate sensitive-output handling.
+- **Evidence:** [S59](https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/security-warnings), [S60](https://learn.microsoft.com/en-us/dotnet/standard/serialization/binaryformatter-security-guide), [S61](https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca5359); broader operational requirements are original skill policy.
+- **Enforcement/gap:** Boundary/caller review, rejection/failure tests and selected analyzer probes; no certification.
+- **Compliant:** Keep reviewed TLS validation and structured process arguments.
+- **Violation:** Replace certificate validation with an always-true callback.
+- **Legitimate exceptions:** A custom trust policy has explicit requirements, limited scope and failure evidence.
+- **Tool constraints/fix risk:** Preserve existing contracts and gates; run only authorized local commands. Recorded checks establish only their tested scope.
+
+## DNC-CONCUR-001 — Atomicity and cache initialization
+
+- **Status/provenance:** Requirement / original conditional policy grounded in primary guidance.
+- **Context/purpose:** Shared collections, cache factories and compound state transitions.
+- **Instruction:** MUST protect the actual invariant and avoid assuming dictionary factories or their side effects execute exactly once.
+- **Evidence:** [S65](https://learn.microsoft.com/en-us/dotnet/standard/collections/thread-safe/how-to-add-and-remove-items); broader operational requirements are original skill policy.
+- **Enforcement/gap:** Controlled interleaving, retained identity and initialization-count checks; inspect mutable values and eviction.
+- **Compliant:** Harmless candidate wrappers and an intentional retained Lazy initialization policy.
+- **Violation:** Perform an irreversible write inside GetOrAdd assuming a single call.
+- **Legitimate exceptions:** Repeatable candidate creation is safe when discarded candidates have no side effects.
+- **Tool constraints/fix risk:** Preserve existing contracts and gates; run only authorized local commands. Recorded checks establish only their tested scope.
+
+## DNC-PACK-001 — Published library compatibility
+
+- **Status/provenance:** Requirement / original conditional policy grounded in primary guidance.
+- **Context/purpose:** Packaged/public libraries with an approved compatibility commitment.
+- **Instruction:** MUST distinguish source, binary and behavioral contracts; SHOULD validate the actual package and approved baseline with existing tools.
+- **Evidence:** [S62](https://learn.microsoft.com/en-us/dotnet/fundamentals/apicompat/package-validation/overview), [S43](https://learn.microsoft.com/en-us/dotnet/standard/library-guidance/breaking-changes); broader operational requirements are original skill policy.
+- **Enforcement/gap:** Pack/API comparison plus consumer tests and artifact inspection; APIs do not prove semantics.
+- **Compliant:** Test the local package instead of relying only on ProjectReference.
+- **Violation:** Reset the comparison baseline to hide a removed public member.
+- **Legitimate exceptions:** An explicitly authorized versioned break updates consumers and migration guidance.
+- **Tool constraints/fix risk:** Preserve existing contracts and gates; run only authorized local commands. Recorded checks establish only their tested scope.
+
+## DNC-DEPLOY-001 — Verified trimming and Native AOT contracts
+
+- **Status/provenance:** Requirement / original conditional policy grounded in primary guidance.
+- **Context/purpose:** Repositories promising trimming or Native AOT on named targets/RIDs.
+- **Instruction:** MUST preserve promised deployment modes and verify applicable published artifacts; do not infer compatibility from flags or a managed build.
+- **Evidence:** [S63](https://learn.microsoft.com/en-us/dotnet/core/deploying/trimming/prepare-libraries-for-trimming), [S64](https://learn.microsoft.com/en-us/dotnet/core/deploying/native-aot/); broader operational requirements are original skill policy.
+- **Enforcement/gap:** Relevant warnings, dependency review and published-artifact smoke tests; unavailable prerequisites block the gate.
+- **Compliant:** Investigate trim warnings without declaring compatibility, then test the supported publish profile.
+- **Violation:** Set IsAotCompatible or suppress IL warnings and claim tested support.
+- **Legitimate exceptions:** Projects without such a deployment commitment need no incidental AOT migration.
+- **Tool constraints/fix risk:** Preserve existing contracts and gates; run only authorized local commands. Recorded checks establish only their tested scope.

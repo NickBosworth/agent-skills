@@ -12,7 +12,7 @@ PACKAGE = Path(__file__).resolve().parents[1]
 
 
 def diagnostic_codes(output):
-    return sorted(set(re.findall(r"\b(?:CS|CA|IDE)\d+\b", output)))
+    return sorted(set(re.findall(r"\b(?:CS|CA|IDE|CP|IL)\d+\b", output)))
 
 
 class DiagnosticPrivacyTests(unittest.TestCase):
@@ -107,6 +107,54 @@ class DotnetTests(unittest.TestCase):
         tree = ET.parse(self.root / "bin/Release/net10.0/Good.xml")
         self.assertIsNotNone(tree.find(".//inheritdoc"))
         self.assertTrue(any("PublishAsync" in row.attrib["name"] for row in tree.findall(".//member")))
+
+    def test_package_consumer_and_removed_api_baseline_failure_then_repair(self):
+        import zipfile
+        import xml.etree.ElementTree as ET
+        with tempfile.TemporaryDirectory(prefix="dnc-package-") as temporary:
+            directory = Path(temporary)
+            feed = directory / "feed"
+            pack = ["pack", "Good.csproj", "-c", "Release", "--no-restore", "-warnaserror",
+                    "-p:PackageId=CleanCode.Fixture", "-p:EnablePackageValidation=true"]
+            self.command(*pack, "-p:PackageVersion=1.0.0", "-o", str(feed))
+            baseline = feed / "CleanCode.Fixture.1.0.0.nupkg"
+            with zipfile.ZipFile(baseline) as archive:
+                self.assertIn("lib/net10.0/Good.dll", archive.namelist())
+                self.assertIn("lib/net10.0/Good.xml", archive.namelist())
+                tree = ET.fromstring(archive.read("lib/net10.0/Good.xml"))
+                self.assertTrue(any("PublishAsync" in row.attrib["name"] for row in tree.findall(".//member")))
+            consumer = directory / "consumer"
+            consumer.mkdir()
+            shutil.copyfile(self.root / "global.json", consumer / "global.json")
+            configuration = ET.Element("configuration")
+            sources = ET.SubElement(configuration, "packageSources")
+            ET.SubElement(sources, "clear")
+            ET.SubElement(sources, "add", key="synthetic-local", value=str(feed))
+            ET.ElementTree(configuration).write(consumer / "NuGet.Config")
+            (consumer / "Consumer.csproj").write_text(
+                '<Project Sdk="Microsoft.NET.Sdk"><PropertyGroup><OutputType>Exe</OutputType>'
+                '<TargetFramework>net10.0</TargetFramework><RestorePackagesPath>packages</RestorePackagesPath>'
+                '</PropertyGroup><ItemGroup><PackageReference Include="CleanCode.Fixture" Version="1.0.0"/>'
+                '</ItemGroup></Project>')
+            (consumer / "Program.cs").write_text(
+                'using CleanCode.Examples;\n'
+                'if (new ReceiptView(null).ToString() != string.Empty)\n'
+                '{\n    throw new System.InvalidOperationException("Package contract changed.");\n}\n')
+            result = subprocess.run(["dotnet", "run", "--project", "Consumer.csproj", "-c", "Release"],
+                                    cwd=consumer, capture_output=True, text=True, timeout=90)
+            self.assertEqual(result.returncode, 0, "Synthetic local package consumer failed; raw output withheld.")
+            source = self.root / "DocumentationExamples.cs"
+            original = source.read_bytes()
+            compare = pack + ["-p:PackageVersion=1.0.1", "-p:PackageValidationBaselinePath=" + str(baseline),
+                              "-o", str(directory / "candidate")]
+            try:
+                source.write_text(source.read_text().replace("public static TItem? Find", "internal static TItem? Find"))
+                failed = self.command(*compare, succeeds=False)
+                self.assertNotEqual(failed.returncode, 0)
+                self.assertIn("CP0002", diagnostic_codes(failed.stdout + failed.stderr))
+            finally:
+                source.write_bytes(original)
+            self.command(*compare)
 
     def test_injected_diagnostics_fail_then_repaired_fixture_passes(self):
         cases = json.loads((PACKAGE / "examples/violations/cases.json").read_text())
