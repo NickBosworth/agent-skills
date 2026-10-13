@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <Target Name="GenerateReceiptPart" BeforeTargets="BeforeCompile">
+    <Copy SourceFiles="GeneratedInputs/ReceiptPublisher.cs.in" DestinationFiles="$(IntermediateOutputPath)ReceiptPublisher.g.cs" />
+    <ItemGroup>
+      <Compile Include="$(IntermediateOutputPath)ReceiptPublisher.g.cs" />
+    </ItemGroup>
+  </Target>
+</Project>

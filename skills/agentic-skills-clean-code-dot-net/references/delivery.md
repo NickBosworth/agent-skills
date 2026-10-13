@@ -19,6 +19,32 @@ routes/JSON and external side effects unless authorized behavior changes require
 otherwise. Do not edit expected assertions to fit a regression. A legitimate
 expectation change traces to a changed requirement.
 
+For rename/move/extraction work, use [binding-aware refactoring](refactoring.md).
+
+## Demonstrate test value proportionately
+
+For a consequential fix, map the approved requirement to the production entry
+point, concrete input and distinguishing assertion. Derive expected behavior from
+the requirement or supported protocol, not the implementation under test.
+Record the tested revision; for uncommitted work use base revision plus a patch
+identity covering relevant untracked files. Relevant changes invalidate old evidence.
+
+In an owned isolated workspace, retain the regression test and restore the actual
+old defect: observe its intended assertion fail, restore the correction, rebuild
+and observe the same test pass. For a feature, use a buildable missing/wrong-behavior
+variant rather than a missing-symbol compilation failure. Infrastructure failure
+does not prove detection. Do not weaken assertions or deliver the defective variant.
+Use separate or freshly rebuilt outputs; confirm the named tests actually execute.
+Existing tests count when they distinguish the relevant wrong behavior.
+
+Behavior-preserving refactoring tests should pass on both variants. Documentation
+without an executable-contract change can be NOT APPLICABLE with a reason.
+Keep this bounded to changed consequential contracts; no mandatory full mutation
+campaign or redundant tests for trivial changes. Advisory/read-only conclusions
+remain static unless execution is authorized. Unavailable paired evidence is
+unverified, not proof of a product defect. See the comparative
+[test-value workflow](https://github.com/dotnet/skills/blob/main/plugins/dotnet-test/skills/test-value-evidence/SKILL.md).
+
 ## Human readability review
 
 MUST review changed meaningful symbols:

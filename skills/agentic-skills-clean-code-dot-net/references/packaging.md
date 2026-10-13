@@ -52,6 +52,6 @@ build/managed test runner cannot establish published AOT behavior. Native-toolch
 prerequisites may block execution: report BLOCKED/NOT RUN and keep ordinary checks
 as separate evidence.
 
-The bundled verifier covers build/format/VSTest only. Use separate verified pack,
+The bundled verifier covers build/format and supported VSTest/native MTP tests. Use separate verified pack,
 API comparison and publish/smoke commands. Do not claim the helper ran those gates.
 No tested AOT support for this package is asserted by this guidance.

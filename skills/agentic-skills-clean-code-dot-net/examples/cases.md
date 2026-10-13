@@ -1,6 +1,26 @@
 # Worked cases and executable fixture
 
 All examples are synthetic. They teach judgments, not comment-count metrics.
+
+## Research follow-up fixtures
+
+[Options and nullable contracts](contracts/Program.cs) check provider-driven reload,
+stable cached values, scope freshness, subscription disposal and host startup
+validation. The [nullable helpers](contracts/NullableContracts.cs) have real caller
+analysis; isolated removal of each annotation must emit its intended diagnostic.
+
+[Refactoring](refactoring/Program.cs) protects partial/conditional callers,
+generated input, an unrelated same-name method and reflection through the original
+name. Preservation passes in Debug and Release. Wrong boundary/name/binding
+variants must fail the relevant unchanged assertion and pass after repair.
+The [native MTP fixture](mtp/Runner.csproj) uses pinned MSTest 4.0.2 and SDK 10.0.400.
+It verifies real success, failure, skipped-only and empty execution through the
+explicit native verifier path; this does not establish bridge or other framework
+support. Execute all of these through the existing optional SDK suite.
+
+The separate [comparison tasks](../evals/comparison-cases.json) are neutral model
+inputs; their outcome graders are withheld from the evaluated model. Scenario
+definitions, compiler fixtures and actual model comparisons remain distinct evidence.
 The good fixture is net10.0/C#14 with an isolated pinned SDK selection. Its profile
 and props are byte-matched to the assets in tests; do not apply them to the library
 root or copy global.json into an unrelated consumer.

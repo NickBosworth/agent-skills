@@ -18,6 +18,59 @@ def successful_command(command, **kwargs):
 
 
 class VerifyTests(unittest.TestCase):
+    def test_runner_command_mode_rejects_mismatch_and_unsupported_overrides(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            selection = root / "global.json"
+            selection.write_text('{"test":{"runner":"Microsoft.Testing.Platform"}}')
+            with patch.dict(verify.os.environ, {"DOTNET_TEST_RUNNER": ""}):
+                self.assertEqual(verify.test_command_mode(root, "10.0.400"), "mtp-native")
+                with self.assertRaises(ValueError):
+                    verify.test_command_mode(root, "9.0.100")
+                with patch.object(verify.subprocess, "run", side_effect=successful_command) as run:
+                    result = verify.verify(root, ["Runner.csproj"], ["Runner.csproj"], None)
+                self.assertEqual(result["reason_code"], "test-platform-unsupported")
+                self.assertEqual(run.call_count, 1)
+            with patch.dict(verify.os.environ, {"DOTNET_TEST_RUNNER": "synthetic-private-marker"}):
+                with self.assertRaises(ValueError) as failure:
+                    verify.test_command_mode(root, "10.0.400")
+                self.assertNotIn("synthetic-private-marker", str(failure.exception))
+            for text in ['{"test":{"runner":"Unknown"}}', '{"test":null}', '{']:
+                selection.write_text(text)
+                with patch.object(verify.subprocess, "run", side_effect=successful_command):
+                    result = verify.verify(root, ["Runner.csproj"], ["Runner.csproj"], None)
+                self.assertEqual(result["status"], "BLOCKED")
+
+    def test_native_mtp_command_and_evaluated_application_evidence(self):
+        def run(command, **kwargs):
+            if command[1] == "msbuild" and command[-1].endswith("OutputType"):
+                return subprocess.CompletedProcess(command, 0, json.dumps({"Properties": {
+                    "IsTestingPlatformApplication": "true", "OutputType": "Exe"}}), "")
+            if command[1] == "test":
+                (Path(command[-1]) / "result.trx").write_text("<TestRun><ResultSummary outcome='Completed'><Counters total='1' executed='1' passed='1' failed='0'/></ResultSummary></TestRun>")
+            return successful_command(command)
+
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            (root / "global.json").write_text('{"test":{"runner":"Microsoft.Testing.Platform"}}')
+            with patch.dict(verify.os.environ, {"DOTNET_TEST_RUNNER": ""}):
+                with patch.object(verify.subprocess, "run", side_effect=run):
+                    report = verify.verify(root, ["Runner.csproj"], ["Runner.csproj"], None,
+                                           test_platform="mtp-native")
+        self.assertEqual(report["status"], "PASS")
+        command = report["checks"][-1]["command"]
+        self.assertIn("--project", command)
+        self.assertIn("--report-trx", command)
+        self.assertNotIn("--logger", command)
+        for properties in [{"IsTestingPlatformApplication": "false", "OutputType": "Exe"},
+                           {"IsTestingPlatformApplication": "true", "OutputType": "Library"}]:
+            with self.assertRaises(ValueError):
+                verify.mtp_application(json.dumps({"Properties": properties}))
+        with patch.object(verify.subprocess, "run", return_value=subprocess.CompletedProcess([], 0, "{}", "")):
+            blocked = verify.run_check("mtp", ["dotnet", "msbuild"], Path.cwd(), 1, None,
+                                       parse_output=verify.mtp_application)
+        self.assertEqual(blocked["reason_code"], "mtp-application-invalid")
+
     def test_inventory_includes_all_target_kinds_but_not_build_artifacts(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)

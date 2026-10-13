@@ -7,3 +7,6 @@ and validation scope.
 [TASK-0004](TASK-0004-clean-code-dot-net.md) records the C#/.NET standard, fixtures
 and enforcement limits.
 Keep status in the task record rather than a second status table.
+
+[TASK-0005](TASK-0005-dot-net-research-follow-up.md) tracks the comparative .NET
+research recommendations, implementation and controlled evaluation evidence.

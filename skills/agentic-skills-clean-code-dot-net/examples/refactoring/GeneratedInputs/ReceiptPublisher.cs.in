@@ -1,0 +1,4 @@
+internal partial class ReceiptPublisher
+{
+    internal int GeneratedCall() => PublishReceipt(3);
+}

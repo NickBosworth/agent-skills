@@ -1,0 +1,36 @@
+{
+  "cases": [
+    {
+      "id": "inclusive-boundary",
+      "mode": "effectiveness",
+      "fixture": "boundary",
+      "prompt": "Fix Boundary.CanPublish: a zero count is permitted, a negative count is rejected, and positive counts remain permitted. Preserve the public API and verify the change."
+    },
+    {
+      "id": "semantic-rename",
+      "mode": "effectiveness",
+      "fixture": "refactoring",
+      "prompt": "Rename the receipt publisher implementation to DeliverReceipt and update its partial and generated-input callers. The existing public name PublishReceipt must keep working for external callers. Preserve the unrelated publisher and all existing behavior. Verify the change."
+    },
+    {
+      "id": "already-clear",
+      "mode": "effectiveness",
+      "fixture": "no-op",
+      "prompt": "Review Receipt.cs for readability. Change it only if there is a concrete defect; otherwise report no findings."
+    },
+    {
+      "id": "csharp-selection",
+      "mode": "selection",
+      "fixture": "no-op",
+      "should_load": true,
+      "prompt": "Review this C# helper for clean-code quality and preserved contracts. Change it only if there is a concrete defect; otherwise report no findings."
+    },
+    {
+      "id": "prose-selection",
+      "mode": "selection",
+      "fixture": "negative",
+      "should_load": false,
+      "prompt": "Correct the spelling mistake in Guide.md, preserving everything else."
+    }
+  ]
+}

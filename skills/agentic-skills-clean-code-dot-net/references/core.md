@@ -84,6 +84,8 @@ and appropriate attributes/guards instead of !, null!, empty strings, zero or
 empty GUIDs to quiet warnings. required does not validate external input.
 A framework initialization seam or deliberate invalid-input test may justify a
 local, documented exception. Trusted private helpers need no reflexive guards.
+For conditional Try/output/initialization helpers, load the compact
+[nullable contract decisions](configuration-nullability.md#nullable-helpers).
 
 Records fit value-oriented data, not identity-based or EF-tracked entities.
 Records/init/readonly/read-only interfaces do not guarantee deep immutability
@@ -108,3 +110,4 @@ DateTimeOffset is an instant/offset, not a named zone. Preserve local calendar
 rules rather than turning every date into UTC. Use existing clocks or TimeProvider
 where suitable (S35/S52), with deterministic tests. Optimize only against measured
 requirements; never invent performance results.
+Use the conditional [measurement workflow](performance.md) when measurement is needed.

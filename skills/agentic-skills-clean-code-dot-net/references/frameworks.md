@@ -39,6 +39,8 @@ IHttpClientFactory is not the sole valid strategy (S39 reconciles older S36 advi
 Do not create an independently pooled client per request by reflex.
 DI composition is separate from hidden service location; validate configuration
 at an appropriate boundary and preserve container-owned disposal.
+For Options freshness, startup validation and owned change notifications, load
+[configuration lifetimes](configuration-nullability.md#options).
 
 MUST use stable structured logging templates and meaningful properties where
 structured logging is supported. No interpolated templates losing structure,

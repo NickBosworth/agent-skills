@@ -1,5 +1,8 @@
 # Validation and limits
 
+Current research follow-up: see the **1.3.0** checkpoint at the end. Earlier
+VSTest-only and no-model-comparison statements describe their historical scope.
+
 Initial 1.0.0 research and execution checkpoint: 2026-10-13, macOS arm64.
 Initial result counts below are historical; versioned follow-ups appear at the end.
 Source access dates are recorded in [SOURCES](SOURCES.md), not claimed publication
@@ -239,3 +242,60 @@ actual trimmed/Native AOT smoke coverage before claiming those modes; and target
 agent trials for package/deployment decisions and the cache-contract clarification.
 Other hosts, alternate runners/formatters and broader model reliability remain
 unverified. No additional mandatory implementation gap was identified in this pass.
+
+## 1.3.0 comparative research implementation — 2026-10-13
+
+All seven research recommendations are implemented: conditional semantic
+refactoring, revision-bound regression proof, test-platform selection and native
+MTP execution, Options lifetimes/validation, nullable helper contracts, performance
+measurement guidance and controlled paired agent evaluations.
+
+Executed on macOS arm64, Python 3.12.11 and SDK 10.0.400:
+- All ten official validators and **285 regressions** passed with
+  DNC_DOTNET_TESTS=1: 234 existing library tests and 51 package tests, no package skips.
+- The new contract fixture passed **14 checks** covering nullable runtime truth,
+  provider-driven Options changes, stable cached/scope values, new-scope freshness,
+  subscription disposal, invalid/cross-property startup validation and deliberately
+  deferred validation, plus default-only validator name selection.
+  Removing NotNullWhen/NotNullIfNotNull/MemberNotNull caused
+  the expected CS8602/CS8618 failures; each repaired build passed.
+- Refactoring preservation passed Debug/Release with partial/generated-input,
+  unrelated binding and reflection-name checks. Wrong boundary, unrelated result
+  and external visibility variants failed unchanged assertions and passed after
+  repair. Generator output was checked from its owning input.
+- Native MTP **2.0.2**, MSTest **4.0.2** and TRX extension **2.0.2** passed actual
+  success/failure/skipped-only/empty/repair cases. Skipped-only native execution
+  returned exit 8; VSTest's existing exit-zero empty-evidence checks remain intact.
+  Native command selection, per-framework executable properties and mismatches
+  have focused regressions. Bridge, other frameworks and other SDKs are not established.
+- The evaluation harness has integrity regressions for unchanged matched inputs,
+  package placement/preservation, source identities, missing/invalid usage,
+  visible-read classification, stopped/failed execution, private timeout evidence
+  and independent old/corrected/strengthened-test oracles.
+- **Twenty accepted paired model runs** completed, with all twenty independent functional
+  outcomes passing after corrected oracle review. Both arms tied on the selected
+  tasks; all four controlled selection observations were correct. No-op source
+  remained unchanged. Model, settings, timings, token counts, artifact identities,
+  excluded preparatory attempts and grader correction are recorded in
+  [comparison evidence](evals/comparison.md). No general superiority is claimed.
+  Final audit excluded a pilot with maintenance graders accessible, despite no
+  observed use. Fresh sampling withheld those resources, verified unchanged views
+  and matched inputs, and reproduced the twenty passes. The stricter successful
+  content-read parser was applied to all saved trajectories.
+
+The package retains 31 rules and has **68 defined, unexecuted broader scenarios**,
+separate from four earlier isolated trials and the new controlled comparisons.
+Performance guidance does not claim an application benchmark result or introduce
+mandatory dependencies. Native AOT/trim publishing, rendered docs, other hosts,
+remote CI, native discovery and production integration remain outside executed scope.
+The test/instruction snapshots and timing limitations are explicit; final parser/
+reporting refinements and one named-Options fixture assertion are not silently
+attributed to an earlier snapshot.
+
+Creator validation, candidate and actual-index privacy, reachable-history privacy,
+redacted Gitleaks history/package scans, whitespace review and temporary archive
+CRC/extraction validation passed in their recorded scopes. No files were staged;
+index checks cover the real index, while changed/new files are candidate checks.
+The implementing agent reviewed the source/diff and public numeric summaries; raw
+model/SDK logs remain outside the checkout. No new tracked binary, product check,
+global install, commit, push or publication occurred.

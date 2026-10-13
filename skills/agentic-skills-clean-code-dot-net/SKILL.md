@@ -3,7 +3,7 @@ name: agentic-skills-clean-code-dot-net
 description: Create, change, review, document or refactor C#/.NET code and quality tooling for human readability, preserved contracts, useful comments and XML documentation, and verified formatting and correctness. Use for implementation, tests and public API examples; respect the repository's SDK, architecture and formatter. Other languages and generated output retain their own policies.
 license: CC0-1.0
 metadata:
-  version: "1.2.0"
+  version: "1.3.0"
   research-date: "2026-10-13"
 ---
 
@@ -56,6 +56,10 @@ primary sources for unfamiliar APIs, changing tools or unsupported assumptions.
 | Untrusted inputs, file/process boundaries, deserialization or sensitive output | [Everyday security](references/security.md) |
 | Public packages, compatibility, trimming or Native AOT | [Library delivery and deployment](references/packaging.md) |
 | Web, persistence, HTTP, DI or logging | [Framework extensions](references/frameworks.md) |
+| Options lifetime/reload or conditional nullable helpers | [Configuration and nullable contracts](references/configuration-nullability.md) |
+| Rename, move, extract, partial or generated refactoring | [Semantic refactoring](references/refactoring.md) |
+| Unfamiliar test platform, runner flags or reporting | [Test-platform selection](references/test-platforms.md) |
+| Performance requirement or observed regression | [Measurement workflow](references/performance.md) |
 | Refactoring, tests, final review | [Delivery and checklists](references/delivery.md) |
 | Resolve policy or enforcement questions | [Rule catalogue](references/rules.md), [sources](SOURCES.md) |
 | Learn by cases / maintain the package | [Cases](examples/cases.md), [evaluation guide](evals/README.md) |
@@ -84,7 +88,7 @@ Essential .NET rules do not depend on their installation. Never fabricate approv
    separate actions. Review any semantic fix and rerun affected tests.
 6. Run applicable fresh build/analyzers, formatting verification, actual runner
    tests and compiler/documentation checks across required configurations/targets.
-   Use [verify.py](scripts/verify.py) for the documented SDK/VSTest baseline or
+   Use [verify.py](scripts/verify.py) for the documented SDK/VSTest or explicit native MTP path, or
    the repository's equivalent verified commands. The helper is source-read-only,
    not side-effect-free: restore/build/test write artifacts and execute project code.
 7. Independently review meaning and comprehension with the

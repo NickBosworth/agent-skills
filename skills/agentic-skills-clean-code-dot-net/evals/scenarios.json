@@ -550,6 +550,146 @@
       "must_not": [
         "Do not claim AOT support or upgrade the deployment policy incidentally."
       ]
+    },
+    {
+      "id": "rename-binding-collision",
+      "prompt": "Rename a member used by partial code while an unrelated type has the same spelling.",
+      "expected": [
+        "Resolve the target binding, update its actual callers and validate required branches."
+      ],
+      "must_not": [
+        "Do not replace all textual matches or edit generated output instead of its input."
+      ]
+    },
+    {
+      "id": "rename-external-name",
+      "prompt": "Rename a shipped member referenced through reflection and a friend assembly.",
+      "expected": [
+        "Preserve the observed old-name path and inspect external/friend consumers."
+      ],
+      "must_not": [
+        "Do not infer compatibility from local references or one green target."
+      ]
+    },
+    {
+      "id": "regression-old-defect",
+      "prompt": "Fix an inclusive boundary that currently rejects zero; show the test detects the defect.",
+      "expected": [
+        "Keep assertions fixed, execute the old-defect failure and corrected pass in an isolated workspace."
+      ],
+      "must_not": [
+        "Do not count a setup/build failure as behavioral red or deliver the defective variant."
+      ]
+    },
+    {
+      "id": "refactor-preservation-evidence",
+      "prompt": "A behavior-preserving refactor passes the same contract tests before and after.",
+      "expected": [
+        "Credit preservation evidence and bind it to actual revisions or patch identities."
+      ],
+      "must_not": [
+        "Do not demand an artificial failing test or claim old evidence covers a later patch."
+      ]
+    },
+    {
+      "id": "mtp-native-selection",
+      "prompt": "global.json selects native MTP; the project has a supported executable runner and TRX extension.",
+      "expected": [
+        "Use effective platform settings and native syntax; require fresh nonempty reports."
+      ],
+      "must_not": [
+        "Do not pass VSTest logger flags or borrow passing evidence from another framework."
+      ]
+    },
+    {
+      "id": "mtp-incomplete-bridge",
+      "prompt": "A test package mentions MTP but the imported project settings do not establish a usable bridge or native command mode.",
+      "expected": [
+        "Distinguish framework, execution platform and CLI mode; inspect actual imports or report the unsupported combination."
+      ],
+      "must_not": [
+        "Do not invent flags, migrate packages or accept a zero exit without executed tests."
+      ]
+    },
+    {
+      "id": "options-live-reload",
+      "prompt": "A singleton must observe provider-driven configuration updates while a scoped snapshot must remain stable.",
+      "expected": [
+        "Use the correct Options lifetimes, provider change tokens and owned subscription disposal."
+      ],
+      "must_not": [
+        "Do not capture a scoped snapshot in the singleton or claim object mutation proves reload."
+      ]
+    },
+    {
+      "id": "options-startup-policy",
+      "prompt": "A cleanup touches optional deferred settings; startup validation would change when the application fails.",
+      "expected": [
+        "Preserve the approved failure/freshness policy and test any authorized change."
+      ],
+      "must_not": [
+        "Do not impose ValidateOnStart or reload behavior universally."
+      ]
+    },
+    {
+      "id": "nullable-conditional-output",
+      "prompt": "A Try helper has a nullable output that is non-null only on success.",
+      "expected": [
+        "Represent runtime truth using accurate conditional attributes and compile a real caller."
+      ],
+      "must_not": [
+        "Do not suppress analysis with ! or change a shipped nullable contract without review."
+      ]
+    },
+    {
+      "id": "nullable-annotation-falsehood",
+      "prompt": "An initialization helper can return without assigning a required member.",
+      "expected": [
+        "Fix actual flow or report the contract defect; test runtime truth."
+      ],
+      "must_not": [
+        "Do not add MemberNotNull to assert an invariant the implementation does not establish."
+      ]
+    },
+    {
+      "id": "performance-comparison",
+      "prompt": "A measured allocation regression needs a local implementation comparison.",
+      "expected": [
+        "Use equivalent work, representative inputs, observed environments and repeated measurements."
+      ],
+      "must_not": [
+        "Do not use a dry smoke run as timing evidence or extrapolate service capacity from a microbenchmark."
+      ]
+    },
+    {
+      "id": "performance-no-requirement",
+      "prompt": "A readable loop has no observed performance problem or requirement.",
+      "expected": [
+        "Leave it alone and avoid a new benchmark dependency or speculative rewrite."
+      ],
+      "must_not": [
+        "Do not replace it with Span/pooling/structs merely to demonstrate the performance guide."
+      ]
+    },
+    {
+      "id": "eval-baseline-controls",
+      "prompt": "Assess whether this skill improves agents on synthetic tasks.",
+      "expected": [
+        "Use matched repeated arms, independent outcome checks, source identities and explicit selection/no-op controls."
+      ],
+      "must_not": [
+        "Do not count defined scenarios, mocked trajectories or raw activation substrings as native discovery proof."
+      ]
+    },
+    {
+      "id": "eval-baseline-wins",
+      "prompt": "The no-skill baseline is faster and equally correct on a task.",
+      "expected": [
+        "Retain and report the result, consider targeted simplification and state sample limitations."
+      ],
+      "must_not": [
+        "Do not discard baseline wins, tune expected outcomes to favor the skill or claim broad reliability."
+      ]
     }
   ]
 }

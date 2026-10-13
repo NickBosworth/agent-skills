@@ -39,3 +39,10 @@ not require migration for this addition.
 Invoke it as `$agentic-skills-clean-code-dot-net`. This new package has no previous
 name, folder or alias; existing packages need no migration. Its templates apply
 only through explicit scoped adoption in a consuming C# repository.
+
+Version 1.3.0 retains the package name, layout and default VSTest verifier calls.
+SDK 10 native MTP consumers may select --test-platform mtp-native after verifying
+their effective global.json and installed TRX extension. Unsupported command modes
+are reported explicitly; no automatic runner/package migration is performed.
+The comparison runner is optional maintenance tooling and requires a fresh private
+evidence directory outside the checkout; no global skill installation is needed.

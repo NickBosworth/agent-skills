@@ -53,7 +53,7 @@ def trx_counts(directory):
     """Count actually executed/passed tests; missing or skipped-only output is failure."""
     files = list(directory.glob("*.trx"))
     if not files:
-        raise ValueError("No TRX evidence; this helper requires a compatible VSTest runner.")
+        raise ValueError("No TRX evidence; a supported runner and TRX extension are required.")
     executed = passed = 0
     for path in files:
         tree = ET.parse(path)
@@ -140,11 +140,41 @@ def run_check(name, command, root, timeout, log_directory, configuration=None, p
         try:
             row.update(parse_output(process.stdout))
         except (ValueError, KeyError, TypeError, AttributeError):
-            row.update(status="BLOCKED", reason_code="framework-scope-invalid", reason="Evaluated project framework properties are missing or invalid; check imports and MSBuild property-query support.")
+            if parse_output is mtp_application:
+                row.update(status="BLOCKED", reason_code="mtp-application-invalid", reason="Evaluated project is not a supported executable MTP application; check selected framework imports, runner settings and OutputType.")
+            else:
+                row.update(status="BLOCKED", reason_code="framework-scope-invalid", reason="Evaluated project framework properties are missing or invalid; check imports and MSBuild property-query support.")
     return row
 
 
-def verify(root, targets, test_projects, no_tests_reason, timeout=180, log_directory=None, configuration="Release"):
+def test_command_mode(root, sdk):
+    """Read command selection, without treating framework packages as runner proof."""
+    major = int(sdk.split(".", 1)[0])
+    if os.environ.get("DOTNET_TEST_RUNNER"):
+        raise ValueError("Environment runner overrides are outside this helper's tested SDK boundary.")
+    for directory in [root, *root.parents]:
+        path = directory / "global.json"
+        if path.is_file():
+            runner = json.loads(path.read_text(encoding="utf-8")).get("test", {}).get("runner", "VSTest")
+            if runner == "Microsoft.Testing.Platform" and major >= 10:
+                return "mtp-native"
+            if runner != "VSTest":
+                raise ValueError("Unsupported runner or SDK selection.")
+            break
+    return "vstest"
+
+
+def mtp_application(output):
+    """Require an evaluated executable MTP application in the selected framework."""
+    properties = json.loads(output)["Properties"]
+    if (properties["IsTestingPlatformApplication"].lower() != "true"
+            or properties["OutputType"].lower() != "exe"):
+        raise ValueError("The selected project is not an executable MTP application.")
+    return {"platform": "Microsoft.Testing.Platform"}
+
+
+def verify(root, targets, test_projects, no_tests_reason, timeout=180, log_directory=None, configuration="Release",
+           test_platform="vstest"):
     report = {"status": "BLOCKED", "targets": targets, "tests": test_projects, "configuration": configuration, "checks": []}
     if not targets or (not test_projects and not (no_tests_reason or "").strip()):
         report["reason_code"] = "scope-required"
@@ -168,6 +198,14 @@ def verify(root, targets, test_projects, no_tests_reason, timeout=180, log_direc
     if not check("sdk", ["dotnet", "--version"]):
         return report
     report["sdk"] = report["checks"][-1]["version"]
+    if test_projects:
+        try:
+            if test_platform not in {"vstest", "mtp-native"} or test_command_mode(root, report["sdk"]) != test_platform:
+                raise ValueError("Runner selection mismatch.")
+        except (OSError, ValueError, TypeError, AttributeError):
+            report.update(reason_code="test-platform-unsupported", reason="Selected test platform does not match effective SDK/global.json command mode, or a runner override is unsupported. Inspect test-platform guidance and use verified repository commands.")
+            return report
+        report["test_platform"] = test_platform
     for index, target in enumerate(targets):
         if not check(f"restore-{index}", ["dotnet", "restore", target]):
             return report
@@ -191,10 +229,17 @@ def verify(root, targets, test_projects, no_tests_reason, timeout=180, log_direc
                      "-getProperty:TargetFramework,TargetFrameworks"], framework_scope):
             return report
         for framework in report["checks"][-1]["frameworks"]:
+            if test_platform == "mtp-native":
+                if not check(f"mtp-scope-{index}-{framework}", ["dotnet", "msbuild", project,
+                             "-p:TargetFramework=" + framework,
+                             "-getProperty:IsTestingPlatformApplication,OutputType"], mtp_application):
+                    return report
             with tempfile.TemporaryDirectory(prefix="dnc-trx-") as temporary:
                 directory = Path(temporary)
-                command = ["dotnet", "test", project, "--configuration", configuration,
-                           "--framework", framework, "--no-build", "--no-restore", "--logger", "trx",
+                selection = ["--project", project] if test_platform == "mtp-native" else [project]
+                report_flags = ["--report-trx"] if test_platform == "mtp-native" else ["--logger", "trx"]
+                command = ["dotnet", "test", *selection, "--configuration", configuration,
+                           "--framework", framework, "--no-build", "--no-restore", *report_flags,
                            "--results-directory", str(directory)]
                 passed_check = check(f"test-{index}-{framework}", command)
                 row = report["checks"][-1]
@@ -220,6 +265,7 @@ def main(argv=None):
     parser.add_argument("--discover", action="store_true")
     parser.add_argument("--target", action="append", default=[])
     parser.add_argument("--test-project", action="append", default=[])
+    parser.add_argument("--test-platform", choices=["vstest", "mtp-native"], default="vstest")
     parser.add_argument("--no-tests-reason")
     parser.add_argument("--configuration", default="Release")
     parser.add_argument("--timeout", type=int, default=180)
@@ -240,7 +286,8 @@ def main(argv=None):
         else:
             targets = [target_path(root, item) for item in args.target]
             tests = [target_path(root, item, project_only=True) for item in args.test_project]
-            report = verify(root, targets, tests, args.no_tests_reason, args.timeout, args.log_directory, args.configuration)
+            report = verify(root, targets, tests, args.no_tests_reason, args.timeout, args.log_directory,
+                            args.configuration, args.test_platform)
     except VerificationOptionsError as error:
         report = {"status": "BLOCKED", "reason_code": "invalid-options", "reason": str(error)}
     except ValueError:

@@ -222,3 +222,22 @@ cache-contract interpretation limit led to a narrow guidance clarification.
 Creator, candidate/staged/history privacy and redacted Gitleaks passed in recorded
 scopes. Native AOT/trim publishing, other hosts and broad model reliability remain
 unverified. No product runtime, global install, commit or publication occurred.
+
+## Clean Code for C#/.NET 1.3.0 — 2026-10-13
+
+All ten official validators and 285 regressions passed with SDK checks selected:
+234 existing tests and 51 package checks, without package skips. New execution
+covers Options/nullability contracts, annotation failure/repair, Debug/Release
+refactoring preservation and old-defect detection, real MSTest/native MTP evidence,
+and evaluation integrity. The package has 68 defined unexecuted broader scenarios.
+Twenty accepted paired model runs separately passed their independent functional checks;
+results tied on the selected tasks, with four correct controlled selection
+observations and explicit time/token/methodology limitations. See
+[package validation](../skills/agentic-skills-clean-code-dot-net/VALIDATION.md) and
+[comparison results](../skills/agentic-skills-clean-code-dot-net/evals/comparison.md).
+Candidate/index/history privacy, redacted Gitleaks, creator validation and temporary
+archive checks passed in recorded scopes. No product check, native discovery,
+remote CI, global install, commit, push or publication is implied.
+A maintenance-code-exposure pilot was excluded. The accepted sample used fresh
+workspaces with evaluation resources withheld, matched inputs and unchanged views;
+successful content reads were independently checked from saved trajectories.

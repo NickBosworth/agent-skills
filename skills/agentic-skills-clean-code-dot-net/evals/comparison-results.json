@@ -1,0 +1,539 @@
+{
+  "date": "2026-10-13",
+  "reviewer_role": "implementing-agent",
+  "executor": "codex-cli 0.162.0-alpha.17.2",
+  "skill_snapshot_identity": "fcc346cff6da42c2d990df947f1b7ef724ef4059e3b342546fab3d0d18f906ed",
+  "model_view_identity": "c5ad697231b8f1865437f24c7dc82a83175e09f20e097f7acc7dadd34ba16064",
+  "grader_identity": "1cdcfecd991f5ceb9fabeee40f245e79a872ff5e51da62f8e3cbf60797588ab8",
+  "event_parser_identity": "f1e26f8b83479e40732c6aed05d89190724b899c0765d74a363871c8076f689b",
+  "scope": "Accepted held-out grading sample: five synthetic tasks, two repetitions, paired with-skill/no-skill arms. Not native discovery or general reliability.",
+  "protocol_notes": [
+    "Host skill discovery and user/project configuration disabled using explicit CLI settings; only skilled arms receive operational resources.",
+    "Evaluation resources, grading script and maintenance tests were withheld from the model view. Its exact source identity is recorded.",
+    "Skill copies are outside project globs; paired source identities match and operational views remain unchanged.",
+    "All artifacts were independently rescored from fresh source copies. Successful entrypoint-content reads were checked using the stricter event parser.",
+    "Unsupported-setting requests, a confounded nested-package attempt and the maintenance-code-exposure pilot are excluded and retained privately.",
+    "Snapshot precedes final event-parser/reporting refinements and an additional named-options fixture assertion. Instruction resources were unchanged by those refinements.",
+    "Elapsed times are descriptive on a shared interactive host, not a controlled performance benchmark. Token counters include cached input and cumulative model calls."
+  ],
+  "runs": [
+    {
+      "case": "inclusive-boundary",
+      "mode": "effectiveness",
+      "arm": "baseline",
+      "repeat": 1,
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "low",
+      "seconds": 70.465,
+      "input_identity": "87eee086fbee36360266cd1c40cecf0db94777f3ceb341627ab22e1ee5c9f67d",
+      "prompt_identity": "4793c62910b4d53b61eac192fe55e940c8a34db82ffa3419cb73c60804f8ba1f",
+      "output_identity": "cc16935586794e6f2770b162778e0e9f56a82818dbc99a03d7e66b77a72ffa71",
+      "changed_source_files": 1,
+      "outcome_pass": true,
+      "contract_runs": [
+        {
+          "configuration": "Release",
+          "exit_code": 0
+        }
+      ],
+      "completed": true,
+      "usage": {
+        "input_tokens": 184929,
+        "cached_input_tokens": 168064,
+        "output_tokens": 1380,
+        "reasoning_output_tokens": 130
+      },
+      "visible_skill_read": false
+    },
+    {
+      "case": "inclusive-boundary",
+      "mode": "effectiveness",
+      "arm": "skill",
+      "repeat": 1,
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "low",
+      "seconds": 91.816,
+      "input_identity": "87eee086fbee36360266cd1c40cecf0db94777f3ceb341627ab22e1ee5c9f67d",
+      "prompt_identity": "a86e4766bcace3f1d89674a0b8535078b94d3e1432fd0ebaee97a30e49beb7e0",
+      "output_identity": "40ae9116f0a9b00dbec3db5c07a8014d7fd0ba6a40f306c71fe38054c232ac9d",
+      "changed_source_files": 1,
+      "model_view_identity": "c5ad697231b8f1865437f24c7dc82a83175e09f20e097f7acc7dadd34ba16064",
+      "outcome_pass": true,
+      "contract_runs": [
+        {
+          "configuration": "Release",
+          "exit_code": 0
+        }
+      ],
+      "completed": true,
+      "usage": {
+        "input_tokens": 235723,
+        "cached_input_tokens": 200704,
+        "output_tokens": 1467,
+        "reasoning_output_tokens": 148
+      },
+      "visible_skill_read": true
+    },
+    {
+      "case": "semantic-rename",
+      "mode": "effectiveness",
+      "arm": "baseline",
+      "repeat": 1,
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "low",
+      "seconds": 95.089,
+      "input_identity": "fc7276954bae630843b4705d5405d5bd1b996131a13ab04d9637623339b70a45",
+      "prompt_identity": "95567013530eac8179899655cce351b6ceb272a18e00f47a382eb48b3848ec1a",
+      "output_identity": "ec8bf404ccf591e07fb6060bdc6e4d40e3b1cb710feb57e9ca6f1c72cc350820",
+      "changed_source_files": 3,
+      "outcome_pass": true,
+      "contract_runs": [
+        {
+          "configuration": "Debug",
+          "exit_code": 0
+        },
+        {
+          "configuration": "Release",
+          "exit_code": 0
+        }
+      ],
+      "completed": true,
+      "usage": {
+        "input_tokens": 319135,
+        "cached_input_tokens": 300032,
+        "output_tokens": 1490,
+        "reasoning_output_tokens": 83
+      },
+      "visible_skill_read": false
+    },
+    {
+      "case": "semantic-rename",
+      "mode": "effectiveness",
+      "arm": "skill",
+      "repeat": 1,
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "low",
+      "seconds": 105.618,
+      "input_identity": "fc7276954bae630843b4705d5405d5bd1b996131a13ab04d9637623339b70a45",
+      "prompt_identity": "0dee7a1c8fd9f4376ff06276a5e274c363d9d3165d70cd56dcdec8955ce91c57",
+      "output_identity": "e0f65a6671a91c313e9525253bb0cf96c595452323d1c6a9072d57120ab7ef30",
+      "changed_source_files": 4,
+      "model_view_identity": "c5ad697231b8f1865437f24c7dc82a83175e09f20e097f7acc7dadd34ba16064",
+      "outcome_pass": true,
+      "contract_runs": [
+        {
+          "configuration": "Debug",
+          "exit_code": 0
+        },
+        {
+          "configuration": "Release",
+          "exit_code": 0
+        }
+      ],
+      "completed": true,
+      "usage": {
+        "input_tokens": 336999,
+        "cached_input_tokens": 295424,
+        "output_tokens": 1647,
+        "reasoning_output_tokens": 131
+      },
+      "visible_skill_read": true
+    },
+    {
+      "case": "already-clear",
+      "mode": "effectiveness",
+      "arm": "baseline",
+      "repeat": 1,
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "low",
+      "seconds": 10.702,
+      "input_identity": "2cbe32bc141be083ee53639c7b74559104d3ac6513c8b4d430c025f41ee0e1d5",
+      "prompt_identity": "70b86eebfe3375ce7a2ed92b8025e16f18f2cc13fa7d92a86deb94df458a1422",
+      "output_identity": "2cbe32bc141be083ee53639c7b74559104d3ac6513c8b4d430c025f41ee0e1d5",
+      "changed_source_files": 0,
+      "outcome_pass": true,
+      "completed": true,
+      "usage": {
+        "input_tokens": 46503,
+        "cached_input_tokens": 40192,
+        "output_tokens": 122,
+        "reasoning_output_tokens": 0
+      },
+      "visible_skill_read": false
+    },
+    {
+      "case": "already-clear",
+      "mode": "effectiveness",
+      "arm": "skill",
+      "repeat": 1,
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "low",
+      "seconds": 11.177,
+      "input_identity": "2cbe32bc141be083ee53639c7b74559104d3ac6513c8b4d430c025f41ee0e1d5",
+      "prompt_identity": "a06cd17ea716497004dc9a55d0ad18ac0be70420adb5dac7bc372eaae8869201",
+      "output_identity": "2cbe32bc141be083ee53639c7b74559104d3ac6513c8b4d430c025f41ee0e1d5",
+      "changed_source_files": 0,
+      "model_view_identity": "c5ad697231b8f1865437f24c7dc82a83175e09f20e097f7acc7dadd34ba16064",
+      "outcome_pass": true,
+      "completed": true,
+      "usage": {
+        "input_tokens": 56445,
+        "cached_input_tokens": 34432,
+        "output_tokens": 177,
+        "reasoning_output_tokens": 0
+      },
+      "visible_skill_read": true
+    },
+    {
+      "case": "csharp-selection",
+      "mode": "selection",
+      "arm": "baseline",
+      "repeat": 1,
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "low",
+      "seconds": 17.63,
+      "input_identity": "2cbe32bc141be083ee53639c7b74559104d3ac6513c8b4d430c025f41ee0e1d5",
+      "prompt_identity": "55b771a8a9f7af2de3006f7ccce64a2f18176e7770e78a3756ebbf8000c2b4af",
+      "output_identity": "2cbe32bc141be083ee53639c7b74559104d3ac6513c8b4d430c025f41ee0e1d5",
+      "changed_source_files": 0,
+      "outcome_pass": true,
+      "completed": true,
+      "usage": {
+        "input_tokens": 55443,
+        "cached_input_tokens": 41856,
+        "output_tokens": 290,
+        "reasoning_output_tokens": 0
+      },
+      "visible_skill_read": false
+    },
+    {
+      "case": "csharp-selection",
+      "mode": "selection",
+      "arm": "skill",
+      "repeat": 1,
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "low",
+      "seconds": 13.091,
+      "input_identity": "2cbe32bc141be083ee53639c7b74559104d3ac6513c8b4d430c025f41ee0e1d5",
+      "prompt_identity": "e9253e100d233fc59062590ae678def7f3b88f67533e62567a77d25a4ab7561e",
+      "output_identity": "2cbe32bc141be083ee53639c7b74559104d3ac6513c8b4d430c025f41ee0e1d5",
+      "changed_source_files": 0,
+      "model_view_identity": "c5ad697231b8f1865437f24c7dc82a83175e09f20e097f7acc7dadd34ba16064",
+      "outcome_pass": true,
+      "completed": true,
+      "usage": {
+        "input_tokens": 56778,
+        "cached_input_tokens": 36352,
+        "output_tokens": 229,
+        "reasoning_output_tokens": 0
+      },
+      "visible_skill_read": true,
+      "selection_pass": true
+    },
+    {
+      "case": "prose-selection",
+      "mode": "selection",
+      "arm": "baseline",
+      "repeat": 1,
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "low",
+      "seconds": 15.744,
+      "input_identity": "55c1da919443b930e465a772b3289f47442be8f4d3f59c50dd26cf160708d3f0",
+      "prompt_identity": "0c832dc791014959871a92850366135b80d0de87b8372fd71803d5c487c50b05",
+      "output_identity": "b2e3f96901c91387525e288c232a73c2da0b2d46f1ae3b9a890e5d9c1d9b2b80",
+      "changed_source_files": 1,
+      "outcome_pass": true,
+      "completed": true,
+      "usage": {
+        "input_tokens": 63325,
+        "cached_input_tokens": 55680,
+        "output_tokens": 237,
+        "reasoning_output_tokens": 0
+      },
+      "visible_skill_read": false
+    },
+    {
+      "case": "prose-selection",
+      "mode": "selection",
+      "arm": "skill",
+      "repeat": 1,
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "low",
+      "seconds": 11.269,
+      "input_identity": "55c1da919443b930e465a772b3289f47442be8f4d3f59c50dd26cf160708d3f0",
+      "prompt_identity": "eb4ee1295515516f9bff141681c544bd6dc49976b3c807aa794fd996d117729a",
+      "output_identity": "b2e3f96901c91387525e288c232a73c2da0b2d46f1ae3b9a890e5d9c1d9b2b80",
+      "changed_source_files": 1,
+      "model_view_identity": "c5ad697231b8f1865437f24c7dc82a83175e09f20e097f7acc7dadd34ba16064",
+      "outcome_pass": true,
+      "completed": true,
+      "usage": {
+        "input_tokens": 47719,
+        "cached_input_tokens": 40192,
+        "output_tokens": 148,
+        "reasoning_output_tokens": 0
+      },
+      "visible_skill_read": false,
+      "selection_pass": true
+    },
+    {
+      "case": "inclusive-boundary",
+      "mode": "effectiveness",
+      "arm": "skill",
+      "repeat": 2,
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "low",
+      "seconds": 78.8,
+      "input_identity": "87eee086fbee36360266cd1c40cecf0db94777f3ceb341627ab22e1ee5c9f67d",
+      "prompt_identity": "a86e4766bcace3f1d89674a0b8535078b94d3e1432fd0ebaee97a30e49beb7e0",
+      "output_identity": "6f3664ee1d714e9a0812573cbf2d062e50dc2732ecd07135f9966ee8376e5819",
+      "changed_source_files": 1,
+      "model_view_identity": "c5ad697231b8f1865437f24c7dc82a83175e09f20e097f7acc7dadd34ba16064",
+      "outcome_pass": true,
+      "contract_runs": [
+        {
+          "configuration": "Release",
+          "exit_code": 0
+        }
+      ],
+      "completed": true,
+      "usage": {
+        "input_tokens": 208159,
+        "cached_input_tokens": 174336,
+        "output_tokens": 1423,
+        "reasoning_output_tokens": 80
+      },
+      "visible_skill_read": true
+    },
+    {
+      "case": "inclusive-boundary",
+      "mode": "effectiveness",
+      "arm": "baseline",
+      "repeat": 2,
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "low",
+      "seconds": 35.045,
+      "input_identity": "87eee086fbee36360266cd1c40cecf0db94777f3ceb341627ab22e1ee5c9f67d",
+      "prompt_identity": "4793c62910b4d53b61eac192fe55e940c8a34db82ffa3419cb73c60804f8ba1f",
+      "output_identity": "cc16935586794e6f2770b162778e0e9f56a82818dbc99a03d7e66b77a72ffa71",
+      "changed_source_files": 1,
+      "outcome_pass": true,
+      "contract_runs": [
+        {
+          "configuration": "Release",
+          "exit_code": 0
+        }
+      ],
+      "completed": true,
+      "usage": {
+        "input_tokens": 119897,
+        "cached_input_tokens": 110080,
+        "output_tokens": 790,
+        "reasoning_output_tokens": 44
+      },
+      "visible_skill_read": false
+    },
+    {
+      "case": "semantic-rename",
+      "mode": "effectiveness",
+      "arm": "skill",
+      "repeat": 2,
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "low",
+      "seconds": 118.293,
+      "input_identity": "fc7276954bae630843b4705d5405d5bd1b996131a13ab04d9637623339b70a45",
+      "prompt_identity": "0dee7a1c8fd9f4376ff06276a5e274c363d9d3165d70cd56dcdec8955ce91c57",
+      "output_identity": "ec8bf404ccf591e07fb6060bdc6e4d40e3b1cb710feb57e9ca6f1c72cc350820",
+      "changed_source_files": 3,
+      "model_view_identity": "c5ad697231b8f1865437f24c7dc82a83175e09f20e097f7acc7dadd34ba16064",
+      "outcome_pass": true,
+      "contract_runs": [
+        {
+          "configuration": "Debug",
+          "exit_code": 0
+        },
+        {
+          "configuration": "Release",
+          "exit_code": 0
+        }
+      ],
+      "completed": true,
+      "usage": {
+        "input_tokens": 308444,
+        "cached_input_tokens": 265984,
+        "output_tokens": 1855,
+        "reasoning_output_tokens": 171
+      },
+      "visible_skill_read": true
+    },
+    {
+      "case": "semantic-rename",
+      "mode": "effectiveness",
+      "arm": "baseline",
+      "repeat": 2,
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "low",
+      "seconds": 30.316,
+      "input_identity": "fc7276954bae630843b4705d5405d5bd1b996131a13ab04d9637623339b70a45",
+      "prompt_identity": "95567013530eac8179899655cce351b6ceb272a18e00f47a382eb48b3848ec1a",
+      "output_identity": "305657db843d0db8d600802a99032f8782484cabfe072036aa86801198a93e0f",
+      "changed_source_files": 4,
+      "outcome_pass": true,
+      "contract_runs": [
+        {
+          "configuration": "Debug",
+          "exit_code": 0
+        },
+        {
+          "configuration": "Release",
+          "exit_code": 0
+        }
+      ],
+      "completed": true,
+      "usage": {
+        "input_tokens": 84305,
+        "cached_input_tokens": 66176,
+        "output_tokens": 779,
+        "reasoning_output_tokens": 19
+      },
+      "visible_skill_read": false
+    },
+    {
+      "case": "already-clear",
+      "mode": "effectiveness",
+      "arm": "skill",
+      "repeat": 2,
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "low",
+      "seconds": 12.809,
+      "input_identity": "2cbe32bc141be083ee53639c7b74559104d3ac6513c8b4d430c025f41ee0e1d5",
+      "prompt_identity": "a06cd17ea716497004dc9a55d0ad18ac0be70420adb5dac7bc372eaae8869201",
+      "output_identity": "2cbe32bc141be083ee53639c7b74559104d3ac6513c8b4d430c025f41ee0e1d5",
+      "changed_source_files": 0,
+      "model_view_identity": "c5ad697231b8f1865437f24c7dc82a83175e09f20e097f7acc7dadd34ba16064",
+      "outcome_pass": true,
+      "completed": true,
+      "usage": {
+        "input_tokens": 56523,
+        "cached_input_tokens": 36352,
+        "output_tokens": 205,
+        "reasoning_output_tokens": 0
+      },
+      "visible_skill_read": true
+    },
+    {
+      "case": "already-clear",
+      "mode": "effectiveness",
+      "arm": "baseline",
+      "repeat": 2,
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "low",
+      "seconds": 15.51,
+      "input_identity": "2cbe32bc141be083ee53639c7b74559104d3ac6513c8b4d430c025f41ee0e1d5",
+      "prompt_identity": "70b86eebfe3375ce7a2ed92b8025e16f18f2cc13fa7d92a86deb94df458a1422",
+      "output_identity": "2cbe32bc141be083ee53639c7b74559104d3ac6513c8b4d430c025f41ee0e1d5",
+      "changed_source_files": 0,
+      "outcome_pass": true,
+      "completed": true,
+      "usage": {
+        "input_tokens": 54618,
+        "cached_input_tokens": 34432,
+        "output_tokens": 304,
+        "reasoning_output_tokens": 15
+      },
+      "visible_skill_read": false
+    },
+    {
+      "case": "csharp-selection",
+      "mode": "selection",
+      "arm": "skill",
+      "repeat": 2,
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "low",
+      "seconds": 15.504,
+      "input_identity": "2cbe32bc141be083ee53639c7b74559104d3ac6513c8b4d430c025f41ee0e1d5",
+      "prompt_identity": "e9253e100d233fc59062590ae678def7f3b88f67533e62567a77d25a4ab7561e",
+      "output_identity": "2cbe32bc141be083ee53639c7b74559104d3ac6513c8b4d430c025f41ee0e1d5",
+      "changed_source_files": 0,
+      "model_view_identity": "c5ad697231b8f1865437f24c7dc82a83175e09f20e097f7acc7dadd34ba16064",
+      "outcome_pass": true,
+      "completed": true,
+      "usage": {
+        "input_tokens": 56769,
+        "cached_input_tokens": 36352,
+        "output_tokens": 236,
+        "reasoning_output_tokens": 17
+      },
+      "visible_skill_read": true,
+      "selection_pass": true
+    },
+    {
+      "case": "csharp-selection",
+      "mode": "selection",
+      "arm": "baseline",
+      "repeat": 2,
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "low",
+      "seconds": 19.218,
+      "input_identity": "2cbe32bc141be083ee53639c7b74559104d3ac6513c8b4d430c025f41ee0e1d5",
+      "prompt_identity": "55b771a8a9f7af2de3006f7ccce64a2f18176e7770e78a3756ebbf8000c2b4af",
+      "output_identity": "2cbe32bc141be083ee53639c7b74559104d3ac6513c8b4d430c025f41ee0e1d5",
+      "changed_source_files": 0,
+      "outcome_pass": true,
+      "completed": true,
+      "usage": {
+        "input_tokens": 55395,
+        "cached_input_tokens": 36224,
+        "output_tokens": 365,
+        "reasoning_output_tokens": 16
+      },
+      "visible_skill_read": false
+    },
+    {
+      "case": "prose-selection",
+      "mode": "selection",
+      "arm": "skill",
+      "repeat": 2,
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "low",
+      "seconds": 14.736,
+      "input_identity": "55c1da919443b930e465a772b3289f47442be8f4d3f59c50dd26cf160708d3f0",
+      "prompt_identity": "eb4ee1295515516f9bff141681c544bd6dc49976b3c807aa794fd996d117729a",
+      "output_identity": "b2e3f96901c91387525e288c232a73c2da0b2d46f1ae3b9a890e5d9c1d9b2b80",
+      "changed_source_files": 1,
+      "model_view_identity": "c5ad697231b8f1865437f24c7dc82a83175e09f20e097f7acc7dadd34ba16064",
+      "outcome_pass": true,
+      "completed": true,
+      "usage": {
+        "input_tokens": 63723,
+        "cached_input_tokens": 55936,
+        "output_tokens": 242,
+        "reasoning_output_tokens": 0
+      },
+      "visible_skill_read": false,
+      "selection_pass": true
+    },
+    {
+      "case": "prose-selection",
+      "mode": "selection",
+      "arm": "baseline",
+      "repeat": 2,
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "low",
+      "seconds": 11.507,
+      "input_identity": "55c1da919443b930e465a772b3289f47442be8f4d3f59c50dd26cf160708d3f0",
+      "prompt_identity": "0c832dc791014959871a92850366135b80d0de87b8372fd71803d5c487c50b05",
+      "output_identity": "b2e3f96901c91387525e288c232a73c2da0b2d46f1ae3b9a890e5d9c1d9b2b80",
+      "changed_source_files": 1,
+      "outcome_pass": true,
+      "completed": true,
+      "usage": {
+        "input_tokens": 46415,
+        "cached_input_tokens": 34432,
+        "output_tokens": 125,
+        "reasoning_output_tokens": 0
+      },
+      "visible_skill_read": false
+    }
+  ]
+}

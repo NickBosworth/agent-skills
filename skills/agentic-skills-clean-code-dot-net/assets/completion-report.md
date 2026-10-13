@@ -10,12 +10,14 @@ Outcome: [PASS / FAIL / BLOCKED / NOT RUN / NOT APPLICABLE]
 Scope: [changed files and selected targets, configurations and frameworks]
 Changes: [behavior or documentation corrected; contracts preserved or authorized changes]
 Toolchain: [observed SDK, formatter/analyzer and test runner versions]
+Tested revision: [commit or base revision plus patch identity, including relevant untracked inputs]
 
 | Required gate | Scope | Exact command | Result | Evidence / executed and passed tests |
 | --- | --- | --- | --- | --- |
 | [gate] | [project/configuration/framework] | [command] | [actual status] | [relative evidence path or unavailable; actual counts for tests] |
 
 Review: [semantic, readability, comment/XML and final-diff findings; reviewer role]
+Regression evidence: [changed contract, named test, old-defect assertion failure and corrected pass; preservation passes for refactors; or reason unverified/not applicable]
 Baseline/exemptions: [accepted findings or scoped NOT APPLICABLE reasons; none if verified]
 Uncovered: [required unrun targets/checks, or none if verified]
 Blocker/next prerequisite: [reason_code if available, safe cause and corrective action]

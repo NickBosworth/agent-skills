@@ -105,6 +105,19 @@ ones, and report “no new findings,” not “clean.”
 
 ## Verifier use and limitations
 
+Before selecting unfamiliar runner commands, load [test platforms](test-platforms.md).
+
+The default remains VSTest. For an SDK 10+ native MTP application selected by the
+effective global.json, use --test-platform mtp-native. The helper queries each
+framework's evaluated IsTestingPlatformApplication and OutputType, then uses
+native --project and --report-trx syntax. An installed TRX extension is required;
+the helper does not add packages or migrate runners. A command-mode mismatch,
+unknown runner selection or environment override is BLOCKED. Executable bridge,
+classic and other runner/SDK combinations use the repository's verified commands.
+Native MTP skipped-only/empty execution can fail with exit 8; VSTest can exit zero
+for the same empty evidence. Neither is PASS. Both paths require fresh nonempty
+successful reports per framework. See [validation](../VALIDATION.md) for actual scope.
+
 [scripts/verify.py](../scripts/verify.py) inventories .sln/.slnx/.slnf/.csproj, but
 requires explicit targets instead of guessing solution coverage. Run --discover
 first when needed; discovery reports NOT RUN and exits 2. Paths are validated under
@@ -140,8 +153,8 @@ Nested project SDK roots require separate --root invocations. The helper rejects
 a directly selected target behind another global.json; inspect solution
 dependencies for additional SDK boundaries before execution.
 
-This helper deliberately implements only the dotnet-format/VSTest baseline.
-For Microsoft.Testing.Platform, CSharpier, custom tests or documentation generators,
+This helper implements dotnet format with VSTest or the explicit native MTP path.
+For untested MTP combinations, CSharpier, custom tests or documentation generators,
 use the repository's verified commands and evidence protocol; do not run incompatible
 flags or claim the helper supports them. XML compilation is part of the build;
 published/rendered documentation checks are extra required pipeline gates.

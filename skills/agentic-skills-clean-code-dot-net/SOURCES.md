@@ -94,6 +94,14 @@ Microsoft mandates every MUST. Bundled guidance works offline.
 
 ## Execution versus research
 
+Research follow-up checked 2026-10-13:
+- **S67** [Roslyn workspaces](https://learn.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/work-with-workspace) and [.NET refactoring skill](https://github.com/dotnet/skills/blob/main/plugins/dotnet/skills/csharp-refactoring/SKILL.md) inform binding-aware tool selection. No IDE integration is bundled or claimed tested.
+- **S68** [Options pattern](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options) and [nullable attributes](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/attributes/nullable-analysis) inform the conditional contract fixture, not universal startup/reload policy.
+- **S69** [Test-platform command modes](https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-dotnet-test) and [MTP reports](https://learn.microsoft.com/en-us/dotnet/core/testing/microsoft-testing-platform-test-reports) inform native selection and extension requirements. Actual support is bounded by executed fixtures.
+- **S70** [Test-value evidence](https://github.com/dotnet/skills/blob/main/plugins/dotnet-test/skills/test-value-evidence/SKILL.md) informs proportionate revision-bound regression proof; this package uses original guidance and does not require full mutation testing.
+- **S71** [BenchmarkDotNet practices](https://benchmarkdotnet.org/articles/guides/good-practices.html) and [.NET microbenchmarking skill](https://github.com/dotnet/skills/blob/main/plugins/dotnet-diag/skills/microbenchmarking/SKILL.md) inform conditional measurement workflow. No measured application performance improvement is claimed.
+- **S72** [.NET baseline-delta guidance](https://github.com/dotnet/skills/blob/main/.agents/skills/improve-skill-quality/references/writing-for-baseline-delta.md) informs paired/no-op evaluations. [Codex non-interactive execution](https://developers.openai.com/codex/noninteractive/) and [configuration](https://developers.openai.com/codex/config-reference/) inform the optional executor's isolated settings. Native discovery and general effectiveness remain separate claims.
+
 See [VALIDATION.md](VALIDATION.md) for selected SDK/compiler/formatter/analyzer
 versions, executed probes and remaining gaps. No tested documentation-generator,
 StyleCop or CSharpier version is implied by reading their documentation. .NET 10

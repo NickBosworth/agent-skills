@@ -18,10 +18,17 @@ and [validation](VALIDATION.md) explain the tested boundary.
 No paid service, extra analyzer package or documentation website is required.
 Python 3.10+ runs the helper; the optional fixture suite needs its pinned .NET SDK.
 
-The verifier checks explicit targets with dotnet format and VSTest; other runners
+The verifier checks explicit targets with dotnet format and VSTest, or explicitly
+selected SDK 10 native MTP applications with an installed TRX extension; other runners
 and formatters use their repository's verified commands. A missing required check
 blocks an unqualified clean claim. Skill prose cannot prevent a merge; CI and
 authorized repository policy must enforce the selected gates.
+
+Conditional guides cover [semantic refactoring](references/refactoring.md),
+[Options and nullable contracts](references/configuration-nullability.md),
+[runner selection](references/test-platforms.md) and [measurement](references/performance.md).
+The [evaluation guide](evals/README.md) separates reproducible comparisons from
+unexecuted scenarios and explains the private raw-evidence boundary.
 
 Original package material is CC0-1.0. Linked third-party documentation retains
 its own rights; no host/model reliability or domain certification is claimed.

@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.3.0 — 2026-10-13
+
+- Add conditional semantic-refactoring, Options/nullability, runner-selection and measurement workflows.
+- Add revision-bound, proportionate regression-test evidence and executable contract fixtures.
+- Add explicit native MTP verification while retaining the VSTest default and unsupported-runner boundaries.
+- Add a paired evaluation runner with independent outcome checks, repeated trials and selection controls.
+
 ## 1.2.0 — 2026-10-13
 
 - Add conditional everyday security, published-library compatibility and trimming/AOT guidance.
