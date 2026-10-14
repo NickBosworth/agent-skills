@@ -157,7 +157,9 @@ This helper implements dotnet format with VSTest or the explicit native MTP path
 For untested MTP combinations, CSharpier, custom tests or documentation generators,
 use the repository's verified commands and evidence protocol; do not run incompatible
 flags or claim the helper supports them. XML compilation is part of the build;
-published/rendered documentation checks are extra required pipeline gates.
+published/rendered documentation checks are extra required pipeline gates. A verifier
+PASS covers executed commands only; it does not execute the mandatory semantic
+contract XML review or establish factual completeness.
 
 --report creates a new local JSON report with status, relative scope, command, selected
 SDK, exit/result and test counts. Raw subprocess output is withheld to avoid echoing

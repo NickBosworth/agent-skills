@@ -10,3 +10,6 @@ Keep status in the task record rather than a second status table.
 
 [TASK-0005](TASK-0005-dot-net-research-follow-up.md) tracks the comparative .NET
 research recommendations, implementation and controlled evaluation evidence.
+
+[TASK-0006](TASK-0006-dot-net-contract-documentation.md) records the semantic XML
+completion gate, worked fixture and separate validation boundaries.

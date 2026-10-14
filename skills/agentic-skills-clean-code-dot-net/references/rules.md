@@ -151,7 +151,7 @@ fixes require diff/contract review and affected tests. None authorizes global fi
 - **Context/purpose:** Changed documented contracts; truthful complete xml content.
 - **Instruction:** MUST align parameter/generic/returns/value/remarks/exception semantics with implementation, nullability and tests.
 - **Evidence:** [S05](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/xmldoc/recommended-tags), [S06](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/documentation-comments), [S07](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/xmldoc/examples); the operational obligation is original policy where broader than the source.
-- **Enforcement/gap:** Compiler structural checks and semantic rubric; all-parameter coverage/English require review.
+- **Enforcement/gap:** Compiler structural checks plus the mandatory inventory-based semantic contract gate in [documentation](documentation.md#mandatory-semantic-contract-review-gate); all-parameter coverage/English require review.
 - **Compliant:** PublishAsync documents eventual commit and synchronous validation.
 - **Violation:** Grammatical returns promises a snapshot of a live collection.
 - **Legitimate exceptions:** Tags only when meaningful/applicable; no transitive exception dump.

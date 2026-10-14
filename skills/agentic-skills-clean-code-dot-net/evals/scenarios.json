@@ -690,6 +690,86 @@
       "must_not": [
         "Do not discard baseline wins, tune expected outcomes to favor the skill or claim broad reliability."
       ]
+    },
+    {
+      "id": "xml-superficial-interface-dto",
+      "prompt": "Improve the new bulk-reader interface and its DTOs; every symbol already has XML. Use examples/documentation/WeakContracts.cs.in with Reader.cs and Program.cs as raw artifacts.",
+      "expected": [
+        "Inventory interface, method, DTO constructors and properties; assess caller obligations against implementation/tests; fix name-expansion XML."
+      ],
+      "must_not": [
+        "Do not accept summary or tag presence as completeness; do not change runtime behavior."
+      ]
+    },
+    {
+      "id": "xml-failure-as-data",
+      "prompt": "Review documentation for a bulk method returning validation errors as result data, with synchronous null-list rejection.",
+      "expected": [
+        "Distinguish invalid items yielding error/empty rows from synchronous ArgumentNullException and awaited cancellation."
+      ],
+      "must_not": [
+        "Do not claim invalid-item ArgumentException or conflate empty success and failure."
+      ]
+    },
+    {
+      "id": "xml-null-empty-order",
+      "prompt": "Document the bulk-reader fixture for a caller needing duplicate and missing-key behavior.",
+      "expected": [
+        "Explain non-null empty success, case-sensitive matching, missing-key filtering, input ordering and repeated matches; review DTO null/empty meanings."
+      ],
+      "must_not": [
+        "Do not invent sorted order, deduplication, null absence or length limits."
+      ]
+    },
+    {
+      "id": "xml-ponytail-minimal-change",
+      "prompt": "Apply Ponytail and this skill to the weak XML fixture. Keep the change as small as possible.",
+      "expected": [
+        "Keep docs concise but retain established caller obligations; perform semantic inventory review before completion."
+      ],
+      "must_not": [
+        "Do not use minimal-change or clear-name guidance to leave superficial public/shared XML."
+      ]
+    },
+    {
+      "id": "xml-private-test-restraint",
+      "prompt": "Improve the bulk contracts while reviewing Find and the Require/Expect test helpers.",
+      "expected": [
+        "Leave obvious private helpers and tests free of unnecessary comments/XML; improve applicable production contracts."
+      ],
+      "must_not": [
+        "Do not annotate all methods, narrate tests or add arbitrary documentation quotas."
+      ]
+    },
+    {
+      "id": "xml-no-invented-guarantees",
+      "prompt": "Document an async interface that accepts a token but whose provider cancellation, transactions and concurrency are not established.",
+      "expected": [
+        "Investigate evidence; document established token/completion behavior; disclose consequential unknowns and block an unsupported completion claim."
+      ],
+      "must_not": [
+        "Do not promise immediate cancellation, rollback, idempotency or thread safety from signatures."
+      ]
+    },
+    {
+      "id": "xml-authoritative-inheritance",
+      "prompt": "Document Reader.ReadAsync using the bulk interface as the shared contract.",
+      "expected": [
+        "Improve authoritative interface XML; use inheritdoc for matching implementation; inspect target semantics and distinguish compiler XML from expansion."
+      ],
+      "must_not": [
+        "Do not duplicate shared prose or claim a generator was tested from a successful compiler build."
+      ]
+    },
+    {
+      "id": "xml-green-build-report",
+      "prompt": "The weak XML fixture builds successfully. Give a compact completion assessment.",
+      "expected": [
+        "Report compiler XML success separately from failed semantic completeness, with material interface/DTO omissions and unverified guarantees."
+      ],
+      "must_not": [
+        "Do not declare completion from CS1591 absence or bury missing contract facts in a green-build summary."
+      ]
     }
   ]
 }

@@ -34,6 +34,11 @@ This is correct only when the implementation/tests actually establish that bound
 
 ## Coverage
 
+Implementation comments and contract XML serve different readers. Comments explain
+significant non-obvious implementation facts; XML explains how callers use an API
+correctly. Clear naming removes redundant narration, not caller obligations.
+Concise means omitting repetition while retaining applicable contract facts.
+
 MUST document effective externally visible production types and public/protected
 contracts: constructors, methods, properties/indexers, events, enums and meaningful
 values, delegates and extension points. A public member inside an internal type
@@ -93,10 +98,44 @@ interface inheritance, override, positional records, primary constructors and
 async streams. The library fixture also exercises cancellation and stream ownership.
 Compiler success establishes selected structural checks, not prose truth.
 
-## Semantic review rubric
+## Mandatory semantic contract review gate
 
-For each changed contract MUST answer with evidence: intended caller and inputs;
-success versus absence/failure; side effects and ownership; exception/cancellation
-timing; nullability/docs/implementation/tests agreement; supported useful sentences.
-A grammatical but false returns statement fails this review even if CS1591 passes.
-Record material findings, not ceremonial answers for every obvious helper.
+Before completion, MUST inventory new and meaningfully changed production contracts
+from the diff and affected declarations, including effective external APIs,
+significant shared/internal contracts, interface members and DTO constructors and
+properties. Classify applicable coverage and justified exemptions; do not expand
+an incremental task into unrelated API cleanup. Review each covered contract's XML
+against its implementation, actual callers and relevant tests. Follow an authoritative
+interface/base contract when inheritance is appropriate; review that target too.
+
+Check these dimensions where applicable, rather than requiring every tag on every symbol:
+
+| Caller question | Review obligation |
+| --- | --- |
+| Why and when do I use this? | Purpose and intended use, beyond expanding the symbol name |
+| What do I supply? | Input meaning, units, accepted values, constraints and validation; required/optional, null and empty distinctions |
+| What do I receive? | Success, absence and failure shapes; failure-as-data versus thrown exceptions; DTO constructor invariants and property meanings |
+| Which results qualify, and in what sequence? | Ordering, filtering, duplicate handling, boundary inclusivity and date/time basis |
+| What changes or stays mine? | Side effects, resource/data ownership, deferred versus snapshot results and transaction boundaries |
+| Can I repeat or overlap calls? | Established idempotency and concurrency guarantees or caller restrictions |
+| When does work finish or fail? | Eventual async result/completion, observed cancellation, synchronous versus awaited/enumeration exceptions |
+
+MUST investigate consequential unknowns rather than infer guarantees from a method
+name, token parameter, readonly property or green test. State only established
+behavior; do not fabricate cancellation responsiveness, rollback, idempotency or
+thread safety. Do not implement a new guarantee merely to make prose convenient.
+Use useful params/returns/value/remarks/exception tags as needed, keeping shared
+facts authoritative rather than duplicating an interface contract on implementations.
+
+The gate fails when a caller-relevant obligation is missing or contradicted, even
+if every symbol has XML and compiler checks pass. Correct in-scope omissions before
+claiming completion. If evidence or authorized scope prevents correction, report
+the affected contract/dimension and limitation: FAIL for known omissions, BLOCKED
+for unavailable necessary evidence, or NOT RUN for an unperformed review; never PASS. A scope-based exemption can be NOT APPLICABLE.
+Keep a compact review inventory in working notes; completion reports summarize
+reviewed scope, material omissions and unverified guarantees, not every symbol.
+
+[Bulk-read example](../examples/documentation/README.md) contrasts name-expansion
+XML with complete caller contracts on the same executable API. Both variants
+compile: compiler XML coverage/selected diagnostics and documentation-generator
+output establish different facts from this semantic source-contract review.

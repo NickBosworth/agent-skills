@@ -15,6 +15,9 @@ guidance and conditional reliability/framework extensions. [Rules](references/ru
 give provenance, examples, enforcement gaps and exceptions.
 [Sources](SOURCES.md), [examples](examples/cases.md), [tooling](references/tooling.md)
 and [validation](VALIDATION.md) explain the tested boundary.
+Before completion, the [semantic XML gate](references/documentation.md#mandatory-semantic-contract-review-gate)
+reviews changed production contracts separately from compiler coverage. The
+[bulk-read example](examples/documentation/README.md) shows why both checks matter.
 No paid service, extra analyzer package or documentation website is required.
 Python 3.10+ runs the helper; the optional fixture suite needs its pinned .NET SDK.
 

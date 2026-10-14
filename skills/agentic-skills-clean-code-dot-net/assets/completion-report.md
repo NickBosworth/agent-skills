@@ -17,6 +17,7 @@ Tested revision: [commit or base revision plus patch identity, including relevan
 | [gate] | [project/configuration/framework] | [command] | [actual status] | [relative evidence path or unavailable; actual counts for tests] |
 
 Review: [semantic, readability, comment/XML and final-diff findings; reviewer role]
+Contract XML: [semantic gate status; inventory scope including applicable interfaces/DTOs; material omissions or unverified guarantees, or none established by review]
 Regression evidence: [changed contract, named test, old-defect assertion failure and corrected pass; preservation passes for refactors; or reason unverified/not applicable]
 Baseline/exemptions: [accepted findings or scoped NOT APPLICABLE reasons; none if verified]
 Uncovered: [required unrun targets/checks, or none if verified]
@@ -27,3 +28,6 @@ PASS requires all applicable gates and review to be satisfied. A successful comm
 with absent/empty required test evidence is not PASS. Do not invent versions,
 counts, human approval or coverage. For a blocked attempt, describe completed work
 and the remaining prerequisite without an unqualified clean-completion claim.
+
+Keep compiler XML/selected diagnostics and any packaged/rendered documentation in
+their own gate rows. Neither is a substitute for the Contract XML semantic review.

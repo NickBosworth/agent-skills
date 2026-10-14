@@ -3,7 +3,7 @@ name: agentic-skills-clean-code-dot-net
 description: Create, change, review, document or refactor C#/.NET code and quality tooling for human readability, preserved contracts, useful comments and XML documentation, and verified formatting and correctness. Use for implementation, tests and public API examples; respect the repository's SDK, architecture and formatter. Other languages and generated output retain their own policies.
 license: CC0-1.0
 metadata:
-  version: "1.3.0"
+  version: "1.3.1"
   research-date: "2026-10-13"
 ---
 
@@ -92,7 +92,11 @@ Essential .NET rules do not depend on their installation. Never fabricate approv
    the repository's equivalent verified commands. The helper is source-read-only,
    not side-effect-free: restore/build/test write artifacts and execute project code.
 7. Independently review meaning and comprehension with the
-   [checklists](references/delivery.md). Inspect the complete diff, including
+   [checklists](references/delivery.md). MUST inventory new and meaningfully changed
+   production contracts and complete the [semantic XML gate](references/documentation.md#mandatory-semantic-contract-review-gate),
+   including interface members and DTO constructors/properties. Clear names,
+   minimal-change guidance (including Ponytail) and compiler success do not waive
+   applicable contract documentation. Inspect the complete diff, including
    configuration, examples and nearby comments. Correct findings; repeat affected
    checks until evidence supports the result.
 8. Report scope, actual versions, PASS/FAIL/BLOCKED or NOT RUN/NOT APPLICABLE,
@@ -116,8 +120,8 @@ NOT APPLICABLE requires a scope-based explanation.
 
 Completion requires correct scope, no known introduced defects or unapproved
 diagnostics, applicable clean formatting, tests and documentation checks,
-semantic/readability review and an inspected final diff. “No new findings against
-an accepted baseline” is not “the repository is clean.”
+semantic/readability review, the applicable semantic XML gate and an inspected
+final diff. “No new findings against an accepted baseline” is not “the repository is clean.”
 
 This skill cannot enforce a merge. Repository CI must execute the selected checks;
 branch protection or host routing needs its own applicable authorization.

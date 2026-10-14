@@ -1,6 +1,6 @@
 # Validation and limits
 
-Current research follow-up: see the **1.3.0** checkpoint at the end. Earlier
+Current XML-contract follow-up: see the **1.3.1** checkpoint at the end. Earlier
 VSTest-only and no-model-comparison statements describe their historical scope.
 
 Initial 1.0.0 research and execution checkpoint: 2026-10-13, macOS arm64.
@@ -299,3 +299,44 @@ index checks cover the real index, while changed/new files are candidate checks.
 The implementing agent reviewed the source/diff and public numeric summaries; raw
 model/SDK logs remain outside the checkout. No new tracked binary, product check,
 global install, commit, push or publication occurred.
+
+## 1.3.1 semantic contract XML gate — 2026-10-14
+
+The existing mandatory XML policy is now tied to an explicit pre-completion
+inventory and semantic review of changed production contracts, including interfaces
+and DTO constructors/properties. Clear names and minimal-change guidance cannot
+waive caller obligations. Compiler/generator results and semantic review are
+separately reported; no word/tag quotas or new dependencies were introduced.
+
+Executed on macOS arm64, Python 3.12.11 and SDK 10.0.400:
+- The complete package suite passed **53 tests** with DNC_DOTNET_TESTS=1 selected,
+  no skips. After the final weak-example wording refinement, the two focused
+  documentation tests passed again; guidance/report refinements were reviewed.
+- Both bulk XML variants compiled under warnings-as-errors, passed formatting
+  verification and the same **16 runtime contract checks**, and emitted the same
+  public XML member inventory with retained inheritdoc. Removing interface XML
+  failed with CS1591. Reversed output order and thrown validation errors compiled
+  but failed their expected unchanged runtime assertions; repaired runs passed.
+  An initially symmetric ordering input was strengthened so reversal is detectable.
+- The implementing agent reviewed the complete variant's interface/method, two
+  DTO constructors and four properties against code/tests. Superficial XML was
+  assessed as inadequate despite compiling. Private/test helpers need no narration.
+  These are semantic review findings, not an automated English-quality oracle.
+- Creator and official skills-ref validation passed; **27 library-tool regression
+  tests** passed. Scoped package structure, all candidate-file privacy, actual-index
+  privacy, reachable-history privacy, redacted Gitleaks history/package scans and
+  whitespace review passed. The index was unchanged, so new work was checked as
+  candidates rather than falsely attributed to the staged scan.
+- Full check_library.py and run_checks.py were attempted and **BLOCKED** by the
+  pre-existing catalogue entry for the removed Professional Code Comments package.
+  Root reference review also found its stale README link. No rule, expected result
+  or exclusion was changed to obtain a false full-library PASS. Release validation
+  was not run because the same catalogue prerequisite is unmet.
+
+Eight added behavioral definitions bring the catalogue to **76 unexecuted
+scenarios**. Earlier executed agent comparisons remain historical; no new model
+trial, native discovery, doc-generator rendering or broad reliability evidence is
+claimed. This change was reviewed through its final diff; raw SDK diagnostics stay
+outside the checkout. No consuming application, product runtime, global installation,
+commit, push or publication was changed. The library inconsistency needs separate
+reconciliation before its full gate can pass.

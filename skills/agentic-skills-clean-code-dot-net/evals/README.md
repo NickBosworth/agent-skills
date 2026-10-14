@@ -1,6 +1,6 @@
 # Behavioral evaluation
 
-[68 scenarios](scenarios.json) remain defined, not executed host/model benchmarks.
+[76 scenarios](scenarios.json) remain defined, not executed host/model benchmarks.
 [Four concrete trials](trials.json) have separate raw-input recipes and
 [reviewed results](results.md). These trials were actually executed; they do not
 turn the scenario catalogue into an executed benchmark.
@@ -73,3 +73,25 @@ detect unnecessary edits; outcome checks do not establish subjective prose quali
 Preserve failures, ties and baseline wins. Do not generalize a small sample or one
 model/host into superiority or reliability. Assess irrelevant tool actions, scope
 and validation claims separately during actual artifact review.
+
+## Contract XML regression review
+
+Eight added definitions exercise superficial interfaces/DTOs, failure-as-data,
+null/empty/order, Ponytail, private/test restraint, unknown guarantees, inheritance
+and honest green-build reporting. These remain unexecuted model scenarios.
+The fixture supports a worked-case rehearsal using WeakContracts.cs.in as
+Contracts.cs with its project/Reader.cs/Program.cs and a neutral documentation
+improvement request. The skill includes the complete solution, so such a run
+measures adherence with an available example, not independent transfer.
+For a permitted transfer trial, author a different synthetic bulk API with these
+contract dimensions; provide its raw code/tests and the operational skill while
+withholding task-specific reference XML, graders and maintenance evaluations.
+
+An independent reviewer inventories interface and DTO contracts, then checks each
+applicable caller obligation against implementation and runtime assertions. In the
+worked case the weak variant fails purpose/input/result/ownership coverage; the
+complete variant explains the actual behavior. Extra words or tags earn no credit. Check that behavior and
+private/test helpers remain unchanged, authoritative inheritance is retained, and
+unestablished guarantees are not invented. Report compile/runtime evidence and
+semantic assessment separately. The automated fixture runs both XML variants against
+the same assertions; it deliberately does not claim to automate prose judgment.

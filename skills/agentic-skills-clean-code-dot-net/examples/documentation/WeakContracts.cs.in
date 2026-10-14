@@ -1,0 +1,65 @@
+namespace CleanCode.Documentation;
+
+/// <summary>Reads catalog rows.</summary>
+public interface IBulkReader
+{
+    /// <summary>Reads rows asynchronously.</summary>
+    /// <param name="identifiers">The identifiers.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>The read result.</returns>
+    Task<ReadResult> ReadAsync(IReadOnlyList<string> identifiers, CancellationToken cancellationToken = default);
+}
+
+/// <summary>Represents a read result.</summary>
+public sealed class ReadResult
+{
+    /// <summary>Initializes a read result.</summary>
+    public ReadResult(IReadOnlyList<CatalogRow> rows, string? error)
+    {
+        ArgumentNullException.ThrowIfNull(rows);
+        if (error is not null && rows.Count != 0)
+        {
+            throw new ArgumentException("Failure cannot contain rows.", nameof(rows));
+        }
+
+        Rows = Array.AsReadOnly(rows.ToArray());
+        Error = error;
+    }
+
+    /// <summary>Gets the rows.</summary>
+    public IReadOnlyList<CatalogRow> Rows
+    {
+        get;
+    }
+
+    /// <summary>Gets the error.</summary>
+    public string? Error
+    {
+        get;
+    }
+}
+
+/// <summary>Represents a catalog row.</summary>
+public sealed class CatalogRow
+{
+    /// <summary>Initializes a catalog row.</summary>
+    public CatalogRow(string id, string label)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(id);
+        ArgumentNullException.ThrowIfNull(label);
+        Id = id;
+        Label = label;
+    }
+
+    /// <summary>Gets the identifier.</summary>
+    public string Id
+    {
+        get;
+    }
+
+    /// <summary>Gets the label.</summary>
+    public string Label
+    {
+        get;
+    }
+}

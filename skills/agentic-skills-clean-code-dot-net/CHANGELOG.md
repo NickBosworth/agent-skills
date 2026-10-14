@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.1 — 2026-10-14
+
+- Make the existing contract XML policy an explicit inventory-based completion gate, including interfaces and DTOs.
+- Separate concise implementation comments, semantic caller documentation and compiler/generator evidence.
+- Add complete and superficial bulk-read XML variants, executable contract checks and focused behavioral scenarios.
+
 ## 1.3.0 — 2026-10-13
 
 - Add conditional semantic-refactoring, Options/nullability, runner-selection and measurement workflows.

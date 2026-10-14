@@ -2,6 +2,14 @@
 
 All examples are synthetic. They teach judgments, not comment-count metrics.
 
+## Contract documentation fixture
+
+[Bulk-read XML](documentation/README.md) contrasts superficial and complete
+interface/DTO documentation with identical executable source. Both variants compile
+and pass the same 16 contract checks; semantic review rejects the superficial
+variant. Ordering and validation-failure counterfactuals fail unchanged assertions,
+then pass after repair. This is distinct from an executed agent evaluation.
+
 ## Research follow-up fixtures
 
 [Options and nullable contracts](contracts/Program.cs) check provider-driven reload,

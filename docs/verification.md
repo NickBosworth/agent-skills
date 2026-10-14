@@ -241,3 +241,21 @@ remote CI, global install, commit, push or publication is implied.
 A maintenance-code-exposure pilot was excluded. The accepted sample used fresh
 workspaces with evaluation resources withheld, matched inputs and unchanged views;
 successful content reads were independently checked from saved trajectories.
+
+## .NET 1.3.1 semantic XML completion — 2026-10-14
+
+The [package checkpoint](../skills/agentic-skills-clean-code-dot-net/VALIDATION.md#131-semantic-contract-xml-gate--2026-10-14)
+records 53 passing package tests with SDK checks selected, 27 passing library-tool
+regressions, both XML variants' compiler/formatter and 16 runtime checks, and
+negative/repair evidence for missing XML, wrong order and thrown validation errors.
+Creator/official package validation, candidate/index/history privacy, redacted
+Gitleaks history/package scanning and whitespace checks passed in their stated
+scopes. Semantic source-contract review is distinct from this automated evidence.
+The eight new model scenarios remain unexecuted; previous comparisons were not rerun.
+
+The full library checks were attempted but could not complete: the baseline removed
+Professional Code Comments while retaining its catalogue entry and root README
+link. That unrelated inconsistency remains, and no full-library or release PASS is
+claimed. The implementing agent reviewed the final in-scope diff; no assertion,
+warning or privacy gate was weakened. No files were staged, committed or published;
+no product checks or consuming application changes occurred.

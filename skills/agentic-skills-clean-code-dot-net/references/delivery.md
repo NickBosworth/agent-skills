@@ -60,12 +60,16 @@ Leave clear code unchanged, including a long coherent operation or justified loo
 
 ## Comments and XML review
 
-MUST inspect nearby comments and changed contracts:
-- Significant non-obvious invariants explained; no tautology or fabricated history.
-- Effective external/shared internal API coverage; no noisy private/test boilerplate.
-- Exact param/typeparam names; eventual returns/absence/ownership stated correctly.
-- Nullability, exceptions, commit/cancellation and observable implementation agree.
-- XML/cref compile; actual packaged/rendered inheritance/links checked when required.
+MUST complete the [semantic contract review gate](documentation.md#mandatory-semantic-contract-review-gate)
+for new and meaningfully changed production contracts. Inspect nearby implementation
+comments for significant non-obvious facts, tautology, fabricated history and noisy
+private/test boilerplate. Separately verify XML/cref compilation and applicable
+packaged/rendered inheritance and links.
+
+Report compiler XML/selected diagnostic results separately from semantic contract
+completeness. Successful generation/rendering does not prove that source XML tells
+callers what they need. Disclose material omissions and unverified guarantees even
+when build/tests are green; keep the completion summary compact.
 
 ## Final diff and evidence
 
