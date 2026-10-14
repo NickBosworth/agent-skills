@@ -6,11 +6,11 @@
 | Web UI Craft / Game UI and UX | Web user task versus player/interface/platform needs |
 | Game UI and UX / Voxel Game Development | Player interaction versus world data and gameplay systems |
 | SEO / Web UI Craft | Search discovery evidence alongside usable, accessible interaction |
-| Professional Code Comments / implementation skills | Requested or useful documentation, not redundant annotation |
+| Clean Code for C#/.NET / implementation skills | C# readability and contracts; other languages retain their own documentation policies |
 | SVG / UI skills | Vector source/motion versus its host's full interaction flow |
 | Awesome Copy / SEO | Editorial voice and craft versus search-intent research and discovery evidence |
 | Awesome Copy / UI skills | Wording for the actual reader and state versus visual design and interaction behavior |
-| Awesome Copy / Professional Code Comments | Reader-facing titles and prose versus source comments and API contracts |
+| Awesome Copy / Clean Code for C#/.NET | Reader-facing titles and prose versus C# source comments and API contracts |
 
 Use more than one skill when each contributes to the task. Follow the user's scope
 and the host's instructions; a skill cannot grant permission for an external action.

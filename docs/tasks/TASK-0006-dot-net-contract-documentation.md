@@ -1,6 +1,6 @@
 # TASK-0006 — Semantic XML contract completion
 
-Status: completed within scope; full library validation blocked by baseline inconsistency.
+Status: completed; retirement cleanup resolved the full-library validation blocker on 2026-10-14.
 Scope: agentic-skills-clean-code-dot-net 1.3.1 and its catalogue/evidence integration.
 
 The existing policy already required usable contract XML. Completion lacked an
@@ -37,3 +37,14 @@ history privacy, redacted Gitleaks and whitespace checks passed in their stated
 scopes. See [package evidence](../../skills/agentic-skills-clean-code-dot-net/VALIDATION.md)
 and [library evidence](../verification.md). Eight added model scenarios are defined,
 not executed; no compliance guarantee follows.
+
+## Retirement cleanup — 2026-10-14
+
+Confirmed the old comments package was deliberately retired. Removed its active
+catalogue, README and selection/instruction references, updated the current count
+to nine, and redirected legacy C#/.NET installations through the migration guide.
+Other languages keep their own documentation policies. The earlier blocked
+checkpoint above remains historical; the complete library gate now passes.
+Nine official package validators and 275 tests passed with SDK checks selected,
+and the actual pre-push hook and temporary release archive validation passed.
+No commit, push or global installation was performed.

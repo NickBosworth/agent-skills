@@ -6,8 +6,9 @@ docs/architecture.md, docs/security.md and the repository task before substantia
 
 Use the canonical SEO Expert skill for source/evidence interpretation, Development
 Planning for consequential design decisions, Agentic Codebase for instruction/layout
-changes, Web UI Craft for interface work and Professional Code Comments for meaningful
-API/implementation explanations. These triggers are maintainer guidance; no duplicate
+changes and Web UI Craft for interface work. Keep API/implementation explanations
+accurate and useful under the actual language/toolchain; use Clean Code for C#/.NET
+when working on C#. These triggers are maintainer guidance; no duplicate
 skill install is needed. The implementation request already authorizes local work.
 
 - Preserve immutable observations and analysis versions. Missing evidence is not pass.

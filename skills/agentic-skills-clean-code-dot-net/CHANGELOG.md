@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.2 — 2026-10-14
+
+- Remove the retired comments-skill comparison; keep .NET documentation guidance self-contained.
+
 ## 1.3.1 — 2026-10-14
 
 - Make the existing contract XML policy an explicit inventory-based completion gate, including interfaces and DTOs.

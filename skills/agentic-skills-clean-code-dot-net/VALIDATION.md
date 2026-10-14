@@ -1,6 +1,6 @@
 # Validation and limits
 
-Current XML-contract follow-up: see the **1.3.1** checkpoint at the end. Earlier
+Current retirement cleanup: see the **1.3.2** checkpoint at the end. Earlier
 VSTest-only and no-model-comparison statements describe their historical scope.
 
 Initial 1.0.0 research and execution checkpoint: 2026-10-13, macOS arm64.
@@ -340,3 +340,18 @@ claimed. This change was reviewed through its final diff; raw SDK diagnostics st
 outside the checkout. No consuming application, product runtime, global installation,
 commit, push or publication was changed. The library inconsistency needs separate
 reconciliation before its full gate can pass.
+
+## 1.3.2 retired comments-package references — 2026-10-14
+
+Removed the comparison to the retired comments skill; .NET guidance remains
+self-contained. The surrounding library catalogue and active routes now match its
+nine existing packages, resolving the previous full-library blocker. Migration
+retains a retired-name redirect for C#/.NET, with other-language policies preserved.
+
+Nine official package validators and 275 library/package tests passed with SDK
+checks selected, including all 53 .NET tests. Creator, candidate/index/history
+privacy, redacted Gitleaks through the actual pre-push hook, whitespace and temporary
+archive CRC/SHA-256/fresh-extraction checks passed. Historical evidence is unchanged.
+No helper or executable contract changed; the 76 broader scenarios remain
+unexecuted, and no model, product runtime or documentation-generator run is implied.
+No files were staged, committed or pushed; no global installation was changed.

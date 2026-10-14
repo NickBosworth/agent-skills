@@ -1,6 +1,6 @@
 # agentic-skills
 
-Ten self-contained Agent Skills for maintaining repositories, planning changes,
+Nine self-contained Agent Skills for maintaining repositories, planning changes,
 writing documentation and copy, maintaining C#/.NET code, auditing SEO, designing
 web and game interfaces, building voxel games, and creating SVG art and animation.
 
@@ -17,7 +17,6 @@ security or correctness.
 | [agentic-skills-clean-code-dot-net](skills/agentic-skills-clean-code-dot-net/README.md) | Implement and review readable C# with preserved contracts, useful XML docs and verified quality gates. |
 | [agentic-skills-development-planning](skills/agentic-skills-development-planning/README.md) | Turn rough requirements into a concrete plan with explicit compatibility and delivery decisions. |
 | [agentic-skills-game-ui-ux](skills/agentic-skills-game-ui-ux/README.md) | Design and verify menus, HUDs and player interface flows across game platforms. |
-| [agentic-skills-professional-code-comments](skills/agentic-skills-professional-code-comments/README.md) | Generate or repair meaningful comments and API documentation without inventing rationale. |
 | [agentic-skills-seo-expert](skills/agentic-skills-seo-expert/README.md) | Audit technical search discovery, content intent and measurement for Google and Bing. |
 | [agentic-skills-svg-art-and-animation](skills/agentic-skills-svg-art-and-animation/README.md) | Create and repair editable SVG geometry and motion for the actual delivery target. |
 | [agentic-skills-voxel-game-dev](skills/agentic-skills-voxel-game-dev/README.md) | Build voxel game systems with explicit coordinates, lifecycle, persistence and performance contracts. |

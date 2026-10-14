@@ -1,9 +1,8 @@
 # Comments and XML contracts
 
 Every task loads comments guidance; contract/documentation tasks also apply all XML
-sections. This package agrees with Professional Code Comments' accuracy-first
-approach but bundles the necessary .NET guidance independently. Sources: S05–S10,
-S50. Policies: DNC-DOC-001 through DNC-DOC-004.
+sections. This package bundles accuracy-first comments and .NET contract guidance
+independently. Sources: S05–S10, S50. Policies: DNC-DOC-001 through DNC-DOC-004.
 
 ## Implementation comments
 

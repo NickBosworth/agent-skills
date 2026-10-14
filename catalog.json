@@ -27,7 +27,7 @@
       "path": "skills/agentic-skills-clean-code-dot-net",
       "title": "Clean Code for C#/.NET",
       "description": "Implement and review readable C# with preserved contracts, useful XML docs and verified quality gates.",
-      "version": "1.3.1",
+      "version": "1.3.2",
       "license": "CC0-1.0",
       "status": "packaged"
     },
@@ -52,17 +52,6 @@
       "status": "packaged",
       "previous_name": "game-ui-ux",
       "previous_path": "game/game-ui-ux"
-    },
-    {
-      "name": "agentic-skills-professional-code-comments",
-      "path": "skills/agentic-skills-professional-code-comments",
-      "title": "Professional Code Comments",
-      "description": "Generate or repair meaningful comments and API documentation without inventing rationale.",
-      "version": "2.0.1",
-      "license": "CC0-1.0",
-      "status": "packaged",
-      "previous_name": "professional-code-comments",
-      "previous_path": "code/professional-code-comments"
     },
     {
       "name": "agentic-skills-seo-expert",

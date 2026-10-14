@@ -259,3 +259,23 @@ link. That unrelated inconsistency remains, and no full-library or release PASS 
 claimed. The implementing agent reviewed the final in-scope diff; no assertion,
 warning or privacy gate was weakened. No files were staged, committed or published;
 no product checks or consuming application changes occurred.
+
+## Comments-package retirement cleanup — 2026-10-14
+
+The deliberate package retirement is now reflected in the catalogue, root README,
+selection guidance and root/product instructions. The current library contains nine
+packages. Legacy installation guidance redirects C#/.NET documentation work to
+Clean Code for C#/.NET; it does not apply C# rules to other languages. Historical
+counts and earlier blocked results remain historical, rather than being rewritten.
+
+- DNC_DOTNET_TESTS=1 python tools/run_checks.py passed nine official validators
+  and 275 tests, including all 53 .NET package tests, without package skips.
+- Candidate/index/history privacy, creator validation and whitespace checks passed.
+  No files were staged; the real-index check is distinct from candidate checks.
+- The actual pre-push hook passed candidate/history checks and redacted Gitleaks.
+  A temporary archive passed CRC, SHA-256 inventory and fresh-extraction validation.
+- Manual review covered all current retired-skill routes, nine-package inventory,
+  the C# scope boundary, migration and instruction fingerprints. No check was bypassed.
+
+This supersedes the preceding catalogue blocker. No product runtime tests, new
+agent trials, global installation, commit, push or publication occurred.
