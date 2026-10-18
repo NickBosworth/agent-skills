@@ -12,7 +12,7 @@ security or correctness.
 
 | Skill | Use it for |
 | --- | --- |
-| [agentic-skills-agentic-codebase](skills/agentic-skills-agentic-codebase/README.md) | Audit and maintain repository guidance, decisions, task routes and agent adapters. |
+| [agentic-skills-agentic-codebase](skills/agentic-skills-agentic-codebase/README.md) | Set up, audit, maintain and repair repository guidance, decisions, task routes and agent adapters. |
 | [agentic-skills-awesome-copy](skills/agentic-skills-awesome-copy/README.md) | Write and edit natural, specific titles and copy while preserving voice, facts and reader intent. |
 | [agentic-skills-clean-code-dot-net](skills/agentic-skills-clean-code-dot-net/README.md) | Implement and review readable C# with preserved contracts, useful XML docs and verified quality gates. |
 | [agentic-skills-development-planning](skills/agentic-skills-development-planning/README.md) | Turn rough requirements into a concrete plan with explicit compatibility and delivery decisions. |

@@ -1,6 +1,8 @@
 # Agent host adapters
 
-Documentation checked: **2026-10-03**. Recheck the relevant official source when the installed version or observed behavior differs.
+Original documentation review: **2026-10-03**. The dated refresh below identifies
+claims rechecked on **2026-10-18**; it does not renew every historical source.
+Recheck the relevant official source when the installed version or behavior differs.
 Use this reference when choosing, repairing, or verifying host-specific instruction and skill discovery.
 
 ## Contents
@@ -31,7 +33,7 @@ The entries below describe documented capability, **not a claim that this packag
 | --- | --- | --- | --- |
 | Codex CLI / IDE / repository session | Root and applicable ancestor `AGENTS.md` | `.agents/skills/<name>/SKILL.md` | Initial instruction discovery ends at launch CWD; `AGENTS.override.md` can hide same-directory `AGENTS.md` [S3, S4]. |
 | OpenCode V1 | `AGENTS.md` | `.agents/skills/<name>/SKILL.md` | `CLAUDE.md` is a fallback; ordinary file references are not automatic imports [S5, S6]. |
-| OpenCode V2 | `AGENTS.md` | `.agents/skills/<name>/SKILL.md` | No `CLAUDE.md` fallback; configured `instructions` files/globs/URLs are not currently resolved [S7, S8]. |
+| OpenCode V2 | `AGENTS.md` and configured instructions | `.agents/skills/<name>/SKILL.md` | No `CLAUDE.md` fallback; configured files/globs/URLs load alongside discovered instructions [S7, S8]. |
 | Cursor Agent | Root and nested `AGENTS.md` | `.agents/skills/<name>/SKILL.md` | Native rule files require `.cursor/rules/*.mdc`; personal skills do not automatically travel to cloud sessions [S9, S10]. |
 | Copilot cloud agent / CLI | `AGENTS.md`; native Copilot instructions also supported | `.agents/skills/<name>/SKILL.md` | Check the actual Copilot surface; support is not uniform across IDEs and features [S13, S14, S15]. |
 | Copilot in VS Code | `AGENTS.md` for Chat; native instruction files also supported | `.agents/skills/<name>/SKILL.md` for agent skills | Do not infer that other IDEs or review surfaces have identical instruction support [S13, S15]. |
@@ -67,11 +69,12 @@ The entries below describe documented capability, **not a claim that this packag
 
 ### OpenCode V2
 
-1. Use active `AGENTS.md` guidance and canonical skills. Do not add a `CLAUDE.md` fallback or an `instructions` array as a working import mechanism [S7].
-2. Make scopes explicit and eliminate contradictions. V2 combines global guidance with nearest-to-ancestor project files and does not resolve conflicts; nested files also load during exploration [S7].
-3. Keep skill directory, standard frontmatter `name`, and intended invocation ID aligned. V2 derives the ID from the path and treats `name` as a display label [S8].
-4. Inspect duplicate IDs across native, compatibility, and configured sources; later registered definitions can override earlier ones. Do not rely on that ordering as a portable technique [S8].
-5. Recheck nested instruction changes in a fresh session. Do not transplant V1 config or permission syntax into V2.
+1. Use active `AGENTS.md` guidance and canonical skills. There is no `CLAUDE.md` fallback. V2 supports an `instructions` array of files, globs and HTTP(S) URLs; entries load after discovered guidance and combine across configuration documents [S7].
+2. Preserve working configured instructions. Resolve relative entries in the documented workspace-to-project search scope, review broad globs for unintended context, and treat remote sources as external input. Do not fetch them or change network permissions merely to validate local structure [S7].
+3. Make scopes explicit and eliminate contradictions. V2 combines global guidance with nearest-to-ancestor project files and does not resolve conflicts; nested files also load during exploration [S7].
+4. Keep skill directory, standard frontmatter `name`, and intended invocation ID aligned. V2 derives the ID from the path and treats `name` as a display label [S8].
+5. Inspect duplicate IDs across native, compatibility, and configured sources; later registered definitions can override earlier ones. Do not rely on that ordering as a portable technique [S8].
+6. Recheck nested instruction changes in a fresh session. Do not transplant V1 permission syntax into V2.
 
 ### Cursor
 
@@ -108,6 +111,11 @@ The entries below describe documented capability, **not a claim that this packag
 
 3. Resolve the path relative to the importing file. The snippet is for a **root** `CLAUDE.md`; `.claude/CLAUDE.md` needs the corresponding relative path [S11].
 4. Check suppression carefully: project/ancestor `CLAUDE.md`, `.claude/CLAUDE.md`, or `CLAUDE.local.md` can disable default native AGENTS loading. Do not delete personal files or change global settings to force it [S11].
+   Current documentation also exposes instruction-selection settings: the default
+   `claude-md-or-agents-md`, combined `claude-md-and-agents-md`, `claude-md`, and
+   `managed-only`. Inspect effective settings before adding a bridge. This plugin
+   option is ignored in project/local settings; do not generate a project override
+   that cannot work. Changes to personal/managed policy need their own authority [S11].
 5. Check nested scopes separately. A root import does not establish that every nested `AGENTS.md` is loaded. Add matching local bridges only where needed, or document and verify explicit retrieval.
 6. Do not rely on `AGENTS.override.md` or instruction files under `.agents/` for Claude native instruction loading [S11].
 7. For skills, retain `.agents/skills/<name>/` as the source and make a **reviewed complete copy** at `.claude/skills/<name>/`. Include supporting resources so relative paths work [S12].
@@ -200,3 +208,13 @@ Use the smallest checks that establish the requested host behavior. Do not start
 - **S13:** [Copilot instruction support by surface](https://docs.github.com/en/copilot/reference/custom-instructions-support).
 - **S14:** [Copilot repository instructions](https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/add-custom-instructions/add-repository-instructions).
 - **S15:** [Copilot skills and locations](https://docs.github.com/en/copilot/concepts/agents/about-agent-skills).
+
+## Refresh scope — 2026-10-18
+
+Reopened S3/S4, S7/S8, S9/S10, S11/S12 and S13/S15 for discovery, configured
+instructions, local/cloud scope and surface differences. The OpenCode V2 prohibition
+was contradicted and corrected. Claude instruction-selection settings were added.
+Codex ancestor discovery, Cursor nested/cloud boundaries and Copilot surface-specific
+support remain documentation-backed recipes, not executions of those applications.
+The original V1 documentation review and exact historical version thresholds remain
+historical. No global settings, installation or account was changed for this review.

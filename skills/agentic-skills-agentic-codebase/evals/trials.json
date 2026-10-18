@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-18",
+  "method": "fresh-context explicit-path agents; primary-agent independent artifact review",
+  "baseline_revision": "954eb21",
+  "model_identity": null,
+  "token_usage": null,
+  "complete_access_trajectories_available": false,
+  "comparative_claim": "tie on three selected paired tasks; no superiority or reliability inference",
+  "runs": [
+    {
+      "arm": "current",
+      "case": "setup-confirmed",
+      "changed_files": [
+        ".agents/project.json",
+        ".agents/skills/README.md",
+        "AGENTS.md",
+        "docs/architecture/decisions/README.md",
+        "docs/engineering.md",
+        "docs/tasks/README.md",
+        "docs/tasks/active/TASK-0001-preview-zip.md"
+      ],
+      "structural_summary": {
+        "error": 0,
+        "warning": 0,
+        "info": 4
+      },
+      "preservation_checks": "passed",
+      "input_identity": "97cc7c34e74269d62a77482231c513ece08458df9f109b13ad14e577055430f8",
+      "operational_skill_identity": "a410516203c46852b62b11eb02f5bb79bbc4c3757bdc0caee2236bbdcb9a1eb9"
+    },
+    {
+      "arm": "current",
+      "case": "command-drift",
+      "changed_files": [
+        "CONTRIBUTING.md"
+      ],
+      "structural_summary": {
+        "error": 0,
+        "warning": 1,
+        "info": 2
+      },
+      "preservation_checks": "passed",
+      "input_identity": "581d7e2450463f5bb44f804ef165287671a461f19a752b32d3a2ec28aee4c5a4",
+      "operational_skill_identity": "a410516203c46852b62b11eb02f5bb79bbc4c3757bdc0caee2236bbdcb9a1eb9"
+    },
+    {
+      "arm": "current",
+      "case": "migration-preserve",
+      "changed_files": [
+        "AGENTS.md",
+        "CLAUDE.md"
+      ],
+      "structural_summary": {
+        "error": 0,
+        "warning": 1,
+        "info": 2
+      },
+      "preservation_checks": "passed",
+      "input_identity": "a90323414a6d5303b3e5c19923d6e3c295ac852e5e1ed3bfcaf86ce53792a39e",
+      "operational_skill_identity": "a410516203c46852b62b11eb02f5bb79bbc4c3757bdc0caee2236bbdcb9a1eb9"
+    },
+    {
+      "arm": "previous",
+      "case": "setup-confirmed",
+      "changed_files": [
+        ".agents/project.json",
+        ".agents/skills/README.md",
+        "AGENTS.md",
+        "docs/architecture/decisions/README.md",
+        "docs/engineering.md",
+        "docs/tasks/README.md",
+        "docs/tasks/active/TASK-0001-archive-preview.md"
+      ],
+      "structural_summary": {
+        "error": 0,
+        "warning": 0,
+        "info": 4
+      },
+      "preservation_checks": "passed",
+      "input_identity": "97cc7c34e74269d62a77482231c513ece08458df9f109b13ad14e577055430f8",
+      "operational_skill_identity": "733bc6d2568e9116f56d8ac414e0aa2fc6e8513aa53b38c0359462a1e45b0a7b"
+    },
+    {
+      "arm": "previous",
+      "case": "command-drift",
+      "changed_files": [
+        "CONTRIBUTING.md"
+      ],
+      "structural_summary": {
+        "error": 0,
+        "warning": 1,
+        "info": 2
+      },
+      "preservation_checks": "passed",
+      "input_identity": "581d7e2450463f5bb44f804ef165287671a461f19a752b32d3a2ec28aee4c5a4",
+      "operational_skill_identity": "733bc6d2568e9116f56d8ac414e0aa2fc6e8513aa53b38c0359462a1e45b0a7b"
+    },
+    {
+      "arm": "previous",
+      "case": "migration-preserve",
+      "changed_files": [
+        "AGENTS.md",
+        "CLAUDE.md"
+      ],
+      "structural_summary": {
+        "error": 0,
+        "warning": 1,
+        "info": 2
+      },
+      "preservation_checks": "passed",
+      "input_identity": "a90323414a6d5303b3e5c19923d6e3c295ac852e5e1ed3bfcaf86ce53792a39e",
+      "operational_skill_identity": "733bc6d2568e9116f56d8ac414e0aa2fc6e8513aa53b38c0359462a1e45b0a7b"
+    }
+  ],
+  "repeat_maintenance": "bytes and mtimes unchanged"
+}

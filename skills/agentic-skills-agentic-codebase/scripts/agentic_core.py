@@ -11,6 +11,7 @@ import collections
 import datetime as dt
 import hashlib
 import json
+import math
 import os
 from pathlib import Path, PurePosixPath
 import re
@@ -107,6 +108,28 @@ def today() -> dt.date:
     return dt.datetime.now(dt.timezone.utc).date()
 
 
+def strict_json(text: str) -> Any:
+    """Reject ambiguous members and numbers that cannot survive a registry write."""
+    def pairs(items: list[tuple[str, Any]]) -> dict[str, Any]:
+        result: dict[str, Any] = {}
+        for key, value in items:
+            if key in result:
+                raise ValueError("Duplicate JSON member")
+            result[key] = value
+        return result
+
+    def constant(value: str) -> Any:
+        raise ValueError("Nonfinite JSON constant")
+
+    def number(value: str) -> float:
+        result = float(value)
+        if not math.isfinite(result) or (result == 0 and any(ch in "123456789" for ch in value.lower().split("e")[0])):
+            raise ValueError("JSON number exceeds the finite float range")
+        return result
+
+    return json.loads(text, object_pairs_hook=pairs, parse_constant=constant, parse_float=number)
+
+
 def iso_date(value: Any) -> dt.date | None:
     if not isinstance(value, str) or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", value):
         return None
@@ -140,13 +163,14 @@ class Repository:
         parts = [path, *path.parents]
         for candidate in reversed(parts):
             try:
-                mode = candidate.lstat().st_mode
+                info = candidate.lstat()
+                mode = info.st_mode
             except FileNotFoundError:
                 continue
             except OSError:
                 raise UnsafeInput("A path component cannot be safely inspected.", label)
-            if stat.S_ISLNK(mode):
-                raise UnsafeInput("Symlinks are not traversed, including symlink ancestors.", label)
+            if stat.S_ISLNK(mode) or getattr(info, "st_file_attributes", 0) & getattr(stat, "FILE_ATTRIBUTE_REPARSE_POINT", 0):
+                raise UnsafeInput("Symlinks and reparse points are not traversed, including ancestors.", label)
             if candidate != path and not stat.S_ISDIR(mode):
                 raise UnsafeInput("A parent path component is not a directory.", label)
 
@@ -271,7 +295,7 @@ def instruction_file(rel: str) -> bool:
     p = PurePosixPath(rel)
     if any(x in {"templates", "fixtures", "assets"} for x in p.parts[:-1]):
         return False
-    if p.name in {"AGENTS.md", "AGENTS.override.md", "CLAUDE.md", "GEMINI.md", ".cursorrules", ".windsurfrules", ".clinerules"}:
+    if p.name in {"AGENTS.md", "AGENTS.override.md", "CLAUDE.md", "CLAUDE.local.md", "GEMINI.md", "REVIEW.md", ".cursorrules", ".windsurfrules", ".clinerules"}:
         return True
     return bool(re.search(r"(?:^|/)\.github/(?:copilot-instructions\.md|instructions/.+\.instructions\.md)$", rel)
                 or re.search(r"(?:^|/)\.cursor/rules/.+\.mdc$", rel)
@@ -282,6 +306,18 @@ def instruction_file(rel: str) -> bool:
 def skill_file(rel: str) -> bool:
     p = PurePosixPath(rel)
     return p.name == "SKILL.md" and not any(x in {"references", "assets", "templates", "fixtures"} for x in p.parts[:-1])
+
+
+def agent_config_file(rel: str) -> bool:
+    """Classify paths only; configuration may contain secrets or executable hooks."""
+    p = PurePosixPath(rel)
+    if any(part in {"templates", "fixtures", "assets"} for part in p.parts[:-1]):
+        return False
+    return (p.name in {"opencode.json", "opencode.jsonc", ".mcp.json"}
+            or any(rel == suffix or rel.endswith("/" + suffix) for suffix in (
+                ".claude/settings.json", ".claude/settings.local.json", ".codex/config.toml",
+                ".cursor/mcp.json", ".vscode/mcp.json"))
+            or bool(re.search(r"(?:^|/)\.github/hooks/.+\.json$", rel)))
 
 
 def build_file(rel: str) -> bool:
@@ -377,6 +413,9 @@ def inventory(repo: Repository, report: Report, max_files: int) -> list[str]:
                 path = repo.root / prefix
                 if path.is_symlink():
                     boundaries.add((prefix, "symlink"))
+                    return False
+                if path.exists() and getattr(path.lstat(), "st_file_attributes", 0) & getattr(stat, "FILE_ATTRIBUTE_REPARSE_POINT", 0):
+                    boundaries.add((prefix, "reparse-point"))
                     return False
                 if i < len(parts) - 1:
                     if prefix not in nested_cache:
@@ -491,6 +530,7 @@ def inventory(repo: Repository, report: Report, max_files: int) -> list[str]:
         "instruction_files": instructions,
         "instruction_roots": sorted({str(PurePosixPath(p).parent) for p in instructions}),
         "skills": skills, "build_manifests": builds, "ci_files": [p for p in files if ci_file(p)],
+        "agent_configuration_files": [p for p in files if agent_config_file(p)],
         "likely_docs": [p for p in files if likely_doc(p)], "technologies": sorted(technologies), "git": info,
         "scan": {"method": method, "file_count": len(files), "max_files": max_files, "max_depth": MAX_DEPTH, "complete": complete,
                  "excluded_boundaries": [{"path": p, "reason": reason} for p, reason in sorted(boundaries)]},
@@ -507,12 +547,12 @@ def load_manifest(repo: Repository, report: Report, *, required: bool = False) -
             report.add("MANIFEST_MISSING", "error" if required else "warning", "No source-of-truth manifest is present; generic instruction and skill checks remain available.", MANIFEST)
             return None
         raw = repo.read(MANIFEST)
-        manifest = json.loads(raw.decode("utf-8-sig"))
+        manifest = strict_json(raw.decode("utf-8-sig"))
     except (UnsafeInput, ReadProblem) as exc:
         report.problem(exc)
         return None
     except (ValueError, UnicodeDecodeError, RecursionError):
-        report.add("MANIFEST_INVALID", "error", "The manifest must be valid UTF-8 JSON with one object at the top level.", MANIFEST)
+        report.add("MANIFEST_INVALID", "error", "The manifest must be valid UTF-8 JSON without duplicate members or nonfinite numbers, with one object at the top level.", MANIFEST)
         return None
     if not isinstance(manifest, dict):
         report.add("MANIFEST_INVALID", "error", "The manifest top level must be an object.", MANIFEST)
@@ -734,6 +774,11 @@ def validate_adapters(repo: Repository, manifest: dict[str, Any], report: Report
             checked = iso_date(adapter["checked_on"])
             if checked is None or checked > today():
                 report.add("ADAPTER_DATE_REVIEW", "warning", "The adapter verification date is malformed or in the future.", MANIFEST)
+        if verification == "runtime-tested" and (
+                not meaningful(adapter.get("host") or adapter.get("tool"))
+                or any(not meaningful(adapter.get(field)) for field in ("surface", "version", "notes"))
+                or iso_date(adapter.get("checked_on")) is None):
+            report.add("ADAPTER_PROVENANCE_INCOMPLETE", "warning", "A runtime-tested claim needs host (or tool), surface, observed version, checked_on date, and notes describing actual loading evidence; the existing record was preserved.", MANIFEST)
         generated = adapter.get("generated", [])
         if not isinstance(generated, list):
             report.add("MANIFEST_INVALID", "error", "Adapter generated receipts must be a list.", MANIFEST)
@@ -775,7 +820,7 @@ def validate_adapters(repo: Repository, manifest: dict[str, Any], report: Report
 
 
 def apply_exceptions(repo: Repository, manifest: dict[str, Any], report: Report) -> None:
-    no_waive = {"SCAN_INCOMPLETE", "EXCEPTION_INVALID", "EXCEPTION_EXPIRED", "EXCEPTION_DUPLICATE"}
+    no_waive = {"SCAN_INCOMPLETE", "EXCEPTION_INVALID", "EXCEPTION_EXPIRED", "EXCEPTION_DUPLICATE", "ROOT_INVALID", "STANDARD_VERSION_WRITE_UNSUPPORTED"}
     valid: dict[tuple[str, str], str] = {}
     for item in manifest.get("exceptions", []):
         if not isinstance(item, dict):
@@ -800,14 +845,14 @@ def apply_exceptions(repo: Repository, manifest: dict[str, Any], report: Report)
         if key in valid:
             report.add("EXCEPTION_DUPLICATE", "error", "Only one current exception may exist for an exact code/path pair.", normalized)
             continue
-        if code in no_waive or code.startswith(("UNSAFE", "MANIFEST_", "ROOT_")):
+        if code in no_waive or code.startswith(("UNSAFE", "MANIFEST_")):
             report.add("EXCEPTION_INVALID", "error", "Unsafe paths, invalid manifests, incomplete scans, and exception-validation findings cannot be waived.", normalized)
             continue
         valid[key] = expiry
     used: set[tuple[str, str]] = set()
     for finding in report.findings:
         key = (finding["code"], finding["path"])
-        if key in valid and finding["code"] not in no_waive and not finding["code"].startswith(("UNSAFE", "MANIFEST_", "ROOT_")):
+        if key in valid and finding["code"] not in no_waive and not finding["code"].startswith(("UNSAFE", "MANIFEST_")):
             used.add(key)
             finding["original_severity"] = finding["severity"]
             finding["severity"] = "info"
@@ -1001,7 +1046,7 @@ def check_skills(repo: Repository, paths: list[str], texts: dict[str, str], repo
         if "frontmatter has no closing delimiter" in unsupported:
             report.add("SKILL_FRONTMATTER_MALFORMED", "error", "The opening frontmatter delimiter has no closing delimiter.", rel)
         if unsupported:
-            report.add("SKILL_FRONTMATTER_UNSUPPORTED", "warning", "Unsupported or ambiguous YAML syntax requires manual review; this file is not certified as valid YAML.", rel)
+            report.add("SKILL_FRONTMATTER_UNSUPPORTED", "warning", "Unsupported or ambiguous YAML syntax (" + "; ".join(unsupported) + ") requires manual review; this file is not certified as valid YAML.", rel)
         for key in ("name", "description"):
             value = fields.get(key)
             if not isinstance(value, str) or not value.strip():
@@ -1031,7 +1076,7 @@ def check_skills(repo: Repository, paths: list[str], texts: dict[str, str], repo
                 break
             reached = expanded
         if reached == set(paths_for_name):
-            report.add("SKILL_MIRROR_VERIFIED", "info", "Duplicate skill IDs are accounted for by current exact-copy receipts; host discovery is still untested.", paths_for_name[0])
+            report.add("SKILL_MIRROR_VERIFIED", "info", "Duplicate skill entrypoints have current exact-copy receipts; supporting resources need their own receipts and host discovery is still untested.", paths_for_name[0])
         else:
             for rel in paths_for_name:
                 report.add("SKILL_ID_DUPLICATE", "warning", "The same skill ID appears in multiple locations without complete verified exact-copy receipts.", rel)
@@ -1105,7 +1150,7 @@ def check_tasks(repo: Repository, files: list[str], directory: str, texts: dict[
         if fields.get("kind") != "task":
             continue
         if unsupported:
-            report.add("TASK_FRONTMATTER_UNSUPPORTED", "warning", "Task frontmatter uses syntax outside the basic parser; uncertain fields require review.", rel)
+            report.add("TASK_FRONTMATTER_UNSUPPORTED", "warning", "Task frontmatter uses syntax outside the basic parser (" + "; ".join(unsupported) + "); uncertain fields require review.", rel)
         ident, status = fields.get("id"), fields.get("status")
         if not isinstance(ident, str) or not ident.strip():
             report.add("TASK_ID_MISSING", "error", "Every task record requires a nonempty ID.", rel)
@@ -1169,7 +1214,7 @@ def check_adrs(repo: Repository, files: list[str], directory: str, texts: dict[s
         if fields.get("kind") != "adr":
             continue
         if unsupported:
-            report.add("ADR_FRONTMATTER_UNSUPPORTED", "warning", "ADR frontmatter uses syntax outside the basic parser; uncertain fields require review.", rel)
+            report.add("ADR_FRONTMATTER_UNSUPPORTED", "warning", "ADR frontmatter uses syntax outside the basic parser (" + "; ".join(unsupported) + "); uncertain fields require review.", rel)
         ident, status = fields.get("id"), fields.get("status")
         if not isinstance(ident, str) or not ident.strip():
             report.add("ADR_ID_MISSING", "error", "Every ADR record requires a nonempty ID.", rel)
@@ -1313,7 +1358,7 @@ def make_parents(repo: Repository, rel: str, created: list[str]) -> None:
 def scaffold(repo: Repository, report: Report, profile: str, apply: bool) -> None:
     assets = Repository(Path(__file__).parent.parent / "assets")
     try:
-        config = json.loads(assets.text("scaffold.json"))
+        config = strict_json(assets.text("scaffold.json"))
     except (UnsafeInput, ReadProblem) as exc:
         report.problem(exc)
         return
@@ -1472,6 +1517,9 @@ def _record_review(repo: Repository, report: Report, document: str, evidence: li
     manifest = load_manifest(repo, report, required=True)
     if manifest is None:
         return
+    if not manifest["standard_version"].startswith("1."):
+        report.add("STANDARD_VERSION_WRITE_UNSUPPORTED", "error", "Review recording supports standard major version 1 only; inspect and establish a migration before writing this registry.", MANIFEST)
+        return
     validate_commands(repo, manifest, report)
     validate_reviews(repo, manifest, report, None)
     validate_adapters(repo, manifest, report)
@@ -1510,7 +1558,7 @@ def _record_review(repo: Repository, report: Report, document: str, evidence: li
     if repo.digest(rel) != document_hash or any(repo.digest(source) != expected for source, expected in sources.items()):
         report.add("REVIEW_INPUT_CHANGED", "error", "A reviewed document or evidence source changed during preparation; no review was stored.", rel)
         return
-    payload = (json.dumps(manifest, indent=2, sort_keys=True, ensure_ascii=False) + "\n").encode("utf-8")
+    payload = (json.dumps(manifest, indent=2, sort_keys=True, ensure_ascii=False, allow_nan=False) + "\n").encode("utf-8")
     manifest_path = repo.path(MANIFEST, regular=True)
     manifest_mode = stat.S_IMODE(manifest_path.stat().st_mode)
     temporary: str | None = None
@@ -1560,7 +1608,7 @@ def nonnegative_int(value: str) -> int:
 
 def argument_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Bounded, local-only structural helpers for agentic repositories. Never executes project commands or semantically certifies documents.")
-    parser.add_argument("--version", action="version", version="agentic-skills-agentic-codebase helper 1.0.0")
+    parser.add_argument("--version", action="version", version="agentic-skills-agentic-codebase helper 1.1.0")
     subcommands = parser.add_subparsers(dest="command", required=True)
     for name, description in (
         ("inspect", "Inventory existing instructions, skills, build files, CI, and documentation without requiring a standard layout."),
@@ -1600,7 +1648,7 @@ def emit_report(report: Report, as_json: bool, exit_code: int) -> None:
     if "scan" in report.data:
         scan = report.data["scan"]
         print(f"Inventory: {scan['file_count']} files using {scan['method']}; scan complete: {scan['complete']}.")
-        for label in ("instruction_files", "skills", "build_manifests", "ci_files", "likely_docs"):
+        for label in ("instruction_files", "skills", "agent_configuration_files", "build_manifests", "ci_files", "likely_docs"):
             values = report.data.get(label, [])
             print(f"{label}: {len(values)}")
             for path in values[:20]:

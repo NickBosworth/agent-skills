@@ -222,3 +222,21 @@ Do not assume a linked file is loaded automatically; distinguish a runtime impor
 5. Exercise representative setup, maintenance, and repair scenarios; include preservation and failure cases.
 6. Measure correctness, useful completion, questions, unnecessary edits, and execution/context overhead separately.
 7. Update only claims supported by new evidence; keep unresolved questions visible.
+
+## Targeted refresh — 2026-10-18
+
+Reopened E1 v3 and E2 v2 and checked their reported effect sizes and limitations
+against the conclusions retained above. Their different settings do not establish
+a universal benefit, optimal entry-point length or preferred folder tree.
+
+Rechecked the host sources identified in the adapter reference's dated refresh.
+OpenCode V2 now documents configured instruction files, globs and URLs; the old
+prohibition was removed. Claude's instruction-selection settings warrant inspecting
+effective configuration before creating a bridge. These are documentation findings,
+not runtime tests or a blanket renewal of all original sources.
+
+The new raw cases and controlled explicit-path trials test setup, maintenance,
+preservation and migration separately from native discovery. Compare a frozen prior
+skill with the candidate under matched task conditions, keep expected answers out
+of model inputs, and retain ties and failures. See [evaluation](../evals/README.md)
+and [validation](../VALIDATION.md). More definitions alone do not improve reliability.

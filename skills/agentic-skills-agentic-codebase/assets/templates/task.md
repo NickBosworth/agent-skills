@@ -26,11 +26,12 @@ UNKNOWN: Record material decisions with their rationale and outstanding blockers
 
 ## Verification
 
-UNKNOWN: Exact checks, outcomes and relevant evidence. Populate `validation`
+UNKNOWN: Exact checks, outcomes, runtime/tool versions and relevant evidence. Populate `validation`
 before marking done. A structural documentation audit alone does not establish
 application behavior.
 
 ## Handoff
 
-UNKNOWN: Current state, remaining work, write ownership where relevant and the
-next useful action. Remove this placeholder if the task completes in one session.
+UNKNOWN: Baseline revision or source identity, affected scope, current state,
+remaining work, unresolved decisions, write ownership where relevant and the next
+useful action. Remove this placeholder if the task completes in one session.

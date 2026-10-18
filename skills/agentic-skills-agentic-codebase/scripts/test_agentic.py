@@ -19,6 +19,9 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest import mock
+
+import agentic_core as core
 
 
 SCRIPT = Path(__file__).with_name("agentic.py")
@@ -257,6 +260,107 @@ class AgenticCliTests(unittest.TestCase):
                 self.assertIn(code, self.codes(result))
                 self.assertEqual(self.snapshot(), before)
 
+    def test_ambiguous_registry_json_is_rejected_without_writes(self) -> None:
+        self.project()
+        original = (self.root / MANIFEST).read_text()
+        cases = [
+            original.replace('"schema_version": 1', '"schema_version": 99, "schema_version": 1'),
+            original.replace('"reviews": {}', '"reviews": {}, "reviews": {}'),
+            original.replace('"reviews": {}', '"extension": {"key": 1, "key": 2}, "reviews": {}'),
+            *[original.replace('"reviews": {}', '"extension": ' + value + ', "reviews": {}')
+              for value in ("NaN", "Infinity", "-Infinity", "1e999", "1e-999")],
+        ]
+        for content in cases:
+            with self.subTest(case=cases.index(content)):
+                self.write(MANIFEST, content)
+                before = self.snapshot()
+                self.assertIn("MANIFEST_INVALID", self.codes(self.report(expected=1)))
+                report = self.report("record-review", "--document", "handbook/design.md",
+                    "--evidence", "README.md", "--note", "Compared design boundaries with the fixture README.",
+                    "--apply", expected=1)
+                self.assertIn("MANIFEST_INVALID", self.codes(report))
+                self.assertEqual(before, self.snapshot())
+
+    def test_unknown_standard_can_be_inspected_but_not_rewritten(self) -> None:
+        manifest = self.project()
+        manifest["standard_version"] = "99.0.0"
+        self.save_manifest(manifest)
+        before = self.snapshot()
+        self.assertIn("STANDARD_VERSION_UNRECOGNIZED", self.codes(self.report()))
+        report = self.report("record-review", "--document", "handbook/design.md",
+            "--evidence", "README.md", "--note", "Compared design boundaries with the fixture README.",
+            "--apply", expected=1)
+        self.assertIn("STANDARD_VERSION_WRITE_UNSUPPORTED", self.codes(report))
+        self.assertEqual(before, self.snapshot())
+
+    def test_inventory_classifies_host_files_without_reading_configuration(self) -> None:
+        self.project()
+        self.write("CLAUDE.local.md", "# Synthetic local instructions\n")
+        configs = ["opencode.json", "opencode.jsonc", ".mcp.json", ".vscode/mcp.json",
+                   ".claude/settings.json", ".claude/settings.local.json", ".codex/config.toml",
+                   ".cursor/mcp.json", ".github/hooks/check.json"]
+        marker = "configuration-body-must-not-appear"
+        for path in configs:
+            self.write(path, marker)
+        before = self.snapshot()
+        report = self.report("inspect")
+        self.assertIn("CLAUDE.local.md", report["data"]["instruction_files"])
+        self.assertEqual(set(configs), set(report["data"]["agent_configuration_files"]))
+        self.assertNotIn(marker, json.dumps(report))
+        self.assertEqual(before, self.snapshot())
+
+    def test_runtime_adapter_claim_needs_provenance_but_legacy_record_is_preserved(self) -> None:
+        manifest = self.project()
+        manifest["adapters"] = [{"verification": "runtime-tested"}]
+        self.save_manifest(manifest)
+        before = self.snapshot()
+        self.assertIn("ADAPTER_PROVENANCE_INCOMPLETE", self.codes(self.report()))
+        self.assertEqual(before, self.snapshot())
+        manifest["adapters"][0].update({"tool": "Synthetic host", "surface": "local CLI",
+            "version": "1.0.0", "checked_on": dt.datetime.now(dt.timezone.utc).date().isoformat(),
+            "notes": "Observed root and nested guidance plus a skill read in an isolated synthetic trial."})
+        self.save_manifest(manifest)
+        self.assertNotIn("ADAPTER_PROVENANCE_INCOMPLETE", self.codes(self.report()))
+        manifest["adapters"][0]["host"] = manifest["adapters"][0].pop("tool")
+        self.save_manifest(manifest)
+        self.assertNotIn("ADAPTER_PROVENANCE_INCOMPLETE", self.codes(self.report()))
+
+    def test_supporting_resource_receipts_detect_drift_beyond_the_skill_entrypoint(self) -> None:
+        manifest = self.project()
+        roots = (".agents/skills/preview", ".claude/skills/preview")
+        resources = {"SKILL.md": "---\nname: preview\ndescription: Preview a synthetic archive.\n---\n# Preview\n",
+                     "scripts/preview.py": "LIMIT = 10\n", "references/limits.md": "# Limits\n\nTen members.\n"}
+        receipts = []
+        for name, body in resources.items():
+            for root in roots:
+                self.write(root + "/" + name, body)
+            digest = sha256(body.encode())
+            receipts.append({"source": roots[0] + "/" + name, "target": roots[1] + "/" + name,
+                             "mode": "copy", "source_sha256": digest, "target_sha256": digest})
+        manifest["adapters"] = [{"host": "Synthetic host", "verification": "documentation-only", "generated": receipts}]
+        self.save_manifest(manifest)
+        self.assertNotIn("ADAPTER_COPY_DRIFT", self.codes(self.report()))
+        path = roots[1] + "/scripts/preview.py"
+        self.write(path, "LIMIT = 20\n")
+        before = self.snapshot()
+        report = self.report()
+        self.assertTrue(any(f["code"] == "ADAPTER_COPY_DRIFT" and f["path"] == path for f in report["findings"]))
+        self.assertEqual(before, self.snapshot())
+
+    def test_soft_root_budget_allows_only_an_exact_reviewed_exception(self) -> None:
+        manifest = self.project()
+        self.write("AGENTS.md", "# Established constraints\n" + "A retained constraint.\n" * 151)
+        manifest["exceptions"] = [{"code": "ROOT_INSTRUCTIONS_LONG", "path": "AGENTS.md",
+            "reason": "Reviewed constraints justify retaining this long entry point.", "expires": "2099-01-01"}]
+        self.save_manifest(manifest)
+        report = self.report()
+        finding = next(f for f in report["findings"] if f["code"] == "ROOT_INSTRUCTIONS_LONG")
+        self.assertTrue(finding["excepted"])
+        self.assertEqual(finding["severity"], "info")
+        manifest["exceptions"][0]["code"] = "ROOT_INVALID"
+        self.save_manifest(manifest)
+        self.assertIn("EXCEPTION_INVALID", self.codes(self.report(expected=1)))
+
     def test_manifest_path_escape_is_rejected_without_reading_target(self) -> None:
         manifest = self.project()
         secret = "outside-document-body-must-not-be-disclosed"
@@ -272,6 +376,19 @@ class AgenticCliTests(unittest.TestCase):
         self.link(self.root, alias, directory=True)
         self.report("inspect", root=alias, expected=2)
         self.assertEqual(self.snapshot(), {})
+
+    @unittest.skipUnless(os.name == "nt", "Windows junction behavior needs a Windows host.")
+    def test_windows_junction_is_an_excluded_boundary_and_an_unsafe_root(self) -> None:
+        (self.outside / "AGENTS.md").write_text("# External synthetic instructions\n")
+        junction = self.root / "linked"
+        result = subprocess.run(["cmd", "/c", "mklink", "/J", str(junction), str(self.outside)],
+                                capture_output=True, timeout=15)
+        self.assertEqual(result.returncode, 0, "The junction fixture must be created.")
+        self.addCleanup(lambda: os.rmdir(junction) if junction.exists() else None)
+        report = self.report("inspect")
+        self.assertNotIn("linked/AGENTS.md", report["data"]["instruction_files"])
+        self.assertIn({"path": "linked", "reason": "reparse-point"}, report["data"]["scan"]["excluded_boundaries"])
+        self.report("inspect", root=junction, expected=2)
 
     def test_inspect_skips_symlinks_and_generated_trees(self) -> None:
         self.write("AGENTS.md", "# Real project\n")
@@ -474,6 +591,99 @@ class AgenticCliTests(unittest.TestCase):
                     self.assertEqual(after["reviews"][earlier], record)
                 self.assertEqual(set(after["reviews"]), set(expected_reviews) | {document})
                 expected_reviews = after["reviews"]
+
+    def test_live_writer_excludes_a_second_process_then_allows_retry(self) -> None:
+        self.project()
+        original = core._record_review
+        options = ("--document", "handbook/purpose.md", "--evidence", "README.md",
+                   "--note", "Compared the purpose with the synthetic README.", "--apply")
+
+        def while_locked(*args, **kwargs):
+            competing = self.report("record-review", *options, expected=1)
+            self.assertIn("REVIEW_LOCKED", self.codes(competing))
+            original(*args, **kwargs)
+
+        report = core.Report("record-review", str(self.root))
+        with mock.patch.object(core, "_record_review", side_effect=while_locked):
+            core.record_review(core.Repository(self.root), report, "handbook/design.md",
+                               ["README.md"], "Compared design boundaries with the synthetic README.", True)
+        self.assertEqual(report.exit_code(), 0)
+        self.report("record-review", *options)
+        manifest = json.loads((self.root / MANIFEST).read_text())
+        self.assertEqual(set(manifest["reviews"]), {"handbook/design.md", "handbook/purpose.md"})
+        self.assertFalse((self.root / core.REVIEW_LOCK).exists())
+
+    def test_failed_registry_replace_preserves_bytes_and_removes_owned_temporary_files(self) -> None:
+        self.project()
+        before = self.snapshot()
+        report = core.Report("record-review", str(self.root))
+        with mock.patch.object(core.os, "replace", side_effect=OSError("Synthetic replace failure")):
+            with self.assertRaises(OSError):
+                core.record_review(core.Repository(self.root), report, "handbook/design.md",
+                                   ["README.md"], "Compared design boundaries with the synthetic README.", True)
+        self.assertEqual(before, self.snapshot())
+
+    def test_changed_review_input_is_not_recorded_and_releases_lock(self) -> None:
+        self.project()
+        registry = (self.root / MANIFEST).read_bytes()
+        repository = core.Repository(self.root)
+        original = repository.digest
+        changed = False
+
+        def digest(path):
+            nonlocal changed
+            value = original(path)
+            if path == "README.md" and not changed:
+                changed = True
+                self.write(path, "# Changed synthetic requirements\n")
+            return value
+
+        report = core.Report("record-review", str(self.root))
+        with mock.patch.object(repository, "digest", side_effect=digest):
+            core.record_review(repository, report, "handbook/design.md", ["README.md"],
+                               "Compared design boundaries with the synthetic README.", True)
+        self.assertIn("REVIEW_INPUT_CHANGED", {f["code"] for f in report.findings})
+        self.assertEqual(registry, (self.root / MANIFEST).read_bytes())
+        self.assertFalse((self.root / core.REVIEW_LOCK).exists())
+
+    def test_scaffold_sync_failure_rolls_back_only_its_created_files(self) -> None:
+        self.write("keep.txt", "Repository-owned content.\n")
+        before = self.snapshot()
+        report = core.Report("scaffold", str(self.root))
+        with mock.patch.object(core.os, "fsync", side_effect=OSError("Synthetic sync failure")):
+            core.scaffold(core.Repository(self.root), report, "minimal", True)
+        self.assertIn("SCAFFOLD_ROLLED_BACK", {f["code"] for f in report.findings})
+        self.assertEqual(before, self.snapshot())
+
+    def test_scaffold_failure_preserves_a_concurrent_edit_and_reports_its_path(self) -> None:
+        report = core.Report("scaffold", str(self.root))
+
+        def changed_then_failed(descriptor):
+            self.write("AGENTS.md", "# Another writer's retained guidance\n")
+            raise OSError("Synthetic sync failure after another writer's edit")
+
+        with mock.patch.object(core.os, "fsync", side_effect=changed_then_failed):
+            core.scaffold(core.Repository(self.root), report, "minimal", True)
+        self.assertIn("SCAFFOLD_ROLLBACK_PARTIAL", {f["code"] for f in report.findings})
+        self.assertEqual(report.data["rollback_review_paths"], ["AGENTS.md"])
+        self.assertEqual((self.root / "AGENTS.md").read_text(), "# Another writer's retained guidance\n")
+
+    def test_git_output_limit_is_visible_even_when_filesystem_fallback_succeeds(self) -> None:
+        self.project()
+
+        def git_read(repository, arguments):
+            if arguments[0] == "rev-parse":
+                return str(self.root).encode(), "ok"
+            if "-co" in arguments:
+                return None, "output-limit"
+            return b"", "ok"
+
+        report = core.Report("inspect", str(self.root))
+        with mock.patch.object(core, "git_read", side_effect=git_read):
+            core.inventory(core.Repository(self.root), report, 20000)
+        self.assertEqual(report.data["scan"]["method"], "bounded-walk")
+        self.assertFalse(report.data["scan"]["complete"])
+        self.assertIn("SCAN_INCOMPLETE", {f["code"] for f in report.findings})
 
     def test_changed_review_document_evidence_and_deleted_source_are_reported(self) -> None:
         manifest = self.project()

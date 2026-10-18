@@ -3,7 +3,7 @@ name: agentic-skills-agentic-codebase
 license: CC0-1.0
 description: "Set up, maintain, audit, repair, or migrate a repository's agentic development environment: AGENTS.md, scoped instructions, portable local skills, architecture and technology decisions, tasks, rules, verification, and agent adapters. Use for greenfield agent-ready setup, stale or contradictory project guidance, or consolidation of existing agent structures. Inspect first, preserve useful conventions, perform authorized improvements, and ask one contextual question at a time for consequential uncertainty."
 metadata:
-  version: "2.0.1"
+  version: "2.1.0"
 ---
 
 # Agentic Codebase
@@ -45,6 +45,7 @@ the repository. Treat them as a versioned design, not a universal industry stand
 | Use the helpers or edit the machine-readable registry | [Helper and schema reference](references/helpers.md) |
 | Configure or verify a particular coding agent | [Compatibility and adapters](references/adapters.md) |
 | Revisit the design or verify changing best-practice claims | [Research basis](references/research.md) |
+| See a completed setup, maintenance review, or migration | [Worked examples](examples/worked-examples.md) |
 
 Read the standard and the relevant workflow for substantive work. Read other
 references when their subject becomes relevant; do not load the entire package
@@ -79,6 +80,10 @@ template only when that artifact serves a real need.
    host/surface/version where it affects compatibility.
 6. Inspect unresolved relationships manually; an inventory lists paths, not
    effective runtime instruction precedence. Note excluded or unreadable areas.
+   Configuration results list paths only. Inspect relevant settings and hooks
+   deliberately without exporting credentials or running their contents. Ignored
+   local files and settings outside the target remain uninspected unless separately
+   examined within scope; their absence from inventory does not establish absence.
 
 If Python is unavailable, perform the same inventory and checks using available
 read/file tools. Do not install a runtime without appropriate authority. State
@@ -187,6 +192,9 @@ and Markdown links do not guarantee identical discovery in every host.
 
    Use real existing evidence paths. A recorded fingerprint detects later
    changes; it does not independently prove the review was correct.
+   Review recording refuses unsupported standard major versions and ambiguous
+   registry JSON. Investigate those inputs; never rewrite a version or discard
+   an earlier field merely to make the writer accept it.
 7. Rerun the affected check once after repairs. Review the final diff and
    confirm that repeat maintenance would not create avoidable churn.
 
@@ -195,6 +203,16 @@ and Markdown links do not guarantee identical discovery in every host.
 Finish with the selected mode and outcome, changed sources, established
 decisions and assumptions, checks actually run, important unresolved items,
 and the next useful action. Explain how to invoke maintenance again.
+
+| Mode | Evidence needed before calling the work complete |
+| --- | --- |
+| Setup | Grounded content or explicit deferred decisions, reachable context, and a first useful implementation outcome with acceptance criteria. An unchanged skeleton is unfinished. |
+| Maintain | Claims checked against appropriate evidence, justified repairs or a supported no-change result, and a final pass without avoidable content or metadata churn. |
+| Repair/migrate | Unique guidance and stable identities retained, inbound references updated, and intended entry points verified at the available evidence level. |
+
+For a handoff, retain the baseline revision, affected scope, actual verification
+environment and results, unresolved decisions, and next action in the existing
+task authority. Keep private transcripts and temporary tool state out of it.
 
 Do not call a repository fully agent-ready solely because its files exist or a
 structural check passes. Do not promise future automatic upkeep unless a real

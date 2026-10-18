@@ -1,5 +1,21 @@
 # Changes
 
+## 2.1.0 — 2026-10-18
+
+Reject ambiguous/nonfinite registry JSON and unknown-standard review writes.
+Classify local Claude instructions, review candidates and host configuration paths
+without reading configuration contents. Flag incomplete runtime adapter provenance
+without rewriting legacy records. Permit exact reviewed exceptions to the soft
+root length cue while retaining nonwaivable safety findings. Reject Windows reparse
+boundaries and exercise write failures, changed inputs and real lock contention.
+
+Correct OpenCode V2 configured-instruction guidance; clarify Claude settings and
+documentation-versus-runtime evidence. Add mode-specific completion criteria,
+four synthetic worked examples, twelve raw evaluation cases, controlled forward
+test records and focused portability CI. Package and helper versions advance to
+2.1.0/1.1.0; registry schema 1, standard 1.0.0, names and CLI remain unchanged.
+See VALIDATION.md for executed evidence and unavailable checks.
+
 ## 2.0.1 — 2026-10-12
 
 Clarified installation, scope and verification wording in public documentation.

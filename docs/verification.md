@@ -1,5 +1,28 @@
 # Verification of agentic-skills
 
+## Agentic Codebase 2.1.0 — 2026-10-18
+
+The [package checkpoint](../skills/agentic-skills-agentic-codebase/VALIDATION.md)
+records helper repairs, raw cases, controlled forward tests and platform limits.
+On macOS arm64/Python 3.12.11 the ordinary library gate passed all nine official
+validators and discovered 288 tests: 271 passed and 17 skipped (one Windows junction
+test and 16 optional .NET/SDK checks). The focused helper suite passed 45 tests with
+one Windows skip on both Python 3.10.19 and 3.12.11, including fresh extraction.
+
+Six isolated explicit-path trials covered setup, maintenance and migration in prior
+and candidate arms; both passed their reviewed outcomes. A seventh continuation
+repeated candidate maintenance with unchanged bytes and modification times.
+[Results](../skills/agentic-skills-agentic-codebase/evals/results.md) disclose the tie,
+small sample, frozen snapshot, unexposed exact model/usage and trajectory limits.
+These observations do not establish native discovery, superiority or reliability.
+
+Creator, candidate/index/history privacy, redacted Gitleaks, whitespace and temporary
+archive CRC/SHA-256/fresh-extraction checks passed. The index stayed unchanged;
+candidate checks covered unstaged content. The actual affected engineering evidence
+was refreshed; unrelated product review evidence and bounded-parser warnings remain.
+New portability CI is defined but unexecuted. No global installation, dependency
+installation, product runtime check, commit, push or publication occurred.
+
 The historical 2.0.0 checkpoint below was executed on 2026-10-10 using macOS and
 Python 3.11.14/3.12.11. Source review at that checkpoint was structural across the
 library and targeted semantic review of changed workflows,

@@ -56,6 +56,15 @@ python /path/to/agentic-skills-agentic-codebase/scripts/agentic.py check --root 
 Use `--json` for machine-readable reports and `--help` for current supported
 options. JSON reports distinguish the command, root, verification scope, summary,
 findings and command data. Findings carry codes and paths for diagnosis.
+Helper version **1.1.0** is independent of package version **2.1.0** and repository
+standard version **1.0.0**; installing this package does not migrate a target registry.
+
+`data.agent_configuration_files` inventories known OpenCode, MCP, Claude settings,
+Codex settings and Copilot hook paths without reading their contents. Local Claude
+instructions and review instruction candidates are also classified. Classification
+does not establish applicability or execution. Git-ignored settings, global files,
+and unsupported filenames need targeted manual inspection when relevant. Keep raw
+reports private until reviewed: runtime roots and filenames can identify a machine.
 
 Exit `0` means no structural errors under the selected policy, not full semantic
 correctness. Exit `1` indicates structural errors, or warnings when `--strict`
@@ -71,6 +80,10 @@ date is a review candidate, not proof that the document is incorrect. Apply
 Keep `.agents/project.json` in the repository. Treat it as the role map and
 evidence registry for this skill; agent products do not natively interpret it.
 Retain unknown extension fields when editing. Do not downgrade a newer schema.
+Duplicate JSON members, nonfinite constants and numbers outside the finite float
+range are rejected, including inside extension objects. These inputs cannot be
+safely interpreted and rewritten by this helper. Unknown standard major versions
+can be checked with a warning, but review recording refuses to write them.
 
 ```json
 {
@@ -203,6 +216,11 @@ Avoid collecting private conversation text into a tracked document.
 ## Adapters and exceptions
 
 Use adapter records described in [the compatibility reference](adapters.md).
+For a `runtime-tested` record, supply `host` (or the existing `tool` field), `surface`, observed `version`,
+`checked_on` and meaningful `notes` identifying the actual loading evidence.
+Incomplete existing claims produce `ADAPTER_PROVENANCE_INCOMPLETE`; they are
+preserved for review, not silently upgraded or deleted. Documentation-only records
+must remain labelled as such even when their files pass structural validation.
 Per-file `source`/`target` mappings with baseline `source_sha256` and
 `target_sha256` can flag later drift. Exact-copy mappings must stay byte-identical;
 imports/projections still require semantic and host review. There is no automatic
@@ -213,6 +231,9 @@ code and path, a meaningful reason, and an ISO `expires` date. It remains visibl
 as an excepted finding. Do not use wildcards or indefinite exemptions. An expired
 exception needs review; a path-safety, invalid-schema or incomplete-scan issue
 cannot be made safe by adding an exception.
+A reviewed `ROOT_INSTRUCTIONS_LONG` exception may name the exact instruction
+file, reason and expiry because 150 lines is a soft cue. `ROOT_INVALID` and an
+unsupported-version write are safety failures and cannot be waived.
 
 ## CI integration
 
@@ -237,6 +258,13 @@ network or secret settings without appropriate authority. CI can detect supporte
 structural drift; semantic upkeep still requires the agent workflow.
 
 ## Limits
+
+The root and its path components must remain stable while a command runs.
+Symlink and Windows reparse-point rejection is a path defense, not an OS sandbox
+against an adversary swapping ancestors concurrently. Isolate untrusted mutable
+repositories using the host's real filesystem controls. Scaffold rollback removes
+only created files whose bytes still match; changed or partial files are preserved
+and reported for review. A failed replacement preserves the existing registry.
 
 The helper is a bounded structural auditor, not a full Markdown/YAML parser,
 secret scanner, static analyzer or semantic theorem prover. It does not validate
