@@ -1,6 +1,6 @@
 # Validation and limits
 
-Current retirement cleanup: see the **1.3.2** checkpoint at the end. Earlier
+Current method-body review follow-up: see the **1.3.3** checkpoint at the end. Earlier
 VSTest-only and no-model-comparison statements describe their historical scope.
 
 Initial 1.0.0 research and execution checkpoint: 2026-10-13, macOS arm64.
@@ -355,3 +355,41 @@ archive CRC/SHA-256/fresh-extraction checks passed. Historical evidence is uncha
 No helper or executable contract changed; the 76 broader scenarios remain
 unexecuted, and no model, product runtime or documentation-generator run is implied.
 No files were staged, committed or pushed; no global installation was changed.
+
+## 1.3.3 method-body explanation review — 2026-10-18
+
+The existing non-obvious-comment policy now has an explicit pre-completion review
+of new and meaningfully changed method bodies, including private methods, for
+missing explanations. Useful collective block purpose is included alongside
+constraints that a plausible future edit could break. Guidance covers placement,
+evidence, lifecycle, minimal-change interactions and clear code needing no comments.
+The existing review field reports material omissions without a per-method ledger.
+
+Executed on macOS arm64, Python 3.12.11 and SDK 10.0.400:
+- DNC_DOTNET_TESTS=1 python tools/run_checks.py passed all nine official package
+  validators and 275 tests, including the 53 .NET package tests, without package skips.
+  No helper or test assertion was changed or added for a prose-only requirement.
+- Both changed C# files match the base executable source after ordinary own-line
+  comments are removed. The receipt fixture now explains validation timing and
+  stream/commit boundaries; the bulk reader explains order and repeated matches.
+  Existing lifetime, cancellation, ordering and failure assertions still pass.
+- Separate disposable copies with those implementation comments removed passed
+  19 receipt/self-check assertions and 16 bulk-read contract checks. This is actual
+  evidence that comment omission can escape compiler/runtime gates; semantic
+  comment quality and agent adherence are not established by these executions.
+- The implementing agent reviewed comment truth against implementation/tests,
+  matching before/after examples, necessary test-setup rationale, unchanged clear
+  helpers, completion routing and the final diff. Unknown history is not invented.
+
+Eight added definitions bring the catalogue to **84 unexecuted broader scenarios**.
+They cover absent ordering rationale, block purpose, private lifetime, coordination,
+Ponytail, restraint, unverified intent and stale comments. No new model trial or
+renewal of historical comparison evidence is claimed. Review-only and scoped-edit
+boundaries remain intact; no new dependency, helper, quota or analyzer is introduced.
+
+Creator validation, candidate/index/history privacy, redacted Gitleaks history/package
+scans, whitespace review and temporary archive CRC/SHA-256/fresh-extraction checks
+passed in their stated scopes. The actual pre-push hook passed without a push.
+The index was unchanged; new work was checked as candidates. Raw diagnostics remain
+outside the checkout. No product runtime, consuming repository, global installation,
+commit, push or publication was changed.

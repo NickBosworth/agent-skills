@@ -147,20 +147,87 @@ await sink.CommitAsync(receipt, cancellationToken);
 ```
 This is not an instruction to drop cancellation before work commits.
 
-### Preserve lifetime
+### Explain method bodies without changing behavior
 
-Before:
+These examples add only comments. The executable before/after lines are identical
+and come from the compiling fixtures; changing behavior requires its own authorized
+scope. Useful method-body explanations can preserve intent even when individual
+statements have clear names.
+
+The [reader](documentation/Reader.cs) builds its response under the interface's
+input-order and repeated-match contract. Before:
+
 ```csharp
-using var receipt = new MemoryStream(bytes);
-return sink.CommitAsync(receipt, cancellationToken);
+foreach (string identifier in identifiers)
+{
+    CatalogRow? row = Find(identifier);
+    if (row is not null)
+    {
+        matches.Add(row);
+    }
+}
 ```
+
 After:
+
 ```csharp
-using var receipt = new MemoryStream(bytes);
-await sink.CommitAsync(receipt, cancellationToken);
+// Build results in request order; deduplication would discard repeated requested matches.
+foreach (string identifier in identifiers)
+{
+    CatalogRow? row = Find(identifier);
+    if (row is not null)
+    {
+        matches.Add(row);
+    }
+}
 ```
-The fixture keeps synchronous argument validation in an outer wrapper; moving it
-into an async body would change the documented timing.
+
+This explains the block's collective purpose and why an apparently reasonable
+Distinct/set-based replacement would violate the established contract. It does
+more than narrate the foreach or repeat a method name.
+
+#### Preserve lifetime
+
+In [ReceiptService](good/ReceiptService.cs), before:
+
+```csharp
+using var receipt = new MemoryStream(Encoding.UTF8.GetBytes(text));
+await _sink.CommitAsync(receipt, cancellationToken).ConfigureAwait(false);
+```
+
+After:
+
+```csharp
+// Await consumption before disposing this owned stream; returning the task could close it too early.
+using var receipt = new MemoryStream(Encoding.UTF8.GetBytes(text));
+await _sink.CommitAsync(receipt, cancellationToken).ConfigureAwait(false);
+```
+
+The comment protects a lifetime boundary rather than merely saying “Create stream”
+or “Commit receipt.” The actual fixture also explains its separate commit boundary.
+Its synchronous wrapper has a targeted comment above validation because moving the
+guard into the async core changes when callers observe the exception. Existing
+[SelfCheck assertions](good/SelfCheck/Program.cs) exercise pending consumption,
+disposal, synchronous validation and cancellation; tests protect behavior while
+the adjacent comments explain easily missed reasons for preserving it.
+
+[ConcurrencyChecks](good/SelfCheck/ConcurrencyChecks.cs) already explains why its
+test workers are dedicated: both synchronous factories must reach a barrier without
+pool starvation. Preserve that verified coordination reason during cleanup; do not
+invent a historical runtime bug. A test can need a comment for a non-obvious setup
+constraint without requiring narration on ordinary assertions or helpers.
+
+The reader's obvious private helper correctly remains uncommented:
+
+```csharp
+private static CatalogRow? Find(string identifier) =>
+    s_rows.FirstOrDefault(row => string.Equals(row.Id, identifier, StringComparison.Ordinal));
+```
+
+Removing the substantive comments loses rationale without making compilation or
+runtime assertions fail. Semantic review checks that loss; no word/count rule or
+compiler diagnostic measures comment usefulness. Update comments when their
+constraints change and follow available evidence rather than guessing intent.
 
 ### Truthful XML beats compiler acceptance
 

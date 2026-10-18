@@ -3,7 +3,7 @@ name: agentic-skills-clean-code-dot-net
 description: Create, change, review, document or refactor C#/.NET code and quality tooling for human readability, preserved contracts, useful comments and XML documentation, and verified formatting and correctness. Use for implementation, tests and public API examples; respect the repository's SDK, architecture and formatter. Other languages and generated output retain their own policies.
 license: CC0-1.0
 metadata:
-  version: "1.3.2"
+  version: "1.3.3"
   research-date: "2026-10-13"
 ---
 
@@ -96,9 +96,10 @@ Essential .NET rules do not depend on their installation. Never fabricate approv
    production contracts and complete the [semantic XML gate](references/documentation.md#mandatory-semantic-contract-review-gate),
    including interface members and DTO constructors/properties. Clear names,
    minimal-change guidance (including Ponytail) and compiler success do not waive
-   applicable contract documentation. Inspect the complete diff, including
-   configuration, examples and nearby comments. Correct findings; repeat affected
-   checks until evidence supports the result.
+   applicable contract documentation. Complete the [method-body comment review](references/documentation.md#method-body-review)
+   for missing implementation explanations as well as existing comments. Inspect the
+   complete diff, including configuration, examples and nearby comments. Correct
+   findings; repeat affected checks until evidence supports the result.
 8. Report scope, actual versions, PASS/FAIL/BLOCKED or NOT RUN/NOT APPLICABLE,
    baseline debt, semantic findings and uncovered targets. Use the compact
    [completion template](assets/completion-report.md) when useful. Do not turn an

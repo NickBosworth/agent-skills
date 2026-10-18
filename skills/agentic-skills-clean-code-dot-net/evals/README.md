@@ -1,6 +1,6 @@
 # Behavioral evaluation
 
-[76 scenarios](scenarios.json) remain defined, not executed host/model benchmarks.
+[84 scenarios](scenarios.json) remain defined, not executed host/model benchmarks.
 [Four concrete trials](trials.json) have separate raw-input recipes and
 [reviewed results](results.md). These trials were actually executed; they do not
 turn the scenario catalogue into an executed benchmark.
@@ -95,3 +95,24 @@ private/test helpers remain unchanged, authoritative inheritance is retained, an
 unestablished guarantees are not invented. Report compile/runtime evidence and
 semantic assessment separately. The automated fixture runs both XML variants against
 the same assertions; it deliberately does not claim to automate prose judgment.
+
+## Method-body explanation regression review
+
+Eight added definitions cover absent ordering rationale, useful business-block
+purpose, private lifetime/validation boundaries, coordination setup, minimal-change
+interaction, clear code needing no comment, unverified rationale and stale warnings.
+They are defined, not executed model trials. Assess accuracy, useful placement and
+the maintainer mistake prevented; extra prose earns no credit.
+
+For an authorized isolated trial, use raw synthetic code, contracts and meaningful
+tests with a neutral cleanup or readability request. Withhold task-specific expected
+comments, evaluation rubrics and reference solutions. The worked fixtures remain
+available teaching material; use a different task to measure transfer. Review both
+missing explanations and unnecessary additions, including private/test code.
+
+A reviewer checks the established constraint and why a tempting edit would violate
+it; compares executable code before/after; checks comment scope, evidence and
+lifecycle; and inspects actual validation claims. Run existing behavioral checks
+where applicable. Passing compilation/tests with comments removed demonstrates
+the need for semantic review, not that an agent will notice omissions. Compiler
+checks and runtime assertions cannot establish rationale quality or adherence.

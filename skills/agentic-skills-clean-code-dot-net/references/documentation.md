@@ -6,11 +6,44 @@ independently. Sources: S05–S10, S50. Policies: DNC-DOC-001 through DNC-DOC-00
 
 ## Implementation comments
 
-MUST explain significant facts a maintainer cannot reasonably recover: business
-invariants, ordering constraints, interoperability workarounds, concurrency
+MUST explain significant intent or constraints that names and structure leave
+unclear: business invariants, ordering, interoperability workarounds, concurrency
 protocols, measured compromises, difficult algorithms and dangerous edge cases.
 First improve names/structure; do not defend confusing code with paragraphs.
-“What” is useful for difficult regex, math, binary or synchronization mechanisms.
+A short “what” explanation is useful when individually clear statements obscure
+the purpose of a block, including ordinary business rules and processing phases.
+Pair it with the established reason where that helps a maintainer change it safely.
+
+### Method-body review
+
+Before completion, MUST review new and meaningfully changed method bodies,
+including private methods, for missing explanations as well as existing comments.
+Ask where applicable:
+
+- Is the collective purpose of this block clear from its individual statements?
+- Does correctness depend on order, timing, ownership, representation, an unusual
+  condition or a deliberate omission that a maintainer could easily overlook?
+- Could a plausible simplification, reordering, parallelization or replacement
+  change important behavior despite looking locally reasonable?
+
+Where an important answer is unclear, investigate code, callers, tests and recorded
+decisions. MUST add a concise explanation of the established intent/constraint when
+it remains non-obvious; place it immediately above the relevant statement or block.
+State what the operation achieves, why this approach is needed and the consequence
+of a tempting change when useful. These are content decisions, not mandatory fields
+for every comment. Private visibility and minimal-change/no-noise preferences,
+including Ponytail, do not exempt consequential implementation rationale within
+the host's instruction hierarchy. Clear code can pass this review without comments.
+Report consequential unresolved rationale; do not substitute speculative history
+or stronger guarantees.
+
+Keep explanations attached to the smallest relevant scope. Update, move or remove
+them when the implementation or reason changes; investigate an existing warning
+before deleting it as noise. An existing test or decision reference MAY help locate
+the evidence, but cannot replace a useful local explanation. Do not invent tracking
+references. Tests protect observable behavior; comments explain the easily missed
+reason for preserving it. No comment counts, mandatory section banners or narration
+of every statement; do not expand an ordinary task into unrelated annotation.
 
 SHOULD use nearby own-line // prose with one space, sentence capitalization and
 punctuation. Preserve license headers, executable directives and meaningful block
@@ -21,8 +54,12 @@ references. An unfinished requirement cannot be hidden behind TODO.
 
 MUST NOT invent customer history, observed races, vendor behavior, measurements
 or historical rationale. If history is unknown, state the verified constraint.
-Investigate warnings before deleting them. Update nearby comments with code and
-test critical invariants where testable. Comment count is never a quality gate.
+Test critical invariants where testable.
+
+The [worked method-body examples](../examples/cases.md#explain-method-bodies-without-changing-behavior)
+show comments added without changing executable code, including a clear helper
+correctly left uncommented. Compiler/formatter success does not establish whether
+an important explanation is missing or its rationale is accurate.
 
 Before: // Increment the counter. followed by completedCount++.
 After: completedCount++; (no comment).

@@ -13,3 +13,6 @@ research recommendations, implementation and controlled evaluation evidence.
 
 [TASK-0006](TASK-0006-dot-net-contract-documentation.md) records the semantic XML
 completion gate, worked fixture and separate validation boundaries.
+
+[TASK-0007](TASK-0007-dot-net-method-comments.md) records method-body comment review,
+behavior-preserving examples and separate semantic/automated evidence.

@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.3 — 2026-10-18
+
+- Require review of changed method bodies for missing intent and maintenance explanations, including private methods.
+- Clarify useful block-purpose comments, evidence, placement, lifecycle and minimal-change interactions without annotation quotas.
+- Add behavior-preserving worked comments and eight focused behavioral scenario definitions.
+
 ## 1.3.2 — 2026-10-14
 
 - Remove the retired comments-skill comparison; keep .NET documentation guidance self-contained.

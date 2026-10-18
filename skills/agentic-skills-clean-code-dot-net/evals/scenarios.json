@@ -770,6 +770,90 @@
       "must_not": [
         "Do not declare completion from CS1591 absence or bury missing contract facts in a green-build summary."
       ]
+    },
+    {
+      "id": "method-missing-order-explanation",
+      "prompt": "Clean up the bulk reader for readability. Preserve its input-order and repeated-match contract; the response-building loop currently has no implementation comments.",
+      "expected": [
+        "Review the changed method body for missing explanations even though the code is correct and individual names are clear.",
+        "Add a concise comment above the response-building block explaining request order and why deduplication changes behavior."
+      ],
+      "must_not": [
+        "Do not alter ordering, deduplicate, rewrite the contract, or narrate each loop statement."
+      ]
+    },
+    {
+      "id": "method-block-purpose",
+      "prompt": "Review a method whose clear-looking filtering and grouping steps implement a documented rule: choose the first eligible item per group in arrival order. Tests establish that later items must not replace it. Improve comprehension.",
+      "expected": [
+        "Explain the collective selection purpose and established first-item constraint adjacent to the relevant block when names/structure leave it unclear."
+      ],
+      "must_not": [
+        "Do not restrict useful what explanations to regex/math or add headings to every phase; do not invent fairness or performance rationale."
+      ]
+    },
+    {
+      "id": "method-private-lifetime-rationale",
+      "prompt": "Make the receipt service easier to maintain with minimal changes. Its private async core has an uncommented owned stream and await; tests establish pending-consumption lifetime and synchronous validation in the outer wrapper.",
+      "expected": [
+        "Preserve executable code and contracts; explain the owned-stream await boundary above the affected block and synchronous validation timing above the wrapper guard.",
+        "Private visibility does not exempt important rationale."
+      ],
+      "must_not": [
+        "Do not return the task from the using scope, move validation into async code, or add XML to every private method."
+      ]
+    },
+    {
+      "id": "method-preserve-coordination-reason",
+      "prompt": "Simplify the existing ConcurrencyChecks fixture; it uses dedicated workers to let both synchronous factories reach the barrier, with a comment explaining that constraint.",
+      "expected": [
+        "Inspect actual coordination and retain the necessary execution setup and local explanation unless an independently verified replacement preserves the test interleaving."
+      ],
+      "must_not": [
+        "Do not erase the explanation as obvious, replace workers reflexively with Task.Run, or invent a historical runtime defect."
+      ]
+    },
+    {
+      "id": "method-ponytail-rationale",
+      "prompt": "Apply Ponytail and the .NET skill to a correct changed method with an important undocumented irreversible-commit boundary. Keep the diff small; the sink contract/tests establish that cancellation after commit must remain success.",
+      "expected": [
+        "Add the necessary concise local explanation and preserve behavior; follow host instruction precedence.",
+        "Report method-body semantic review separately from green compiler/formatter results."
+      ],
+      "must_not": [
+        "Do not treat minimal changes/no-noise preferences as an exemption from substantive rationale or change runtime behavior to fit a comment."
+      ]
+    },
+    {
+      "id": "method-clear-code-restraint",
+      "prompt": "Review the already clear private Find helper in the bulk reader and ordinary Require/Expect test helpers. No additional behavioral constraints are hidden in them.",
+      "expected": [
+        "Leave clear bodies uncommented and report no missing explanation; the method-body check does not mandate an edit."
+      ],
+      "must_not": [
+        "Do not add return/throw narration, per-line comments, banners or comment-count targets."
+      ]
+    },
+    {
+      "id": "method-unverified-workaround",
+      "prompt": "Explain an unusual branch in a changed method. Its actual guard and output are known, but no evidence establishes a vendor bug, incident, lock guarantee or reason for the branch.",
+      "expected": [
+        "Investigate relevant callers/tests/recorded decisions, explain only verified constraints where useful and disclose consequential unresolved rationale."
+      ],
+      "must_not": [
+        "Do not manufacture incident history, tickets, thread-safety guarantees or a confident rationale merely to complete the checklist."
+      ]
+    },
+    {
+      "id": "method-stale-rationale",
+      "prompt": "An approved change now permits repeated values, but the comment above the affected collection block still says duplicates must be rejected. Update the change for maintainers.",
+      "expected": [
+        "Reconcile the local explanation with the approved behavior and tests; retain still-valid rationale and remove or replace the obsolete constraint.",
+        "Keep any existing test/decision reference accurate and locally explain the relevant reason."
+      ],
+      "must_not": [
+        "Do not preserve a stale warning, change approved behavior to fit it, or replace an explanation solely with a reference identifier."
+      ]
     }
   ]
 }

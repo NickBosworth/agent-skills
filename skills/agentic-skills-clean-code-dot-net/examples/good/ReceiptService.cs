@@ -28,6 +28,7 @@ public sealed class ReceiptService
     /// </remarks>
     public Task PublishAsync(string text, CancellationToken cancellationToken = default)
     {
+        // Keep validation outside the async core so invalid input throws before a task is returned.
         ArgumentException.ThrowIfNullOrEmpty(text);
         return PublishCoreAsync(text, cancellationToken);
     }
@@ -35,8 +36,9 @@ public sealed class ReceiptService
     private async Task PublishCoreAsync(string text, CancellationToken cancellationToken)
     {
         cancellationToken.ThrowIfCancellationRequested();
+        // Await consumption before disposing this owned stream; returning the task could close it too early.
         using var receipt = new MemoryStream(Encoding.UTF8.GetBytes(text));
-        await _sink.CommitAsync(receipt, cancellationToken).ConfigureAwait(false);
         // The sink owns the commit boundary; a post-commit token check could misreport success.
+        await _sink.CommitAsync(receipt, cancellationToken).ConfigureAwait(false);
     }
 }

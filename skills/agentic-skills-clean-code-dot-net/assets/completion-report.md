@@ -16,7 +16,7 @@ Tested revision: [commit or base revision plus patch identity, including relevan
 | --- | --- | --- | --- | --- |
 | [gate] | [project/configuration/framework] | [command] | [actual status] | [relative evidence path or unavailable; actual counts for tests] |
 
-Review: [semantic, readability, comment/XML and final-diff findings; reviewer role]
+Review: [semantic/readability findings, including missing method-body explanations or unresolved rationale; comment/XML and final-diff review; reviewer role]
 Contract XML: [semantic gate status; inventory scope including applicable interfaces/DTOs; material omissions or unverified guarantees, or none established by review]
 Regression evidence: [changed contract, named test, old-defect assertion failure and corrected pass; preservation passes for refactors; or reason unverified/not applicable]
 Baseline/exemptions: [accepted findings or scoped NOT APPLICABLE reasons; none if verified]

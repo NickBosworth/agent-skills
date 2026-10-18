@@ -23,6 +23,7 @@ internal sealed class Reader : IBulkReader
         }
 
         var matches = new List<CatalogRow>();
+        // Build results in request order; deduplication would discard repeated requested matches.
         foreach (string identifier in identifiers)
         {
             CatalogRow? row = Find(identifier);

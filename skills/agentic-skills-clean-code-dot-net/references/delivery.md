@@ -62,9 +62,11 @@ Leave clear code unchanged, including a long coherent operation or justified loo
 
 MUST complete the [semantic contract review gate](documentation.md#mandatory-semantic-contract-review-gate)
 for new and meaningfully changed production contracts. Inspect nearby implementation
-comments for significant non-obvious facts, tautology, fabricated history and noisy
-private/test boilerplate. Separately verify XML/cref compilation and applicable
-packaged/rendered inheritance and links.
+comments and complete the [method-body review](documentation.md#method-body-review)
+for missing explanations in changed methods, including private methods. Report
+material omissions or unresolved rationale with the semantic/readability findings;
+clear code needs no ceremonial per-method report. Separately verify XML/cref
+compilation and applicable packaged/rendered inheritance and links.
 
 Report compiler XML/selected diagnostic results separately from semantic contract
 completeness. Successful generation/rendering does not prove that source XML tells

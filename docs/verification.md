@@ -279,3 +279,23 @@ counts and earlier blocked results remain historical, rather than being rewritte
 
 This supersedes the preceding catalogue blocker. No product runtime tests, new
 agent trials, global installation, commit, push or publication occurred.
+
+## .NET 1.3.3 method-body explanations — 2026-10-18
+
+[The package checkpoint](../skills/agentic-skills-clean-code-dot-net/VALIDATION.md#133-method-body-explanation-review--2026-10-18)
+records the new missing-explanation review, useful block-purpose guidance,
+behavior-preserving worked comments and eight behavioral definitions. The guide
+remains evidence-based and scoped; obvious private/test bodies need no annotation.
+
+All nine official validators and 275 automated tests passed with SDK checks selected
+on macOS/Python 3.12.11/SDK 10.0.400. Both changed C# fixtures preserve executable
+source; separate comment-removal probes still passed 19 and 16 runtime checks,
+illustrating why semantic comment review is separate. Creator validation,
+candidate/index/history privacy, redacted Gitleaks, whitespace and temporary archive
+CRC/SHA-256/fresh-extraction validation passed. The actual pre-push hook passed;
+no files were staged, committed or pushed, and no publication occurred.
+
+The implementing agent reviewed the in-scope diff and code/comment relationships.
+The eight new scenarios remain unexecuted model evaluations. No new model, native
+discovery, product runtime, documentation-generator or consuming-repository trial
+is claimed; no global installation was changed.

@@ -125,9 +125,9 @@ fixes require diff/contract review and affected tests. None authorizes global fi
 
 - **Status/provenance:** Requirement / original documentation policy.
 - **Context/purpose:** Changed implementation and nearby comments; useful truthful comments.
-- **Instruction:** MUST document significant non-obvious invariants accurately and MUST NOT invent rationale; omit tautological noise.
+- **Instruction:** MUST explain significant non-obvious intent/constraints accurately, including useful block purpose; MUST NOT invent rationale or add tautological noise.
 - **Evidence:** [S10](https://google.github.io/eng-practices/review/reviewer/looking-for.html); the operational obligation is original policy where broader than the source.
-- **Enforcement/gap:** Comment evidence review plus testable invariant checks.
+- **Enforcement/gap:** [Method-body review](documentation.md#method-body-review) for missing explanations and comment truth, plus testable invariant checks; compiler/formatter success cannot establish either.
 - **Compliant:** Explain why no token check follows a confirmed commit.
 - **Violation:** Invent a vendor bug or add // Constructor.
 - **Legitimate exceptions:** A difficult mechanism may need what as well as why; preserve directives/notices.
