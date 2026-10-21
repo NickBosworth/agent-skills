@@ -16,3 +16,6 @@ completion gate, worked fixture and separate validation boundaries.
 
 [TASK-0007](TASK-0007-dot-net-method-comments.md) records method-body comment review,
 behavior-preserving examples and separate semantic/automated evidence.
+
+[TASK-0009](TASK-0009-clean-architecture-dot-net.md) records the .NET architecture
+skill, primary-source research, project-rule workflow and scoped verification.

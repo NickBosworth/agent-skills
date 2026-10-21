@@ -54,5 +54,13 @@ old installation and route C#/.NET comment and contract documentation work to
 `agentic-skills-clean-code-dot-net`, which now covers that functionality. This is
 a scope-specific replacement, not an alias or a reason to apply C# rules to other
 languages; follow those repositories' own documentation policies and toolchains.
-No personal/global installation is changed automatically. The current library
-contains nine packages.
+No personal/global installation is changed automatically. At the retirement
+checkpoint the library contained nine packages.
+
+## Clean Architecture for .NET addition — 2026-10-21
+
+`skills/agentic-skills-clean-architecture-dot-net` is a new 1.0.0 package. Invoke it
+as `$agentic-skills-clean-architecture-dot-net`. It has no prior name, folder or
+alias and does not replace Clean Code for C#/.NET. Existing packages need no
+migration. Architecture rules are adopted in a consuming project only within the
+user's authorized scope; installation alone does not adopt a design or refactor code.

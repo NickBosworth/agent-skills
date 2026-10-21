@@ -23,6 +23,15 @@
       "status": "packaged"
     },
     {
+      "name": "agentic-skills-clean-architecture-dot-net",
+      "path": "skills/agentic-skills-clean-architecture-dot-net",
+      "title": "Clean Architecture for .NET",
+      "description": "Choose .NET boundaries and patterns, record project guardrails, audit architecture and guide refactors.",
+      "version": "1.0.0",
+      "license": "CC0-1.0",
+      "status": "packaged"
+    },
+    {
       "name": "agentic-skills-clean-code-dot-net",
       "path": "skills/agentic-skills-clean-code-dot-net",
       "title": "Clean Code for C#/.NET",

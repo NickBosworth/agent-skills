@@ -1,5 +1,31 @@
 # Verification of agentic-skills
 
+## Clean Architecture for .NET 1.0.0 — 2026-10-21
+
+The [package checkpoint](../skills/agentic-skills-clean-architecture-dot-net/VALIDATION.md)
+records the new tenth package, primary-source research and two focused explicit-path
+trials. The audit trial left all synthetic files unchanged and distinguished a
+defect from an ownership decision gap. The accepted-rule trial changed only
+AGENTS.md and one new ADR, preserving code and reporting implementation debt.
+The primary reviewer checked outputs and before/after hashes. These observations
+are separate from the 40 defined, unexecuted behavioral scenarios.
+
+All ten official validators passed. The ordinary library gate discovered 288 tests:
+271 passed, 17 skipped (one Windows junction and 16 optional existing .NET/SDK cases).
+Creator, candidate/index/history privacy and redacted Gitleaks checks passed in
+their stated scopes. The index was unchanged; candidate checks covered new files.
+No SDK/provider execution or consumer architecture-test enforcement was claimed.
+Temporary package-only packaging passed CRC, SHA-256 inventory and fresh-extraction
+validation. Whitespace checks passed; no archive or raw trial output entered source.
+
+The requested Writing Clearly and Concisely skill was installed outside source,
+read and applied to the new documentation. Root instructions now require it for
+future documentation work across the repository. Existing documents were not
+rewritten wholesale; technical requirements, notices and historical evidence remain.
+No product implementation, architecture-skill global install, commit, push or
+publication occurred. Native discovery and broad architecture/model reliability
+remain unverified; one source paper's full retrieval was unavailable as recorded.
+
 ## Agentic Codebase 2.1.0 — 2026-10-18
 
 The [package checkpoint](../skills/agentic-skills-agentic-codebase/VALIDATION.md)

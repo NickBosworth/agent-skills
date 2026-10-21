@@ -3,6 +3,9 @@
 | Pair | Boundary |
 | --- | --- |
 | Agentic Codebase / Development Planning | Maintainer guidance versus planning a product change |
+| Clean Architecture for .NET / Clean Code for C#/.NET | Project boundaries, pattern choices and guardrails versus source readability and implementation contracts |
+| Clean Architecture for .NET / Development Planning | Architectural decisions and audits versus a wider feature's implementation plan and delivery choices |
+| Clean Architecture for .NET / Agentic Codebase | .NET design reasoning versus the repository's broader guidance structure and agent adapters |
 | Web UI Craft / Game UI and UX | Web user task versus player/interface/platform needs |
 | Game UI and UX / Voxel Game Development | Player interaction versus world data and gameplay systems |
 | SEO / Web UI Craft | Search discovery evidence alongside usable, accessible interaction |

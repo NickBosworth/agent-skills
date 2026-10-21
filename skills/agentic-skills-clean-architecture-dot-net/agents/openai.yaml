@@ -1,0 +1,4 @@
+interface:
+  display_name: "agentic-skills · Clean Architecture for .NET"
+  short_description: "Choose .NET boundaries, patterns and project guardrails"
+  default_prompt: "Use $agentic-skills-clean-architecture-dot-net to inspect this .NET repository, identify architecture decisions and guide me through them one question at a time."

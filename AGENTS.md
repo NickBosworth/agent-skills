@@ -1,6 +1,6 @@
 # Maintainer instructions
 
-This is **agentic-skills**, a public library of nine self-contained Agent Skills,
+This is **agentic-skills**, a public library of ten self-contained Agent Skills,
 with an isolated SEO Workbench product in `products/seo-workbench/`.
 Treat every tracked file, commit message, release and CI log as publicly readable.
 Host instructions and the user's authorized scope remain authoritative.
@@ -60,6 +60,13 @@ Host instructions and the user's authorized scope remain authoritative.
    that no personal information exists.
 
 ## Skill maintenance
+
+- Use [writing-clearly-and-concisely](https://github.com/softaworks/agent-toolkit/tree/main/skills/writing-clearly-and-concisely)
+  for all repository documentation: skill instructions, references, READMEs,
+  templates, examples and product guides. Load the installed skill when available;
+  otherwise read its upstream instructions. Preserve technical meaning, mandatory
+  requirements, commands, legal notices and truthful historical evidence. This is
+  maintainer guidance, not a dependency of distributed skills.
 
 - Canonical packages live in `skills/agentic-skills-*/`; folder and frontmatter
   names must agree. Keep references relative and packages independently usable.

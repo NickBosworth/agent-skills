@@ -1,8 +1,9 @@
 # agentic-skills
 
-Nine self-contained Agent Skills for maintaining repositories, planning changes,
-writing documentation and copy, maintaining C#/.NET code, auditing SEO, designing
-web and game interfaces, building voxel games, and creating SVG art and animation.
+Ten self-contained Agent Skills for maintaining repositories, planning changes,
+writing documentation and copy, shaping .NET architecture, maintaining C#/.NET code,
+auditing SEO, designing web and game interfaces, building voxel games, and creating
+SVG art and animation.
 
 Each package includes its instructions, supporting resources, synthetic examples
 and any relevant helpers. Skills guide an agent's work; they do not guarantee
@@ -14,6 +15,7 @@ security or correctness.
 | --- | --- |
 | [agentic-skills-agentic-codebase](skills/agentic-skills-agentic-codebase/README.md) | Set up, audit, maintain and repair repository guidance, decisions, task routes and agent adapters. |
 | [agentic-skills-awesome-copy](skills/agentic-skills-awesome-copy/README.md) | Write and edit natural, specific titles and copy while preserving voice, facts and reader intent. |
+| [agentic-skills-clean-architecture-dot-net](skills/agentic-skills-clean-architecture-dot-net/README.md) | Choose .NET boundaries and patterns, record project guardrails, audit architecture and guide refactors. |
 | [agentic-skills-clean-code-dot-net](skills/agentic-skills-clean-code-dot-net/README.md) | Implement and review readable C# with preserved contracts, useful XML docs and verified quality gates. |
 | [agentic-skills-development-planning](skills/agentic-skills-development-planning/README.md) | Turn rough requirements into a concrete plan with explicit compatibility and delivery decisions. |
 | [agentic-skills-game-ui-ux](skills/agentic-skills-game-ui-ux/README.md) | Design and verify menus, HUDs and player interface flows across game platforms. |
