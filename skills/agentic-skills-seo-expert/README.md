@@ -1,6 +1,6 @@
 # agentic-skills · SEO Expert
 
-Version **2.0.1** · Licence **CC0-1.0**
+Version **2.0.2** · Licence **CC0-1.0**
 
 Audit technical search discovery, content intent and measurement for Google and Bing.
 

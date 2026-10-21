@@ -88,7 +88,7 @@ For each transition, define:
 4. Whether background gameplay and commands remain active.
 5. The return-focus target and fallback if that target disappears.
 
-Give the opening, closing, or committing gesture one owning interaction and prevent it reaching unintended contexts. Preserve deliberately designed hold-open/release-select radial gestures or continuous in-world manipulation. A click release, key repeat, or held controller button must not accidentally fire a weapon, accept the next dialog, or purchase another item. Inspect the whole physical press/release sequence rather than only individual callback functions.
+Assign the opening, closing, or committing gesture to one interaction and prevent it from reaching unintended contexts. Preserve deliberately designed hold-open/release-select radial gestures or continuous in-world manipulation. A click release, key repeat, or held controller button must not accidentally fire a weapon, accept the next dialog, or purchase another item. Inspect the whole physical press/release sequence rather than only individual callback functions.
 
 Restore focus by stable item identity where practical; a row index may refer to a different item after sorting or a network refresh. If the origin is gone, choose a predictable valid neighbor or screen-level control. Reconcile the visual focus, semantic focus, selection, and scroll position.
 

@@ -45,8 +45,8 @@ keep related overloads together and respect analyzer-enforced ordering.
 MUST preserve initialization/registration order where it can affect behavior.
 Do not alphabetize fields or declarations blindly. Avoid regions as a disguise
 for complexity; retain deliberate generated/interop navigation policy.
-Shared code needs a stable purpose and owner; Helpers/Common/Utilities are not
-owners. A second superficially similar call site does not justify extracting a
+Shared code needs a stable purpose and owner. Names such as Helpers/Common/Utilities
+do not establish ownership. A second superficially similar call site does not justify extracting a
 domain rule to a generic shared library.
 
 SHOULD use explicit dependencies, encapsulated invariants, cohesive responsibilities
@@ -68,7 +68,8 @@ Expensive I/O and side effects should be operations, not surprising properties.
 
 SHOULD prefer var for an immediately evident type (new/cast), explicit types for
 obscure factories, numeric behavior, nullability and collection shape.
-Do not combine var everywhere and explicit everywhere. Modern features are
+Choose consistently between these cases rather than requiring var or explicit
+types everywhere. Modern features are
 options: target-typed new, collection expressions, patterns, primary constructors,
 switch expressions and expression bodies must clarify rather than conceal.
 Check overload resolution, allocation/collection semantics, capture and

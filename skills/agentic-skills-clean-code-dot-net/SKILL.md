@@ -3,15 +3,15 @@ name: agentic-skills-clean-code-dot-net
 description: Create, change, review, document or refactor C#/.NET code and quality tooling for human readability, preserved contracts, useful comments and XML documentation, and verified formatting and correctness. Use for implementation, tests and public API examples; respect the repository's SDK, architecture and formatter. Other languages and generated output retain their own policies.
 license: CC0-1.0
 metadata:
-  version: "1.3.3"
+  version: "1.3.4"
   research-date: "2026-10-13"
 ---
 
 # Clean Code for C#/.NET
 
-Make the next maintainer able to follow the normal path, understand contracts and
-failure modes, and change code safely. Correctness and preserved contracts come
-first, comprehension and local reasoning next, then cohesion, testability,
+Write code so the next maintainer can follow the normal path, understand contracts
+and failure modes, and make changes safely. Put correctness and preserved contracts
+first, followed by comprehension and local reasoning, then cohesion, testability,
 documentation, consistency and measured efficiency. Security, reliability,
 compatibility and required performance constrain every choice.
 
@@ -100,8 +100,9 @@ Essential .NET rules do not depend on their installation. Never fabricate approv
    for missing implementation explanations as well as existing comments. Inspect the
    complete diff, including configuration, examples and nearby comments. Correct
    findings; repeat affected checks until evidence supports the result.
-8. Report scope, actual versions, PASS/FAIL/BLOCKED or NOT RUN/NOT APPLICABLE,
-   baseline debt, semantic findings and uncovered targets. Use the compact
+8. Report scope and actual tool versions. For each check, report
+   PASS/FAIL/BLOCKED or NOT RUN/NOT APPLICABLE. Include baseline debt, semantic
+   findings and uncovered targets. Use the compact
    [completion template](assets/completion-report.md) when useful. Do not turn an
    agent-reviewed result into claimed human approval.
 

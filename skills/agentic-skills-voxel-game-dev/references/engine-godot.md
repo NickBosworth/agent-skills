@@ -12,11 +12,11 @@ If terrain already works, extend its data and meshing contracts before replacing
 
 ## Own data, meshes, and publication explicitly
 
-Build chunk samples and mesh buffers from an immutable snapshot or other documented synchronization scheme. Return chunk coordinates, a residency/generation token, voxel revision, and sampled neighbor revisions. Validate them when publishing; a deferred callback can execute after a chunk unloads or changes.
+Build chunk samples and mesh buffers using an immutable snapshot or another documented synchronization scheme. Return chunk coordinates, a residency/generation token, voxel revision, and sampled neighbor revisions. Validate them when publishing; a deferred callback can execute after a chunk unloads or changes.
 
 Keep scene-tree changes and default mesh/collider publication in their owning main-thread context. The [threading guide](https://docs.godotengine.org/en/stable/tutorials/performance/thread_safe_apis.html) distinguishes scene-tree restrictions, shared-resource hazards, server settings, and GPU synchronization. Use a different thread only after verifying that exact API and configuration. `call_deferred` schedules work; it does not prove that its payload is current or uniquely owned.
 
-For [ArrayMesh](https://docs.godotengine.org/en/stable/classes/class_arraymesh.html), verify array layouts, attribute lengths, winding, normals, indices, bounds, and material surfaces. Rebuild topology when edits require it; reserve buffer-region updates for compatible layouts. Avoid sharing a mutable mesh resource accidentally between independently editable chunks.
+For [ArrayMesh](https://docs.godotengine.org/en/stable/classes/class_arraymesh.html), verify array layouts, attribute lengths, winding, normals, indices, bounds, and material surfaces. Rebuild topology when edits require it; reserve buffer-region updates for compatible layouts. Avoid accidentally sharing a mutable mesh resource between independently editable chunks.
 
 Use [MultiMesh](https://docs.godotengine.org/en/stable/classes/class_multimesh.html) for appropriate repeated geometry in spatial groups. Its aggregate visibility bounds make one widely scattered batch a poor default. Instancing cubes does not remove their hidden interior faces.
 

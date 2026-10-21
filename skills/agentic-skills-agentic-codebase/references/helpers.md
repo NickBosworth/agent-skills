@@ -27,10 +27,10 @@ operations can invoke configured filters. Check the working tree separately in
 the authorized development environment; do not infer cleanliness from inventory.
 
 Use `python3`, `python` or the Windows `py -3` launcher appropriate to the host.
-If Python is missing, the skill can still perform a manual review and editing
-workflow; report that automated helper checks were unavailable.
-For an intentional system path alias, verify the requested repository's physical
-path and pass that path explicitly. Do not disable checks or traverse an unknown
+If Python is missing, review and edit manually; report that automated helper
+checks were unavailable.
+If the requested path intentionally uses a system alias, verify the repository's
+physical path and pass it explicitly. Do not disable checks or traverse an unknown
 symlink merely to make the auditor run.
 
 ## Commands
@@ -197,7 +197,7 @@ map of relative paths to hashes, and `note`. Apply acquires a cooperative lock
 before reading the registry and checks its content again before replacement.
 It cannot prove the caller performed a sound review.
 
-Keep review writes sequential. If another helper owns `.agents/.project-review.lock`,
+Write review records one at a time. If another helper owns `.agents/.project-review.lock`,
 apply returns `REVIEW_LOCKED` without waiting or removing it. Retry after the writer
 finishes. Inspect an apparently abandoned lock before deliberately removing it;
 never delete a live writer's lock to force progress. Preview creates no lock.

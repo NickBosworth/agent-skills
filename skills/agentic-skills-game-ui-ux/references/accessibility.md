@@ -43,7 +43,7 @@ For headset UI, validate apparent size, depth, stability, reach, and readability
 
 ## Make the first interaction accessible
 
-Make the route to accessibility settings usable before an introduction, agreement, account flow, or mandatory tutorial can block the player. XAG 112 describes an accessible first settings screen, accessible defaults, and supported platform preferences as approaches. Include narration when required to reach configuration; respect readable platform preferences when available. Do not require someone to discover an unreadable toggle in order to read the menu. [A08](sources.md#a08)
+Make the route to accessibility settings usable before an introduction, agreement, account flow, or mandatory tutorial can block the player. XAG 112 describes an accessible first settings screen, accessible defaults, and supported platform preferences as approaches. Include narration when required to reach configuration; respect readable platform preferences when available. Do not require someone to discover an unreadable toggle to read the menu. [A08](sources.md#a08)
 
 Use concise, effect-based setting names and explain their consequences. Show a safe preview when it helps a player choose; let the player avoid a potentially distressing preview. Keep related settings discoverable from their natural category and an accessibility index. Store changes reliably and preserve them between sessions. Offer reversible presets as starting points, followed by individual adjustments. [A10](sources.md#a10) [A15](sources.md#a15)
 

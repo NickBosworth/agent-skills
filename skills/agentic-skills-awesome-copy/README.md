@@ -1,6 +1,6 @@
 # agentic-skills · Awesome Copy
 
-Version **1.0.1** · Licence **CC0-1.0**
+Version **1.0.2** · Licence **CC0-1.0**
 
 Write titles and copy with a clear idea, accurate detail and a voice that fits
 the reader. Improve generic wording by editing meaning, structure and rhythm.

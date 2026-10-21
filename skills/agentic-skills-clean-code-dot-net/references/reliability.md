@@ -19,8 +19,9 @@ API compatibility permits. Distinguish caller cancellation, timeout and shutdown
 Do not use None/default merely to silence CA2016. Determine the point where
 cancellation would violate consistency. Do not report cancellation after a
 successful irreversible commit; explain/test intentional non-observation.
-Retries need transient failure semantics, bounds, cancellation and idempotency/
-duplicate-effect analysis; use existing resilience policy, not homemade boilerplate.
+For retries, establish which failures are transient, set bounds, support cancellation
+and assess idempotency and duplicate effects. Use the existing resilience policy
+instead of adding custom boilerplate.
 
 ConfigureAwait is contextual. App-independent libraries SHOULD avoid requiring a
 caller context when no contract requires it; an adopted library policy can select
@@ -41,8 +42,8 @@ failure/cancellation; use standard primitives rather than speculative lock-free
 algorithms. Async streams need token propagation, deferred-execution, enumeration
 ownership/disposal and buffering/backpressure review. Preserve streaming semantics.
 
-MUST catch where recovery, boundary translation, cleanup or top-level policy
-exists, not everywhere. No swallowed failures, empty results standing for
+MUST catch exceptions where recovery, boundary translation, cleanup or top-level
+policy requires it. Do not add catches everywhere. No swallowed failures, empty results standing for
 infrastructure outages, fake success or logging at every layer. Separate expected
 cancellation from errors. Rethrow with throw; preserve meaningful inner exceptions
 when translating. Standard exception types are preferable to needless custom types.

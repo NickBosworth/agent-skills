@@ -66,7 +66,7 @@ Scale from either profile when necessary:
 - Add a rule only for a concrete invariant, recurrent failure or requirement.
 - Add a skill only for a recurring procedure with meaningful project knowledge.
 
-Do not use team size alone to manufacture process. Do not split short coherent
+Do not add process based on team size alone. Do not split short coherent
 documents merely to fill a recommended directory tree. Remove unused machinery
 when its purpose disappears.
 
@@ -89,7 +89,7 @@ global rule such as "code always wins" or "newest file wins":
 | Task state | Declared task authority; local plans link to it |
 | Historical rationale | Retained, explicitly superseded or historical records |
 
-Use five intelligible states, in headings, prose or metadata as appropriate:
+Use five states, in headings, prose or metadata as appropriate:
 
 - **Observed:** supported by current source or an actual run; state which.
 - **Accepted:** an established requirement or decision; retain its basis.
@@ -97,7 +97,7 @@ Use five intelligible states, in headings, prose or metadata as appropriate:
 - **Historical:** retained context that no longer governs new work.
 - **Unknown:** evidence is missing or conflicting; state the next action.
 
-If SQLite appears in code while an accepted ADR specifies PostgreSQL, record
+If code uses SQLite while an accepted ADR specifies PostgreSQL, record
 the discrepancy. Determine whether it is a prototype, migration gap, bug or
 changed decision. Ask the material question when the evidence cannot decide.
 Do not silently edit the ADR to legitimize the code, or rewrite application code

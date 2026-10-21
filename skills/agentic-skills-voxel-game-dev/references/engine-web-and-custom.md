@@ -14,7 +14,7 @@ The [Three.js voxel example](https://threejs.org/manual/pages/voxel-geometry.htm
 
 Move expensive generation/meshing to workers when profiling justifies it. The [Web Workers guide](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers) describes separate execution contexts and message/transfer semantics. Send plain data and typed buffers, not scene objects. Specify whether each payload is copied, transferred, or intentionally shared; transferred buffers cannot remain the sender's usable working copy. If shared memory is chosen, verify deployment prerequisites and define synchronization explicitly.
 
-Include request identifiers, chunk residency tokens, voxel revisions, and neighbor dependencies. Reject stale replies, bound queued bytes/jobs, handle worker errors, and retire or restart workers cleanly. Cancellation must also define disposal of eventual results. Keep DOM and renderer work in their owning context unless an explicitly supported worker/offscreen rendering design is already established.
+Include request identifiers, chunk residency tokens, voxel revisions, and neighbor dependencies. Reject stale replies, bound queued bytes/jobs, handle worker errors, and retire or restart workers cleanly. Cancellation must also define disposal of eventual results. Keep DOM and renderer work in the context that owns them unless an explicitly supported worker/offscreen rendering design is already established.
 
 ## Manage GPU resources and collision deliberately
 

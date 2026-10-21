@@ -119,7 +119,7 @@ Valve explicitly advises excluding machine-specific video settings from Steam Cl
 
 ## Choose a practical test matrix
 
-Select configurations from the real support promise and highest risks. Use representative combinations plus deliberate extremes instead of claiming every possible permutation has been tested.
+Select configurations based on the game's actual support commitments and highest risks. Use representative combinations plus deliberate extremes instead of claiming every possible permutation has been tested.
 
 | Test dimension | Representative checks | Failure evidence |
 | --- | --- | --- |

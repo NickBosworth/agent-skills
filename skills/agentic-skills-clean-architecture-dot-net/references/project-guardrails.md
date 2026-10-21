@@ -21,7 +21,7 @@ instructions. Never write a rule that overrides host safety/permission requireme
 
 ## Keep AGENTS.md useful
 
-Put a concise rule or explicit route in the applicable `AGENTS.md`. Keep detailed
+Put a concise rule or a link to it in the applicable `AGENTS.md`. Keep detailed
 alternatives and history in the repository's existing ADR format when justified.
 Small choices can fit in a short rule without creating an ADR directory. Reuse
 canonical rule files; link rather than copy them into multiple sources of truth.
@@ -78,7 +78,7 @@ unresolved risk, not an architectural waiver that makes them disappear.
 
 ## Evolve accepted decisions
 
-Accepted ADR history should remain legible. Add a superseding record for a changed
+Preserve accepted ADR history. Add a superseding record for a changed
 decision, link both directions using the repository's convention, and update the
 active instruction route and checks together. Preserve historical rationale; do not
 rewrite the old record to imply the new decision was always in force.

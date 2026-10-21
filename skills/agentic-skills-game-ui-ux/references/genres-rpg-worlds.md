@@ -70,7 +70,7 @@ Evidence: FFXIV documents HUD templates, targeting, party coordination, and stat
 
 **Decisions.** Support managing immediate threats, choosing supplies, finding resources, preparing recipes, using stations, building shelter, and planning expeditions. Establish whether inspection pauses play and whether dangerous conditions can change while the inventory is open.
 
-**Useful surfaces and states.** Show relevant needs, conditions, carrying limits, tool state, and actionable warnings. For available recipes, identify permitted ingredient sources, required tools or stations, quantities, substitutions, and the resulting item. Distinguish a recipe being known from currently craftable. Explain known blockers without revealing undiscovered content.
+**Useful surfaces and states.** Show relevant needs, conditions, carrying limits, tool state, and actionable warnings. For available recipes, identify permitted ingredient sources, required tools or stations, quantities, substitutions, and the resulting item. Distinguish a known recipe from one that is currently craftable. Explain known blockers without revealing undiscovered content.
 
 Make consumption and reservation clear when crafting draws from multiple containers. Show whether output goes to a backpack, station, ground, or shared store. Clarify interruption and cancellation behavior. In construction, expose placement validity, connections, orientation, collision, access, and material requirements that the player may know.
 

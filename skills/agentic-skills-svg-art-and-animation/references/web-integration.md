@@ -4,7 +4,7 @@
 
 Keep the actual SVG geometry local to the component. Scope styling; rewrite all fragment and accessibility references consistently when assigning a unique instance prefix. Do not use global `document.querySelector()` to control the first matching asset. Query within the supplied root. Test two instances with separate controls on the same page.
 
-Choose the embedding explicitly. An image URL is excellent for an isolated illustration but does not expose individual paths to page code. Inline SVG allows DOM control but interacts with the document's CSS and ID space. The isolated capture tool intentionally does not verify host CSS, SSR, focus handling or image embedding. Source: S4.
+Choose the embedding explicitly. An image URL suits an isolated illustration but does not expose individual paths to page code. Inline SVG allows DOM control but interacts with the document's CSS and ID space. The isolated capture tool intentionally does not verify host CSS, SSR, focus handling or image embedding. Source: S4.
 
 ## Controlled motion interface
 

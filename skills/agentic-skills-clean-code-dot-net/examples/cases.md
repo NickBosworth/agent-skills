@@ -1,6 +1,6 @@
 # Worked cases and executable fixture
 
-All examples are synthetic. They teach judgments, not comment-count metrics.
+All examples are synthetic. Use them to practice judgment, not to set comment quotas.
 
 ## Contract documentation fixture
 
@@ -131,7 +131,7 @@ After:
 ```csharp
 completedCount++;
 ```
-The operation is already apparent. No private-helper XML is needed.
+The operation is clear without a comment. No private-helper XML is needed.
 
 ### Explain a real consistency boundary
 

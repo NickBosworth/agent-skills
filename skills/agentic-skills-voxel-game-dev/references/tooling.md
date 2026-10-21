@@ -194,7 +194,7 @@ The example produces:
 | Scratch for four jobs | 718,656 | 0.685364 |
 | CPU plus scratch peak | 2,725,696 | 2.599426 |
 
-MiB uses `1,048,576` bytes. JSON reports exact integer bytes and six-decimal MiB strings calculated without floating-point arithmetic. No voxel arrays are allocated by this estimator, even for enormous hypothetical counts.
+MiB uses `1,048,576` bytes. JSON reports exact integer bytes and six-decimal MiB strings calculated without floating-point arithmetic. This estimator allocates no voxel arrays, even for enormous hypothetical counts.
 
 ### Bounds and omissions
 

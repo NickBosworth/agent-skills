@@ -22,8 +22,9 @@ lazy loading, N+1 behavior, provider translation, cancellation and transactions.
 Do not apply AsNoTracking to an update flow or turn tracked identities into records.
 Never parallelize operations on one context. Switching IQueryable to IEnumerable
 may move filtering to memory and change SQL, traffic and failure behavior.
-Examine generated queries and use actual-provider integration tests for consequential
-translation/transaction changes; an in-memory substitute proves neither.
+Examine generated queries. Use integration tests with the actual provider for
+consequential translation or transaction changes; an in-memory substitute proves
+neither.
 Inspect migrations' provenance and edit policy; do not discard hand-written work.
 
 Dapper/raw SQL/other providers MUST preserve parameterization, mappings, transaction

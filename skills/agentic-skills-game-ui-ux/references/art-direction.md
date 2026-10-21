@@ -22,7 +22,7 @@ Write a concise direction with operational meaning. “Tense and improvised” m
 
 For a new visual direction, explore a small number of genuinely different candidates on the same difficult screen. Change meaningful variables such as composition, type personality, material, or interaction metaphor. Evaluate against the same readability, information, and input requirements. Do not present trivial colour swaps as distinct concepts.
 
-Use reference games to study specific mechanisms: how they signal selection, compare objects, pace transitions, or balance world and UI. Record what is being learned and why it transfers. Keep the game's own creative direction and asset rights. Do not represent unlicensed copied artwork as deliverable original assets.
+Use reference games to study specific mechanisms: how they signal selection, compare objects, pace transitions, or balance world and UI. Record what you learn and why it transfers. Keep the game's own creative direction and asset rights. Do not represent unlicensed copied artwork as deliverable original assets.
 
 ## Build a visual hierarchy
 
@@ -82,7 +82,7 @@ Review screen transitions as compositions too. Maintain orientation between rela
 
 Assign a purpose to each effect: acknowledge input, explain a spatial relationship, reveal a state change, mark urgency, or express personality. Remove or reduce motion that delays repeated actions without supporting the experience.
 
-Specify onset, duration, easing, interruptibility, completion state, and reduced-motion substitute. Choose actual values in the game and on its input path. Do not enforce a universal “all transitions take 200 ms” rule. A fighting-game retry and a celebratory campaign result can justify different pacing.
+Specify each effect's onset, duration, easing, interruptibility, completion state, and reduced-motion substitute. Choose actual values in the game and on its input path. Do not enforce a universal “all transitions take 200 ms” rule. A fighting-game retry and a celebratory campaign result can justify different pacing.
 
 Make interaction feedback begin when the input is accepted. The decorative completion may occur later, but it must not leave an enabled action feeling unresponsive. Keep keyboard/controller repeat behaviour and rapid input predictable during animation. Decide whether repeated actions replace, queue, merge, or cancel effects.
 

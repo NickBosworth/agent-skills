@@ -1,6 +1,7 @@
 # Compatibility and migrations
 
-Identify the exact contract and consumer, not a blanket permission to break things.
+Identify the exact contract and consumer covered by a breaking-change decision;
+do not treat it as blanket permission.
 Check API payloads, serialized data, public exports, configuration, URL behaviour,
 old/mobile clients, async readers and deployment overlap where relevant. State
 which examined surfaces remain compatible and which are unknown.

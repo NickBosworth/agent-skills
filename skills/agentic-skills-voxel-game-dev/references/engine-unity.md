@@ -16,7 +16,7 @@ Specify vertex layout, index format, submeshes, bounds, normals, and material gr
 
 Track every native allocation's owner and every job dependency. An unload may invalidate publication without stopping a running job: complete or otherwise safely retire its ownership before disposing/reusing memory. Publish only results whose chunk residency token, voxel revision, and sampled neighbor revisions still match. Avoid immediately calling `Complete` after every schedule and disguising synchronous work as a background pipeline.
 
-Create, assign, replace, and destroy Unity objects in their documented owning context. Distinguish runtime-owned meshes/materials from shared imported assets. Account for pooling, scene teardown, and repeated Play-mode entry; clearing a dictionary is not resource disposal.
+Create, assign, replace, and destroy Unity objects in their documented owning context. Distinguish runtime-owned meshes/materials from shared imported assets. Account for pooling, scene teardown, and repeated Play-mode entry. Clearing a dictionary does not dispose of resources.
 
 ## Separate collider preparation from visual updates
 

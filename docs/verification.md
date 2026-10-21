@@ -1,5 +1,30 @@
 # Verification of agentic-skills
 
+## Skill documentation review — 2026-10-21
+
+Applied Writing Clearly and Concisely to all 221 Markdown files across ten skill
+packages. Copyedited 96 documents; other changes are current version labels,
+changelog entries, catalogue versions and existing checksum inventories.
+[TASK-0010](tasks/TASK-0010-skill-documentation-review.md) records coverage by package.
+
+Final before/after comparisons preserved fenced examples, inline code, existing
+headings, links, commands, historical evidence and source-review dates. Helper code,
+configuration assets, fixtures, evaluation inputs and UI adapters are unchanged.
+The primary agent reviewed the combined diff; a second review of the .NET edits
+caught a conditional-scope issue that was corrected. No new behavior is intended.
+
+On macOS arm64/Python 3.12.11, all ten official validators passed and the library
+runner discovered 288 tests: 271 passed, 17 skipped. The skips are one Windows-only
+junction check and 16 optional existing .NET/SDK cases. Candidate/index/history
+privacy, redacted Gitleaks history/directory scans and whitespace checks passed.
+The index was unchanged; candidate checks covered these edits. Temporary archive
+CRC, SHA-256 inventory and fresh-extraction validation passed.
+
+No new host/model trial, native discovery, runtime/browser/engine check or source
+freshness review was performed. Historical evidence remains historical. No product
+change, global installation, staging, commit, push or release publication occurred
+as part of this documentation task.
+
 ## Clean Architecture for .NET 1.0.0 — 2026-10-21
 
 The [package checkpoint](../skills/agentic-skills-clean-architecture-dot-net/VALIDATION.md)

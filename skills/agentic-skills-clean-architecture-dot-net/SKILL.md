@@ -3,7 +3,7 @@ name: agentic-skills-clean-architecture-dot-net
 description: Guide .NET architecture and design-pattern decisions, audit existing boundaries and decision gaps, record accepted choices as scoped AGENTS.md guardrails, and drive authorized incremental refactors. Use for solution organization, dependencies, domain and data ownership, DRY, SOLID, architecture rules and pattern selection. Ordinary C# formatting, naming or method cleanup alone belongs to clean-code guidance.
 license: CC0-1.0
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
   research-date: "2026-10-21"
 ---
 
@@ -77,8 +77,8 @@ traffic, budgets, compliance duties or future scale.
 
 ## 2. Find decisions worth making
 
-Keep a compact decision ledger: ID, problem/evidence, affected scope, status,
-dependencies, recommendation, accepted answer and intended rule/check. Reuse the
+Keep a compact decision ledger: ID, problem and evidence, affected scope, status,
+dependencies, recommendation, accepted answer, and intended rule and check. Reuse the
 repository's record format. Keep the ledger in chat unless saving is authorized.
 Useful statuses are **unknown**, **proposed**, **accepted**, **deferred** and
 **superseded**; track **implemented** and **verified** separately.
@@ -139,8 +139,8 @@ agents; only actually configured and executed checks provide automated enforceme
 
 Use [audit and refactoring](references/audit-and-refactoring.md). Rank findings by
 concrete consequences, cite paths/symbols and distinguish inspected from uninspected
-areas. Report missing evidence as unknown. Ask the highest-value unresolved choice
-after the useful audit findings; do not withhold the audit behind an interview.
+areas. Report missing evidence as unknown. Ask about the highest-value unresolved choice
+after reporting useful audit findings; do not withhold the audit behind an interview.
 
 For authorized refactors, take a small coherent use case or boundary at a time.
 Protect observable behavior, authorization, tenant isolation, transactions,

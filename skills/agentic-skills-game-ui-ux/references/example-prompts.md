@@ -1,6 +1,6 @@
 # Example prompts
 
-Use these as complete starting requests after making the skill available to your agent. Replace bracketed project facts with actual facts; omit what the agent can inspect. The invocation name is `$agentic-skills-game-ui-ux` in environments that support that syntax. Other agents can be told to read this folder's `SKILL.md` and follow it.
+Use these as complete starting requests after making the skill available to your agent. Replace bracketed placeholders with project facts; omit what the agent can inspect. The invocation name is `$agentic-skills-game-ui-ux` in environments that support that syntax. Other agents can be told to read this folder's `SKILL.md` and follow it.
 
 ## Improve an existing game
 

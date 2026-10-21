@@ -13,7 +13,7 @@ Use this reference to establish the data and spatial contracts before implementi
 
 ## Choose the representation
 
-Inspect the requested gameplay, existing world data, editing tools, collision requirements and import pipeline. Ask about a consequential unresolved choice once, with the consequences and a justified recommendation. Do not assume that a voxel aesthetic requires a runtime voxel terrain engine.
+Inspect the requested gameplay, existing world data, editing tools, collision requirements and import pipeline. Ask once about each consequential unresolved choice. Explain the consequences and give a justified recommendation. Do not assume that a voxel aesthetic requires a runtime voxel terrain engine.
 
 | Requirement | Candidate starting point | Decision to establish |
 | --- | --- | --- |
@@ -73,7 +73,7 @@ Use one shared conversion implementation in generation, saves, networking, picki
 
 ## Separate ownership from dependencies
 
-Assign each output cell or face exactly one owner. Supplying neighbouring input must not make a chunk emit its neighbour's geometry.
+Assign each output cell or face exactly one owner. A chunk must not emit its neighbour's geometry merely because it reads neighbouring input.
 
 For a corner-sampled field, `N` cells require `N+1` lattice samples per axis before additional algorithm padding. Central-difference gradients or transition cells may require further samples. Derive the complete input bounds from every operation rather than assuming one universal halo width.
 

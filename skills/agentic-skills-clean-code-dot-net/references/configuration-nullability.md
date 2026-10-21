@@ -33,7 +33,7 @@ behavior; it neither adds a runtime check nor authorizes a public contract chang
 | Result is non-null whenever a specified input is non-null | NotNullIfNotNull naming that input; test null preservation and a non-null caller. |
 | An initialization helper assigns required members before returning | MemberNotNull naming those members; test initialization and compile without suppression. |
 
-For each annotation, exercise runtime truth and caller analysis. Remove it in an
+For each annotation, verify both runtime behavior and the compiler's analysis of callers. Remove it in an
 isolated counterfactual to demonstrate the intended nullable diagnostic; never
 add !, fake defaults or disable nullable to make the example compile. Shipped
 annotation changes need source-compatibility review, including warning-as-error

@@ -89,9 +89,9 @@ colleague need different openings and levels of explanation. Generic pleasantrie
 can be removed when they delay the purpose; a real greeting or personal detail
 can be appropriate. Never invent a relationship, anecdote or firsthand experience.
 
-Put the reason for writing and the useful information where the recipient can
-find them. Make an ask clear and proportionate. Give a date, location or next
-step when supplied and relevant; do not fabricate them for completeness.
+Make the reason for writing and the useful information easy to find. Keep an ask
+clear and proportionate. Give a date, location or next step when supplied and
+relevant; do not fabricate them for completeness.
 
 For newsletters, build around an observation or useful item rather than a string
 of promotional announcements. For social posts, write to the platform and audience

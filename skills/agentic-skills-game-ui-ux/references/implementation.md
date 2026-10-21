@@ -59,7 +59,7 @@ Define these contracts for meaningful screens:
 
 Model transitions explicitly enough to prevent impossible combinations. Loading, ready, empty, invalid, saving, failed, and disconnected are different conditions; a single boolean rarely communicates all of them. Define permitted interactions in each state. For example, the player may inspect cached equipment while a purchase request is pending, but cannot submit that same purchase twice.
 
-Keep stable item identities through sorting, filtering, and list virtualization. When the underlying object disappears, dismiss or replace its details deliberately. Release event subscriptions and input registrations when their owner ends, and avoid callbacks targeting destroyed screens.
+Keep stable item identities through sorting, filtering, and list virtualization. When the underlying object disappears, dismiss or replace its details deliberately. Release event subscriptions and input registrations when their owner's lifetime ends, and avoid callbacks targeting destroyed screens.
 
 ## Build complete component states
 

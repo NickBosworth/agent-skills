@@ -18,7 +18,7 @@ For MagicaVoxel, consult the author's [base format](https://github.com/ephtracy/
 | Editable/destructible object | Preserve occupancy/material volume separately from derived mesh | Interior edits, remeshing, collision and persistence agree |
 | Repeated scenery | Reuse shared mesh/materials and appropriate instancing | Bounds, culling, material variation and resource lifetime |
 
-Treat these as workflow candidates, not guarantees that a particular importer supports every row. Godot documents its supported [3D import formats](https://docs.godotengine.org/en/stable/tutorials/assets_pipeline/importing_3d_scenes/available_formats.html). Three.js provides an official [VOXLoader](https://threejs.org/docs/pages/VOXLoader.html); inspect the installed revision for the actual chunks/features it handles. Verify other engine importers against their pinned versions rather than assuming native `.vox` support.
+Treat these as workflow candidates, not guarantees that a particular importer supports every row. Godot documents its supported [3D import formats](https://docs.godotengine.org/en/stable/tutorials/assets_pipeline/importing_3d_scenes/available_formats.html). Three.js provides an official [VOXLoader](https://threejs.org/docs/pages/VOXLoader.html); inspect the installed revision for the actual chunks/features it handles. Check the pinned versions of other engine importers for native `.vox` support; do not assume it exists.
 
 ## Preserve meaning through conversion
 
@@ -34,7 +34,7 @@ For fractured/destructible volumes, agree on disconnected-component behavior, ma
 
 ## Verify the import, not just the file
 
-Use a small fixture set: asymmetric single model, multi-model scene, nested transform, hidden layer, transparency/emission, and an animated sample when applicable. Check scale, placement, pivot, colors, normals, collision and animation in the actual engine. Reimport after changing the source and ensure authored gameplay components are preserved through the intended inheritance/import workflow.
+Use a small fixture set: asymmetric single model, multi-model scene, nested transform, hidden layer, transparency/emission, and an animated sample when applicable. Check scale, placement, pivot, colors, normals, collision and animation in the actual engine. Reimport after changing the source and verify that the intended inheritance/import workflow preserves authored gameplay components.
 
 Run the packaged/exported build because editor import caches and authoring tools may hide missing runtime assets. Compare bounds and draw/triangle/material counts for a repeated-prop scene. Keep screenshots or an inspection record alongside the actual import settings; do not claim an unrendered conversion is visually correct.
 

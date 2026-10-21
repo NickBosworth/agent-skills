@@ -12,8 +12,8 @@ The checkpoint discloses excluded pilot attempts and the corrected exposure prot
 
 For a permitted host/model trial, supply the skill, a realistic prompt and necessary
 raw synthetic artifacts in an isolated temporary workspace. Do not prime the model
-with the expected finding. Record host/model/settings/date, files read/changed,
-commands/versions/results, resulting patch and rubric assessment. Leave review-only
+with the expected finding. Record the host, model, settings and date; files read or changed; commands, versions
+and results; the resulting patch; and the rubric assessment. Leave review-only
 and documentation-only trials within scope; never contact production services.
 No destructive examples, private data or fabricated tool output.
 
@@ -90,9 +90,9 @@ withholding task-specific reference XML, graders and maintenance evaluations.
 An independent reviewer inventories interface and DTO contracts, then checks each
 applicable caller obligation against implementation and runtime assertions. In the
 worked case the weak variant fails purpose/input/result/ownership coverage; the
-complete variant explains the actual behavior. Extra words or tags earn no credit. Check that behavior and
-private/test helpers remain unchanged, authoritative inheritance is retained, and
-unestablished guarantees are not invented. Report compile/runtime evidence and
+complete variant explains the actual behavior. Extra words or tags earn no credit. Check that behavior and private/test helpers
+remain unchanged, authoritative inheritance is retained, and no unestablished
+guarantees are invented. Report compile/runtime evidence and
 semantic assessment separately. The automated fixture runs both XML variants against
 the same assertions; it deliberately does not claim to automate prose judgment.
 

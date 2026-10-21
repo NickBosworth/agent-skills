@@ -22,7 +22,7 @@ Keep the report proportionate to the task. For a small fix, use a concise result
 | --- | --- | --- | --- | --- | --- |
 | | | | | | |
 
-Use blocker, high, medium, or low with a reason based on task impact, frequency, reach, and recoverability. Keep stylistic preferences distinguishable from defects. Do not let an aggregate score conceal a blocker.
+Use blocker, high, medium, or low with a reason based on task impact, frequency, reach, and recoverability. Distinguish stylistic preferences from defects. Do not let an aggregate score conceal a blocker.
 
 ## Decisions
 

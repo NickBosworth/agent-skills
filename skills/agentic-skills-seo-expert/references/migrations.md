@@ -12,7 +12,7 @@ Validate redirects for loops, chains, conflicts and accidental catch-alls. Check
 Keep staging access controls intact during testing. An isolated environment or approved authenticated test is preferable to temporarily exposing private work for a crawler. Build and browser tests need representative mobile and locale routes, old URLs, missing pages and error responses.
 
 ## Release and rollback
-Agree the release owner, deployment authority, rollback mechanism, monitoring responsibility and stop conditions before the change. Capture baseline config and redirect maps. Canary a bounded section when feasible. Coordinate appropriate current search-engine move/submission tools only with permission; do not assume every URL change qualifies for a domain move tool. [G18, G41]
+Agree the release owner, deployment authority, rollback mechanism, monitoring responsibility and stop conditions before the change. Capture baseline config and redirect maps. Release to a bounded section first when feasible. Coordinate appropriate current search-engine move/submission tools only with permission; do not assume every URL change qualifies for a domain move tool. [G18, G41]
 
 Verify deployed responses immediately, not just repository files. Keep durable redirects and correct signals for the period justified by current engine guidance and real usage; do not remove them after an invented universal short deadline.
 

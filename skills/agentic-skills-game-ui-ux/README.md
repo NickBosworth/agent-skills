@@ -1,6 +1,6 @@
 # agentic-skills · Game UI and UX
 
-Version **2.0.1** · Licence **CC0-1.0**
+Version **2.0.2** · Licence **CC0-1.0**
 
 Design and verify menus, HUDs and player interface flows across game platforms.
 

@@ -14,7 +14,7 @@ The [Geometry Scripting guide](https://dev.epicgames.com/documentation/en-us/unr
 
 Generate voxel samples and surface data in tasks using immutable snapshots or explicitly synchronized data. Keep UObject/component mutation in the supported owning context. The [threaded rendering guide](https://dev.epicgames.com/documentation/en-us/unreal-engine/threaded-rendering-in-unreal-engine) describes game-thread/render-proxy ownership and garbage-collection hazards; do not dereference live actors or shared mutable components from a meshing task simply because a pointer was captured.
 
-Attach chunk coordinates, residency token, voxel revision, and neighbor dependency revisions to each result. Validate lifetime and revisions when returning to the game thread. Coordinate task completion with world teardown. Weak references can help identify dead objects but do not make arbitrary concurrent access safe.
+Attach chunk coordinates, a residency token, the voxel revision, and neighbor dependency revisions to each result. Validate lifetime and revisions when returning to the game thread. Coordinate task completion with world teardown. Weak references can help identify dead objects but do not make arbitrary concurrent access safe.
 
 Use documented mesh/component notifications and update APIs. Verify winding, normals, tangents where needed, material sections, bounds, and topology. For a custom render path, explicitly design buffer initialization, upload, fences, and deferred release. Avoid per-chunk blocking render flushes. Keep material/section counts bounded rather than assigning an independent material per voxel.
 
@@ -24,7 +24,7 @@ Do not assume a Blueprint Geometry Scripting call is asynchronous: the guide say
 
 Give collision cooking a separate queue, radius, budget, and revision. Verify the selected component's asynchronous-cooking support and completion behavior. Define when a player may enter newly streamed terrain and how edits behave while replacement collision is pending. Use suitable separate collision for detached moving pieces; do not assume static concave terrain collision transfers unchanged to simulated debris.
 
-Treat actor/world streaming as an integration boundary, not an automatic mutable-voxel persistence system. Preserve edits across unloads and validate reconstruction independently of rendered components. Release chunks only after owned task/render/physics dependencies are safely retired.
+Treat actor/world streaming as an integration boundary, not an automatic mutable-voxel persistence system. Preserve edits across unloads and validate reconstruction independently of rendered components. Release chunks only after safely retiring the task/render/physics dependencies they own.
 
 ## Verify compiled and packaged behavior
 

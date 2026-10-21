@@ -4,7 +4,7 @@ description: Audit and improve whole-site technical SEO, content quality, search
 license: CC0-1.0
 compatibility: Requires a host that can read local skill files. Web research, browser, repository, analytics and command tools are optional host capabilities; Python 3.10+ is required only for the bundled offline utilities.
 metadata:
-  version: "2.0.1"
+  version: "2.0.2"
   research-snapshot: "2026-10-10"
   category: "seo-content-and-technical"
 ---
@@ -29,7 +29,7 @@ When a missing decision materially changes risk or scope, ask **one clear questi
 - Respect intentional exclusions: account, checkout, internal search, staging, private and legal pages may have different discovery goals. Ask for the desired index state before treating an exclusion as an error.
 - Do not equate crawlable, rendered, indexable, indexed, ranking, eligible for a feature and actually displayed. A live test is not proof of current indexing. A sample is not the entire site.
 - Do not use fixed keyword density, mandatory word counts, “one page per keyword”, one-H1 ranking rules, fake locations, fake reviews, forced brand mentions, paid link schemes or mass low-value AI pages.
-- All substantive recommendations need evidence, purpose, affected scope, implementation instructions, verification and relevant risks. Explain terms in plain language. Prioritise broken access and indexing before cosmetic metadata polishing.
+- For each substantive recommendation, give evidence, purpose, affected scope, implementation instructions, verification and relevant risks. Explain terms in plain language. Prioritise broken access and indexing before cosmetic metadata polishing.
 - No live edits, publishing, domain/DNS changes, destructive redirects/deletions, large index-control changes, paid access, API submission or unsolicited outreach without the appropriate user authorisation. See [permission boundaries](references/safety.md).
 - Never claim “fully SEO optimised” as a universal state. Report tested coverage, unresolved risks and the next review trigger. Search inclusion and outcomes are not guaranteed.
 
@@ -62,7 +62,7 @@ For applicable checks, consult [the rule catalogue](data/rules.json) **by catego
 
 **Evaluate.** Assess intent fit, useful original information, accurate claims, titles/snippets, architecture, links, media, speed and applicable structured data. Cross-check critical findings through a second evidence path. Distinguish a real issue from a crawler warning, intentional business decision or missing access.
 
-**Report.** Use [audit report](templates/audit-report.md) and [coverage ledger](templates/coverage.csv). Each finding needs an ID, observed/expected state, affected URLs/templates and denominator, engine, source, confidence, business impact, priority, owner, fix, risk and verification. Show untested areas conspicuously. Reconcile the inventory before claiming full-inventory coverage.
+**Report.** Use [audit report](templates/audit-report.md) and [coverage ledger](templates/coverage.csv). Each finding needs an ID, observed/expected state, affected URLs/templates and denominator, engine, source, confidence, business impact, priority, owner, fix, risk and verification. Make untested areas easy to find. Reconcile the inventory before claiming full-inventory coverage.
 
 ## First-pass keyword and content research
 

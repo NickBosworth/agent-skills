@@ -44,9 +44,9 @@ RequiresUnreferencedCode/RequiresDynamicCode communicate limitations, not repair
 Source generation must fit the design. Do not broadly root assemblies, silence IL
 warnings or change runtime types without reviewing compatibility and size tradeoffs.
 
-For a supported deployment, MUST use the actual publish profile/RID, inspect warnings
-and run the published artifact through representative reflection, serialization and
-dependency paths. A small consuming app can expose library warnings missed by
+For a supported deployment, MUST use the actual publish profile/RID and inspect
+warnings. Run the published artifact through representative reflection, serialization
+and dependency paths. A small consuming app can expose library warnings missed by
 project-only analysis; supported target variants need separate evidence. A normal
 build/managed test runner cannot establish published AOT behavior. Native-toolchain
 prerequisites may block execution: report BLOCKED/NOT RUN and keep ordinary checks

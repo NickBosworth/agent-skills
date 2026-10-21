@@ -2,7 +2,7 @@
 
 Establish reading order, dominant action, groups, density, type roles, color roles,
 asset use and motion purpose. Inspect the existing system before inventing tokens.
-Use a small coherent set of roles; exceptions need a task reason.
+Use a small coherent set of roles; justify exceptions by the task they serve.
 
 Compare structurally different directions only when direction is actually open.
 Faithful implementation of an approved reference does not require another redesign

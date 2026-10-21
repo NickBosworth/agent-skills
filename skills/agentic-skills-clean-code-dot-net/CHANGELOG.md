@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.3.4 — 2026-10-21
+
+Copyedited package documentation with Writing Clearly and Concisely. Clarified
+sentences and instructions while preserving workflow requirements, technical
+contracts, commands, examples, notices and historical evidence. No helper or
+evaluation input changed; no new behavioral result is implied.
+
 ## 1.3.3 — 2026-10-18
 
 - Require review of changed method bodies for missing intent and maintenance explanations, including private methods.

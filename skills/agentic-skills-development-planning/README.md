@@ -1,6 +1,6 @@
 # agentic-skills · Development Planning
 
-Version **2.0.2** · Licence **CC0-1.0**
+Version **2.0.3** · Licence **CC0-1.0**
 
 Turn rough requirements into a concrete plan with explicit compatibility and delivery decisions.
 
@@ -22,8 +22,8 @@ requirements. The written guidance needs no runtime service. Use only tools that
 are available and authorized in your project.
 
 Decision questions use a bold **Question N** label, explain the purpose and current
-code, then present **Options** with a justified recommendation first. A fuller
-explanation follows the alternatives. See the [worked example](examples/worked-conversation.md).
+code, then present **Options** with a justified recommendation first. After the
+alternatives, explain the recommendation in more detail. See the [worked example](examples/worked-conversation.md).
 
 ## Scope and verification
 

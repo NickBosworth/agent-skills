@@ -1,7 +1,7 @@
 # Content, editorial quality and trust
 
 ## Begin with a useful answer
-For each important page state the intended reader, task and next useful action. Identify what the page contributes that a generic summary does not: first-hand observations, original data, a working tool, clear instructions, verifiable product details, useful comparisons or expert interpretation. Do not invent experience, qualifications, interviews, results or citations to satisfy a trust checklist. [G03]
+For each important page, state the intended reader, task and next useful action. Identify what the page contributes that a generic summary does not: first-hand observations, original data, a working tool, clear instructions, verifiable product details, useful comparisons or expert interpretation. Do not invent experience, qualifications, interviews, results or citations to satisfy a trust checklist. [G03]
 
 Evaluate whether the reader can complete the task without wading through repetitive introductions, generic conclusions, filler FAQs or unexplained jargon. Preserve nuance and limitations. Match detail to the task rather than a fixed word count or competitors’ average length. An answer can be brief when that is enough. [G01]
 

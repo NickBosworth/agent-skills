@@ -83,8 +83,8 @@ For a proposed shared component, identify the business knowledge, authoritative
 owner, consumers, change cadence and versioning cost. Share a stable business policy
 within its real scope. Keep independent meanings separate even when code looks alike.
 Across bounded contexts, prefer explicit contracts and translation over sharing
-mutable domain entities. A shared kernel is a deliberate coordination agreement,
-not the default place for all repeated code.
+mutable domain entities. A shared kernel requires a deliberate coordination agreement. It is not the default
+place for all repeated code.
 
 Keep external request/response schemas distinct when they have different security,
 versioning or domain meanings. Do not create a DTO for every internal method by rote.

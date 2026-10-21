@@ -3,7 +3,7 @@
 ## Decide what success actually means
 A site exists to help people do something: buy an appropriate product, find accurate information, book a service, use a tool or contact a legitimate organisation. Capture that purpose and the relevant conversion before optimising organic visits. A thousand irrelevant visits is not automatically better than ten useful ones. This is an engagement judgement, not a ranking formula.
 
-Read project instructions and inspect routes, layouts, metadata utilities, CMS models, deployment config and tests before suggesting a new stack. Find existing redirects, intentional noindex rules, locale conventions, design/content systems and analytics. Capture a baseline commit and environment. Never treat a staging hostname as the public canonical domain without checking configuration.
+Read project instructions and inspect routes, layouts, metadata utilities, CMS models, deployment config and tests before suggesting a new stack. Find existing redirects, intentional noindex rules, locale conventions, design/content systems and analytics. Record the baseline commit and environment. Never treat a staging hostname as the public canonical domain without checking configuration.
 
 ## Modes and deliverables
 **Audit:** Read and inspect. Deliver evidence-backed findings, coverage and a prioritised backlog. No implied authority to edit or publish.

@@ -4,13 +4,13 @@ description: Design, implement, audit, repair and polish web interfaces without 
 license: CC0-1.0
 compatibility: Framework-neutral. Repository access is useful; a browser is needed for rendered verification. No mandatory MCP, network service, or build dependency.
 metadata:
-  version: "2.0.1"
+  version: "2.0.2"
   research-date: "2026-10-10"
 ---
 
 # Web UI Craft
 
-Build interfaces that are appropriate, specific, coherent, operable and verified. Do not merely make a screenshot resemble a fashionable website. A conventional design can be excellent; an original-looking design can still be unusable.
+Build appropriate, specific, coherent, operable and verified interfaces. Do not merely make a screenshot resemble a fashionable website. A conventional design can be excellent; an original-looking design can still be unusable.
 
 ## Non-negotiable guardrails
 
@@ -63,7 +63,7 @@ Produce a compact working brief: **user and task; delivery level; existing const
 
 ### 2. Resolve consequential uncertainty
 
-First try repository and supplied evidence. When a material choice remains unresolved, ask **one question at a time** using:
+First consult repository and supplied evidence. When a material choice remains unresolved, ask **one question at a time** using:
 
 1. **Why this matters:** the decision and its user consequence.
 2. **What already exists:** observed behavior and evidence; distinguish the reason known from history from a reason merely inferred.
@@ -79,7 +79,7 @@ Select the product profile. Define the primary reading order, action hierarchy, 
 
 Record the chosen rationale and a small role-based token plan using the existing system. Specify what stays familiar and where the product is distinctive. Use representative content and approved assets. Reject designs that change only the brand name yet still claim to be tailored.
 
-Check both extremes: generic defaults without a reason, and novelty without a user benefit. Do not use “premium” as a substitute for a design decision.
+Check for both extremes: generic defaults without a reason, and novelty without a user benefit. Do not use “premium” as a substitute for a design decision.
 
 ### 4. Specify the behavior before celebrating the surface
 

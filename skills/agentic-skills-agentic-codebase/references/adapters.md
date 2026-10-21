@@ -3,7 +3,7 @@
 Original documentation review: **2026-10-03**. The dated refresh below identifies
 claims rechecked on **2026-10-18**; it does not renew every historical source.
 Recheck the relevant official source when the installed version or behavior differs.
-Use this reference when choosing, repairing, or verifying host-specific instruction and skill discovery.
+Use this reference to choose, repair, or verify how a host discovers instructions and skills.
 
 ## Contents
 
@@ -124,7 +124,7 @@ The entries below describe documented capability, **not a claim that this packag
 
 ## Copies and ownership
 
-There is **no automatic synchronization command supplied by this skill**. Perform deliberate, reviewed updates with ordinary file tools.
+This skill supplies **no automatic synchronization command**. Review and apply updates deliberately with ordinary file tools.
 
 1. Choose one authoritative source per instruction or skill. If an existing native file is authoritative, preserve that fact until a reviewed migration establishes a new source.
 2. Record provenance in the optional `.agents/project.json` `adapters` array, or the established maintenance record. Use repository-relative paths. Record host, surface, observed version, `verification`, `checked_on`, `source_url`, and `notes`; put source/target mappings in `generated` with mode `copy`, `projection`, or `import`.
@@ -143,7 +143,7 @@ There is **no automatic synchronization command supplied by this skill**. Perfor
 6. Update baseline hashes only after comparing the current source and adapter, reviewing the diff, and completing available validation. Never refresh hashes merely to silence divergence. A matching hash proves content identity, not that the host used it.
 7. Avoid duplicate skill definitions in hosts that discover both directories. Confirm whether the host deduplicates aliases, exposes both, or shadows one; remove unnecessary copies only after preserving custom content and verifying the canonical definition.
 
-Example of the record shape for a reviewed root Claude import; merge it into an existing manifest rather than replacing that manifest:
+This example shows a record for a reviewed root Claude import. Merge it into an existing manifest rather than replacing the manifest:
 
 ```json
 {

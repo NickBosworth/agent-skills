@@ -29,7 +29,7 @@ Use for one meaningful screen, component, or flow. Mark a field not applicable w
 | --- | --- | --- | --- | --- | --- |
 | | | | | | |
 
-Include actual empty, loading, stale, permission-limited, partial, error, and disconnected states. Specify whether previews are simulated or authoritative. State how data changes during inspection are handled.
+Include actual empty, loading, stale, permission-limited, partial, error, and disconnected states. Specify whether previews are simulated or authoritative. State how the interface handles data changes during inspection.
 
 ## Navigation and input
 

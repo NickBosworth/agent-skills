@@ -47,13 +47,12 @@ Use this order, with enough context for the user to choose without reading code:
 
 Use a supported question UI when available; otherwise ask in ordinary text. Keep
 the rationale visible even if the UI limits option descriptions. Free-text answers
-and qualified choices are valid. Do not tack on questions about tooling, ownership
-or deployment to the same turn. A single blocking factual question can precede
+and qualified choices are valid. Do not add questions about tooling, ownership or deployment to the same turn. A single blocking factual question can precede
 options when that fact is needed to make the alternatives meaningful; never
 fabricate architecture options for supplying missing information.
 
 Accept answers already in the session or applicable rules. A request for a
-recommendation alone permits a recommendation, not an invented user decision.
+recommendation alone does not establish a user decision.
 If the user explicitly delegates a choice, make it within the stated constraints,
 record that delegation and the rationale, and proceed within authorized scope.
 

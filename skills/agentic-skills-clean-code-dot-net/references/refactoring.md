@@ -21,7 +21,7 @@ provably small. Compilation cannot detect all runtime name contracts.
 | Shipped public member or friend assembly | Inspect external and friend consumers; retain compatible forwarding APIs unless the break is authorized. Local absence of references is insufficient. |
 | Private local extraction | Preserve caller-specific inputs, evaluation order, rounding, lazy execution and side effects; avoid a new abstraction without a real purpose. |
 
-Separate structural edits from authorized behavior changes so the diff and tests
-can explain each. Do not abandon an authorized implementation because it includes
+Separate structural edits from authorized behavior changes so reviewers can assess
+each through the diff and tests. Do not abandon an authorized implementation because it includes
 a behavior change; apply its proper contract and test obligations. For uncertain
 behavior, characterize it first. For already-correct code, leave it unchanged.

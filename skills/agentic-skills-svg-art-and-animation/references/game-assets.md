@@ -24,7 +24,7 @@ Use `assets/asset-contract.example.json` as a planning starting point, not a bui
 
 Keep the core simulation independent from rendering. Navigation position, state transitions, scheduling and task outcomes should not depend on an SVG clock or a visual animation callback. A visual adapter reads state and chooses presentation. Animation may interpolate visual pose but must not mutate simulation truth.
 
-For a modular character, share a rig and reusable component definitions. Use deterministic appearance choices keyed by a stable seed. Keep luggage/equipment attachments continuous across states and facings. Where four-direction output is needed, explicitly specify foreground/background limb order and whether mirroring preserves the intended asymmetry.
+For a modular character, share a rig and reusable component definitions. Use deterministic appearance choices keyed by a stable seed. Keep luggage/equipment attachments continuous across states and facings. For four-direction output, explicitly specify foreground/background limb order and whether mirroring preserves the intended asymmetry.
 
 Prefer transform animation for rigid parts. Use a limited number of native nodes and reusable textures; cache colour/facing variants where measured costs warrant it. Do not generate and rasterise a fresh SVG per character per frame. Prototype the expected on-screen population and zoom levels before expanding the asset catalogue; report actual profiling numbers, not assumed capacity.
 

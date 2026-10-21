@@ -39,4 +39,4 @@ Create one row per meaningful information item. Split broad labels such as “st
 
 ## Review
 
-Record the most demanding tested scene, relevant user tasks, observed misses or confusion, changes made, and remaining uncertainty. Keep a reason for every permanently visible item and every hidden critical item.
+Record the most demanding tested scene, relevant user tasks, observed misses or confusion, changes made, and remaining uncertainty. Record a reason for every permanently visible item and every hidden critical item.

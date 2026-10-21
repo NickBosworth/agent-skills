@@ -1,15 +1,16 @@
 # Comments and XML contracts
 
-Every task loads comments guidance; contract/documentation tasks also apply all XML
-sections. This package bundles accuracy-first comments and .NET contract guidance
-independently. Sources: S05–S10, S50. Policies: DNC-DOC-001 through DNC-DOC-004.
+Load comments guidance for every task. For contract or documentation work, also
+apply all XML sections. This self-contained package covers accurate comments and
+.NET contracts. Sources: S05–S10, S50. Policies: DNC-DOC-001 through DNC-DOC-004.
 
 ## Implementation comments
 
 MUST explain significant intent or constraints that names and structure leave
 unclear: business invariants, ordering, interoperability workarounds, concurrency
 protocols, measured compromises, difficult algorithms and dangerous edge cases.
-First improve names/structure; do not defend confusing code with paragraphs.
+Improve names and structure first; paragraphs of explanation do not repair
+confusing code.
 A short “what” explanation is useful when individually clear statements obscure
 the purpose of a block, including ordinary business rules and processing phases.
 Pair it with the established reason where that helps a maintainer change it safely.
@@ -42,8 +43,8 @@ them when the implementation or reason changes; investigate an existing warning
 before deleting it as noise. An existing test or decision reference MAY help locate
 the evidence, but cannot replace a useful local explanation. Do not invent tracking
 references. Tests protect observable behavior; comments explain the easily missed
-reason for preserving it. No comment counts, mandatory section banners or narration
-of every statement; do not expand an ordinary task into unrelated annotation.
+reason for preserving it. Do not set comment quotas, require section banners or narrate every statement.
+Keep annotation within the task's scope.
 
 SHOULD use nearby own-line // prose with one space, sentence capitalization and
 punctuation. Preserve license headers, executable directives and meaningful block
@@ -144,7 +145,7 @@ an incremental task into unrelated API cleanup. Review each covered contract's X
 against its implementation, actual callers and relevant tests. Follow an authoritative
 interface/base contract when inheritance is appropriate; review that target too.
 
-Check these dimensions where applicable, rather than requiring every tag on every symbol:
+Check each applicable dimension; every symbol does not need every tag:
 
 | Caller question | Review obligation |
 | --- | --- |

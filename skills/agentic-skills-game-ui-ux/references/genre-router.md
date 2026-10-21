@@ -108,4 +108,4 @@ Examples of composition, not prescribed layouts:
 
 ## Handle an unfamiliar game
 
-If a label is missing, classify its real decisions using the dimension table. Identify its most demanding interface moment, knowledge boundaries, failure costs, and control constraints. Reuse only mechanisms whose assumptions fit. State the additional hypothesis and test it with a representative task. This fallback prevents the coverage map becoming a rule that new genres must imitate old ones.
+If a label is missing, classify its real decisions using the dimension table. Identify its most demanding interface moment, knowledge boundaries, failure costs, and control constraints. Reuse only mechanisms whose assumptions fit. State the additional hypothesis and test it with a representative task. This fallback prevents the coverage map from requiring new genres to imitate old ones.

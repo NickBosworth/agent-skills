@@ -93,7 +93,7 @@ Repair the command reference from its defining manifest and update an existing
 command record if present. Inspect the command's definition and side effects
 before running it. Report the result only if it actually ran.
 
-The storage discrepancy needs a different treatment. Current code establishes
+Handle the storage discrepancy separately. Current code establishes
 the prototype's behavior, not permission to repeal the accepted ADR. Look for
 an existing migration task and superseding decisions. If the evidence remains
 ambiguous, ask which target governs while continuing the independent command fix.
@@ -126,7 +126,7 @@ Map the canonical candidates before changing anything:
 | --- | --- | --- |
 | Shared root constraints | Existing `AGENTS.md` | Keep useful root content and resolve substantive conflicts. |
 | Unique failure-handling rule | Applicable workflow section | Retain meaning and rationale; update retrieval references. |
-| Native instruction entry point | Existing native file if needed | Preserve independent content; add an import or pointer only for the verified host behavior. |
+| Native instruction entry point | Existing native file if needed | Preserve independent content; add an import or pointer only when verified host behavior supports it. |
 | Divergent skill script | Chosen canonical package | Compare both baselines; reconcile the manual change before replacing a copy. |
 
 Inspect the actual host version, surface and settings. Native loading may make a

@@ -1,6 +1,6 @@
 # Game interface design brief
 
-Use for substantial design work. Fill from actual project evidence; mark assumptions and unresolved decisions. Remove irrelevant fields instead of inventing requirements. Keep this document in the project's established design location.
+For substantial design work, use actual project evidence; mark assumptions and unresolved decisions. Remove irrelevant fields instead of inventing requirements. Keep this document in the project's established design location.
 
 ## Purpose and scope
 

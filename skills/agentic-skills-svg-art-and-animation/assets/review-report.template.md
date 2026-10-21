@@ -24,4 +24,4 @@ States, triggers, duration/delay, loop period, pivot, controls, reduced-motion/f
 Observed issue, smallest corrective change, re-test result:
 
 ## Limitations
-Name what was not tested; do not turn structural checks into visual/security/conformance claims.
+Name the untested areas; do not turn structural checks into visual/security/conformance claims.

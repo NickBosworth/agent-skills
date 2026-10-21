@@ -1,18 +1,18 @@
 # Clean Code for C#/.NET
 
-A self-contained engineering standard for C# implementation, changes, review,
-documentation, scoped refactoring and quality-tooling setup. It makes contracts,
-human comprehension and truthful comments observable review obligations, backed
-by formatting/compiler/analyzer checks and synthetic fixtures.
+This self-contained standard covers C# implementation, changes, review,
+documentation, scoped refactoring and quality tooling. It requires review of
+contracts, readability and comment accuracy, backed by formatter, compiler and
+analyzer checks and synthetic fixtures.
 
 Copy this whole folder into your host's documented skill directory and invoke
 $agentic-skills-clean-code-dot-net. Do not copy the default configuration into a
 real application without inspecting its existing policy. Host discovery and
 automatic adherence remain host-specific.
 
-Start with [SKILL.md](SKILL.md). It routes mandatory core/documentation/tooling
-guidance and conditional reliability/framework extensions. [Rules](references/rules.md)
-give provenance, examples, enforcement gaps and exceptions.
+Start with [SKILL.md](SKILL.md). Follow its mandatory core, documentation and tooling
+guides; load reliability and framework guidance when relevant.
+[Rules](references/rules.md) explain provenance, examples, enforcement gaps and exceptions.
 [Sources](SOURCES.md), [examples](examples/cases.md), [tooling](references/tooling.md)
 and [validation](VALIDATION.md) explain the tested boundary.
 Before completion, the [semantic XML gate](references/documentation.md#mandatory-semantic-contract-review-gate)

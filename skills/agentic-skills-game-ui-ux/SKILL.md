@@ -3,16 +3,16 @@ name: agentic-skills-game-ui-ux
 license: CC0-1.0
 description: Design, implement, audit, repair, and evolve game menus, HUDs, inventories, maps, settings, onboarding, and other player interfaces. Use for game UX/UI, interaction flows, information hierarchy, visual direction, accessible controls, and interface polish across action, strategy, simulation, RPG, narrative, puzzle, sports, rhythm, social, casual, and hybrid games on desktop, console, handheld, mobile, and XR. Derive decisions from the actual game, its players, mechanics, art direction, and platform; deliver working, verified increments when implementation is requested. Exclude ordinary websites, unrelated applications, and general gameplay programming without a player-interface task.
 metadata:
-  version: "2.0.1"
+  version: "2.0.2"
 ---
 
 # Game UI and UX
 
-Make the player able to perceive, understand, decide, act, and recover while the interface expresses the game's identity. Treat appearance, interaction, information, implementation, and playtesting as one design problem.
+Help the player perceive, understand, decide, act, and recover while the interface expresses the game's identity. Treat appearance, interaction, information, implementation, and playtesting as one design problem.
 
 ## Operating rules
 
-1. **Start from the game.** Inspect the playable build, relevant code, design documents, screenshots or footage, existing interface, and applicable repository instructions. Distinguish observed behaviour, requirements, assumptions, and proposed changes. An absent screenshot is not permission to invent an existing visual language.
+1. **Start from the game.** Inspect the playable build, relevant code, design documents, screenshots or footage, existing interface, and applicable repository instructions. Distinguish observed behaviour, requirements, assumptions, and proposed changes. A missing screenshot is not permission to invent an existing visual language.
 2. **Preserve intended play.** Separate accidental interface friction from deliberate uncertainty, discovery, pressure, mastery, and consequence. An exact prediction, full map, undo, pause, or enemy indicator can change the game. Confirm a consequential change when the evidence does not resolve it.
 3. **Use genre as a hypothesis.** Combine the relevant genre profiles and platform modifiers. Let the decision being made determine the interface for that moment. A survival game may need action aiming, a crafting workbench, and a strategic map with different densities.
 4. **Derive the style.** Build from the game's world, mood, camera, assets, audience, and creative brief. Support restrained, ornate, tactile, abstract, comic, realistic, retro, or experimental directions. Establish a coherent visual language; do not import a fixed palette, font, shape, layout, or animation recipe from this skill.
@@ -42,7 +42,7 @@ Read the router, then the shared chapters needed for the task and only the match
 | [genres-specialist.md](references/genres-specialist.md) | Racing, sports, flight/vehicle simulation, puzzle, rhythm, cards/board/deckbuilding, autobattlers, idle, and learning games |
 | [example-prompts.md](references/example-prompts.md) | Ready-to-adapt requests and examples of bounded scope |
 
-Use templates as working aids, filling only relevant fields. Store resulting project documents in the project's established locations, not inside the installed skill. Do not generate every template for every task.
+Use templates as working aids and fill only relevant fields. Store resulting project documents in the project's established locations, not inside the installed skill. Do not generate every template for every task.
 
 - [design-brief.md](assets/design-brief.md): context, player decisions, constraints, and selected direction.
 - [screen-spec.md](assets/screen-spec.md): one complete screen/component contract and its transitions.
@@ -53,7 +53,7 @@ Use templates as working aids, filling only relevant fields. Store resulting pro
 
 ## 1. Establish the design problem
 
-Identify the work mode: **discover/design**, **implement**, **audit**, **repair/polish**, or **maintain**. Determine the intended result and the current project's constraints before selecting a toolkit or designing a screen.
+Identify the work mode: **discover/design**, **implement**, **audit**, **repair/polish**, or **maintain**. Establish the intended result and the project's constraints before selecting a toolkit or designing a screen.
 
 Record the following in brief working notes, using [design-brief.md](assets/design-brief.md) for substantial work:
 

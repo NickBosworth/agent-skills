@@ -9,7 +9,7 @@ jobs, reports and old clients only where the changed contract reaches them.
 For each important claim record its source, scope, observed behaviour, intended
 rule, evidence and unresolved discrepancy. Tests establish tested expectations;
 code establishes current implementation. Neither automatically explains business
-intent. Missing rationale remains unknown rather than becoming an invented reason.
+intent. Leave missing rationale unknown; do not invent a reason.
 
 Map each proposed change to changed behaviour/data, affected consumers and the
 protected acceptance criterion. Preserve IDs and wording for supplied requirements.
@@ -18,6 +18,6 @@ revision template only for an explicitly authorized policy change.
 
 Inspect command definitions and their network/write effects before running baseline
 checks. Use synthetic data and isolated environments; preserve unrelated edits.
-Record unavailable sources and the resulting confidence boundary. Discovery ends
+Record unavailable sources and explain how they limit confidence. Discovery ends
 when the outcome, invariant, design, affected surfaces and verification are clear;
 a missing critical fact produces a bounded investigation rather than false readiness.

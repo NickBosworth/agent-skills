@@ -3,7 +3,7 @@ name: agentic-skills-development-planning
 license: CC0-1.0
 description: Guide an engineer from a brain dump, ticket, acceptance criteria, or files to a repository-grounded implementation plan. Inspect existing code and its rationale; challenge direct and indirect conflicts with business rules and acceptance criteria; ask one plain-language question at a time with two or three viable options and one evidence-backed recommendation. Resolve compatibility, database migrations, test sequencing, and documentation scope before declaring readiness. Implement only after explicit approval, then verify and provide an accurate copyable git commit message. Use for features, fixes, refactors, integrations, migrations, and other codebase changes that need guided planning.
 metadata:
-  version: "2.0.2"
+  version: "2.0.3"
   display-name: "Development Planning"
 ---
 
@@ -45,13 +45,13 @@ Load only the references needed for the current stage. All paths are relative to
 
 ## 1. Collect the starting material
 
-When no substantive change description has been provided, make this single intake request and wait:
+When the user has not described a substantive change, make this single intake request and wait:
 
 > What would you like to add or change? Share whatever you have: a brain dump, ticket, acceptance criteria, screenshots, files, or links, including anything that must stay the same. Rough notes are enough; I will inspect the codebase and guide the decisions one at a time. Please leave out secrets and unnecessary personal data.
 
 This open intake request is the sole exception to the structured decision-question format; do not invent three options for submitting a brain dump.
 
-When material already exists, acknowledge its substance and begin discovery. Do not request the same ticket again. Read accessible attachments; follow authorised project links using available tools. State inaccessible sources and their effect on confidence. Ask for a repository or missing content only when it blocks progress and cannot be resolved through available access.
+When material already exists, acknowledge it and begin discovery. Do not request the same ticket again. Read accessible attachments; follow authorised project links using available tools. Identify inaccessible sources and explain how they affect confidence. Ask for a repository or missing content only when it blocks progress and available access cannot resolve the gap.
 
 Extract the desired outcome, affected users, current problem, supplied acceptance criteria (AC), non-goals, constraints, and explicit choices. Preserve source wording alongside your interpretation. Do not turn suggestions into approved requirements. Draft observable examples, including what must remain unchanged.
 
@@ -65,7 +65,7 @@ Trace a representative affected path end to end: entry point → permissions/val
 
 Keep a compact evidence ledger: source path/symbol/section and revision, claim, scope, evidence type, confidence, and unresolved gaps. Use history selectively to establish rationale; otherwise say **“The reason is not recorded; this is an inference.”**
 
-Check baseline tests only through inspected, authorised commands in a safe environment. If execution is unavailable, record **not run**, the exact reason, and planned verification. Do not claim a baseline passes from merely reading the tests.
+Check baseline tests only through inspected, authorised commands in a safe environment. If execution is unavailable, record **not run**, the exact reason, and planned verification. Reading the tests does not establish a passing baseline.
 
 ## 3. Reconcile rules and indirect consequences
 
@@ -85,13 +85,13 @@ Do not assume a user can waive another owner's policy, legal obligation, securit
 
 ## 4. Guide the engineer one question at a time
 
-Maintain a prioritised queue: outcome and invariants → conflicts → costly or irreversible choices → behaviour/architecture → delivery. The queue is internal; never send the whole questionnaire. Investigate before adding a question.
+Prioritise decisions in this order: outcome and invariants → conflicts → costly or irreversible choices → behaviour/architecture → delivery. Keep the queue internal; never send the whole questionnaire. Investigate before adding a question.
 
 Every decision question, including compatibility, documentation, and approval questions, uses this exact structure:
 
 **Question <number>**
 
-Explain why you are asking, what you are trying to achieve, and the uncertainty or risk this decision resolves. Include the one clear decision question in this paragraph.
+Explain why you are asking, the desired outcome, and the uncertainty or risk this decision resolves. Include the one clear decision question in this paragraph.
 
 Describe what the codebase currently does, cite the relevant evidence, and explain what that behaviour achieves. State why it exists only when the rationale is understood from evidence; otherwise identify the reason as unknown or label an inference. Explain technical terms on first use.
 
@@ -103,13 +103,13 @@ Describe what the codebase currently does, cite the relevant evidence, and expla
 
 **C — <third viable option, only if useful>.** Explain its benefit and cost.
 
-Finish with a fuller explanation of why the recommendation is the way forward. Compare it with the alternatives and connect the evidence to the outcome. Cover relevant operational, migration, maintenance, security, cost, rollback or future-change implications, distinguishing known facts from unresolved risks. State uncertainty or conditions that would change the recommendation; do not merely repeat the option text.
+Finish with a fuller explanation of why the recommendation fits. Compare it with the alternatives and connect the evidence to the outcome. Cover relevant operational, migration, maintenance, security, cost, rollback or future-change implications, distinguishing known facts from unresolved risks. State uncertainty or conditions that would change the recommendation; do not merely repeat the option text.
 
 Use the bold `Question <number>` and `Options` labels exactly as shown, with blank lines between the paragraphs and options. Replace the placeholders; do not emit descriptive subsection headings or the template instructions. Number questions sequentially within the planning conversation, preserving earlier numbers when resuming.
 
 Place the one recommended option first, followed by genuinely different alternatives. Give two or three feasible choices, not cosmetic variants. If fewer exist, explain why; do not invent a choice to satisfy a quota. A recommendation may be to investigate rather than to implement. Accept an option letter or a custom approach.
 
-Usually keep the question to about 180–320 words; shorten simple decisions and expand only for material risk. Use plain, concrete language, not jargon-heavy essays or unexplained abbreviations. There is only one decision in the turn; do not hide extra questions in the sections or closing sentence.
+Usually keep the question to about 180–320 words; shorten simple decisions and expand only for material risk. Use plain, concrete language and explain abbreviations. Keep one decision per turn; do not hide extra questions in the sections or closing sentence.
 
 After each answer, record the choice and concise rationale, update affected AC/rules/tasks, do useful research, and ask only the next unresolved question. Accept custom answers. Clarify an ambiguous answer instead of treating it as approval. “Use your recommendation” applies to the current question unless explicitly broader; it never silently authorises newly discovered breaking changes.
 
@@ -160,4 +160,4 @@ After successful implementation and agreed verification, state what changed, whi
 
 Provide a detailed **suggested git commit message** in one copyable block in chat. Follow the repository convention; otherwise use a clear imperative subject and a body explaining why, changes, verification, compatibility/migration, and documentation. Use a `BREAKING CHANGE:` footer only when warranted and compatible with the chosen convention. Do not claim a commit was made or an unperformed test/deployment succeeded.
 
-Planning alone does not earn an implementation-success message. On a plan-only handoff, do not fabricate one. If the user specifically requests a planning-artifact commit message, label it accordingly and include only planning files actually created or modified. See the completion template for all three outcomes.
+Do not claim implementation success for planning alone. If the user specifically requests a planning-artifact commit message, label it accordingly and include only planning files actually created or modified. See the completion template for all three outcomes.

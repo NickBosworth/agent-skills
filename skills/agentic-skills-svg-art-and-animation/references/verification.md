@@ -38,7 +38,7 @@ The output directory must be new or empty. Existing files are not overwritten. O
 
 Useful options: `--background transparent|white|black|checker`; `--scale 1..4` for device scale; `--color-scheme light|dark`; `--browser chromium|firefox|webkit` after installing that browser. `--executable` supports an explicitly chosen, trusted Chromium binary only; the normal path uses the Playwright-managed browser. This release's execution tests used Chromium, not all the selectable engines.
 
-The viewport is in CSS pixels. Root CSS width/height are fitted to that viewport, while the source viewBox/aspect-ratio policy still controls content. This deliberately emulates a simple isolated inline host; verify intrinsic sizing and actual embedding separately. A wrong chosen aspect ratio can therefore reveal letterboxing rather than silently stretching the drawing.
+The viewport is in CSS pixels. Root CSS width/height are fitted to that viewport, while the source viewBox/aspect-ratio policy still controls content. This deliberately emulates a simple isolated inline host; verify intrinsic sizing and actual embedding separately. An unsuitable aspect ratio can therefore reveal letterboxing rather than silently stretching the drawing.
 
 The renderer pauses and seeks SMIL via SVG clocks, and pauses instantiated CSS/Web Animation objects before assigning their current time. It captures with animations allowed because screenshot-level disabling can cancel/fast-forward effects. It retains animation objects between frames, including effects that finish later. Sources: S8 and S9.
 

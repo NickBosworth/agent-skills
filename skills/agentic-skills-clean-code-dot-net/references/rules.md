@@ -2,7 +2,7 @@
 
 Stable IDs identify review findings and adopted policy. MUST/MUST NOT are binding
 requirements or explicit adopted policy; SHOULD is a reasoned default, MAY optional.
-Facts/conventions are evidence, not universal aesthetic mandates. Each Evidence
+Facts and conventions provide evidence; they do not establish universal style rules. Each Evidence
 link opens its primary source directly; [SOURCES](../SOURCES.md) retains source
 names, access dates and applicability caveats. Entry-point hard stops use these obligations.
 

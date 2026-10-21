@@ -121,7 +121,7 @@ Use actual captures or clearly labeled representative prototypes. Inspect motion
 - Reduced motion, muted audio, grayscale inspection, and assistive output with intended users.
 - Death, revive, respawn, reconnect, save/load, pause/resume, and repeated menu interruption.
 
-Ask players to perform decisions, then record missed cues, wrong interpretations, time to relevant action, accidental inputs, and recoverability. Record comfort and confidence separately from task success. Compare the same scenario before and after a change. Automated contrast or screenshot checks can detect some defects; they do not establish attention, comfort, or accessibility.
+Ask players to make decisions, then record missed cues, wrong interpretations, time to relevant action, accidental inputs, and recoverability. Record comfort and confidence separately from task success. Compare the same scenario before and after a change. Automated contrast or screenshot checks can detect some defects; they do not establish attention, comfort, or accessibility.
 
 ## Deliver an implementable HUD contract
 

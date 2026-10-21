@@ -18,8 +18,8 @@ they constrain the change. Keep setup, I/O and lazy enumeration in the measured
 region only when they belong to the actual operation being compared.
 
 Use optimized builds and the established benchmark runner. A compilation/dry
-smoke run is correctness evidence, not a timing result. Retain repeated samples
-and uncertainty; do not assert improvement from a single stopwatch observation.
+smoke run is correctness evidence, not a timing result. Keep repeated samples and report uncertainty. Do not claim an improvement from a
+single stopwatch observation.
 Forward runner arguments and select benchmarks explicitly for unattended runs.
 Estimate method × parameter combination × job count before execution; bound
 investigation cost rather than blindly multiplying cases.

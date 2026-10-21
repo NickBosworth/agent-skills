@@ -4,8 +4,8 @@ Load for untrusted inputs, file/process/network boundaries, deserialization or
 sensitive output. DNC-SEC-001; sources S59–S61. This is a focused coding review,
 not a penetration test or security certification.
 
-MUST identify the trust boundary and preserve authorization independently of
-validation. A valid identifier does not grant access to its record. Review input
+MUST identify the trust boundary and preserve authorization separately from
+input validation. A valid identifier does not grant access to its record. Review input
 length/shape and resource limits where input drives expensive work. Retain
 parameterized SQL and context-appropriate output encoding.
 

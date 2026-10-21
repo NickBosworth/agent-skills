@@ -6,8 +6,8 @@ by the prompt. Preserve the starting revision and independently inspect output a
 file changes. Keep raw transcripts and host state outside public source.
 
 Use normal selection for routing cases; explicitly load the full package for focused
-workflow trials. Record host/model/version when exposed, package/input revision,
-prompt, tools, actual questions and responses, file changes, verification and limits.
+workflow trials. Record the host, model and version when exposed; package and input revisions; the
+prompt and tools; actual questions and responses; file changes; verification; and limits.
 Run each decision turn with a real supplied answer; never let the agent invent one.
 
 Assess outcomes against behavior, not exact headings or word matches:

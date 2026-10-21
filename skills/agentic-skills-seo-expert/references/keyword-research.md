@@ -27,7 +27,7 @@ Expand by legitimate audience, problem, constraints, features, compatibility, al
 ## 4. Cluster by task, then map URLs
 Use shared user intent, content purpose and observed result overlap as evidence. Do not impose a universal percentage-overlap threshold. Keep supporting synonyms and close variants on a strong existing page where one answer serves them. Create a separate page only when a materially distinct task, format, audience, local service or product merits its own useful destination. [I01, I02, I04]
 
-For each cluster choose **existing page retained**, **existing page improved**, **distinct new page proposed**, **consolidation investigation**, **rejected**, or **deferred**. Multiple ranking URLs can be legitimate; investigate actual intent overlap and outcomes before calling it harmful cannibalisation. [I05]
+For each cluster, choose **existing page retained**, **existing page improved**, **distinct new page proposed**, **consolidation investigation**, **rejected**, or **deferred**. Multiple ranking URLs can be legitimate; investigate actual intent overlap and outcomes before calling it harmful cannibalisation. [I05]
 
 ## 5. Prioritise transparently
 Assess business fit, evidence of need, current coverage, ability to add unique value, result-page fit, realistic competition, effort and dependencies. Use high/medium/low with a written explanation rather than a fabricated precision score. Do not equate a vendor’s authority score with an engine metric or guarantee easier rankings from a low difficulty number.
@@ -40,7 +40,7 @@ Use the supplied template. Include the intended task, main/supporting queries, e
 A FAQ candidate needs a specific question, source or hypothesis label, why the reader needs it, where it belongs, and what a good answer must establish. Do not add a vague FAQ solely to include every variant. Factual answers need verification before publication.
 
 ## 7. Verify and learn
-Editorially review the answer, accuracy, intent fit and distinction from existing pages. After authorised release, monitor relevant exposure, visits and qualified conversions with scope/seasonality caveats. A first-pass plan remains a hypothesis about opportunity until real outcomes accumulate.
+Review the answer's editorial quality, accuracy, intent fit and distinction from existing pages. After authorised release, monitor relevant exposure, visits and qualified conversions with scope/seasonality caveats. A first-pass plan remains a hypothesis about opportunity until real outcomes accumulate.
 
 Sources: G40, G42, G43, I01–I05. The classification, ledger and approval workflow are pack-defined.
 

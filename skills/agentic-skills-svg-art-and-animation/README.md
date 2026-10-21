@@ -1,6 +1,6 @@
 # agentic-skills · SVG Art and Animation
 
-Version **2.0.1** · Licence **MIT**
+Version **2.0.2** · Licence **MIT**
 
 Create and repair editable SVG geometry and motion for the actual delivery target.
 

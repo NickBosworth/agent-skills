@@ -15,7 +15,7 @@
 
 Treat review as an investigation of specific player tasks, not a hunt for visual defects alone. The workflow here is this skill's testing synthesis. Heuristics can direct attention to understandable status, familiar interaction, and recovery; a heuristic match is not measured evidence of usability. [F01](sources.md#f01)
 
-Define the affected build, surfaces, game rules, player groups, inputs, hardware, access settings, and languages. State what must be learned: whether players notice a threat, understand a comparison, complete setup, recover a save, or maintain control during a transition.
+Define the affected build, surfaces, game rules, player groups, inputs, hardware, access settings, and languages. State what the review must establish: whether players notice a threat, understand a comparison, complete setup, recover a save, or maintain control during a transition.
 
 Classify each claim before using it:
 

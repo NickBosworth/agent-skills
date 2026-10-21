@@ -24,7 +24,7 @@ Before adopting a plugin, verify release/commit, engine version, renderer, langu
 
 ## Separate authority from derived work
 
-Use boundaries that make ownership/invalidation testable. These are responsibilities, not mandatory folders or classes.
+Choose boundaries that let you test ownership and invalidation. These are responsibilities, not mandatory folders or classes.
 
 | Responsibility | Owns | Must not secretly own |
 | --- | --- | --- |
@@ -52,9 +52,9 @@ For large coordinates, separate integer world addresses from local floating-poin
 
 Specify a player action, observable result, relevant boundary case, and reproduction. Example: “Remove a block on either side of the origin/chunk boundary, walk through after the defined collision update, save, restart, and see the same opening.”
 
-Put sophisticated generation, lighting, LOD, or networking after the smallest loop unless it is the task's purpose. Instrument generation, mesh building, publication, physics, and GPU work separately. Optimize one identified stage at a time.
+Complete the smallest loop before adding sophisticated generation, lighting, LOD, or networking unless that system is the task's purpose. Instrument generation, mesh building, publication, physics, and GPU work separately. Optimize one identified stage at a time.
 
-Delegate independent modules after their coordinate/data/output contracts agree. Assign disjoint file ownership and one integration owner to verify the loop. Keep a terse checkpoint: milestone, decisions, exact commands, observed result, next unresolved issue.
+Delegate independent modules after their coordinate/data/output contracts agree. Assign disjoint file ownership and one integration owner to verify the loop. Keep a brief checkpoint record: milestone, decisions, exact commands, observed result, next unresolved issue.
 
 ## Repair existing architecture
 

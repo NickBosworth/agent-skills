@@ -7,7 +7,7 @@ keyboard, touch and appropriate semantic controls belong in the contract.
 Forms need visible labels, instructions at the point of use, validation tied to the
 field, preserved valid input and server-side authority. Do not treat an optimistic
 animation as successful persistence. Avoid duplicate submissions and misleading
-retry outcomes. Confirmation is proportional to irreversible consequences.
+retry outcomes. Match confirmation to the action's irreversible consequences.
 
 Define whether filtering/sorting/selection/pagination applies to visible rows or the
 whole dataset. Keep zero, missing, stale, estimated and failed values distinct.

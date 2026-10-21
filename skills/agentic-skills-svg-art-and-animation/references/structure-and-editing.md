@@ -4,7 +4,7 @@
 
 Record `viewBox`, root width/height, `preserveAspectRatio`, namespace declarations, relevant IDs, layers/groups, transforms, CSS selectors, text styling, definitions, fragment references and animation hooks. Search host code for consumers of IDs/classes. Read the actual source, not only a rendered thumbnail.
 
-For a narrow edit, change the smallest subtree or attribute set. XML reserialization may alter prefixes, formatting and significant text whitespace. A diff is part of review. Keep the original file in version control or as an explicit baseline; do not silently reformat a large asset library.
+For a narrow edit, change the smallest subtree or attribute set. XML reserialization may alter prefixes, formatting and significant text whitespace. Review the diff. Keep the original file in version control or as an explicit baseline; do not silently reformat a large asset library.
 
 Treat an ID as a potentially public API. Renaming requires updating `url(#...)`, `href`/`xlink:href`, ARIA IDREFs, CSS selectors, SMIL timing references and external consumers. Namespace collisions become especially visible when two instances appear on one page. A filename prefix solves asset-to-asset collisions, not repeated instances of the same asset.
 
@@ -34,4 +34,4 @@ For charts, derive coordinates from actual data and verify domains, units, ticks
 
 A screenshot cannot recover original paths, layers or fonts. Label reconstruction or tracing as approximation, not lossless conversion. Do not replace an editable vector deliverable with a PNG hidden inside an SVG.
 
-Keep a source/delivery split when optimisation is useful. Inspect SVGO's installed configuration; do not assume defaults preserve groups, IDs or morph topology. Review ID cleanup, group collapse, path conversion/merge, attribute cleanup, hidden element removal and metadata removal. A prefix plugin does not by itself guarantee instance uniqueness or rewrite all external host references. Render representative before/after frames and compare the integration hooks. Sources: S6, S13, S14.
+Keep separate source and delivery files when optimisation is useful. Inspect SVGO's installed configuration; do not assume defaults preserve groups, IDs or morph topology. Review ID cleanup, group collapse, path conversion/merge, attribute cleanup, hidden element removal and metadata removal. A prefix plugin does not by itself guarantee instance uniqueness or rewrite all external host references. Render representative before/after frames and compare the integration hooks. Sources: S6, S13, S14.

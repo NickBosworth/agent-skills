@@ -3,7 +3,7 @@ name: agentic-skills-voxel-game-dev
 license: CC0-1.0
 description: Design, implement, debug, extend, and optimize voxel-based games in new or existing projects. Use for block worlds, editable scalar-field terrain, voxel art game assets, chunk meshing, terrain streaming, procedural generation, mining/building, collision, lighting, world saves, and voxel multiplayer. Adapt to Godot, Unity, Unreal, web, or custom engines. Inspect the project, choose the representation, deliver playable increments, and verify voxel-specific correctness and performance. Exclude medical/scientific voxel analysis, standalone voxel-style images, and unrelated game work.
 metadata:
-  version: "2.0.1"
+  version: "2.0.2"
 ---
 
 # Voxel Game Development
@@ -31,7 +31,7 @@ Turn the requested player experience into an implemented, verified increment. Pr
 
 ## Ask useful questions, one at a time
 
-Infer answers from the user and repository first. Ask when uncertainty changes player experience, compatibility, a major dependency, scope, or substantial rework. Explain what you observed, what remains unknown, why it matters, two or three realistic options, and a justified recommendation. Ask one question, wait for its answer, and carry it forward.
+Use the user's request and repository evidence to resolve questions first. Ask when uncertainty affects player experience, compatibility, a major dependency, scope, or substantial rework. Explain what you observed, what remains unknown, why it matters, two or three realistic options, and a justified recommendation. Ask one question, wait for its answer, and carry it forward.
 
 Example: “The brief asks for digging caves but does not specify the surface style. That changes the world data and mesher. Do you want discrete blocks, smooth terrain, or both? I recommend blocks for this small building prototype because edits, placement, and collision can share a cell grid.”
 
@@ -52,7 +52,7 @@ A sparse chunk lookup with contiguous local storage is a candidate for a convent
 
 ## Implement playable increments
 
-Adapt this sequence for a new editable-world game. Enter at the relevant step for a narrow existing-project task.
+Adapt this sequence for a new editable-world game. For a narrow task in an existing project, start at the relevant step.
 
 1. **Prove the loop.** Render a tiny world; move/look; target an object/cell; perform the interaction; show feedback. Make placement visibly succeed or fail for a clear reason. For art-only games, use the normal engine asset/gameplay path.
 2. **Prove correctness.** Implement coordinates, boundary sampling, meshing, and collision with small fixtures. Keep a simple oracle while optimizing. Cover negative positions, seams, empty/full chunks, material boundaries, and repeated edits.

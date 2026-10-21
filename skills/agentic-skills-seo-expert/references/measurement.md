@@ -21,7 +21,7 @@ Name the hypothesis, change set, expected mechanism, target cohort, outcome and 
 For sufficiently large comparable template groups, a well-designed controlled SEO test can improve attribution. Consider unit selection, treatment consistency, spillover, sample adequacy and implementation checks. Do not invent statistical significance or apply a vendor case study’s uplift as a forecast for this site. Small sites may need careful observational learning instead. [I08]
 
 ## Report uncertainty
-Show absolute values alongside percentages, the denominator, missing data and relevant time lag. Do not declare indexing recovery from a successful live fetch or search success from a lab-score gain. Distinguish deployment correctness, engine uptake and user/business outcomes.
+Show absolute values alongside percentages. Include the denominator, missing data and relevant time lag. Do not declare indexing recovery from a successful live fetch or search success from a lab-score gain. Distinguish deployment correctness, engine uptake and user/business outcomes.
 
 Use a proportionate review cadence based on traffic, release risk and decision urgency. The skill cannot perform background work unless the host actually supplies scheduling and the user authorises it. Provide a monitoring plan rather than pretending to have set one up.
 

@@ -31,7 +31,7 @@ Treat the guidance and probes as this skill's synthesis; linked developer exampl
 
 **Avoid.** Ambiguous hit confirmations, oversized score banners during danger, decorative reticles suggesting false precision, and labels that reveal undiscovered enemies.
 
-**Probe.** Test reload decisions while tracking a moving target, shield damage versus health damage, ally/enemy overlap, and an offscreen attack. Compare actual detection and recovery rather than preferred screenshot alone. The FPS display experiments in [H02](sources.md#h02) support task-specific evaluation with clear limits.
+**Probe.** Test reload decisions while tracking a moving target, shield damage versus health damage, ally/enemy overlap, and an offscreen attack. Compare actual detection and recovery rather than screenshot preference alone. The FPS display experiments in [H02](sources.md#h02) support task-specific evaluation with clear limits.
 
 ## Battle royale and team survival
 

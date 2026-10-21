@@ -22,8 +22,8 @@ UseVSTest or an incomplete executable bridge can invalidate a guessed MTP comman
 | SDK 10+ native MTP selected in global.json | Native dotnet test project/solution selection with supported MTP 1.7+; arguments can be direct. A separator may be supported for unambiguous forwarding; follow the actual SDK. |
 | Unknown, contradictory or unsupported combination | Inspect effective settings or report the precise missing prerequisite; do not probe arbitrary flags until something exits zero. |
 
-Select runner-specific filters and reports; xUnit v3 and TUnit do not share every
-VSTest filter. Request a supported report extension only when installed. Verify
+Use the selected runner's filters and reports. xUnit v3 and TUnit do not support
+every VSTest filter. Request a supported report extension only when installed. Verify
 selected and executed tests, failed/skipped counts and report freshness for each
 required framework. A process exit of zero is insufficient evidence.
 

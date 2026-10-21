@@ -1,7 +1,7 @@
 # Images, video, publishing, paywalls and UGC
 
 ## Images
-Check useful images are accessible in the rendered page, relevant to nearby content, properly sized and not needlessly expensive. Give informative images appropriate concise alternative text; decorative images can correctly use empty alt text. Missing alt and empty alt are different observations, and the actual image’s purpose determines the right action. Do not stuff keywords into every image description. [G28, S02]
+Check that useful images are accessible in the rendered page, relevant to nearby content, properly sized and not needlessly expensive. Give informative images appropriate concise alternative text; decorative images can correctly use empty alt text. Missing alt and empty alt are different observations, and the actual image’s purpose determines the right action. Do not stuff keywords into every image description. [G28, S02]
 
 Inspect image URLs, response behaviour, lazy loading, responsive variants and image sitemap/metadata where useful. Confirm licensing and rights before creating or reusing media. Preferred-image metadata can be considered under current engine guidance, but it does not guarantee the chosen thumbnail. [G28]
 

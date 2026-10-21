@@ -1,8 +1,8 @@
 # Editing for substance, voice and movement
 
 Use this guide for a substantial rewrite or a diagnosis of generic copy. The
-patterns below are editorial observations, not an authorship classifier. Repair
-the reader's problem, rather than demonstrating that every pattern was removed.
+patterns below are editorial observations, not an authorship classifier. Solve
+the reader's problem; do not edit merely to remove every pattern.
 
 ## Recover the thought
 

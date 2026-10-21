@@ -87,7 +87,7 @@ Evidence: Victoria 3 added decision-relevant groupings and contextual explanatio
 
 **Useful surfaces and states.** For construction, distinguish selected tool, preview, valid placement, invalid placement, committed order, construction in progress, and operational state. Show footprint, connections, relevant access restrictions, upfront cost, and recurring commitments. Distinguish a planned building from a working service in maps and summaries. Make selection, cancellation, relocation, demolition, and upgrades visibly different actions.
 
-For operational inspection, connect aggregate symptoms to affected people, buildings, routes, and tasks. Expose evidenced limiting conditions such as access, materials, staff, working hours, power, or output storage when they apply. Show the time window behind satisfaction, income, utilization, or queue length. Let the player inspect representative individuals without assuming one individual's condition explains an entire population.
+For operational inspection, connect aggregate symptoms to affected people, buildings, routes, and tasks. Expose limiting conditions supported by evidence, such as access, materials, staff, working hours, power, or output storage, when they apply. Show the time window behind satisfaction, income, utilization, or queue length. Let the player inspect representative individuals without assuming one individual's condition explains an entire population.
 
 **Tradeoffs.** A simulation can support enjoyment through broad planning, detailed optimization, storytelling, or decoration. Provide the relevant level of explanation without automatically solving it. Aggregate recurring events when individual alerts add little value, while retaining severe or unusual events that demand attention.
 

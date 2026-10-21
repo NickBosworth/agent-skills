@@ -1,6 +1,6 @@
 # Game interface design system
 
-Populate from the chosen game direction. This template intentionally contains no preset palette, typeface, corner style, spacing scale, or animation duration. Use the project's actual asset and token formats when implementing it.
+Base this template on the chosen game direction. It intentionally contains no preset palette, typeface, corner style, spacing scale, or animation duration. Use the project's actual asset and token formats when implementing it.
 
 ## Direction
 

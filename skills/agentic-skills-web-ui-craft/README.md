@@ -1,6 +1,6 @@
 # agentic-skills · Web UI Craft
 
-Version **2.0.1** · Licence **CC0-1.0**
+Version **2.0.2** · Licence **CC0-1.0**
 
 Design and repair web interfaces with contextual visual and interaction evidence.
 

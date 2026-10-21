@@ -39,7 +39,7 @@ Acquire that snapshot using the engine's ownership, locks, or immutable buffers.
 
 Bound queued, running, and completed-but-unpublished work by bytes as well as counts. Include input copies, halos, output meshes, collision cooking, and upload staging. Voxel Tools documents how preemptive copies can accumulate faster than workers consume them: [performance](https://voxel-tools.readthedocs.io/en/latest/performance/).
 
-Prioritize playable collision and current edits, then visible terrain, then prefetch. Derive prefetch from speed and observed completion latency. Use unload hysteresis, coalesce repeated rebuild requests for the same product, and cap main-thread publication work. Do not coalesce away gameplay edits themselves. Release every allocation on success, cancellation, stale completion, and error. Keep dirty chunks or their immutable save snapshots alive until the chosen durability policy permits eviction. A teleport should retire obsolete demand without flooding a new unbounded queue.
+Prioritize playable collision and current edits, then visible terrain, then prefetch. Derive prefetch from speed and observed completion latency. Use unload hysteresis, coalesce repeated rebuild requests for the same product, and cap main-thread publication work. Do not coalesce away gameplay edits themselves. Release every allocation on success, cancellation, stale completion, and error. Keep dirty chunks or their immutable save snapshots alive until the chosen durability policy permits eviction. A teleport should retire obsolete demand without creating another unbounded queue.
 
 ## Deterministic generation
 

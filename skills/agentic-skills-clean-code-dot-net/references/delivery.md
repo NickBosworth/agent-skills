@@ -48,6 +48,7 @@ unverified, not proof of a product defect. See the comparative
 ## Human readability review
 
 MUST review changed meaningful symbols:
+
 - What does the operation do, and why does it exist?
 - Is the business rule visible along the normal path?
 - What changes, fails or cancels, and who owns resources/state?
@@ -68,8 +69,8 @@ material omissions or unresolved rationale with the semantic/readability finding
 clear code needs no ceremonial per-method report. Separately verify XML/cref
 compilation and applicable packaged/rendered inheritance and links.
 
-Report compiler XML/selected diagnostic results separately from semantic contract
-completeness. Successful generation/rendering does not prove that source XML tells
+Report compiler XML and selected diagnostic results separately from the review
+of contract completeness. Successful generation/rendering does not prove that source XML tells
 callers what they need. Disclose material omissions and unverified guarantees even
 when build/tests are green; keep the completion summary compact.
 

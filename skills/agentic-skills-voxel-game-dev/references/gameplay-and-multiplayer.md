@@ -13,7 +13,7 @@ Use this reference to turn voxel technology into playable behavior. These are or
 
 ## Choose the gameplay slice
 
-Write a short loop describing the player's intent, action, feedback, consequence, and ability to repeat it. Identify how voxels contribute: mutable terrain, destructible objects, construction cells, tactical occupancy, or an art pipeline. Do not impose mining, crafting, infinite terrain, or multiplayer on a game that needs none of them.
+Describe a short loop: the player's intent, action, feedback, consequence, and ability to repeat it. Identify how voxels contribute: mutable terrain, destructible objects, construction cells, tactical occupancy, or an art pipeline. Do not impose mining, crafting, infinite terrain, or multiplayer on a game that needs none of them.
 
 | Game requirement | Small useful slice | Proof beyond a terrain screenshot |
 | --- | --- | --- |
@@ -22,7 +22,7 @@ Write a short loop describing the player's intent, action, feedback, consequence
 | Colony/tactical play | Place an obstruction and move one agent | Placement changes reachable paths and simulation state |
 | Voxel art only | Import one model into a playable scene | Materials, scale, camera, animation/collision meet the intended style |
 
-Build the complete narrow interaction before multiplying biomes or block types. Include camera/input controls, targeting feedback, a recoverable start position, and a way to reproduce the scene. For a terrain-only repair, keep the existing gameplay loop and add only the fixture needed to demonstrate the fix.
+Complete the narrow interaction before adding more biomes or block types. Include camera/input controls, targeting feedback, a recoverable start position, and a way to reproduce the scene. For a terrain-only repair, keep the existing gameplay loop and add only the fixture needed to demonstrate the fix.
 
 ## Apply edits consistently
 

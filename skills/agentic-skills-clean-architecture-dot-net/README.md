@@ -1,6 +1,6 @@
 # agentic-skills · Clean Architecture for .NET
 
-Version **1.0.0** · Licence **CC0-1.0**
+Version **1.0.1** · Licence **CC0-1.0**
 
 Choose and record .NET architecture decisions, audit existing codebases and carry
 out authorized refactors. The skill explains each decision, offers practical

@@ -2,8 +2,9 @@
 
 Identify who uses the screen, the job they must finish, delivery level and existing
 constraints. Inspect routes, design tokens, shared components, contracts and adjacent
-screens. Baseline the primary task in the running application when authorized. A
-screenshot supports visual findings only, not claims about hidden behaviour.
+screens. Record a baseline for the primary task in the running application when
+authorized. A screenshot supports visual findings only, not claims about hidden
+behaviour.
 
 Reuse the current product identity. Audit mode reports without edits; repair mode
 fixes observed defects; create mode proves a representative slice before expansion.

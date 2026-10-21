@@ -1,6 +1,6 @@
 # DRY, SOLID and pattern choices
 
-Use these tests to diagnose a concrete problem. The remedies are candidates, not
+Use this guidance to diagnose a concrete problem. The remedies are candidates, not
 automatic rules. [Sources](../SOURCES.md) distinguish platform contracts from this
 skill's recommendations.
 
@@ -73,7 +73,7 @@ uniqueness constraints, concurrency tokens and invariants under competing writer
 `DbContext` is not thread-safe. Choose lifetimes for the host's unit of work; do not
 capture a request-scoped context in a singleton or parallelize operations on the
 same instance. Built-in DI plus constructor dependencies is usually sufficient.
-Factories/scopes can be appropriate at composition or work boundaries; service
+Factories and scopes can be appropriate at composition or work boundaries. Service
 location inside domain logic hides dependencies and ownership.
 
 ## Separate related but independent choices

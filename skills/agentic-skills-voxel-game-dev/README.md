@@ -1,6 +1,6 @@
 # agentic-skills · Voxel Game Development
 
-Version **2.0.1** · Licence **CC0-1.0**
+Version **2.0.2** · Licence **CC0-1.0**
 
 Build voxel game systems with explicit coordinates, lifecycle, persistence and performance contracts.
 

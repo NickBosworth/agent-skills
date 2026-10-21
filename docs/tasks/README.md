@@ -19,3 +19,6 @@ behavior-preserving examples and separate semantic/automated evidence.
 
 [TASK-0009](TASK-0009-clean-architecture-dot-net.md) records the .NET architecture
 skill, primary-source research, project-rule workflow and scoped verification.
+
+[TASK-0010](TASK-0010-skill-documentation-review.md) records the writing review across
+all ten skill packages, preservation checks and verification limits.

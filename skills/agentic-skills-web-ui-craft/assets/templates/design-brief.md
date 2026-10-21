@@ -2,5 +2,5 @@
 
 Record user and primary task, delivery level, existing constraints/design system,
 source evidence, representative content, viewport/input expectations, accepted
-direction and consequential unknowns. Reuse existing project records. No invented
-research, persona, business proof or requirement.
+direction and consequential unknowns. Reuse existing project records. Do not invent
+research, personas, business proof or requirements.

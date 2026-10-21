@@ -27,7 +27,7 @@ Choose the experience first. A coherent interface can support tension, delight, 
 | Interaction and information | How can the player understand and act on that? | Flows, selection, labels, forecasts, navigation, hierarchy, feedback, recovery |
 | Visual and sensory expression | How should it feel and belong to this world? | Typography, shape, material, colour, composition, motion, sound, haptics |
 
-Work across the layers, while keeping authority clear. A UI task can expose a rules problem; it does not automatically authorise redesigning the rules. Show the conflict and recommend an approach. Complete independent interface work while a consequential rule decision remains open.
+Work across the layers while keeping authority clear. A UI task can expose a rules problem; it does not automatically authorise redesigning the rules. Show the conflict and recommend an approach. Complete independent interface work while a consequential rule decision remains open.
 
 Keep the distinction in design reviews. A well-composed screenshot cannot settle whether an action has the right consequences. A correct interaction can still feel visually generic or aesthetically unresolved. Evaluate both.
 
@@ -67,7 +67,7 @@ For forecasts, state relevant assumptions and horizon. Do not fabricate a statis
 
 ## Organise complexity
 
-Group around the player's mental model and task. An inventory can need search, filters, sorting, grouping, quick access, and comparison; a map can need layers and an object inspector. Choose these features from actual collection size and use, not a checklist of fashionable controls.
+Group information around the player's mental model and task. An inventory can need search, filters, sorting, grouping, quick access, and comparison; a map can need layers and an object inspector. Choose these features from actual collection size and use, not a checklist of fashionable controls.
 
 Make relationships visible: parent/child, prerequisite, owner, sequence, containment, spatial connection, and cause. Use tables for comparable values, trees for genuine hierarchy, maps for spatial relationships, and small diagrams for dependencies. A radial is an action selector, not a default presentation for a long catalogue.
 
@@ -88,7 +88,7 @@ Choose persistence deliberately:
 
 Balance density against retrieval effort. A dense strategy view can be easier to use than a succession of sparse pages. A combat HUD can contain several useful signals yet leave the world visually dominant. Judge the complete decision loop under its real time pressure.
 
-Avoid absolute rules about empty space, menu depth, number of choices, or where eyes must travel. Those can be useful design hypotheses, but input, familiarity, camera, device, and task alter the trade-off. Test the bottleneck actually present in the game.
+Avoid absolute rules about empty space, menu depth, number of choices, or where eyes must travel. Those can be useful design hypotheses, but input, familiarity, camera, device, and task alter the trade-off. Test the game's actual bottleneck.
 
 ## Apply human-factors principles carefully
 

@@ -89,7 +89,7 @@ Define brush bounds in sample space, including interpolation and normal dependen
 
 Capture revisions for all inputs to asynchronous jobs, including LOD assignment and transition neighbours. Reject stale results; do not combine a new fine mesh with an incompatible old transition. Keep collider replacement and navigation behaviour explicit so players cannot fall through a temporary edit boundary.
 
-Prioritize nearby interaction, bound generation/mesh queues and measure upload/collision work separately. The performance benefit of fewer polygons can be lost to rebuilding, allocations or synchronization; choose budgets from the actual game and target hardware.
+Prioritize nearby interaction, bound generation/mesh queues and measure upload/collision work separately. Rebuilding, allocations or synchronization can erase the performance benefit of fewer polygons; choose budgets from the actual game and target hardware.
 
 ## Verify geometry and behaviour
 

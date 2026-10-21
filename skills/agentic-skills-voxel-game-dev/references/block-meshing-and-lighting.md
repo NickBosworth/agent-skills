@@ -35,7 +35,7 @@ Model directed interface visibility as a policy of both cells, the face directio
 
 Record expected outcomes for opaque/air, opaque/opaque, water/air, water/water, glass/glass, different transparent media and partial models. Decide whether a material interface needs zero, one or two directed surfaces. Avoid accidental coplanar duplicates. Keep collision occupancy and light transmission separate from the rendering rule.
 
-For slabs, stairs or arbitrary models, use verified face coverage/culling metadata or a suitable model mesher. A cube's six-face oracle is a limited reference, not a substitute for shape-aware culling. Treat fluid level geometry as its own policy if gameplay requires it.
+For slabs, stairs or arbitrary models, use verified face coverage/culling metadata or a suitable model mesher. A cube's six-face oracle has limited scope; it cannot replace shape-aware culling. Treat fluid level geometry as its own policy if gameplay requires it.
 
 ## Implement and verify greedy merging
 
@@ -81,7 +81,7 @@ Derive invalidation from the actual reads. Axial face visibility, diagonal AO an
 
 Acquire a consistent input snapshot or use the project's locking model. Capture geometry, neighbour, material and lighting revisions that affect output. Before upload, reject results whose dependencies changed or whose chunk was unloaded/replaced. Do not let a late job restore an obsolete mesh or collider.
 
-Bound queued work and retained input memory; prioritize interaction near the player. Production implementations document substantial neighbouring-data and locking costs; [Voxel Tools' performance discussion](https://voxel-tools.readthedocs.io/en/latest/performance/) is evidence for measuring these operations rather than assuming worker threads make them free. Its historical engine timings are not universal budgets.
+Bound queued work and retained input memory; prioritize interaction near the player. Production implementations document substantial costs for accessing neighbouring data and acquiring locks; [Voxel Tools' performance discussion](https://voxel-tools.readthedocs.io/en/latest/performance/) is evidence for measuring these operations rather than assuming worker threads make them free. Its historical engine timings are not universal budgets.
 
 ## Choose acceptance fixtures
 

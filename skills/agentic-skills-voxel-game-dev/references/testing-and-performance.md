@@ -54,7 +54,7 @@ Use arithmetic for capacity screening, then measure. A dense cubic chunk contain
 
 ## Diagnose before changing architecture
 
-Identify the constrained stage before optimizing. Slow generation does not justify a more complex mesher; upload stalls may remain after meshing gets faster. Large chunks reduce chunk count but increase rebuild amplification and publication bursts. Smaller chunks improve locality of edits but add per-chunk overhead. Benchmark these tradeoffs against the actual action mix.
+Identify the bottleneck before optimizing. Slow generation does not justify a more complex mesher; upload stalls may remain after meshing gets faster. Large chunks reduce chunk count but increase rebuild amplification and publication bursts. Smaller chunks improve locality of edits but add per-chunk overhead. Benchmark these tradeoffs against the actual action mix.
 
 If workers outproduce publication, bound completions and reduce obsolete work instead of adding threads. If collision cooking dominates, compare collision extent, simplified geometry, direct voxel queries, and batching within gameplay constraints. If navigation rebakes stall, inspect source parsing separately from baking; Godot documents this distinction: [navigation meshes](https://docs.godotengine.org/en/stable/tutorials/navigation/navigation_using_navigationmeshes.html). If saving backs up, inspect serialization and transaction size before increasing writer concurrency; SQLite allows only one simultaneous write transaction: [transactions](https://sqlite.org/lang_transaction.html).
 

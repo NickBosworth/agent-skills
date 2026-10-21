@@ -3,15 +3,15 @@ name: agentic-skills-agentic-codebase
 license: CC0-1.0
 description: "Set up, maintain, audit, repair, or migrate a repository's agentic development environment: AGENTS.md, scoped instructions, portable local skills, architecture and technology decisions, tasks, rules, verification, and agent adapters. Use for greenfield agent-ready setup, stale or contradictory project guidance, or consolidation of existing agent structures. Inspect first, preserve useful conventions, perform authorized improvements, and ask one contextual question at a time for consequential uncertainty."
 metadata:
-  version: "2.1.0"
+  version: "2.1.1"
 ---
 
 # Agentic Codebase
 
 Build a small, trustworthy operating environment for coding agents. Establish
 clear sources of truth, useful retrieval paths, repeatable workflows and honest
-verification. Use the portable conventions in this package while adapting to
-the repository. Treat them as a versioned design, not a universal industry standard.
+verification. Adapt this package's portable conventions to the repository.
+Treat them as a versioned design, not a universal industry standard.
 
 ## Scope and operating contract
 
@@ -78,8 +78,9 @@ template only when that artifact serves a real need.
 5. Establish which document, configuration, tracker or person owns each
    consequential fact or decision. Record actual instruction scope and agent
    host/surface/version where it affects compatibility.
-6. Inspect unresolved relationships manually; an inventory lists paths, not
-   effective runtime instruction precedence. Note excluded or unreadable areas.
+6. Inspect unresolved relationships manually. An inventory lists paths but does
+   not establish effective runtime instruction precedence. Note excluded or
+   unreadable areas.
    Configuration results list paths only. Inspect relevant settings and hooks
    deliberately without exporting credentials or running their contents. Ignored
    local files and settings outside the target remain uninspected unless separately
@@ -139,9 +140,9 @@ the skeleton's `UNKNOWN` markers using evidence and user decisions; a generated
 skeleton is not a completed setup. For established documents, edit semantically
 using the templates as a checklist instead of rerunning a scaffold over them.
 
-Produce an actionable first implementation outcome, dependencies and acceptance
-criteria. Include significant architecture choices as proposals or established
-decisions with rationale. Preserve real uncertainty as explicit next work.
+Define the first actionable implementation outcome, its dependencies and
+acceptance criteria. Include significant architecture choices as proposals or
+established decisions with rationale. Preserve real uncertainty as explicit next work.
 
 ### Maintain
 
@@ -156,8 +157,8 @@ state the sampled scope. A no-change result is valid when supported by evidence.
 Build a source-to-destination mapping and a conflict list before restructuring.
 Merge useful guidance without erasing rationale, weakening accepted invariants,
 or discarding active work. Preserve stable IDs and update inbound references.
-Treat code-versus-decision mismatches as an investigation, not automatic proof
-that the document should change. Stage migration so no instruction entry point
+Investigate mismatches between code and decisions before concluding that the
+document should change. Stage migration so no instruction entry point
 is broken; see the detailed repair workflow.
 
 For all modes, use only needed tool adapters. Check current host capabilities
@@ -181,8 +182,8 @@ and Markdown links do not guarantee identical discovery in every host.
 4. Inspect and run appropriate, authorized project verification when available.
    Distinguish baseline failures, new failures and checks not run. Avoid broad
    test runs unrelated to the changed environment.
-5. Verify host discovery when access permits: confirm root and relevant nested
-   instructions and one intended skill can be found. Record documentation-only
+5. Verify host discovery when access permits: confirm the host can find root and
+   relevant nested instructions and one intended skill. Record documentation-only
    compatibility when no actual host test was performed.
 6. Record review evidence only after the specific review occurred:
 

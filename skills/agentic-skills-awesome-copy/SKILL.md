@@ -3,7 +3,7 @@ name: agentic-skills-awesome-copy
 description: Write, edit or critique titles, headlines and reader-facing copy that sounds natural, specific and well written. Use for website copy, articles, emails, newsletters, social posts, product text, or requests to remove AI slop, generic phrasing and robotic prose. Preserve the author's voice, facts and intended effect. Not an AI-authorship detector; code/API documentation and visual design alone are outside scope.
 license: CC0-1.0
 metadata:
-  version: "1.0.1"
+  version: "1.0.2"
   research-date: "2026-10-12"
 ---
 
@@ -51,8 +51,8 @@ alternatives**. A critique stays a critique unless edits are requested. For an
 existing project, read the relevant draft, nearby copy, glossary and style rules
 before replacing its language. Do not redesign a page to solve a wording task.
 
-Work out the reader, their situation, what the piece should help them understand
-or do, the supported facts, and the delivery constraints. Keep this brief internal
+Identify the reader, their situation, the supported facts and delivery constraints.
+Decide what the piece should help them understand or do. Keep this brief internal
 unless the user wants strategy. Do not make them complete a questionnaire for a
 simple rewrite. Ask one focused question only when a missing fact would materially
 change the message; otherwise make a modest assumption and proceed. If factual

@@ -30,10 +30,16 @@ can be cohesive; a tiny class can violate a critical ownership boundary.
 
 ## Report useful findings
 
-For each finding give: category (violation, decision gap, defect or improvement),
-severity and concrete impact, path/symbol and rule/evidence, confidence/unknowns,
-smallest plausible remedy, decision required and verification. Put data/security
-risks before organizational convenience. Separate observed failures from risks
+For each finding, give:
+
+- Category: violation, decision gap, defect or improvement.
+- Severity and concrete impact.
+- Affected path or symbol, relevant rule and supporting evidence.
+- Confidence and unknowns.
+- Smallest plausible remedy and any decision required.
+- Verification.
+
+Put data and security risks before organizational convenience. Separate observed failures from risks
 that have not been reproduced. Never claim whole-codebase coverage from a sample.
 
 Supply a short decision backlog and an incremental refactor sequence. Then ask one

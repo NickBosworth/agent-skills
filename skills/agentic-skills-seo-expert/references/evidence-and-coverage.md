@@ -13,7 +13,7 @@ Keep these concepts separate:
 Evidence has limits. Source code shows intent, not necessarily the deployed response. A browser shows one execution/context. A crawl sees the URLs and conditions it reached. An inspection tool distinguishes the stored index view from its live test. Search exports describe the reporting system’s measured scope, not the total market. Record those limits beside the conclusion. [G40, G41, I06, I07]
 
 ## Coverage ledger
-Build a union of route/CMS inventory, submitted sitemap URLs, discovered links, landing-page reports and available logs. Preserve provenance rather than deleting disagreements. For each URL or deterministic family record desired index state, locale, template, discovery source, test stages completed and unresolved access.
+Build a union of route/CMS inventory, submitted sitemap URLs, discovered links, landing-page reports and available logs. Preserve provenance rather than deleting disagreements. For each URL or deterministic family, record desired index state, locale, template, discovery source, test stages completed and unresolved access.
 
 Use **pass**, **fail**, **warning**, **not-tested**, **not-applicable**, and **blocked** for individual checks. `pass` requires the specified evidence; absent data is never a pass. Do not use a global “SEO pass”. A canonical hint is not proof of the engine-selected canonical. A `site:` query is not a reliable complete index inventory.
 

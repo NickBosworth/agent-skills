@@ -1,6 +1,6 @@
 # agentic-skills · Agentic Codebase
 
-Version **2.1.0** · Licence **CC0-1.0**
+Version **2.1.1** · Licence **CC0-1.0**
 
 Set up, audit, maintain and repair repository guidance, decisions, task routes and agent adapters.
 

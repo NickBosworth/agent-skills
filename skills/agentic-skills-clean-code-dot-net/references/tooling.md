@@ -1,7 +1,8 @@
 # Profile, adoption and executable gates
 
 Sources S11–S20, S44–S49, S51, S55–S57. DNC-TOOL-001–003 and DNC-VERIFY-001.
-The default assets are mergeable policy, never automatically installed.
+The default assets provide policy to merge after review; they are never installed
+automatically.
 [Validation](../VALIDATION.md) records actual tested versions and diagnostic behavior.
 
 ## Discover effective policy
@@ -44,7 +45,7 @@ obligations rather than pretending IDE1006 handles every concept.
 Use dotnet format as SDK baseline, or honor the established formatter.
 CSharpier owns wrapping/layout if already chosen; do not impose dotnet whitespace
 verification on top of it. Use that formatter's checked/pinned command plus SDK
-semantic checks configured not to fight it. No second formatter by reflex.
+semantic checks configured not to fight it. Do not add a second formatter without an established need.
 
 The [props fragment](../assets/Quality.props) is a strict net10.0 production
 baseline, imported explicitly after project settings in the fixture.
@@ -162,8 +163,9 @@ PASS covers executed commands only; it does not execute the mandatory semantic
 contract XML review or establish factual completeness.
 
 --report creates a new local JSON report with status, relative scope, command, selected
-SDK, exit/result and test counts. Raw subprocess output is withheld to avoid echoing
-secrets; --log-directory explicitly saves private local diagnostics. Existing report/log files are refused rather than overwritten. Keep logs out of
+SDK, exit/result and test counts. Raw subprocess output is withheld to avoid echoing secrets. --log-directory
+explicitly saves private local diagnostics. Existing report/log files are refused
+rather than overwritten. Keep logs out of
 commits/public CI artifacts and inspect/redact before sharing. Reports are evidence,
 not privacy certification. Source files remain unchanged; build artifacts do not.
 No fix mode is provided. Authorized whitespace fixes can run dotnet format whitespace

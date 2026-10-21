@@ -1,5 +1,12 @@
 # Changes
 
+## 2.0.3 — 2026-10-21
+
+Copyedited package documentation with Writing Clearly and Concisely. Clarified
+sentences and instructions while preserving workflow requirements, technical
+contracts, commands, examples, notices and historical evidence. No helper or
+evaluation input changed; no new behavioral result is implied.
+
 ## 2.0.2 — 2026-10-12
 
 Use bold numbered question labels, purpose and current-code paragraphs, a bold
