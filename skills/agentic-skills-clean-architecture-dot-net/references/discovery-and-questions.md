@@ -23,6 +23,10 @@ Map separately:
 | Data ownership | Readers/writers, schemas, migrations, shared tables, transaction and concurrency boundaries |
 | Delivery | Deployable processes, compatibility requirements, release coordination, operations and ownership |
 
+Inspect quality goals that affect a choice: correctness, latency/throughput,
+availability, consistency, tenant/security isolation, team ownership and expected
+changes. Do not invent traffic, budgets, compliance duties or future scale.
+
 Trace one typical and one consequential failure path per relevant capability.
 For an audit, cover representative writes, queries, jobs and external integrations;
 state which paths were sampled. Do not execute an unknown build or test against
@@ -74,3 +78,23 @@ coherent, accepted design and the task fits it, use that design. If the user def
 record the unresolved scope and trigger; continue only work that does not depend
 on the missing choice. On resumption, check whether the code or constraints changed
 before reopening an accepted decision.
+
+## Partial answers and resumption
+
+Split a qualified answer into the choice actually accepted, any condition on it,
+and the separate choice left open. “Reservation owns capacity; defer database
+separation” accepts ownership only. Do not infer a separate database, transaction
+policy, package or implementation permission from that answer.
+
+At a pause, give a compact handoff: accepted IDs and scope, deferred choices and
+triggers, current debt/check status, authorized independent work and the next
+blocking question. Keep it in chat unless saving is authorized; reuse existing
+project records rather than creating a second permanent ledger.
+
+On resumption, read applicable records and inspect changes since the handoff. Reuse
+answers that still apply. If an assumption changed, explain its impact before
+asking the one affected question. Supersede a changed accepted decision through
+[project guardrails](project-guardrails.md#evolve-accepted-decisions).
+
+The question sequence and handoff are this skill's workflow. The significance and
+history of recorded decisions draw on [S33](../SOURCES.md#messaging-resilience-and-change).

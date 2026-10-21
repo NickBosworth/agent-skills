@@ -1,5 +1,8 @@
 # Repository work
 
+[TASK-0011](TASK-0011-architecture-skill-review.md) tracks all ten Clean Architecture
+skill review improvements and their behavioral evidence.
+
 [TASK-0001](TASK-0001-library-hardening.md) records the library restructure and its evidence.
 [TASK-0002](TASK-0002-seo-workbench.md) tracks SEO Workbench implementation and acceptance.
 [TASK-0003](TASK-0003-awesome-copy.md) records the Awesome Copy addition, research

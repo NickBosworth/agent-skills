@@ -64,3 +64,10 @@ as `$agentic-skills-clean-architecture-dot-net`. It has no prior name, folder or
 alias and does not replace Clean Code for C#/.NET. Existing packages need no
 migration. Architecture rules are adopted in a consuming project only within the
 user's authorized scope; installation alone does not adopt a design or refactor code.
+
+Version 1.1.0 keeps the same name, invocation and automatic selection policy. Replace
+the complete package to obtain clarified decision/resumption guidance and examples.
+Existing consuming-project architecture choices remain authoritative. Optional
+maintainer trial preparation uses Python and writes only to a fresh evidence directory
+outside a checkout; executable synthetic fixtures use their pinned SDK. Ordinary
+architecture guidance still needs no helper, SDK, paid service or global installation.

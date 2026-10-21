@@ -6,6 +6,10 @@ for supporting guidance, disagreements and limits.
 
 ## Separate the axes
 
+Basis: [S01, S03–S10](../SOURCES.md#architecture-modularity-and-principles).
+Their differing architectural preferences are reconciled in the source synthesis;
+the candidate table is this skill's contextual guidance.
+
 Deployment topology, business modules, dependency direction and feature organization
 answer different questions. A modular monolith can use inward dependencies and
 feature folders. A vertical slice can contain a rich domain model. A bounded context
@@ -78,6 +82,10 @@ may need a domain model. Choose per capability rather than forcing rich DDD into
 every CRUD operation. Do not pretend a data-only DTO violates SRP or requires methods.
 
 ## Shared knowledge and contracts
+
+Basis: [S02, S08–S10](../SOURCES.md#architecture-modularity-and-principles) and
+[S31](../SOURCES.md#messaging-resilience-and-change). See the
+[organization example](../examples/organization-refactor.md) for a concrete boundary.
 
 For a proposed shared component, identify the business knowledge, authoritative
 owner, consumers, change cadence and versioning cost. Share a stable business policy

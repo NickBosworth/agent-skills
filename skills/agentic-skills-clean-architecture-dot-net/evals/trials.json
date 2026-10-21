@@ -1,0 +1,74 @@
+{
+  "status": "recipes-not-results",
+  "cases": [
+    {
+      "id": "lifecycle",
+      "fixture": "lifecycle",
+      "mode": "sequential explicit-path dialogue",
+      "prompt": "Inspect this project and help settle invoice-number ownership. Explain the concrete problem, offer feasible options with one justified recommendation, and ask one decision question at a time. Keep all files unchanged until I authorize saving a choice.",
+      "replies": [
+        "Billing owns invoice numbering. Save that accepted ownership choice in our existing records and AGENTS.md. Defer storage separation until reporting requirements are known. No code or enforcement changes are authorized.",
+        "Resume from the saved records. Reporting can use a projection, and Import now needs independent releases. Keep Billing as the number-policy owner. Help reconsider deployment; do not choose on my behalf or edit files yet.",
+        "Adopt an independently released Import process calling the Billing numbering operation. Save this deployment choice and supersede the earlier deployment decision using our existing format. Preserve the invoice format and policy owner. Delivery protocol and storage decisions remain deferred. Do not implement code or enforcement."
+      ],
+      "review": [
+        "One grounded decision question per unresolved turn, with viable options, costs and justified recommendation.",
+        "Initial audit and deployment discussion leave source and records unchanged.",
+        "Qualified ownership acceptance does not adopt storage separation or authorize implementation.",
+        "Save scoped ownership rule, exact current debt and inactive checks; preserve other project rules.",
+        "On resumption retain owner and reconsider only the changed deployment constraint.",
+        "Superseding record preserves historical rationale, links both directions and updates the active route without adopting protocol/storage choices."
+      ]
+    },
+    {
+      "id": "refactor",
+      "fixture": "refactor",
+      "mode": "paired implementation",
+      "prompt": "Implement the accepted Capacity ownership refactor now. Update API and worker callers and composition, keep the published behavior and independent Billing/Audit policies unchanged, update rule debt, and verify the result. Use the existing project and tests; no packages, projects, schema or deployment changes.",
+      "review": [
+        "Original 102 contract assertions pass in Debug and Release from independently restored oracle source.",
+        "One cohesive policy owner serves both callers; no duplicate authoritative comparison remains.",
+        "Tenant validation and cancellation order preserved.",
+        "Billing/Audit source bytes unchanged; rule debt status truthful.",
+        "No new project, package, schema or unrelated file changes."
+      ]
+    },
+    {
+      "id": "guard",
+      "fixture": "guard",
+      "mode": "paired enforcement",
+      "prompt": "Implement ARCH-004 using the existing semantic checker. Verify the allowed composition and normal code, demonstrate representative forbidden dependencies failing and repair them to pass, and report the checks and their blind spots. Keep the fixture projects and accepted policy; no new packages.",
+      "review": [
+        "Allowed composition passes.",
+        "A Domain public signature using a Provider type fails with a rule diagnostic after successful semantic compilation.",
+        "A Host controller constructor call using a Provider alias fails; whole-Host exemption does not pass.",
+        "Repair restores the same checker to pass; unrelated same-spelling types do not fail.",
+        "Compiler errors are distinguished from policy violations; accepted rules and helper loader preserved."
+      ]
+    },
+    {
+      "id": "library",
+      "fixture": "library",
+      "mode": "read-only source review",
+      "prompt": "Audit this public .NET parsing library for architectural and contract problems. Keep every file unchanged. Ground findings in source and accepted rules, and ask a decision question only if a consequential architectural choice remains unresolved.",
+      "review": [
+        "Identify the borrowed-stream lifetime contract violation with code evidence.",
+        "No invented need for database, web host, repositories or layers.",
+        "No interview for the already accepted stream ownership contract.",
+        "Before/after source hashes identical; build/runtime checks not claimed unless observed."
+      ]
+    },
+    {
+      "id": "desktop",
+      "fixture": "desktop",
+      "mode": "read-only source review",
+      "prompt": "Audit this existing desktop project for architecture and lifetime/threading problems. Keep every file unchanged, respect its accepted target and report toolchain limits. Ask a decision question only for a real unresolved choice.",
+      "review": [
+        "Identify direct WPF control mutation from Task.Run as violating the established UI-thread requirement.",
+        "No HTTP request-scope assumptions or mandated SDK migration.",
+        "No false claim of a macOS WPF/.NET Framework build or runtime check.",
+        "Before/after source hashes identical."
+      ]
+    }
+  ]
+}

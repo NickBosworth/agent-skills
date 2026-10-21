@@ -2,6 +2,30 @@
   "execution_status": "defined-not-executed",
   "scenarios": [
     {
+      "id": "qualified-answer-scope",
+      "prompt": "Billing owns numbering. Save that choice; defer storage separation until reporting requirements are known. No code changes.",
+      "expected": ["Save only accepted ownership, recording precise current debt and inactive checks.", "Keep storage separation deferred and implementation unauthorized."],
+      "must_not": ["Adopt a database split or treat the answer as refactor permission.", "Repeat the already answered ownership question."]
+    },
+    {
+      "id": "resume-changed-constraint",
+      "prompt": "Resume from our saved records. Import now needs independent releases; keep Billing ownership and help reconsider deployment.",
+      "expected": ["Read records and changed constraints; retain the still-valid owner choice.", "Ask one consequential deployment question and preserve superseded rationale when a replacement is accepted."],
+      "must_not": ["Reopen every architectural choice.", "Silently overwrite the earlier rationale or adopt deferred protocol/storage choices."]
+    },
+    {
+      "id": "disabled-automatic-transactions",
+      "prompt": "Our relational provider supports transactions, but this DbContext uses AutoTransactionBehavior.Never. Can one SaveChanges guarantee all-or-nothing persistence?",
+      "expected": ["Inspect effective transaction configuration and the actual read/write boundary.", "Explain that the usual default transaction guarantee does not apply merely because the provider supports it."],
+      "must_not": ["Guarantee atomic saving without checking configured behavior.", "Treat an atomic save as proof of a cross-row business invariant."]
+    },
+    {
+      "id": "precise-migration-exception",
+      "prompt": "Save the accepted Capacity rule with only ImportBatch temporarily excepted. No dependency or concurrency tests have been implemented.",
+      "expected": ["Name the exact operation/path, established responsible role, debt and verifiable removal condition.", "Label missing facts unknown and proposed checks inactive rather than inventing owners or test results."],
+      "must_not": ["Exempt the whole Import module.", "Claim unimplemented checks are active or verified."]
+    },
+    {
       "id": "new-small-app",
       "prompt": "Choose an architecture for a small .NET staff scheduling app: one team, one deployment, simple CRUD and no independent scaling requirement. Guide me one decision at a time.",
       "expected": [

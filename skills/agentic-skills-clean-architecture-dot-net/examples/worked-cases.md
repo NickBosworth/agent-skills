@@ -99,3 +99,28 @@ Once the user chooses Booking as owner and authorizes migration, move one writer
 at a time behind its contract. Preserve concurrency handling, worker behavior and
 schema compatibility. Record remaining writers as exact migration debt. Do not
 equate a successful namespace move with a completed ownership refactor.
+
+## 7. A qualified choice and a later change
+
+Continue case 1. Example user answer: “Reservation owns capacity. Save that, but
+defer separate storage until we know whether reporting needs cross-module joins.
+No code changes yet.”
+
+Assistant action: save the ownership choice as accepted, with existing callers as
+migration debt and checks as inactive. Record storage separation as deferred, with
+the reporting requirement as its trigger. Do not adopt a database or refactor code.
+
+Handoff: ownership is accepted; database separation is deferred; no implementation
+is authorized. The next dependent decision is the required consistency boundary,
+if the user later requests implementation. Routine independent review can continue.
+
+Example later request: “Resume. Reporting can use a projection; we now need
+independent Reservation releases. Replace the single-deployment decision, but keep
+the capacity owner.”
+
+Assistant action: inspect changed constraints and existing records. Keep capacity
+ownership accepted. Explain release/consistency costs and ask one deployment
+question with feasible options and a justified recommendation. Only after the
+answer, add a superseding deployment record, preserve historical rationale and
+update the active route. Storage separation remains unresolved unless the answer
+actually settles it. One accepted architectural axis does not decide every other one.

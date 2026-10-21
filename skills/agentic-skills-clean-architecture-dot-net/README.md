@@ -1,6 +1,6 @@
 # agentic-skills · Clean Architecture for .NET
 
-Version **1.0.1** · Licence **CC0-1.0**
+Version **1.1.0** · Licence **CC0-1.0**
 
 Choose and record .NET architecture decisions, audit existing codebases and carry
 out authorized refactors. The skill explains each decision, offers practical
@@ -43,7 +43,9 @@ for its decision style and [sources](SOURCES.md) for the research and its limits
 The [decision](assets/decision-template.md) and [rule](assets/agents-rule-template.md)
 templates adapt to a consuming project's existing structure.
 
-The package is self-contained and needs no runtime, helper script or paid service.
+Using the skill needs no runtime, helper script or paid service. Optional maintainer
+evaluation tooling uses Python; executable synthetic fixtures require their stated
+.NET SDK. Neither is a dependency of the decision workflow.
 Clean Code for C#/.NET can complement it for source readability and implementation
 contracts; Development Planning can help with a wider feature plan. Neither is
 required, and this skill does not replace their distinct responsibilities.

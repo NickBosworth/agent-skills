@@ -6,6 +6,8 @@ skill's recommendations.
 
 ## DRY: identify the knowledge
 
+Basis: [S02 and S11](../SOURCES.md#architecture-modularity-and-principles).
+
 Before extracting repeated code, ask whether the same business fact or policy must
 change for the same reason under the same owner. Inspect callers and edge cases.
 Two discount calculations with one agreed policy should have one authority; two
@@ -19,6 +21,9 @@ Duplicated representations can be legitimate; duplicated authoritative decisions
 can drift. Explain which one the finding concerns.
 
 ## SOLID as observable questions
+
+Basis: [S11–S12](../SOURCES.md#architecture-modularity-and-principles); the diagnostic
+questions below are the skill's synthesis, not a mechanical compliance test.
 
 | Principle | Evidence and diagnostic question | Candidate repair and misuse to avoid |
 | --- | --- | --- |
@@ -55,6 +60,8 @@ mediator, mapper, container, broker or architecture-test package is mandatory.
 
 ## Persistence, transactions and queries
 
+Platform basis: [S15–S20](../SOURCES.md#net-persistence-lifetime-and-verification).
+
 EF Core already provides change tracking and unit-of-work behavior. Compare direct
 `DbContext` use in an explicitly permitted slice/adapter with a meaningful persistence
 port; do not add a generic repository and unit-of-work wrapper automatically. In an
@@ -64,11 +71,21 @@ write invariants. Do not leak `IQueryable`, tracked entities or provider-specifi
 errors through a boundary that promises independence.
 
 Decide who calls `SaveChanges`, what commits atomically, which provider guarantees
-apply, and what happens on concurrency conflict. One `SaveChanges` uses a transaction
-when the provider supports it; multiple saves and remote effects need explicit
-analysis. A database transaction does not make a remote HTTP call atomic. Do not
+apply, and what happens on concurrency conflict. By default, a single `SaveChanges`
+is atomic when the provider supports transactions; inspect actual configuration,
+including disabled automatic transactions, and the read/commit boundary. Multiple
+saves and remote effects need explicit analysis. A database transaction does not
+make a remote HTTP call atomic. Do not
 retry an entire business operation blindly after an uncertain commit. Preserve
 uniqueness constraints, concurrency tokens and invariants under competing writers.
+
+Atomic saving does not prove a cross-row invariant. For example, two requests can
+both count one free place and insert different reservations. Concurrency tokens on
+the inserted rows do not protect the earlier count. Identify the contested state
+and compare a conditional update to an authoritative capacity row, an applicable
+database constraint, or a provider-supported isolation/locking strategy. These are
+alternatives, not a universal prescription. Verify the actual competing schedule,
+conflict response and bounded retry behavior against the relevant provider.
 
 `DbContext` is not thread-safe. Choose lifetimes for the host's unit of work; do not
 capture a request-scoped context in a singleton or parallelize operations on the
@@ -77,6 +94,9 @@ Factories and scopes can be appropriate at composition or work boundaries. Servi
 location inside domain logic hides dependencies and ownership.
 
 ## Separate related but independent choices
+
+Basis: [S22–S32](../SOURCES.md#messaging-resilience-and-change). Select patterns for
+their actual consistency and failure contracts, not their popularity.
 
 - **CQRS:** compare one read/write model with separate command/query models. A single
   database can serve both. Separate stores require a synchronization and stale-read

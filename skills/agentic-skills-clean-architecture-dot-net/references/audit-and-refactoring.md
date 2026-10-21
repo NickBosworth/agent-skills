@@ -49,6 +49,11 @@ If there are no material gaps, say so with coverage limits instead of inventing 
 
 ## Refactor within authorization
 
+Basis: [S31–S32](../SOURCES.md#messaging-resilience-and-change) for translation and
+incremental replacement; [S15–S20](../SOURCES.md#net-persistence-lifetime-and-verification)
+for persistence and verification limits. The scoped execution sequence is the
+skill's synthesis.
+
 An audit can recommend work without changing files. For an implementation request,
 execute the authorized scope once its blocking decisions are settled. Permission
 to save a rule does not itself authorize moving projects or changing production data.

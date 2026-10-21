@@ -1,5 +1,14 @@
 # Changes
 
+## 1.1.0 — 2026-10-21
+
+Address the architecture review: shorten the entrypoint, clarify partial answers
+and resumption, qualify transaction/concurrency guarantees, strengthen the scoped
+rule example and link technical guidance to primary-source groups. Add a concrete
+organization refactor, isolated trial preparation with regression tests and five
+synthetic raw fixtures. Execution outcomes and comparison limits are recorded
+separately in validation; scenario definitions are not results.
+
 ## 1.0.1 — 2026-10-21
 
 Copyedited package documentation with Writing Clearly and Concisely. Clarified

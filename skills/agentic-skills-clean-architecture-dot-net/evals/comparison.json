@@ -1,0 +1,122 @@
+{
+  "date": "2026-10-21",
+  "executor": "codex-cli 0.163.0-alpha.10.2",
+  "sdk": "10.0.400",
+  "platform": "macOS arm64",
+  "method": "one explicit-use run per arm per task; configured default model pinned equally",
+  "settings": {
+    "model": "gpt-6.1-sol",
+    "reasoning_effort": "medium",
+    "sandbox": "workspace-write",
+    "approval_policy": "never",
+    "ignore_user_config": true,
+    "ephemeral": true,
+    "project_doc_max_bytes": 0,
+    "skip_host_skill_discovery": true,
+    "skill_search": false,
+    "apps": false,
+    "web_search": "disabled",
+    "shell_environment_inherit": "core"
+  },
+  "rows": [
+    {
+      "case": "refactor",
+      "arm": "skill",
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "medium",
+      "exit_code": 0,
+      "seconds": 52.653,
+      "prompt_identity": "55cbc5299dfed6a96090ec0079f46c24c0ae7ef7f12a10769ca57b2dec383bd7",
+      "repeat": 1,
+      "result": "pass",
+      "input_identity": "bd3cf06de3da75d32bbbae48c682e6fcca57db547b4ed7fccc43bfaedace780c",
+      "operational_identity": "6155ec43de8adfe429b7c914eda9c4ae870b7324201d200596cdd400012373b8",
+      "usage": {
+        "input_tokens": 157646,
+        "cached_input_tokens": 131840,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2080,
+        "reasoning_output_tokens": 173
+      },
+      "visible_command_count": 6,
+      "visible_grader_read": false,
+      "independent_checks": "original-102-Debug-Release-wrong-behavior-repair"
+    },
+    {
+      "case": "refactor",
+      "arm": "baseline",
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "medium",
+      "exit_code": 0,
+      "seconds": 55.043,
+      "prompt_identity": "8fa6bda42488a2ba0d4d42b080f2e5b1f7dd25f6358e2452437084c76a201480",
+      "repeat": 1,
+      "result": "pass",
+      "input_identity": "bd3cf06de3da75d32bbbae48c682e6fcca57db547b4ed7fccc43bfaedace780c",
+      "operational_identity": null,
+      "usage": {
+        "input_tokens": 138279,
+        "cached_input_tokens": 115584,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2243,
+        "reasoning_output_tokens": 220
+      },
+      "visible_command_count": 5,
+      "visible_grader_read": false,
+      "independent_checks": "original-102-Debug-Release-wrong-behavior-repair"
+    },
+    {
+      "case": "guard",
+      "arm": "baseline",
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "medium",
+      "exit_code": 0,
+      "seconds": 171.813,
+      "prompt_identity": "1ee9900f420eef7ec71b45130ce89568992f874478bc9f285c3040bf26ea5d70",
+      "repeat": 1,
+      "result": "pass",
+      "input_identity": "a5b0d36a2a758265175ca65dcd19d3957b225c215ef724c54ebaa39d31acf46f",
+      "operational_identity": null,
+      "usage": {
+        "input_tokens": 243295,
+        "cached_input_tokens": 209152,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 6316,
+        "reasoning_output_tokens": 1694
+      },
+      "visible_command_count": 7,
+      "visible_grader_read": false,
+      "independent_checks": "five-forbidden-fail-repair-two-allowed-invalid-source-separation"
+    },
+    {
+      "case": "guard",
+      "arm": "skill",
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "medium",
+      "exit_code": 0,
+      "seconds": 143.687,
+      "prompt_identity": "cabdad31e2680950adca7e561fdc13eda0b7fe1c42d742e0d8612d3cfd4b5ed3",
+      "repeat": 1,
+      "result": "pass",
+      "input_identity": "a5b0d36a2a758265175ca65dcd19d3957b225c215ef724c54ebaa39d31acf46f",
+      "operational_identity": "6155ec43de8adfe429b7c914eda9c4ae870b7324201d200596cdd400012373b8",
+      "usage": {
+        "input_tokens": 196384,
+        "cached_input_tokens": 172416,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 5800,
+        "reasoning_output_tokens": 978
+      },
+      "visible_command_count": 9,
+      "visible_grader_read": false,
+      "independent_checks": "five-forbidden-fail-repair-two-allowed-invalid-source-separation"
+    }
+  ],
+  "conclusion": "Both arms pass both tasks. One run per pair cannot establish reliability, superiority, cost savings or native discovery.",
+  "limits": [
+    "Synthetic near-transfer tasks; operational worked examples were available to the skilled arm.",
+    "Concurrent local execution, cache state, cumulative usage accounting and startup/tool work confound wall-time comparisons.",
+    "Experimental host-discovery disabling emitted a warning. Visible command review found no maintenance grader/result reads; this is not filesystem containment proof.",
+    "Lifecycle and non-web trials use separate exposed-setting limits and are not part of this paired comparison."
+  ]
+}

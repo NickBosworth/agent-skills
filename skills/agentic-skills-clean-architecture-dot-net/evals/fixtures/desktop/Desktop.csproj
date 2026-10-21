@@ -1,0 +1,6 @@
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup><OutputType>WinExe</OutputType><TargetFrameworkVersion>v4.8</TargetFrameworkVersion></PropertyGroup>
+  <ItemGroup><Reference Include="System" /><Reference Include="PresentationFramework" /></ItemGroup>
+  <ItemGroup><Compile Include="ViewModel.cs" /></ItemGroup>
+  <Import Project="$(MSBuildToolsPath)/Microsoft.CSharp.targets" />
+</Project>

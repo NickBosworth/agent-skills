@@ -1,5 +1,39 @@
 # Verification of agentic-skills
 
+## Clean Architecture for .NET 1.1.0 — 2026-10-21
+
+[TASK-0011](tasks/TASK-0011-architecture-skill-review.md) maps all ten review
+recommendations to source and actual evidence. The [package checkpoint](../skills/agentic-skills-clean-architecture-dot-net/VALIDATION.md)
+and [execution record](../skills/agentic-skills-clean-architecture-dot-net/evals/results.md)
+separate current trials from the historical checkpoint and the 44 unexecuted scenarios.
+
+An operational-only evaluation view with nine helper regression checks keeps
+maintenance answers/results out of supplied task resources. A four-turn decision
+trial exercised qualified acceptance, saving, resumption and supersession. Library
+and legacy desktop audits retained input hashes and identified the grounded contract
+and threading defects without demanding extra layers or an SDK migration.
+
+The controlled refactor/guard comparison used the same pinned model/settings and raw
+inputs in both arms. Both passed independent checks: original 102 assertions in Debug
+and Release, wrong-behavior detection and repair, five valid dependency failures with
+repairs, allowed composition, a same-name negative case and compiler-error separation.
+Correctness tied; the small sample does not establish superiority, savings or native
+discovery. Pilots, grader correction, exact identities and exposure limits are disclosed.
+
+Three modern raw C# fixtures built and passed formatter verification on private
+copies; formatter local-pipe restrictions were resolved with host-permitted retries.
+A separate SQLite schedule demonstrates the competing-insert distinction, not EF or
+production-provider concurrency. No Windows WPF/legacy build, production refactor or
+distributed delivery was verified. Existing product evidence is unchanged.
+
+Final gates passed: ten official validators, Creator validation and 297 discovered
+tests (280 passed, 17 skipped: one Windows junction and 16 optional existing SDK
+cases). Candidate/index/history privacy, redacted Gitleaks history/package scans,
+whitespace and temporary archive CRC/SHA-256/fresh-extraction checks passed. The
+index stayed unchanged; candidate review covered new files. Scans remain heuristic.
+No staging, commit, push, publication, global installation or product modification
+occurred.
+
 ## Skill documentation review — 2026-10-21
 
 Applied Writing Clearly and Concisely to all 221 Markdown files across ten skill

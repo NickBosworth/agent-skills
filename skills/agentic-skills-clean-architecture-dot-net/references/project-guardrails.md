@@ -78,6 +78,9 @@ unresolved risk, not an architectural waiver that makes them disappear.
 
 ## Evolve accepted decisions
 
+Basis: [S33](../SOURCES.md#messaging-resilience-and-change). The AGENTS.md route,
+adoption states and enforcement protocol are this skill's additions.
+
 Preserve accepted ADR history. Add a superseding record for a changed
 decision, link both directions using the repository's convention, and update the
 active instruction route and checks together. Preserve historical rationale; do not
